@@ -1,0 +1,13 @@
+{% load menu_tags %}
+
+{% for child in children %}
+    <li class="menu-item{% if child.selected %} selected{% endif %}{% if child.ancestor %} ancestor{% endif %}{% if child.sibling %} sibling{% endif %}{% if child.descendant %} descendant{% endif %}{% if child.children %} with-submenu{% endif %}">
+        <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
+        {% if child.menu_level == 0 and not forloop.last %}<span>&nbsp;::&nbsp;</span>{% endif %}
+        {% if child.children %}
+            <ul class="submenu">
+                {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
+            </ul>
+        {% endif %}
+    </li>
+{% endfor %}

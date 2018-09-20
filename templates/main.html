@@ -1,0 +1,64 @@
+{% extends "root.html" %}
+{% load i18n cms_tags staticfiles menu_tags sekizai_tags %}
+
+
+{% block body_class %}{% endblock %}
+
+
+{% block messages %}
+    <div class="container-big">
+        {% include "includes/messages.html" %}
+    </div>
+{% endblock messages %}
+
+
+{% block extrahead %}
+    <meta name="application-name" content="Project Name"/>
+{% endblock extrahead %}
+
+
+{% block extend_base %}
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-lg-14 order-2">
+
+                <div class="main-menu">
+                        {% show_menu 0 100 100 100 "includes/menu.html" %}
+                </div>
+
+                <div class="main-content">
+
+                    {% block main_content %}
+                        {% placeholder 'main_content' %}
+                    {% endblock main_content %}
+
+                    {% block footer %}
+                        <footer class="">
+                            {% static_placeholder "footer" %}
+                        </footer>
+                    {% endblock footer %}
+                </div>
+            </div>
+
+            <div class="col-24 order-3 col-lg-6 order-lg-1">
+                <div class="sidebar_left">
+                    {% static_placeholder 'sidebar_left' %}
+                </div>
+            </div>
+
+            <div class="col-24 order-2 order-sm-2 col-lg-3 order-lg-3">
+                <div class="sidebar-right">
+                    {% static_placeholder "sidebar_right" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock extend_base %}
+
+
+
+{% addtoblock "js" %}
+    <!-- any js to add to the footer -->
+{% endaddtoblock "js" %}

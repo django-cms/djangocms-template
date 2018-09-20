@@ -1,0 +1,5 @@
+{% load staticfiles sekizai_tags %}
+
+{% addtoblock "css" %}<link href="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css" rel="stylesheet" />{% endaddtoblock %}
+{% addtoblock "js" %}<script defer="defer" src="https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script defer="defer" src="{% static 'djangocms_maps/js/mapbox.js' %}"></script>{% endaddtoblock %}

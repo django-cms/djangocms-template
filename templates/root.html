@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load i18n staticfiles cms_tags menu_tags sekizai_tags gtm_tags %}
+
+
+<html dir="ltr" lang="{{ LANGUAGE_CODE }}">
+<head>
+    <!-- DOCUMENT SETTINGS -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1">
+
+    <title>
+        {% block title %}
+            {% page_attribute page_title %} - {{ request.site.name }}
+        {% endblock title %}
+    </title>
+
+    <script>
+        dataLayer = [];
+    </script>
+
+    {% gtm_head %}
+
+    <!-- RESPONSIVE UTILITIES -->
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport"
+          content="shrink-to-fit=no, width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta name="msapplication-TileColor" content="#fff"/>
+    <meta name="theme-color" content="#ffffff">
+
+    <script>
+        (function (H) {
+            H.className = H.className.replace(/\bno-js\b/, 'js')
+        })(document.documentElement)
+    </script>
+    <!-- Detect if JavaScript is enabled and change class in html element -->
+
+
+    {% block meta_tags %}
+        <meta name="description" content="{% spaceless %}
+            {% block meta_description %}
+                {% page_attribute meta_description %}
+            {% endblock %}
+        {% endspaceless %}">
+
+        {{ ALDRYN_SNAKE.render_head }}
+    {% endblock meta_tags %}
+
+    {% if settings.WEBPACK_DEV_BUNDLE_URL %}
+        <!-- the bundle is loaded from webpack-dev-server (see npm's package.json) -->
+        <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_URL }}"></script>
+    {% else %}
+        <!-- the bundle is loaded from static/dist/ -->
+        <!-- NOTE: This is hashed by django's staticfiles -->
+        <script data-cms-reload defer="defer" src="{% static 'dist/app.js' %}"></script>
+    {% endif %}
+
+    {% render_block "css" %}
+
+    {% block extrahead %}{% endblock %}
+
+    {% if request.toolbar %}
+        <style>
+            .cms-toolbar-expanded .navbar-custom {
+                margin-top: 45px;
+            }
+        </style>
+    {% endif %}
+
+    <script>
+        django_debug = {% if debug %}true{% else %}false{% endif %};
+        log = function (msg) {
+            if (django_debug) {
+                console.log(msg);
+            }
+        };
+    </script>
+
+</head>
+
+<body style="opacity: 0;" class="fade-in-on-page-load {% if debug %}debug{% endif %} noscript lang-{{ LANGUAGE_CODE }} {% block body_class %}tpl-root{% endblock %}">
+
+{% cms_toolbar %}
+
+{% gtm_body %}
+
+
+<div id="site-wrapper">
+    {% block extend_root %}
+        {% block header %}
+            <header class="navbar navbar-head"></header>
+        {% endblock header %}
+
+        {% block breadcrumb %}
+        {% endblock breadcrumb %}
+
+        {% block extend_base %}
+            {% block main %}
+                {% comment %} Main content of the website {% endcomment %}
+            {% endblock main %}
+        {% endblock extend_base %}
+
+    {% endblock extend_root %}
+</div>
+
+<!-- https://django-sekizai.readthedocs.io/en/latest/ -->
+{% render_block "js" %}
+
+{% block extrafoot %}{% endblock %}
+
+{{ ALDRYN_SNAKE.render_tail }}
+
+<!--[if lt IE 10]>
+        <div class="browserupgrade">
+            You are using an <strong>outdated</strong> browser.
+            Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+        </div>
+    <![endif]-->
+
+</body>
+</html>

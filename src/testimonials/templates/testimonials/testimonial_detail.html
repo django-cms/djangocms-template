@@ -1,0 +1,10 @@
+{% extends "testimonials/base.html" %}
+{% load i18n apphooks_config_tags %}
+
+{% block testimonials_content %}
+    <div class="testimonials-detail">
+        {% include "testimonials/includes/testimonial.html" with testimonial=object detail_view="true" %}
+
+        <p><a href="{% namespace_url 'testimonials-list' %}">{% trans "Back to Overview" %}</a></p>
+    </div>
+{% endblock %}
