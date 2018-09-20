@@ -175,6 +175,14 @@ INSTALLED_APPS = (
     'gtm',
     'rest_framework',
     'rest_framework.authtoken',
+
+    # Aldryn forms and dependencies
+    # See https://github.com/aldryn/aldryn-forms for documentation
+    'absolute',
+    'aldryn_forms',
+    'aldryn_forms.contrib.email_notifications',
+    'emailit',
+
     # Example PLugins
     # 'src.inline_alignment_plugin',
     # 'src.hide_plugin',
@@ -350,14 +358,6 @@ CMS_PLACEHOLDER_CONF = {
         'name': gettext("Testimonial Page Content"),
         'excluded_plugins': [],
     },
-    'course_content': {
-        'name': gettext("This Course Only"),
-        'excluded_plugins': [],
-    },
-    'courses_static_content': {
-        'name': gettext("Static Content for all Courses"),
-        'excluded_plugins': [],
-    },
     'newsblog_listing_additional_content': {
         'name': gettext("Additional Blog Listing Page Content"),
         'excluded_plugins': [],
@@ -425,14 +425,14 @@ REST_FRAMEWORK = {
 import raven
 
 RAVEN_CONFIG = {
-    'dsn': 'https://cfae66c325fa485cbd821fdf5cf994d4:5bb883d02bf847bb9434a76780c0d107@sentry.io/1269040',
+    'dsn': 'https://key:secret@sentry.io/project-slug',
     # If you are using git, you can also automatically configure the
     # release based on the git info.
     'release': raven.fetch_git_sha(BASE_DIR),
 }
 
 if not DEBUG:
-    GOOGLE_TAG_ID = "GTM-ZKPK"
+    GOOGLE_TAG_ID = "GTM-1234"
 
 LOGGING = {
     'version': 1,
@@ -483,3 +483,14 @@ LOGGING = {
 }
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
+
+INSTALLED_APPS += (
+    # ReCaptchaField
+    'captcha',  # django-recaptcha
+    'aldryn_forms_recaptcha_plugin',
+)
+
+RECAPTCHA_PUBLIC_KEY = env('ALDRYN_FORMS_RECAPTCHA_SITE_KEY', '123')
+RECAPTCHA_PRIVATE_KEY = env('ALDRYN_FORMS_RECAPTCHA_SECRET', '123')
+NOCAPTCHA = True

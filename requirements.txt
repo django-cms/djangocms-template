@@ -41,3 +41,6 @@ raven
 https://control.divio.com/api/v1/apps/serve/djangocms-modules/0.0.4/ca71b210-4490-4a10-86e1-d023f93e6a5b/djangocms-modules-0.0.4.tar.gz#egg=djangocms-modules==0.0.4
 
 django-google-tag-manager
+
+aldryn-forms
+django-recaptcha
