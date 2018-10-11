@@ -175,6 +175,7 @@ INSTALLED_APPS = (
     'gtm',
     'rest_framework',
     'rest_framework.authtoken',
+    'djangocms-history',
 
     # Aldryn forms and dependencies
     # See https://github.com/aldryn/aldryn-forms for documentation
