@@ -5,4 +5,4 @@ from usermgmt.models import UserValidationCode
 
 
 admin.site.register(UserValidationCode, UserValidationCodeAdmin)
-# admin.site.register(get_user_model(), UserAdmin)
+admin.site.register(get_user_model(), UserAdmin)
