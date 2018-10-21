@@ -124,6 +124,8 @@ MIDDLEWARE = (
 
 INSTALLED_APPS = (
     # needs to be first to override cms templates
+    'usermgmt',
+    'custom_user',
     'aldryn_translation_tools',
     'djangocms_modules',
     'djangocms_admin_style',
@@ -153,7 +155,6 @@ INSTALLED_APPS = (
     'djangocms_bootstrap4',
     'djangocms_bootstrap4.contrib.bootstrap4_alerts',
     'djangocms_bootstrap4.contrib.bootstrap4_badge',
-    'raven.contrib.django.raven_compat',
     # doesnt allow to configure custom designs, we made our own
     # 'djangocms_bootstrap4.contrib.bootstrap4_card',
     'src.card_columns_plugin',
@@ -175,7 +176,7 @@ INSTALLED_APPS = (
     'gtm',
     'rest_framework',
     'rest_framework.authtoken',
-    'djangocms-history',
+    'djangocms_history',
 
     # Aldryn forms and dependencies
     # See https://github.com/aldryn/aldryn-forms for documentation
@@ -191,6 +192,9 @@ INSTALLED_APPS = (
     # 'src.lightbox_gallery_plugin',
     # 'src.float_plugin',
 )
+
+USER_FIELDS = ['email']
+AUTH_USER_MODEL = "custom_user.User"
 
 # marked as optional in the doc but seems to be necessary for this setup
 LOCALE_PATHS = (
@@ -423,65 +427,10 @@ REST_FRAMEWORK = {
 }
 
 
-import raven
-
-RAVEN_CONFIG = {
-    'dsn': 'https://key:secret@sentry.io/project-slug',
-    # If you are using git, you can also automatically configure the
-    # release based on the git info.
-    'release': raven.fetch_git_sha(BASE_DIR),
-}
-
 if not DEBUG:
     GOOGLE_TAG_ID = "GTM-1234"
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': True,
-    'root': {
-        'level': 'DEBUG',
-        'handlers': ['console', 'file', 'sentry'],
-    },
-    'formatters': {
-        'verbose': {
-            'format': '%(levelname)s  %(asctime)s  %(module)s '
-                      '%(process)d  %(thread)d  %(message)s'
-        },
-    },
-    'handlers': {
-        'sentry': {
-            'level': 'ERROR',  # To capture more than ERROR, change to WARNING, INFO, etc.
-            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        },
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': env('LOGFILE', os.path.join(BASE_DIR, 'django.log')),
-        },
-    },
-    'loggers': {
-        'django.db.backends': {
-            'level': 'ERROR',
-            'handlers': ['console', 'file'],
-            'propagate': False,
-        },
-        'raven': {
-            'level': 'DEBUG',
-            'handlers': ['console', 'file'],
-            'propagate': False,
-        },
-        'sentry.errors': {
-            'level': 'DEBUG',
-            'handlers': ['console', 'file'],
-            'propagate': False,
-        },
-    },
-}
+
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
@@ -495,3 +444,56 @@ INSTALLED_APPS += (
 RECAPTCHA_PUBLIC_KEY = env('ALDRYN_FORMS_RECAPTCHA_SITE_KEY', '123')
 RECAPTCHA_PRIVATE_KEY = env('ALDRYN_FORMS_RECAPTCHA_SECRET', '123')
 NOCAPTCHA = True
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'root': {
+        'level': 'DEBUG',
+        'handlers': ['console', 'file'],
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'DEBUG',
+            # https://docs.python.org/3/library/logging.handlers.html
+            # because of https://justinmontgomery.com/rotating-logs-with-multiple-workers-in-django
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': env('LOGFILE', os.path.join(BASE_DIR, 'default.log')),
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+ENVIRONMENT = env('DJANGO_ENV', 'develop')
+SENTRY_IS_ENABLED = env('SENTRY_IS_ENABLED', 'false').lower() in true_values
+
+
+if SENTRY_IS_ENABLED:
+
+    import sentry_sdk
+    import logging
+    from sentry_sdk.integrations.django import DjangoIntegration
+    from sentry_sdk.integrations.logging import LoggingIntegration
+
+    sentry_sdk.init(
+        dsn="https://123@sentry.io/123",
+        integrations=[
+            DjangoIntegration(),
+            LoggingIntegration(
+                level=logging.INFO,  # Capture info and above as breadcrumbs
+                event_level=None  # Send no events from log messages
+            )
+        ],
+        environment=ENVIRONMENT,
+    )

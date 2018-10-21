@@ -48,3 +48,11 @@ Pass:
 - This project has backend and frontend error monitoring at https://sentry.io/project-name/
 
 
+# Custom User Model
+
+- When adding a custom user model to djangocms and you want to run makemigrations
+- this here will get in your way: https://vivazzi.pro/it/cannot-resolve-bases-for-pageuser/
+- All djangocms references have to be commented out:
+   - urls.py
+   - settings.py INSTALLED_APPS (including any djangocms add-ons)
+- comment these out, run makemigrations and then uncomment them
