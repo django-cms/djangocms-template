@@ -45,3 +45,5 @@ django-google-tag-manager
 aldryn-forms
 django-recaptcha
 djangocms-history
+
+-e git+git@gitlab.com:what-digital/django-usermgmt.git@stage#egg=django-usermgmt

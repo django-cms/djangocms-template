@@ -1,7 +1,8 @@
-window.Raven = require('raven-js');
-window.Raven
-    .config('https://00f24717f70d4cd3927a62922c50261b@sentry.io/1269056')
-    .install();
+import * as Sentry from '@sentry/browser';
+
+Sentry.init({
+  dsn: 'https://cfae66c325fa485cbd821fdf5cf994d4@sentry.io/1269040',
+});
 
 // this will let us have a global jQuery object
 window.$ = window.jQuery = require("jquery");
