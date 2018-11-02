@@ -55,6 +55,7 @@ let config = {
                 }, {
                     loader: 'postcss-loader', // Run post css actions
                     options: {
+                        sourceMap: true,
                         plugins: function () { // post css plugins, can be exported to postcss.config.js
                             return [
                                 require('precss'),
@@ -63,10 +64,12 @@ let config = {
                         }
                     }
                 }, {
+                    // fixes https://github.com/webpack-contrib/sass-loader#problems-with-url
+                    loader: 'resolve-url-loader',
+                }, {
                     loader: 'sass-loader', options: {
                         sourceMap: true
                     } // compiles Sass to CSS
-
                 }]
             },
             // images

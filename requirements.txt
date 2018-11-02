@@ -1,4 +1,6 @@
--e git+git@github.com:divio/django-cms.git@release/3.5.x#egg=django-cms
+-e git+https://github.com/divio/django-cms.git@release/3.5.x#egg=django-cms
+# github permission denied:
+# -e git+git@github.com:divio/django-cms.git@release/3.5.x#egg=django-cms
 # django-cms>=3.5,<3.6
 
 djangocms-admin-style>=1.2,<1.3
