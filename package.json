@@ -40,7 +40,7 @@
     "postcss-loader": "^3.0.0",
     "precss": "^3.1.2",
     "raven-js": "^3.26.4",
-    "resolve-url-loader": "^2.3.1",
+    "resolve-url-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "slick-carousel": "^1.8.1",
     "style-loader": "^0.23.0",
