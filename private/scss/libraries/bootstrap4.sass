@@ -1,4 +1,4 @@
-
+@import "../templates/variables"
 
 // make customisations here
 
@@ -11,6 +11,9 @@ $theme-colors: ("primary": $primary-color)
 $btn-primary-color: $button-font-color
 $btn-primary-bg: $primary-color
 $btn-primary-border: $primary-color
+
+// override the bootstrap4 $spacer variable with our own
+$spacer: $spacer
 
 // according to https://getbootstrap.com/docs/4.0/getting-started/webpack/#importing-styles
 @import "~bootstrap/scss/bootstrap"

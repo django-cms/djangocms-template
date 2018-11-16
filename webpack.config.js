@@ -8,21 +8,14 @@ require('webpack');
 let config = {
     mode: "development",
     entry: {
-        app: ["./private/main.js"]
+        vendor: ["./private/vendor.js"],
+        app: ["./private/main.js"],
     },
     output: {
         path: __dirname + '/static/dist/', // `dist` is the destination
         publicPath: process.env.DEV_SERVER_PUBLIC_PATH,
-        filename: "bundle.js",
-        // chunkFilename: '[name].bundle.js',
+        chunkFilename: '[name].js',
     },
-    // optimization: {
-    // only useful if there are multiple entries, see https://webpack.js.org/guides/code-splitting/
-    // this would require dynamic asset loading
-    //     splitChunks: {
-    //         chunks: 'all'
-    //     }
-    // },
     module: {
         rules: [
             {
@@ -137,13 +130,14 @@ let config = {
             // ./public directory is being served
             host: 'localhost',
             port: 3000,
-            open: false,
-            // server: { baseDir: __dirname },
-            proxy: 'http://localhost:8090/'
+            proxy: 'http://localhost:8090/',
+            open: false
         })
     ],
     //To run development server
     devServer: {
+        hot: true,
+        compress: true,
         contentBase: __dirname + '/private',
         headers: {
             "Access-Control-Allow-Origin": "*",
@@ -159,27 +153,19 @@ let config = {
             jquery: path.join(__dirname, 'node_modules/jquery/dist/jquery')
         }
     },
-    devtool: "eval-source-map" // Default development sourcemap
+    devtool: "eval-cheap-module-source-map" // Default development sourcemap
 };
+
 
 // Check if build is running in production mode, then change the sourcemap type
 if (process.env.NODE_ENV === "production") {
     config.mode = "production";
     config.devtool = "source-map";
-    config.context = __dirname + '/private';
-    config.entry = {
-        app: './main.js'
-    };
     config.output = {
         path: __dirname + '/static/dist/', // `dist` is the destination
-        filename: '[name].js',
+        chunkFilename: '[name].js',
         publicPath: "/static/dist/",
     };
-
-    // Can do more here
-    // JSUglify plugin
-    // Offline plugin
-    // Bundle styles seperatly using plugins etc,
 }
 
 module.exports = config;

@@ -191,6 +191,8 @@ INSTALLED_APPS = (
     # 'src.testimonials.apps.TestimonialsApp',
     # 'src.lightbox_gallery_plugin',
     # 'src.float_plugin',
+
+    'djangocms_honeypot_captcha',
 )
 
 USER_FIELDS = ['email']
@@ -305,12 +307,12 @@ THUMBNAIL_PROCESSORS = (
 )
 
 
-WEBPACK_DEV_BUNDLE_URL = env('WEBPACK_DEV_BUNDLE_URL')
+WEBPACK_DEV_BUNDLE_BASE_URL = env('WEBPACK_DEV_BUNDLE_BASE_URL')
 
 STATICFILES_DIRS += (os.path.join(BASE_DIR, 'private'),)
 
 SETTINGS_EXPORT = [
-    'WEBPACK_DEV_BUNDLE_URL',
+    'WEBPACK_DEV_BUNDLE_BASE_URL',
 ]
 
 CKEDITOR_SETTINGS = {
