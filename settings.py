@@ -57,7 +57,7 @@ ROOT_URLCONF = 'urls'
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'de'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Europe/Zurich'
 USE_I18N = True
@@ -193,6 +193,18 @@ INSTALLED_APPS = (
     # 'src.float_plugin',
 
     'djangocms_honeypot_captcha',
+
+    # aldryn newsblog
+    # this is djangocms default blogging system
+    # its a bit bloated, and I wonder if it can be used without aldryn_people and aldryn_categories, which would help
+    # to reduce complexity.
+    # you will probably need to add these
+    # 'aldryn_categories',
+    # 'aldryn_common',
+    # 'aldryn_newsblog',
+    # 'aldryn_people',
+    # 'sortedm2m',
+    # 'taggit',
 )
 
 USER_FIELDS = ['email']
@@ -205,15 +217,15 @@ LOCALE_PATHS = (
 
 LANGUAGES = (
     ## Customize this
-    ('de', gettext('de')),
+    ('en', gettext('en')),
 )
 
 CMS_LANGUAGES = {
     ## Customize this
     1: [
         {
-            'code': 'de',
-            'name': gettext('de'),
+            'code': 'en',
+            'name': gettext('en'),
             'redirect_on_fallback': True,
             'public': True,
             'hide_untranslated': False,
