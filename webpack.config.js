@@ -99,10 +99,6 @@ let config = {
                 ]
             },
             {
-                test: /\.json$/,
-                loader: "json-loader"  //JSON loader
-            },
-            {
                 test: /\.(woff2?|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 use: [
                     "file-loader"

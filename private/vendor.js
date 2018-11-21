@@ -7,6 +7,8 @@ window.Modernizr = require('modernizr');
 
 window.moment = require('moment');
 
+require('moment-timezone');
+
 require('bootstrap');
 
 // this loads the django csrf protection methods for sending forms
