@@ -16,6 +16,11 @@ if [ -f ${PWD}/.env ]; then
 fi
 ```
 
+### Pycharm:
+- mark the `src` folder as `Sources Root` so that pycharm can find the django modules inside
+- add the `.env` file in the run configuration in the `EnvFile` tab (press Cmd+Shift+. to see hidden files in the Mac OS X file dialog)
+
+
 ## Frontend Dev
 
 - By default, the page is blank, because all javascript and styles are deferred. In order to show content, go through

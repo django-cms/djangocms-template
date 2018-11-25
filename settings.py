@@ -282,6 +282,8 @@ else:
 
 CMS_TEMPLATES = (
     ('main.html', 'Default Template'),
+    # static_templates example, remove this
+    ('static_templates/home.html', 'Home'),
 )
 
 CMS_PERMISSION = True
