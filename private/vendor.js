@@ -6,7 +6,6 @@ window.$ = window.jQuery = require("jquery");
 window.Modernizr = require('modernizr');
 
 window.moment = require('moment');
-
 require('moment-timezone');
 
 require('bootstrap');
