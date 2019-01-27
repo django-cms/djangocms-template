@@ -22,14 +22,26 @@ def testing_500_error(request):
     """
     raise ValueError('This is a test exception raised on purpose, for testing exception handling.')
 
+from usermgmt.api import routers
+from usermgmt.api.urls import router as usermgmt_router
+
+# Rest Framework
+router = routers.DefaultRouter()
+router.extend(usermgmt_router)
+
 
 urlpatterns = [
+    # standard Django auth urls
+    url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^accounts/api/', include(router.urls)),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': {'cmspages': CMSSitemap}}),
-    url(r'^api/auth/', include('rest_framework.urls')),
     url(r'^testing-500-error$', testing_500_error, name='testing_500_error'),
 ]
 
 urlpatterns += i18n_patterns(
+    url(r'^/', include('django.contrib.auth.urls')),
+    # custom wrapping functionality
+    url(r'^accounts/', include('usermgmt.urls', namespace='accounts')),
     url(r'^admin/', include(admin.site.urls)),  # NOQA
     url(r'^', include('cms.urls')),
 )
