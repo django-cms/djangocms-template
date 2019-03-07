@@ -1,0 +1,11 @@
+{% load i18n %}<img src="{{ instance.image.file.url }}" alt="{{ instance.name }}" style="
+        {% if instance.max_width %}
+            max-width: {{ instance.max_width }}px;
+        {% endif %}
+
+        height: auto;
+
+        {% if instance.max_height %}
+            max-height: {{ instance.max_height }}px;
+        {% endif %}
+        "/>

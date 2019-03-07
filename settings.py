@@ -174,6 +174,10 @@ INSTALLED_APPS = (
     'adminsortable2',
     'parler',
     'gtm',
+    'svg_image_field',
+    'svg_image_plugin',
+    # 'svg_image_field',
+    # 'svg_image_plugin',
     'rest_framework',
     'rest_framework.authtoken',
     'djangocms_history',
@@ -191,8 +195,6 @@ INSTALLED_APPS = (
     # 'src.testimonials.apps.TestimonialsApp',
     # 'src.lightbox_gallery_plugin',
     # 'src.float_plugin',
-
-    'djangocms_honeypot_captcha',
 
     # aldryn newsblog
     # this is djangocms default blogging system
