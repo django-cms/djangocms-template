@@ -174,10 +174,10 @@ INSTALLED_APPS = (
     'adminsortable2',
     'parler',
     'gtm',
+    # django-filer does not support SVG
     'svg_image_field',
+    # nor does the bs4 image field
     'svg_image_plugin',
-    # 'svg_image_field',
-    # 'svg_image_plugin',
     'rest_framework',
     'rest_framework.authtoken',
     'djangocms_history',
