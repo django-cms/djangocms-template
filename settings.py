@@ -22,14 +22,6 @@ env = os.environ.get
 true_values = ['1', 'true', 'y', 'yes', 'on', 1, True]
 
 
-# this is a custom method to import required env variables
-def require_env(name):
-    value = env(name)
-    if not value:
-        raise ImproperlyConfigured('Missing {} env variable'.format(name))
-    return value
-
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(__file__)
 
@@ -37,7 +29,19 @@ BASE_DIR = os.path.dirname(__file__)
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = require_env('DJANGO_SECRET_KEY')
+if env('DJANGO_SECRET_KEY'):
+    SECRET_KEY = env('DJANGO_SECRET_KEY')
+else:
+    key_file = os.path.join(BASE_DIR, '.secret_key')
+    try:
+        from pathlib import Path
+        SECRET_KEY = Path(key_file).read_text()
+    except (ImportError, FileNotFoundError):
+        print("Generating a new SECRET_KEY (just once)")
+        from django.core.management.utils import get_random_secret_key
+        secret_key = get_random_secret_key()
+        Path(key_file).write_text(secret_key)
+        SECRET_KEY = Path(key_file).read_text()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DJANGO_DEBUG', 'True').lower() in true_values
@@ -45,6 +49,8 @@ DEBUG = env('DJANGO_DEBUG', 'True').lower() in true_values
 # this env is set from the deploy script
 if env('DJANGO_ALLOWED_HOSTS_STRING', False):
     ALLOWED_HOSTS = str(env('DJANGO_ALLOWED_HOSTS_STRING')).strip('"').split()
+elif DEBUG:
+    ALLOWED_HOSTS = ['*']
 else:
     ALLOWED_HOSTS = ["127.0.0.1", "0.0.0.0", 'localhost']
 
@@ -59,7 +65,7 @@ ROOT_URLCONF = 'urls'
 
 LANGUAGE_CODE = 'en'
 
-TIME_ZONE = 'Europe/Zurich'
+TIME_ZONE = env('TIME_ZONE_IDENTIFIER', 'Europe/Zurich')
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -263,9 +269,9 @@ SHORT_DATETIME_FORMAT = 'j N Y H:i'
 FIRST_DAY_OF_WEEK = 1
 
 # email stuff
-BUSINESS_NAME = 'Project Name'
-BASE_URL = require_env('BASE_URL')
-BUSINESS_EMAIL = require_env('BUSINESS_EMAIL')
+BUSINESS_NAME = env('BUSINESS_NAME', 'Project Name')
+BASE_URL = env('BASE_URL', 'http://localhost:8000')
+BUSINESS_EMAIL = env('BUSINESS_EMAIL', 'tech@what.digital')
 BUSINESS_EMAIL_VANE = "%(name)s <%(address)s>" % {"name": BUSINESS_NAME, "address": BUSINESS_EMAIL}
 DEFAULT_FROM_EMAIL = BUSINESS_EMAIL_VANE
 EMAIL_BACKEND = env('EMAIL_BACKEND', 'django.core.mail.backends.dummy.EmailBackend')
@@ -296,11 +302,11 @@ if env('DB_ENGINE') == 'django.db.backends.postgresql':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': require_env('DB_NAME'),
-            'USER': require_env('DB_USER'),
-            'PASSWORD': require_env('DB_PASSWORD'),
-            'HOST': require_env("DB_HOST"),
-            'PORT': require_env("DB_PORT"),
+            'NAME': env('DB_NAME', 'db'),
+            'USER': env('DB_USER', 'db'),
+            'PASSWORD': env('DB_PASSWORD', 'db'),
+            'HOST': env("DB_HOST", 'localhost'),
+            'PORT': env("DB_PORT", "5432"),
         },
     }
 else:
@@ -311,9 +317,7 @@ else:
         },
     }
 
-MIGRATION_MODULES = {
-
-}
+MIGRATION_MODULES = {}
 
 THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
@@ -322,8 +326,9 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters'
 )
 
-
-WEBPACK_DEV_BUNDLE_BASE_URL = env('WEBPACK_DEV_BUNDLE_BASE_URL')
+# this is by default set to the value npm start uses in package.json
+# for PRODUCTION this value has to be unset! (Set it to False via an env var)
+WEBPACK_DEV_BUNDLE_BASE_URL = env('WEBPACK_DEV_BUNDLE_BASE_URL', 'http://localhost:8090/assets/')
 
 STATICFILES_DIRS += (os.path.join(BASE_DIR, 'private'),)
 
@@ -406,7 +411,7 @@ MAPS_PROVIDERS = [
     ('mapbox', _('Mapbox OSM (API key required)')),
 ]
 
-MAPS_MAPBOX_API_KEY = require_env('MAPS_MAPBOX_API_KEY')
+MAPS_MAPBOX_API_KEY = env('MAPS_MAPBOX_API_KEY', '123')
 
 
 # available settings with their default values
@@ -446,8 +451,7 @@ REST_FRAMEWORK = {
 
 
 if not DEBUG:
-    GOOGLE_TAG_ID = "GTM-1234"
-
+    GTM_CONTAINER_ID = env('GTM_CONTAINER_ID', "GTM-1234")
 
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
@@ -504,6 +508,7 @@ if SENTRY_IS_ENABLED:
     from sentry_sdk.integrations.django import DjangoIntegration
     from sentry_sdk.integrations.logging import LoggingIntegration
 
+    # noinspection PyTypeChecker
     sentry_sdk.init(
         dsn="https://123@sentry.io/123",
         integrations=[

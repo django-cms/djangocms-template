@@ -35,3 +35,5 @@ local_db.tar.gz
 /*.sqlite3
 /*.log
 static-collected/
+/.secret_key
+

@@ -2,6 +2,10 @@
 import os
 import sys
 
+ADDITIONAL_PYTHON_PATH = './src'
+if ADDITIONAL_PYTHON_PATH not in sys.path:
+    sys.path.append(ADDITIONAL_PYTHON_PATH)
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
     try:
