@@ -189,6 +189,7 @@ INSTALLED_APPS = (
     'djangocms_history',
 
     # Aldryn forms and dependencies
+    'aldryn_forms_bs4_templates',
     # See https://github.com/aldryn/aldryn-forms for documentation
     'absolute',
     'aldryn_forms',
