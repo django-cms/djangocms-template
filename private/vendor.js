@@ -23,7 +23,7 @@ require('imagesloaded');
 require('jquery-match-height');
 window.Cookies = require('js-cookie');
 window.svg4everybody = require('svg4everybody');
-require('object-fit-images');
+window.objectFitImages = require('object-fit-images');
 window.autosize = require('autosize');
 require('ekko-lightbox');
 require('../node_modules/ekko-lightbox/dist/ekko-lightbox.css');

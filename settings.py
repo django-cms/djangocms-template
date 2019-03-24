@@ -334,6 +334,7 @@ STATICFILES_DIRS += (os.path.join(BASE_DIR, 'private'),)
 
 SETTINGS_EXPORT = [
     'WEBPACK_DEV_BUNDLE_BASE_URL',
+    'BUSINESS_NAME',
 ]
 
 CKEDITOR_SETTINGS = {
@@ -405,6 +406,14 @@ CMS_PLACEHOLDER_CONF = {
 #djangocms-bootstrap4
 # we use 24 instead of the default 12
 DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
+
+DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = (
+    ('col', _('Column')),
+    # for full width columns that have no left and right paddings
+    ('col p-0', _('Full-width Column')),
+    ('w-100', _('Break')),
+    ('', _('Empty'))
+)
 
 #djangocms-maps settings
 MAPS_PROVIDERS = [

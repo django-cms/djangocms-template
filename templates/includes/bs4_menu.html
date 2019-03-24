@@ -1,0 +1,61 @@
+{% load menu_tags %}
+{% spaceless %}
+
+    {% comment %}
+    from https://github.com/jrief/djangocms-bootstrap/blob/master/cms_bootstrap/templates/bootstrap4/menu/navbar.html
+    {% endcomment %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <a class="navbar-brand" href="#">{{ settings.BUSINESS_NAME }}</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                {% for child in children %}
+                    <li class="nav-item{% if child.selected or child.ancestor %} active{% endif %}{% if child.children %} dropdown{% endif %}">
+                        {% if child.children %}
+                            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                                {{ child.get_menu_title|safe }}
+                            </a>
+
+                            <div class="dropdown-menu" role="menu" aria-labelledby="navbarDropdown">
+                                {% if child.visible %}
+                                    <a class="dropdown-item"
+                                       href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+                                        <strong>{{ child.get_menu_title|safe }}</strong>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                {% endif %}
+                                {% comment %}
+		Bootsrap4 does not support submenues, so levels > 1 can't be handled be the main_menu tag and therfore
+		recursion has been dropped intentionally. Read https://github.com/twbs/bootstrap/pull/6342 for details.
+		{% endcomment %}
+                                {% for grandchild in child.children %}
+                                    <a class="dropdown-item{% if grandchild.selected %} active{% endif %}"
+                                       href="{{ grandchild.attr.redirect_url|default:grandchild.get_absolute_url }}"
+                                       role="menuitem">
+                                        {{ grandchild.get_menu_title|safe }}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <a class="nav-link"
+                               href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+                                {{ child.get_menu_title|safe }}
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+{% endspaceless %}
+

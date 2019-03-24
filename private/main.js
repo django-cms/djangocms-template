@@ -1,7 +1,8 @@
 import * as Sentry from '@sentry/browser';
 
+// TODO: update Sentry DSN here
 Sentry.init({
-  dsn: 'https://cfae66c325fa485cbd821fdf5cf994d4@sentry.io/1269040',
+  dsn: 'https://12324@sentry.io/12324',
 });
 
 
