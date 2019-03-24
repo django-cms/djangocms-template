@@ -214,6 +214,8 @@ INSTALLED_APPS = (
     # 'aldryn_people',
     # 'sortedm2m',
     # 'taggit',
+
+    'src.hero_image_plugin',
 )
 
 USER_FIELDS = ['email']
