@@ -1,0 +1,38 @@
+{% load i18n aldryn_forms_tags %}
+
+{% if field %}
+    {% comment %}
+    {# available conditions #}
+    {% if field.field.required %} required{% endif %}
+    {% if field.errors %} error{% endif %}
+    {% endcomment %}
+
+    <div class="form-group">
+        <label for="{{ field.id_for_label }}" class="sr-only">
+            {{ field.label }}
+            {% if field.field.required %}
+                <abbr title="{% trans "Required field" %}">*</abbr>
+            {% endif %}
+        </label>
+
+        {% block render_form_widget %}
+            {% if field.errors %}
+                {% render_form_widget field class=instance.custom_classes|add:" form-control is-invalid" %}
+            {% else %}
+                {% render_form_widget field class=instance.custom_classes|add:" form-control" %}
+            {% endif %}
+        {% endblock %}
+
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <div class="invalid-feedback">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+    </div>
+{% endif %}

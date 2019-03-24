@@ -1,0 +1,20 @@
+{% extends "aldryn_forms/fields/multiplecheckboxselectfield.html" %}
+{% load aldryn_forms_tags i18n %}
+
+
+{% block form_field %}
+    {% for choice in field.field.choices %}
+        <div class="custom-control custom-radio">
+            <input type="radio"
+                   class="custom-control-input {% if field.errors %}is-invalid{% endif %}"
+                   value="{{ choice.0 }}"
+                   name="{{ field.name }}"
+                   id="field-{{ choice.0 }}"
+                    {% if choice.0|force_text in field.value|force_text_list %}
+                   checked="checked"
+                    {% endif %}
+            >
+            <label for="field-{{ choice.0 }}" class="custom-control-label">{{ choice.1 }}</label>
+        </div>
+    {% endfor %}
+{% endblock form_field %}

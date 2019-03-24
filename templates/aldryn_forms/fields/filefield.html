@@ -1,0 +1,53 @@
+{% load i18n aldryn_forms_tags sekizai_tags %}
+
+{% if field %}
+    {% comment %}
+    {# available conditions #}
+    {% if field.field.required %} required{% endif %}
+    {% if field.errors %} error{% endif %}
+    {% endcomment %}
+
+    <div class="custom-file">
+        <label for="{{ field.id_for_label }}" class="custom-file-label">
+            {{ field.label }}
+            {% if field.field.required %}
+                <span title="{% trans "Required field" %}">*</span>
+            {% endif %}
+        </label>
+
+        {% block render_form_widget %}
+            {% if field.errors %}
+                {% render_form_widget field class=instance.custom_classes|add:"custom-file-input is-invalid" %}
+            {% else %}
+                {% render_form_widget field class=instance.custom_classes|add:"custom-file-input" %}
+            {% endif %}
+        {% endblock %}
+
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <div class="invalid-feedback">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+    </div>
+{% endif %}
+
+{% addtoblock 'js' %}
+    <script>
+        // scripts added to the bottom js block that make use of libraries still need to be deferred
+        // as app.js and vendor.js that include libraries are deferred in root.html
+        window.addEventListener('DOMContentLoaded', function () {
+            (function (jQuery) {
+                jQuery('body').on('change', '.custom-file-input', function () {
+                    let fileName = $(this).val().split('\\').pop();
+                    jQuery(this).siblings('.custom-file-label').first().addClass("selected").html(fileName);
+                });
+            })(jQuery);
+        });
+    </script>
+{% endaddtoblock 'js' %}

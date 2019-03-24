@@ -1,0 +1,9 @@
+<button type="submit"
+        {% if instance.custom_classes %}
+        class="{{ instance.custom_classes|add:"btn btn-primary mt-2" }}"
+        {% else %}
+        class="btn btn-primary mt-2"
+        {% endif %}
+>
+    {{ instance.label }}
+</button>
