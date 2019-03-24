@@ -49,3 +49,5 @@ djangocms-history
 -e git+git@gitlab.com:what-digital/djangocms-aldryn-forms-bootstrap4-templates.git#egg=djangocms-aldryn-forms-bootstrap4-templates
 
 aldryn-newsblog
+
+django-enumfields

@@ -216,6 +216,7 @@ INSTALLED_APPS = (
     # 'taggit',
 
     'src.hero_image_plugin',
+    'src.section_plugin',
 )
 
 USER_FIELDS = ['email']
