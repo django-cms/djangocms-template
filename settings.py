@@ -328,12 +328,14 @@ THUMBNAIL_PROCESSORS = (
 
 # this is by default set to the value npm start uses in package.json
 # for PRODUCTION this value has to be unset! (Set it to False via an env var)
+WEBPACK_DEV_BUNDLE = env('WEBPACK_DEV_BUNDLE', 'True').lower() in true_values
 WEBPACK_DEV_BUNDLE_BASE_URL = env('WEBPACK_DEV_BUNDLE_BASE_URL', 'http://localhost:8090/assets/')
 
 STATICFILES_DIRS += (os.path.join(BASE_DIR, 'private'),)
 
 SETTINGS_EXPORT = [
     'WEBPACK_DEV_BUNDLE_BASE_URL',
+    'WEBPACK_DEV_BUNDLE',
     'BUSINESS_NAME',
 ]
 

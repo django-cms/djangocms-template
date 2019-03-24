@@ -46,7 +46,7 @@
         {{ ALDRYN_SNAKE.render_head }}
     {% endblock meta_tags %}
 
-    {% if settings.WEBPACK_DEV_BUNDLE_BASE_URL %}
+    {% if settings.WEBPACK_DEV_BUNDLE %}
         <!-- the bundle is loaded from webpack-dev-server (see npm's package.json) -->
         <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/vendor.js"></script>
         <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/app.js"></script>
