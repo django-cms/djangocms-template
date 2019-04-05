@@ -2,11 +2,15 @@
 import os
 import sys
 
-ADDITIONAL_PYTHON_PATH = './src'
-if ADDITIONAL_PYTHON_PATH not in sys.path:
-    sys.path.append(ADDITIONAL_PYTHON_PATH)
 
 if __name__ == "__main__":
+
+    # this allows django modules inside the ./src directory, without changing PYTHONPATH env variable in the environment
+    BASE_DIR = os.path.dirname(__file__)
+    ADDITIONAL_PYTHON_PATH = os.path.join(BASE_DIR, 'src')
+    if ADDITIONAL_PYTHON_PATH not in sys.path:
+        sys.path.append(ADDITIONAL_PYTHON_PATH)
+
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
     try:
         from django.core.management import execute_from_command_line

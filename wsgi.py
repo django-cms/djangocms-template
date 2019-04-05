@@ -12,7 +12,9 @@ import sys
 
 from django.core.wsgi import get_wsgi_application
 
-ADDITIONAL_PYTHON_PATH = './src'
+# this allows django modules inside the ./src directory, without changing PYTHONPATH env variable in the environment
+BASE_DIR = os.path.dirname(__file__)
+ADDITIONAL_PYTHON_PATH = os.path.join(BASE_DIR, 'src')
 if ADDITIONAL_PYTHON_PATH not in sys.path:
     sys.path.append(ADDITIONAL_PYTHON_PATH)
 
