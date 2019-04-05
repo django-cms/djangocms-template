@@ -48,13 +48,15 @@
 
     {% if settings.WEBPACK_DEV_BUNDLE %}
         <!-- the bundle is loaded from webpack-dev-server (see npm's package.json) -->
-        <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/vendor.js"></script>
-        <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/app.js"></script>
+        <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}vendor.js"></script>
+        <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}app.js"></script>
     {% else %}
         <!-- the bundle is loaded from static/dist/ -->
         <!-- NOTE: This is hashed by django's staticfiles -->
         <script data-cms-reload defer="defer" src="{% static 'dist/vendor.js' %}"></script>
         <script data-cms-reload defer="defer" src="{% static 'dist/app.js' %}"></script>
+        <link rel="stylesheet" data-cms-reload href="{% static 'dist/vendor.css' %}">
+        <link rel="stylesheet" data-cms-reload href="{% static 'dist/app.css' %}">
     {% endif %}
 
     {% render_block "css" %}

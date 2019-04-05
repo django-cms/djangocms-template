@@ -1,6 +1,7 @@
 'use strict';
 process.traceDeprecation = true;
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 require('webpack');
 
@@ -121,6 +122,9 @@ let config = {
         ]
     },
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+        }),
         new BrowserSyncPlugin({
             // browse to http://localhost:3000/ during development,
             // ./public directory is being served
@@ -162,6 +166,20 @@ if (process.env.NODE_ENV === "production") {
         chunkFilename: '[name].js',
         publicPath: "/static/dist/",
     };
+
+    // replace style-loader with this css extraction plugin in production mode
+    config.module.rules[3].use[0] = {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+            sourceMap: true,
+            plugins: function () {
+                return [
+                    require('precss'),
+                    require('autoprefixer')
+                ];
+            }
+        }
+    }
 }
 
 module.exports = config;

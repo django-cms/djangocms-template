@@ -370,7 +370,18 @@ CKEDITOR_SETTINGS = {
     # 'extraPlugins': 'cmsplugins' // this is already included in 'TextPlugin'
     # NOTE: cms plugins don't work in 'HtmlField', at all!
     # see https://github.com/divio/djangocms-text-ckeditor/issues/317
-    # 'contentsCss': 'default:{}/djangocms_text_ckeditor/css/ckeditor.wysiwyg.css'.format(STATIC_URL),
+    # This is needed so that in the TextPlugin, the real styles are showing, for example for normal text and headings
+
+    'contentsCss': [
+        '{}/dist/vendor.css'.format(STATIC_URL) if WEBPACK_DEV_BUNDLE else "{}/vendor.css".format(
+            WEBPACK_DEV_BUNDLE_BASE_URL
+        ),
+        '{}/dist/app.css'.format(STATIC_URL) if WEBPACK_DEV_BUNDLE else "{}/app.css".format(
+            WEBPACK_DEV_BUNDLE_BASE_URL
+        ),
+        # default styles, this is important to keep some basic styling in the ckeditor modal, such as modal paddings
+        '{}/djangocms_text_ckeditor/ckeditor/contents.css'.format(STATIC_URL),
+    ]
 }
 
 CMS_PLACEHOLDER_CONF = {
@@ -469,7 +480,20 @@ if not DEBUG:
     GTM_CONTAINER_ID = env('GTM_CONTAINER_ID', "GTM-1234")
 
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+from django.contrib.staticfiles import storage
+
+class PatchedManifestStaticFilesStorage(storage.ManifestStaticFilesStorage):
+    """
+    Override the replacement patterns to match URL-encoded quotations.
+    We use inlined SVG data url()s that contain url_encoded quotes which dont work
+    Since these css url() assets are encoded already by webpack we can completely ignore the content of css files.
+    Solution from: https://code.djangoproject.com/ticket/21080#comment:12
+    """
+    # remove css from the patterns list so no css file introspection is done
+    patterns = ()
+
+
+STATICFILES_STORAGE = 'settings.PatchedManifestStaticFilesStorage'
 
 
 INSTALLED_APPS += (
