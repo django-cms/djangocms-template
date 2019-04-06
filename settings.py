@@ -188,7 +188,10 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'djangocms_history',
 
+    'import_export',
+
     # Aldryn forms and dependencies
+    # this external requirement is overridden by templates/aldryn_forms so that the templates can be edited right away in a new project
     'aldryn_forms_bs4_templates',
     # See https://github.com/aldryn/aldryn-forms for documentation
     'absolute',

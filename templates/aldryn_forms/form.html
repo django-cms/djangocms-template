@@ -1,0 +1,48 @@
+{% load i18n cms_tags sekizai_tags %}
+
+<div class="aldryn-form-plugin">
+    <form method="post"
+          {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}
+            {% if instance.form_attributes %} {{ instance.form_attributes_str }}{% endif %}
+            {% if instance.custom_classes %} class="{{ instance.custom_classes }}"{% endif %}>
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+
+        {% if post_success %}
+            <p>
+                {% if form_success_url %}
+                    {% blocktrans %}You will be <a href="{{ form_success_url }}">redirected shortly</a>.
+                    {% endblocktrans %}
+                {% elif instance.success_message %}
+                    {{ instance.success_message }}
+                {% else %}
+                    {% blocktrans %}Thank you for submitting your information.{% endblocktrans %}
+                {% endif %}
+            </p>
+        {% else %}
+            {% csrf_token %}
+            {% for plugin in instance.child_plugin_instances %}
+                {% render_plugin plugin %}
+            {% endfor %}
+            {% for field in form.hidden_fields %}
+                {{ field }}
+            {% endfor %}
+        {% endif %}
+    </form>
+
+    {# INFO: this solution is currently required because we can't redirect from a plugin. #}
+    {% if post_success and form_success_url %}
+        {% addtoblock "js" %}
+            <script>
+                setTimeout(function () {
+                    window.location.href = '{{ form_success_url }}';
+                }, 5000);
+            </script>
+        {% endaddtoblock %}
+    {% endif %}
+
+</div>

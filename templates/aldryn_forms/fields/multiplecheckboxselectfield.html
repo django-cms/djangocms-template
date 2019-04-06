@@ -1,0 +1,44 @@
+{% load aldryn_forms_tags i18n %}
+
+{% if field %}
+
+    <div class="mt-3 mb-3 checkbox{% if field.field.required %} form-required{% endif %}{% if field.errors %} has-error is-invalid{% endif %}">
+
+        {% block form_field %}
+            {% for choice in field.field.choices %}
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox"
+                           class="custom-control-input {% if field.errors %}is-invalid{% endif %}"
+                           value="{{ choice.0 }}"
+                           name="{{ field.name }}"
+                           id="field-{{ choice.0 }}"
+                            {% if choice.0|force_text in field.value|force_text_list %}
+                           checked="checked"
+                            {% endif %}
+                    >
+                    <label for="field-{{ choice.0 }}" class="custom-control-label">{{ choice.1 }}</label>
+                </div>
+            {% endfor %}
+        {% endblock form_field %}
+
+        {% block form_field_label %}
+            <small class="form-text text-muted">
+                {{ field.label }}
+                {% if field.field.required %}
+                    <span title="{% trans "Required field" %}">*</span>
+                {% endif %}
+            </small>
+        {% endblock form_field_label %}
+
+        {% block form_field_errors %}
+            {% if field.errors %}
+                <div class="invalid-feedback">
+                    {% for error in field.errors %}
+                        <span class="">{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endblock form_field_errors %}
+
+    </div>
+{% endif %}
