@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
+from django.conf import settings
+from django.contrib.redirects.models import Redirect
+from django.contrib.sites.models import Site
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from aldryn_translation_tools.models import (
@@ -16,6 +20,19 @@ from ..managers import TestimonialsManager
 def get_first_app_config():
     if TestimonialsConfig.objects.exists():
         return TestimonialsConfig.objects.first().pk
+
+def update_slug(old_path, new_path):
+    """ This method compares two slugs and creates a redirect if there is a change """
+    site = Site.objects.get(pk=settings.SITE_ID)
+
+    if new_path != old_path and old_path and new_path:
+        # set up redirect, delete old
+        Redirect.objects.filter(site=site, old_path=old_path).delete()
+        Redirect.objects.create(site=site, old_path=old_path, new_path=new_path)
+        # update target for other existing redirects
+        Redirect.objects.filter(site=site, new_path=old_path).update(new_path=new_path)
+
+
 
 
 class Testimonial(
@@ -80,3 +97,11 @@ class Testimonial(
                 )
         except NoReverseMatch:
             return reverse('{0}:testimonials-list'.format(namespace))
+
+    def save(self, *args, **kwargs):
+        # redirect the old url to the new url permanently
+        if self.id:
+            # the object is edited, therefore already has a slug
+            old = Testimonial.objects.language(self.get_current_language()).get(pk=self.pk)
+            update_slug(old_path=old.get_absolute_url(), new_path=self.get_absolute_url())
+        return super().save(*args, **kwargs)
