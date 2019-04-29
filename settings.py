@@ -106,7 +106,6 @@ TEMPLATES = [
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
                 'django.template.loaders.app_directories.Loader',
-                'django.template.loaders.eggs.Loader'
             ],
         },
     },
@@ -493,6 +492,7 @@ class PatchedManifestStaticFilesStorage(storage.ManifestStaticFilesStorage):
     Solution from: https://code.djangoproject.com/ticket/21080#comment:12
     """
     # remove css from the patterns list so no css file introspection is done
+    # this is done in webpack instead
     patterns = ()
 
 

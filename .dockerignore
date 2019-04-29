@@ -1,0 +1,7 @@
+*.pyc
+# db might be large
+/*.sqlite3
+# db backups
+/*.sqlite3*
+# node modules have to be generated inside the docker container anyway, as host and docker OS might differ
+/node_modules

@@ -29,7 +29,7 @@
     "js-cookie": "^2.2.0",
     "json-loader": "^0.5.7",
     "magnific-popup": "^1.1.0",
-    "mini-css-extract-plugin": "^0.4.2",
+    "mini-css-extract-plugin": "^0.6.0",
     "modernizr": "^3.6.0",
     "modernizr-loader": "^1.0.1",
     "moment": "^2.22.2",

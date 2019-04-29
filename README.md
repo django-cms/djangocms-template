@@ -1,7 +1,16 @@
 # Local Development Setup
 
 
-### Pycharm:
+DjangoCMS login: test@what.digital / test@what.digital
+
+## Docker
+
+- There is docker support so that you dont have to set up a python virtual environment on your host
+- Install docker on your machine (including docker-compose)
+- Run `docker-compose up web`
+
+
+## Pycharm:
 - mark the `src` folder as `Sources Root` so that pycharm can find the django modules inside
 
 ## Backend Dev
