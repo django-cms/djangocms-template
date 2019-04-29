@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse, NoReverseMatch
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
+from testimonials.models import TestimonialLinkModel
 from . import models
 
 
@@ -69,3 +70,17 @@ class TestimonialsTeasersPlugin(NameSpaceCheckMixin, CMSPluginBase):
 
 
 plugin_pool.register_plugin(TestimonialsTeasersPlugin)
+
+
+@plugin_pool.register_plugin
+class TestimonialLinkPlugin(CMSPluginBase):
+    model = TestimonialLinkModel
+    module = _('Testimonials')
+    name = _('Testimonial Link')
+    render_template = 'testimonials/plugins/link-plugin.html'
+    allow_children = False
+    text_enabled = True
+
+    def render(self, context, instance, placeholder):
+        context = super().render(context, instance, placeholder)
+        return context

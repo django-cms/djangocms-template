@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib.redirects.models import Redirect
 from django.contrib.sites.models import Site
 from django.db import models
+from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 from aldryn_translation_tools.models import (
     TranslationHelperMixin, TranslatedAutoSlugifyMixin,
@@ -21,6 +22,7 @@ def get_first_app_config():
     if TestimonialsConfig.objects.exists():
         return TestimonialsConfig.objects.first().pk
 
+
 def update_slug(old_path, new_path):
     """ This method compares two slugs and creates a redirect if there is a change """
     site = Site.objects.get(pk=settings.SITE_ID)
@@ -31,8 +33,6 @@ def update_slug(old_path, new_path):
         Redirect.objects.create(site=site, old_path=old_path, new_path=new_path)
         # update target for other existing redirects
         Redirect.objects.filter(site=site, new_path=old_path).update(new_path=new_path)
-
-
 
 
 class Testimonial(
@@ -90,13 +90,15 @@ class Testimonial(
                 kwargs = {
                     'slug': slug,
                 }
-                return reverse(
-                    '{0}:testimonials-detail'.format(namespace),
-                    kwargs=kwargs,
-                    current_app=namespace
-                )
+                with translation.override(language):
+                    return reverse(
+                        '{0}:testimonials-detail'.format(namespace),
+                        kwargs=kwargs,
+                        current_app=namespace
+                    )
         except NoReverseMatch:
-            return reverse('{0}:testimonials-list'.format(namespace))
+            with translation.override(language):
+                return reverse('{0}:testimonials-list'.format(namespace))
 
     def save(self, *args, **kwargs):
         # redirect the old url to the new url permanently
