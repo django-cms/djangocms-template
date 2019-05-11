@@ -18,6 +18,7 @@ DEBUG: bool = env.is_debug()
 ALLOWED_HOSTS = env.allowed_hosts()
 
 
+
 INSTALLED_APPS = [
     'djangocms_admin_style',
     
@@ -53,6 +54,9 @@ INSTALLED_APPS = [
     'aldryn_forms_bs4_templates',
     'aldryn_forms',
     'aldryn_forms.contrib.email_notifications',
+    'captcha', # required by aldryn_forms
+    'emailit', # required by aldryn_forms
+    'absolute', # required by aldryn_forms, adds absolute site URL vars to context
     
     # djangocms-bootstrap4
     'djangocms_bootstrap4',
@@ -82,10 +86,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'import_export',
     'adminsortable2',
-    'absolute', # adds absolute site URL vars to context
-    'emailit',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
