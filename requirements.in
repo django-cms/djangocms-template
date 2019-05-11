@@ -35,6 +35,7 @@ django-absolute # adds absolute site URL vars to context
 django-emailit # simplifies email sending
 django-import-export # csv/xsl/html/etc import/export for admin
 django-testuser
+django-allauth # for User with email instead of username
 djangorestframework
 
 # python utils

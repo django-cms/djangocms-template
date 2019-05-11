@@ -18,9 +18,8 @@ DEBUG: bool = env.is_debug()
 ALLOWED_HOSTS = env.allowed_hosts()
 
 
-
 INSTALLED_APPS = [
-    'djangocms_admin_style',
+    'djangocms_admin_style', # before `django.contrib.admin`
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -29,13 +28,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # django packages
+    'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+    'parler',
+    'gtm',
+    'rest_framework',
+    'import_export',
+    'adminsortable2',
+    'test_user',
+    
     # django cms base
     'cms',
-    'menus',
-    'treebeard',
-    'sekizai',
-    'django.contrib.sites',
-    
+        'menus',
+        'treebeard',
+        'sekizai',
+        'django.contrib.sites',
+
     # django cms plugins
     'djangocms_text_ckeditor',
     'djangocms_link',
@@ -53,40 +63,32 @@ INSTALLED_APPS = [
     'aldryn_translation_tools',  # not sure what it does, required by many aldryn packages
     'aldryn_forms_bs4_templates',
     'aldryn_forms',
-    'aldryn_forms.contrib.email_notifications',
-    'captcha', # required by aldryn_forms
-    'emailit', # required by aldryn_forms
-    'absolute', # required by aldryn_forms, adds absolute site URL vars to context
+        'aldryn_forms.contrib.email_notifications',
+        'captcha', # required by aldryn_forms
+        'emailit', # required by aldryn_forms
+        'absolute', # required by aldryn_forms, adds absolute site URL vars to context
     
     # djangocms-bootstrap4
     'djangocms_bootstrap4',
-    'djangocms_bootstrap4.contrib.bootstrap4_alerts',
-    'djangocms_bootstrap4.contrib.bootstrap4_badge',
-    'djangocms_bootstrap4.contrib.bootstrap4_card',
-    'djangocms_bootstrap4.contrib.bootstrap4_carousel',
-    'djangocms_bootstrap4.contrib.bootstrap4_collapse',
-    'djangocms_bootstrap4.contrib.bootstrap4_content',
-    'djangocms_bootstrap4.contrib.bootstrap4_grid',
-    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
-    'djangocms_bootstrap4.contrib.bootstrap4_link',
-    'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
-    'djangocms_bootstrap4.contrib.bootstrap4_media',
-    'djangocms_bootstrap4.contrib.bootstrap4_picture',
-    'djangocms_bootstrap4.contrib.bootstrap4_tabs',
-    'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+        'djangocms_bootstrap4.contrib.bootstrap4_alerts',
+        'djangocms_bootstrap4.contrib.bootstrap4_badge',
+        'djangocms_bootstrap4.contrib.bootstrap4_card',
+        'djangocms_bootstrap4.contrib.bootstrap4_carousel',
+        'djangocms_bootstrap4.contrib.bootstrap4_collapse',
+        'djangocms_bootstrap4.contrib.bootstrap4_content',
+        'djangocms_bootstrap4.contrib.bootstrap4_grid',
+        'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
+        'djangocms_bootstrap4.contrib.bootstrap4_link',
+        'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
+        'djangocms_bootstrap4.contrib.bootstrap4_media',
+        'djangocms_bootstrap4.contrib.bootstrap4_picture',
+        'djangocms_bootstrap4.contrib.bootstrap4_tabs',
+        'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     
     # filer
     'filer',
-    'easy_thumbnails',
-    'mptt',
-    
-    # django packages
-    'parler',
-    'gtm',
-    'rest_framework',
-    'import_export',
-    'adminsortable2',
-    'test_user',
+        'easy_thumbnails',
+        'mptt',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -276,6 +278,20 @@ if env.get_bool('IS_SENTRY_ENABLED', False):
 
 
 TEST_USER_USERNAME_AND_PASS = 'test@what.digital'
+
+# allauth
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https' if DJANGO_ENV == env.DjangoEnv.PROD else 'http'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 
 
 ################################################################################
