@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
+
     # django packages
     'allauth',
         'allauth.account',
@@ -38,13 +39,17 @@ INSTALLED_APPS = [
     'import_export',
     'adminsortable2',
     'test_user',
-    
+    'filer',
+        'easy_thumbnails',
+        'mptt',
+
     # django cms base
     'cms',
         'menus',
         'treebeard',
         'sekizai',
         'django.contrib.sites',
+
 
     # django cms plugins
     'djangocms_text_ckeditor',
@@ -84,12 +89,8 @@ INSTALLED_APPS = [
         'djangocms_bootstrap4.contrib.bootstrap4_picture',
         'djangocms_bootstrap4.contrib.bootstrap4_tabs',
         'djangocms_bootstrap4.contrib.bootstrap4_utilities',
-    
-    # filer
-    'filer',
-        'easy_thumbnails',
-        'mptt',
 ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -124,30 +125,19 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 
-                # django cms
+                # django cms base
                 'cms.context_processors.cms_settings',
                 'sekizai.context_processors.sekizai',
                 
-                # django packages
-                'absolute.context_processors.absolute',
+                # django-cms packages
+                'absolute.context_processors.absolute', # required by aldryn_forms
             ],
         },
     },
 ]
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
 ]
 
 
