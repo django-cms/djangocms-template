@@ -4,7 +4,7 @@ import logging
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
-from settings_utils import env
+from env_settings import env
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
