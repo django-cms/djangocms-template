@@ -1,19 +1,19 @@
 import os
 
-
-env = os.environ.get
-
+import logging
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration
+from settings_utils import env
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-SECRET_KEY = env(
-    'DJANGO_SECRET_KEY',
-    default=get_or_create_secret_key(base_dir=BASE_DIR)
-)
+SECRET_KEY = env.get_or_create_secret_key(base_dir=BASE_DIR)
 
+DJANGO_ENV = env.django_env()
 
-DEBUG = True
+DEBUG = env.is_debug()
 
 ALLOWED_HOSTS = []
 
@@ -162,18 +162,49 @@ TIME_INPUT_FORMATS = [
 STATIC_URL = '/static/'
 
 
-EMAIL_BACKEND = env('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
-EMAIL_HOST = env('EMAIL_HOST', '')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', '')
-EMAIL_HOST_USER = env('EMAIL_HOST_USER', '')
-EMAIL_PORT = env('EMAIL_PORT', '')
-EMAIL_USE_TLS = env('EMAIL_USE_TLS', False)
+EMAIL_BACKEND = env.get('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
+EMAIL_HOST = env.get('EMAIL_HOST', '')
+EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD', '')
+EMAIL_HOST_USER = env.get('EMAIL_HOST_USER', '')
+EMAIL_PORT = env.get('EMAIL_PORT', '')
+EMAIL_USE_TLS = env.get('EMAIL_USE_TLS', False)
+
+
+BUSINESS_NAME = env.get('BUSINESS_NAME', 'project_name')
+BASE_URL = env.get('BASE_URL', 'http://localhost:8000')
+BUSINESS_EMAIL = env.get('BUSINESS_EMAIL', 'tech@what.digital')
+BUSINESS_EMAIL_VANE = '%(name)s <%(address)s>' % {
+    'name': BUSINESS_NAME,
+    'address': BUSINESS_EMAIL,
+}
+DEFAULT_FROM_EMAIL = BUSINESS_EMAIL_VANE
+
+
+if env.get('DB_ENGINE') == 'django.db.backends.postgresql':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': env.get('DB_NAME', 'db'),
+            'USER': env.get('DB_USER', 'db'),
+            'PASSWORD': env.get('DB_PASSWORD', 'db'),
+            'HOST': env.get('DB_HOST', 'localhost'),
+            'PORT': env.get('DB_PORT', '5432'),
+        },
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        },
+    }
 
 
 
 ################################################################################
 # django-cms
 ################################################################################
+
 
 CMS_TEMPLATES = [
     ('default.html', 'default template'),
@@ -192,8 +223,46 @@ CMS_LANGUAGES = {
 
 
 ################################################################################
+# django packages
+################################################################################
+
+
+GTM_CONTAINER_ID = env.get('GTM_CONTAINER_ID', 'GTM-1234')
+
+
+WEBPACK_DEV_BUNDLE = env.get('WEBPACK_DEV_BUNDLE')
+WEBPACK_DEV_BUNDLE_BASE_URL = env.get(
+    'WEBPACK_DEV_BUNDLE_BASE_URL',
+    default='http://localhost:8090/assets/',
+)
+
+
+SETTINGS_EXPORT = [
+    'WEBPACK_DEV_BUNDLE_BASE_URL',
+    'WEBPACK_DEV_BUNDLE',
+    'BUSINESS_NAME',
+]
+
+
+if env.get_bool('IS_SENTRY_ENABLED', False):
+    # noinspection PyTypeChecker
+    sentry_sdk.init(
+        dsn=env.get('SENTRY_DSN'),
+        integrations=[
+            DjangoIntegration(),
+            LoggingIntegration(
+                level=logging.INFO,  # Capture info and above as breadcrumbs
+                event_level=None,  # Send no events from log messages
+            )
+        ],
+        environment=DJANGO_ENV.value,
+    )
+
+
+################################################################################
 # django-cms plugins
 ################################################################################
+
 
 THUMBNAIL_HIGH_RESOLUTION = True
 THUMBNAIL_PROCESSORS = [
@@ -215,21 +284,45 @@ DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
 
 # djangocms-maps
 MAPS_PROVIDERS = [
-    ('mapbox', _('Mapbox OSM (API key required)')),
+    ('mapbox', 'Mapbox OSM (API key required)'),
 ]
-MAPS_MAPBOX_API_KEY = env('MAPS_MAPBOX_API_KEY', '123')
+MAPS_MAPBOX_API_KEY = env.get('MAPS_MAPBOX_API_KEY', '123')
 
 
-################################################################################
-# django packages
-################################################################################
+CKEDITOR_SETTINGS = {
+    'language': '{{ language }}',
+    'toolbar': 'CUSTOM',
+    # http://ckeditor.com/apps/ckeditor/4.4.0/samples/plugins/toolbar/toolbar.html
+    'toolbar_CUSTOM': [
+        ['Undo', 'Redo'],
+        ['cmsplugins', '-', 'ShowBlocks'],
+        ['Format', 'Styles', 'FontSize'],
+        # ['Format', 'FontSize'],
+        ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord', 'RemoveFormat'],
+        ['Maximize', ''],
+        '/',
+        ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', ],
+        ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
+        # we dont want 'Link', this is done by the bootstrap4 link/button plugin which covers all kind of links
+        ['Unlink'],
+        ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
+        ['Source']
+    ],
+    'toolbarCanCollapse': False,
+    # All styling-related config is outsourced to static/djangocms_text_ckeditor/js/ckeditor.wysiwyg.js
+    # because of https://github.com/aldryn/aldryn-bootstrap3/issues/154
+    # https://github.com/divio/django-cms-explorer/blob/908a88afa4e1d1176e267e77eb5c61e31ef0f9e5/static/js/addons/ckeditor.wysiwyg.js#L73
+    'stylesSet': 'default:{}/djangocms_text_ckeditor/js/ckeditor.wysiwyg.js'.format(STATIC_URL),
+    # NOTE: cms plugins don't work in 'HtmlField', at all!
+    # see https://github.com/divio/djangocms-text-ckeditor/issues/317
+    # This is needed so that in the TextPlugin, the real styles are showing, for example for normal text and headings
 
-WEBPACK_DEV_BUNDLE = env_bool('WEBPACK_DEV_BUNDLE')
-WEBPACK_DEV_BUNDLE_BASE_URL = env('WEBPACK_DEV_BUNDLE_BASE_URL', 'http://localhost:8090/assets/')
-
-
-SETTINGS_EXPORT = [
-    'WEBPACK_DEV_BUNDLE_BASE_URL',
-    'WEBPACK_DEV_BUNDLE',
-    'BUSINESS_NAME',
-]
+    'contentsCss': [
+        '{}/dist/vendor.css'.format(STATIC_URL) if WEBPACK_DEV_BUNDLE 
+            else '{}/vendor.css'.format(WEBPACK_DEV_BUNDLE_BASE_URL),
+        '{}/dist/app.css'.format(STATIC_URL) if WEBPACK_DEV_BUNDLE
+            else '{}/app.css'.format(WEBPACK_DEV_BUNDLE_BASE_URL),
+        # default styles, this is important to keep some basic styling in the ckeditor modal, such as modal paddings
+        '{}/djangocms_text_ckeditor/ckeditor/contents.css'.format(STATIC_URL),
+    ]
+}

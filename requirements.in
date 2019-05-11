@@ -20,14 +20,15 @@ aldryn-forms
 aldryn-forms-bootstrap4-templates
 
 # django packages
-django-settings-export
-django-parler
+django-settings-export # export to templates
+django-parler # translations
 django-enumfields
 django-admin-sortable2
 django-filter
 django-google-tag-manager
 django-filer
-django-settings-utils
+django-settings-utils # settings 
+django-environ # reads envs from .env
 djangorestframework
 
 # python utils
