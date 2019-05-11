@@ -11,6 +11,7 @@ djangocms-icon
 djangocms-bootstrap4
 djangocms-maps
 djangocms-modules
+djangocms-style # html containers with css
 aldryn-forms
 djangocms-aldryn-forms-bootstrap4-templates
 
@@ -32,6 +33,7 @@ django-filer
 django-settings-utils # settings utils for reading .env
 django-absolute # adds absolute site URL vars to context
 django-emailit # simplifies email sending
+django-import-export # csv/xsl/html/etc import/export for admin
 djangorestframework
 
 # python utils

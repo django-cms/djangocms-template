@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'djangocms_googlemap',
     'djangocms_snippet',
     'djangocms_style',
-    'djangocms_column',
     'djangocms_history',
     'djangocms_modules',
 
@@ -217,6 +216,7 @@ if env.get('DB_ENGINE') == 'django.db.backends.postgresql':
         },
     }
 else:
+    # noinspection PyUnresolvedReferences
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

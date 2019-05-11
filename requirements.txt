@@ -21,6 +21,7 @@ chardet==3.0.4            # via requests
 cssselect==1.0.3          # via premailer
 cssutils==1.0.2           # via premailer
 defusedxml==0.6.0         # via odfpy
+diff-match-patch==20181111  # via django-import-export
 django-absolute==0.3
 django-admin-sortable2==0.7.1
 django-appconf==1.0.3     # via aldryn-boilerplates
@@ -33,6 +34,7 @@ django-filer==1.5.0
 django-filter==2.1.0
 django-formtools==2.1     # via django-cms
 django-google-tag-manager==0.0.4
+django-import-export==1.2.0
 django-js-asset==1.2.2    # via django-mptt
 django-mptt==0.10.0       # via django-filer
 django-parler==1.9.2
@@ -48,10 +50,10 @@ django-sortedm2m==1.5.0   # via aldryn-common, aldryn-newsblog
 django-tablib==3.2        # via aldryn-forms
 django-taggit==1.1.0      # via aldryn-newsblog
 django-treebeard==4.3     # via aldryn-categories, django-cms
-django==2.1.8             # via aldryn-boilerplates, aldryn-categories, aldryn-newsblog, aldryn-people, django-absolute, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-filer, django-filter, django-formtools, django-mptt, django-phonenumber-field, django-polymorphic, django-ranged-response, django-sekizai, django-settings-export, django-settings-utils, django-simple-captcha, django-sizefield, django-taggit, django-treebeard, easy-thumbnails
+django==2.1.8             # via aldryn-boilerplates, aldryn-categories, aldryn-newsblog, aldryn-people, django-absolute, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-filer, django-filter, django-formtools, django-import-export, django-mptt, django-phonenumber-field, django-polymorphic, django-ranged-response, django-sekizai, django-settings-export, django-settings-utils, django-simple-captcha, django-sizefield, django-taggit, django-treebeard, easy-thumbnails
 djangocms-admin-style==1.4.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==0.0.1
-djangocms-attributes-field==1.1.0  # via aldryn-forms, djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture, djangocms-video
+djangocms-attributes-field==1.1.0  # via aldryn-forms, djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture, djangocms-style, djangocms-video
 djangocms-bootstrap4==1.3.1
 djangocms-file==2.3.0
 djangocms-googlemap==1.2.0
@@ -62,6 +64,7 @@ djangocms-maps==0.11.0
 djangocms-modules==0.1.0
 djangocms-picture==2.2.1
 djangocms-snippet==2.2.0
+djangocms-style==2.2.0
 djangocms-text-ckeditor==3.7.0
 djangocms-video==2.1.1
 djangorestframework==3.9.4
@@ -85,7 +88,7 @@ pyyaml==5.1               # via tablib
 requests==2.21.0          # via premailer
 sentry-sdk==0.7.14
 six==1.12.0               # via aldryn-common, aldryn-forms, aldryn-newsblog, aldryn-people, django-appconf, django-simple-captcha, django-tablib, html5lib, python-dateutil
-tablib==0.13.0            # via aldryn-forms, django-tablib
+tablib==0.13.0            # via aldryn-forms, django-import-export, django-tablib
 text-unidecode==1.2       # via python-slugify
 unidecode==1.0.23         # via aldryn-translation-tools, django-filer
 urllib3==1.24.3           # via requests, sentry-sdk
