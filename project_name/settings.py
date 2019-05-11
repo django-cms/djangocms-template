@@ -124,6 +124,9 @@ TEMPLATES = [
                 # django cms
                 'cms.context_processors.cms_settings',
                 'sekizai.context_processors.sekizai',
+                
+                # django packages
+                'absolute.context_processors.absolute',
             ],
         },
     },
