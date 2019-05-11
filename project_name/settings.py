@@ -6,16 +6,16 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
 from settings_utils import env
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = env.get_or_create_secret_key(base_dir=BASE_DIR)
 
-DJANGO_ENV = env.django_env()
+DJANGO_ENV: env.DjangoEnv = env.django_env()
 
-DEBUG = env.is_debug()
+DEBUG: bool = env.is_debug()
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.allowed_hosts()
 
 
 INSTALLED_APPS = [
