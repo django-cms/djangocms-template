@@ -1,0 +1,35 @@
+django-cms==3.6
+
+# django-cms plugins
+djangocms-text-ckeditor
+djangocms-link
+djangocms-googlemap
+djangocms-snippet
+djangocms-video
+djangocms-file
+djangocms-picture
+djangocms-icon
+djangocms-bootstrap4
+djangocms-maps
+djangocms-modules
+djangocms-history
+aldryn-translation-tools
+aldryn-apphooks-config
+aldryn-forms
+aldryn-newsblog
+-e git+https://gitlab.com/what-digital/djangocms-aldryn-forms-bootstrap4-templates.git#egg=djangocms-aldryn-forms-bootstrap4-templates
+
+# django packages
+django-settings-export
+django-parler
+django-enumfields
+django-admin-sortable2
+django-filter
+django-google-tag-manager
+django-filer
+djangorestframework
+
+# python utils
+pytz
+psycopg2-binary
+sentry-sdk

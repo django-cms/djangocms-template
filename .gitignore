@@ -1,39 +1,10 @@
-# <DEFAULT>  # Warning: text inside the DEFAULT tags is auto-generated. Manual changes will be overwritten.
-# OS generated
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-*~
-
-# Python
 *.pyc
 *.pyo
-
-# Aldryn
-/.env
-/.env-local
+.env
 .aldryn
-/data
-/data.tar.gz
-/static_collected
-/node_modules
-# </DEFAULT>
-
 .idea/
-static/dist/
 webpack-stats.json
-
-local_db.sql
-local_db.tar.gz
-
-/project.db
-/media/
+media/
+static-collected/
 /*.sqlite3
 /*.log
-static-collected/
-/.secret_key
-

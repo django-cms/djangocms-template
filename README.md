@@ -1,29 +1,17 @@
-# Local Development Setup
-
-
 DjangoCMS login: test@what.digital / test@what.digital
 
 ## Docker
-
 - There is docker support so that you dont have to set up a python virtual environment on your host
 - Install docker on your machine (including docker-compose)
 - Run `docker-compose up web`
 
-
-## Pycharm:
-- mark the `src` folder as `Sources Root` so that pycharm can find the django modules inside
-
 ## Backend Dev
-
-- clone the project
-- create a virtualenv on your computer, activate it
 - `pip install -r requirements.txt`
 - `./manage.py migrate`
 - `./manage.py runserver`
 
 
 ## Frontend Dev
-
 - By default, the page is blank, because all javascript and styles are deferred. In order to show content, go through
 the following steps:
 
@@ -37,51 +25,5 @@ the following steps:
 - BEWARE: Dont add any jQuery dependend js to the templates, use the private/js folders instead to add it to webpack. The app.js bundle is loaded in deferred mode!
 
 
-# Integrations
-
-## Mapbox
-
-Account: https://www.mapbox.com/account/
-
-TODO: add user and pass here for the mapbox account
-User:
-Pass:
-
-
-## Sentry
-
-- This project has backend and frontend error monitoring at https://sentry.io/project-name/
-
-
-# Custom User Model
-
-- When adding a custom user model to djangocms and you want to run makemigrations
-- this here will get in your way: https://vivazzi.pro/it/cannot-resolve-bases-for-pageuser/
-- All djangocms references have to be commented out:
-   - urls.py
-   - settings.py INSTALLED_APPS (including any djangocms add-ons)
-- comment these out, run makemigrations and then uncomment them
-
-
-
-## If you want to change any of the default env vars
-
-## Simple .env Setup
-
-Copy `.env-local` to `.env` and add this in your virtualenv's postactivate:
-
-```
-#!/bin/bash
-# This hook is sourced after this virtualenv is activated.
-
-if [ -f ${PWD}/.env ]; then
-    echo "activating .env..."
-    set -a
-    . ${PWD}/.env
-    set +a
-fi
-```
-
 ## Pycharm
-
 - add the `.env` file in the run configuration in the `EnvFile` tab (press Cmd+Shift+. to see hidden files in the Mac OS X file dialog)
