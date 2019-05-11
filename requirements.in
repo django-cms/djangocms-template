@@ -12,7 +12,7 @@ djangocms-bootstrap4
 djangocms-maps
 djangocms-modules
 aldryn-forms
-aldryn-forms-bootstrap4-templates
+djangocms-aldryn-forms-bootstrap4-templates
 
 # django-cms packages
 djangocms-history
