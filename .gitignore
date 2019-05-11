@@ -8,3 +8,4 @@ media/
 static-collected/
 /*.sqlite3
 /*.log
+.secret_key
