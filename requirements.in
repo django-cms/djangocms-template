@@ -20,18 +20,19 @@ aldryn-forms
 aldryn-forms-bootstrap4-templates
 
 # django packages
-django-settings-export # export to templates
-django-parler # translations
+django-settings-export # settings export to templates
+django-parler # model translations
 django-enumfields
 django-admin-sortable2
 django-filter
 django-google-tag-manager
 django-filer
-django-settings-utils # settings 
-django-environ # reads envs from .env
+django-settings-utils # settings utils for reading .env
+django-absolute # adds absolute site URL vars to context
+django-emailit # simplifies email sending
 djangorestframework
 
 # python utils
-pytz
+pytz # a db of timezones
 psycopg2-binary
 sentry-sdk
