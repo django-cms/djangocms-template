@@ -109,6 +109,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'project_name.urls'
+HTTP_PROTOCOL = 'http' if env.is_dev() else 'http'
 WSGI_APPLICATION = 'project_name.wsgi.application'
 
 TEMPLATES = [
@@ -277,11 +278,12 @@ AUTHENTICATION_BACKENDS = [
 ]
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https' if DJANGO_ENV == env.DjangoEnv.PROD else 'http'
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = HTTP_PROTOCOL
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+LOGIN_REDIRECT_URL = '/'
 
 
 ################################################################################
