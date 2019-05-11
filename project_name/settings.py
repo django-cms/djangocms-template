@@ -109,7 +109,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'project_name.urls'
-HTTP_PROTOCOL = 'http' if env.is_dev() else 'http'
+HTTP_PROTOCOL = 'http' if env.is_dev() else 'https'
 WSGI_APPLICATION = 'project_name.wsgi.application'
 
 TEMPLATES = [
