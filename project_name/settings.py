@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     'absolute', # adds absolute site URL vars to context
     'emailit',
 ]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -103,14 +104,14 @@ MIDDLEWARE = [
     'sekizai.context_processors.sekizai',
 ]
 
-
 ROOT_URLCONF = 'project_name.urls'
+WSGI_APPLICATION = 'project_name.wsgi.application'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'project_name.templates'
+            'project_name.templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,17 +131,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'mysite.wsgi.application'
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
