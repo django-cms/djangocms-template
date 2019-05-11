@@ -29,12 +29,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     # django cms base
-    'django.contrib.sites',
     'cms',
     'menus',
     'treebeard',
     'sekizai',
+    'django.contrib.sites',
     
+    # django cms plugins
     'djangocms_text_ckeditor',
     'djangocms_link',
     'djangocms_file',
@@ -44,13 +45,25 @@ INSTALLED_APPS = [
     'djangocms_snippet',
     'djangocms_style',
     'djangocms_column',
+    'djangocms_history',
+    'djangocms_bootstrap4',
+    'djangocms_modules',
+    
+    'aldryn_apphooks_config',
+    'aldryn_translation_tools',  # not sure what it does, required by many aldryn packages
+    'aldryn_forms_bs4_templates',
+    'aldryn_forms',
+    'aldryn_forms.contrib.email_notifications',
     
     # filer
     'filer',
     'easy_thumbnails',
     'mptt',
+    
+    # django packages
+    'parler',
+    'rest_framework',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -132,7 +145,30 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+DATE_INPUT_FORMATS = [
+    '%d.%m.%Y', '%d.%m.%y',  # European
+    '%Y-%m-%d',  # ISO (for native mobile datepickers)
+    '%m/%d/%Y', '%m/%d/%y',  # US
+    '%d %b %Y', '%d %B %Y',  # some long formats
+]
+
+TIME_INPUT_FORMATS = [
+    '%H:%M',  # '14:30'
+    '%H:%M:%S',  # '14:30:59'
+    '%H:%M:%S.%f',  # '14:30:59.000200'
+]
+
+
 STATIC_URL = '/static/'
+
+
+EMAIL_BACKEND = env('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
+EMAIL_HOST = env('EMAIL_HOST', '')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', '')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER', '')
+EMAIL_PORT = env('EMAIL_PORT', '')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS', False)
+
 
 
 ################################################################################
@@ -140,11 +176,19 @@ STATIC_URL = '/static/'
 ################################################################################
 
 CMS_TEMPLATES = [
-    ('home.html', 'Home page template'),
+    ('default.html', 'default template'),
 ]
 
 SITE_ID = 1
 
+CMS_LANGUAGES = {
+    1: [
+        {
+            'code': 'en',
+            'name': 'English',
+        },
+    ],
+}
 
 
 ################################################################################
@@ -152,9 +196,40 @@ SITE_ID = 1
 ################################################################################
 
 THUMBNAIL_HIGH_RESOLUTION = True
-THUMBNAIL_PROCESSORS = (
+THUMBNAIL_PROCESSORS = [
     'easy_thumbnails.processors.colorspace',
     'easy_thumbnails.processors.autocrop',
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-    'easy_thumbnails.processors.filters'
-)
+    'easy_thumbnails.processors.filters',
+]
+
+
+DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
+DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
+    ('col', 'Column'),
+    # for full width columns that have no left/right padding
+    ('col p-0', 'Full-width Column'),
+    ('w-100', 'Break'),
+    ('', 'Empty'),
+]
+
+# djangocms-maps
+MAPS_PROVIDERS = [
+    ('mapbox', _('Mapbox OSM (API key required)')),
+]
+MAPS_MAPBOX_API_KEY = env('MAPS_MAPBOX_API_KEY', '123')
+
+
+################################################################################
+# django packages
+################################################################################
+
+WEBPACK_DEV_BUNDLE = env_bool('WEBPACK_DEV_BUNDLE')
+WEBPACK_DEV_BUNDLE_BASE_URL = env('WEBPACK_DEV_BUNDLE_BASE_URL', 'http://localhost:8090/assets/')
+
+
+SETTINGS_EXPORT = [
+    'WEBPACK_DEV_BUNDLE_BASE_URL',
+    'WEBPACK_DEV_BUNDLE',
+    'BUSINESS_NAME',
+]

@@ -15,9 +15,9 @@ djangocms-modules
 djangocms-history
 aldryn-translation-tools
 aldryn-apphooks-config
-aldryn-forms
 aldryn-newsblog
--e git+https://gitlab.com/what-digital/djangocms-aldryn-forms-bootstrap4-templates.git#egg=djangocms-aldryn-forms-bootstrap4-templates
+aldryn-forms
+aldryn-forms-bootstrap4-templates
 
 # django packages
 django-settings-export
@@ -27,6 +27,7 @@ django-admin-sortable2
 django-filter
 django-google-tag-manager
 django-filer
+django-settings-utils
 djangorestframework
 
 # python utils

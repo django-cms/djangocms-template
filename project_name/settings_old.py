@@ -221,8 +221,6 @@ CMS_TEMPLATES = [
 
 CMS_PERMISSION = True
 
-CMS_PLACEHOLDER_CONF = {}
-
 if env('DB_ENGINE') == 'django.db.backends.postgresql':
     DATABASES = {
         'default': {
@@ -243,24 +241,6 @@ else:
     }
 
 MIGRATION_MODULES = {}
-
-THUMBNAIL_PROCESSORS = (
-    'easy_thumbnails.processors.colorspace',
-    'easy_thumbnails.processors.autocrop',
-    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-    'easy_thumbnails.processors.filters'
-)
-
-WEBPACK_DEV_BUNDLE = env('WEBPACK_DEV_BUNDLE', 'True').lower() in true_values
-WEBPACK_DEV_BUNDLE_BASE_URL = env('WEBPACK_DEV_BUNDLE_BASE_URL', 'http://localhost:8090/assets/')
-
-STATICFILES_DIRS += [os.path.join(BASE_DIR, 'static')]
-
-SETTINGS_EXPORT = [
-    'WEBPACK_DEV_BUNDLE_BASE_URL',
-    'WEBPACK_DEV_BUNDLE',
-    'BUSINESS_NAME',
-]
 
 CKEDITOR_SETTINGS = {
     'language': '{{ language }}',
@@ -337,31 +317,6 @@ CMS_PLACEHOLDER_CONF = {
         'name': gettext("Static Blog Article Additional Content"),
         'excluded_plugins': [],
     },
-}
-
-# djangocms-bootstrap4
-# we use 24 instead of the default 12
-DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
-DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = (
-    ('col', _('Column')),
-    # for full width columns that have no left and right paddings
-    ('col p-0', _('Full-width Column')),
-    ('w-100', _('Break')),
-    ('', _('Empty'))
-)
-
-# djangocms-maps
-MAPS_PROVIDERS = [
-    ('mapbox', _('Mapbox OSM (API key required)')),
-]
-MAPS_MAPBOX_API_KEY = env('MAPS_MAPBOX_API_KEY', '123')
-
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-    )
 }
 
 
