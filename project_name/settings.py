@@ -86,6 +86,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'import_export',
     'adminsortable2',
+    'test_user',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -111,7 +112,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'project_name.templates',
+            'project_name/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -272,6 +273,9 @@ if env.get_bool('IS_SENTRY_ENABLED', False):
         ],
         environment=DJANGO_ENV.value,
     )
+
+
+TEST_USER_USERNAME_AND_PASS = 'test@what.digital'
 
 
 ################################################################################
