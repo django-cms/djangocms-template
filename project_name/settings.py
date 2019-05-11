@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'allauth',
         'allauth.account',
         'allauth.socialaccount',
+    'cuser', # for USERNAME_FIELD = 'email'
     'parler',
     'gtm',
     'rest_framework',
@@ -140,6 +141,8 @@ TEMPLATES = [
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
 ]
+
+AUTH_USER_MODEL = 'cuser.CUser'
 
 
 LANGUAGE_CODE = 'en'
@@ -281,7 +284,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = HTTP_PROTOCOL
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 LOGIN_REDIRECT_URL = '/'
 

@@ -52,7 +52,8 @@ django-tablib==3.2        # via aldryn-forms
 django-taggit==1.1.0      # via aldryn-newsblog
 django-testuser==0.0.0
 django-treebeard==4.3     # via aldryn-categories, django-cms
-django==2.1.8             # via aldryn-boilerplates, aldryn-categories, aldryn-newsblog, aldryn-people, django-absolute, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-filer, django-filter, django-formtools, django-import-export, django-mptt, django-phonenumber-field, django-polymorphic, django-ranged-response, django-sekizai, django-settings-export, django-settings-utils, django-simple-captcha, django-sizefield, django-taggit, django-testuser, django-treebeard, easy-thumbnails
+django-username-email==2.2.4
+django==2.1.8             # via aldryn-boilerplates, aldryn-categories, aldryn-newsblog, aldryn-people, django-absolute, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-filer, django-filter, django-formtools, django-import-export, django-mptt, django-phonenumber-field, django-polymorphic, django-ranged-response, django-sekizai, django-settings-export, django-settings-utils, django-simple-captcha, django-sizefield, django-taggit, django-testuser, django-treebeard, django-username-email, easy-thumbnails
 djangocms-admin-style==1.4.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==0.0.1
 djangocms-attributes-field==1.1.0  # via aldryn-forms, djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture, djangocms-style, djangocms-video
