@@ -30,7 +30,7 @@ django-admin-sortable2
 django-filter
 django-google-tag-manager
 django-filer
-django-settings-utils # settings utils for reading .env
+django-env-settings # settings utils for reading .env
 django-absolute # adds absolute site URL vars to context
 django-emailit # simplifies email sending
 django-import-export # csv/xsl/html/etc import/export for admin
