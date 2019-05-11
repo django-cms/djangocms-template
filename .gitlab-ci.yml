@@ -1,17 +1,16 @@
 image: alpine:latest
 
-image: alpine:latest
 
 variables:
   # deploy script
   GIT_REPO_URL: git@gitlab.com:what-digital/deploy-django.git
   # These infos are set in https://gitlab.com/what-digital/deploy-django/tree/master/group_vars
-  SERVER_SSH_KEY_FILENAME: server-project-name.pem
-  SECRETS_YML_FILENAME: secrets-project-name.yml
-  ANSIBLE_PROJECT_NAME_PROD: project-name-prod
-  ANSIBLE_PROJECT_NAME_STAGE: project-name-stage
-  URL_PROD: https://project-name.tld
-  URL_STAGE: https://project-name-stage.what.digital
+  SERVER_SSH_KEY_FILENAME: server-project_name.pem
+  SECRETS_YML_FILENAME: secrets-project_name.yml
+  ANSIBLE_PROJECT_NAME_PROD: project_name-prod
+  ANSIBLE_PROJECT_NAME_STAGE: project_name-stage
+  URL_PROD: https://project_name.tld
+  URL_STAGE: https://project_name-stage.what.digital
 
 
 before_script:
