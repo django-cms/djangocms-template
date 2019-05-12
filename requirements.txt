@@ -29,9 +29,9 @@ django-appconf==1.0.3     # via aldryn-boilerplates
 django-appdata==0.2.1     # via aldryn-apphooks-config, aldryn-newsblog
 django-classy-tags==0.8.0  # via django-cms, django-sekizai
 django-cms==3.6.0
-django-emailit==0.2.4
+django-emailit==0.2.4     # via aldryn-forms
 django-enumfields==1.0.0
-django-env-settings==0.5.0
+django-env-settings==0.6.0
 django-filer==1.5.0
 django-filter==2.1.0
 django-formtools==2.1     # via django-cms
@@ -50,7 +50,7 @@ django-sizefield==0.9.1   # via aldryn-forms
 django-sortedm2m==1.5.0   # via aldryn-common, aldryn-newsblog
 django-tablib==3.2        # via aldryn-forms
 django-taggit==1.1.0      # via aldryn-newsblog
-django-testuser==0.3.0
+django-testuser==0.4.0
 django-treebeard==4.3     # via aldryn-categories, django-cms
 django-username-email==2.2.4
 django==2.1.8             # via aldryn-boilerplates, aldryn-categories, aldryn-newsblog, aldryn-people, django-absolute, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filer, django-filter, django-formtools, django-import-export, django-mptt, django-phonenumber-field, django-polymorphic, django-ranged-response, django-sekizai, django-settings-export, django-simple-captcha, django-sizefield, django-taggit, django-testuser, django-treebeard, django-username-email, easy-thumbnails
