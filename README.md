@@ -1,9 +1,11 @@
-DjangoCMS login: test@what.digital / test@what.digital
+The default testing user for non-prod environment: test@what.digital / test@what.digital
+
 
 ## Docker
 - There is docker support so that you dont have to set up a python virtual environment on your host
 - Install docker on your machine (including docker-compose)
 - Run `docker-compose up web`
+
 
 ## Backend Dev
 - `pip install -r requirements.txt`
