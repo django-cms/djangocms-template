@@ -1,39 +1,41 @@
 {
     "name": "static",
     "version": "1.0.0",
-    "main": "main.js",
     "private": true,
     "engines": {
         "node" : ">=10"
     },
     "dependencies": {
-        "jquery": "^3.3.1",
+        "jquery": "^3.4.1",
         
         "webpack": "^4.31.0",
         "webpack-cli": "^3.3.2",
         "webpack-bundle-tracker": "^0.3.0",
         "typescript": "^3.4.0",
         
-        "uglifyjs-webpack-plugin": "^2.1.2",
-        
         "ts-loader": "^6.0.0",
         "style-loader": "^0.21.0",
         "css-loader": "^0.28.11",
         "sass-loader": "^7.0.3", "node-sass": "^4.9.0",
         "postcss-loader": "^2.1.5",
+        "precss": "^4.0.0",
+        "autoprefixer": "^9.5.1",
+        "mini-css-extract-plugin": "^0.6.0",
         "file-loader": "^1.1.11",
         "resolve-url-loader": "^2.3.0",
         "svg-url-loader": "^2.3.2",
         "url-loader": "^1.0.1",
         "exports-loader": "^0.7.0",
-        "imports-loader": "^0.8.0"
+        "imports-loader": "^0.8.0",
+        
+        "@types/jquery": "^3.3.29"
     },
     "devDependencies": {
         "@sentry/webpack-plugin": "^1.5.2",
         "webpack-dev-server": "^3.3.1"
     },
     "scripts": {
-        "start": "DEV_SERVER_PUBLIC_PATH=http://localhost:8090/assets/ webpack-dev-server --hot --inline --port 8090",
-        "build": "NODE_ENV=prod ./node_modules/webpack/bin/webpack.js -p --config static/webpack.config.js"
+        "start": "webpack-dev-server",
+        "build": "NODE_ENV=prod webpack -p --config static/webpack.config.js"
     }
 }

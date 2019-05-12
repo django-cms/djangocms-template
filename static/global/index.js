@@ -1,2 +1,1 @@
-require('./djangocms-reload')
-
+require('global/djangocms-reload')

@@ -1,21 +1,23 @@
-'use strict';
+'use strict'
 
-const path = require('path');
-const webpack = require('webpack');
-const BundleTracker = require('webpack-bundle-tracker');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+const path = require('path')
+const MiniCssExtractPlugin = require(`mini-css-extract-plugin`)
+
+
+const isProdMode = process.env.NODE_ENV === 'prod'
 
 
 const config = {
     entry: {
         global: './static/global/index.js',
-        // pages
+
         homepage: './static/pages/homepage/index.js',
     },
     output: {
         filename: '[name].bundle.js',
         path: __dirname + '/dist/',
-        publicPath: process.env.DEV_SERVER_PUBLIC_PATH,
+        publicPath: `http://localhost:8090/assets/`,
     },
     module: {
         rules: [
@@ -30,19 +32,26 @@ const config = {
                 loader: 'svg-url-loader',
             },
             {
-                test: /\.(sass|scss)$/,
+                test: /\.(sass|scss|css)$/,
                 use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            sourceMap: true,
+                            plugins: () => {
+                                return [
+                                    require('precss'),
+                                    require('autoprefixer')
+                                ];
+                            }
+                        }
+                    },
+                    {loader: 'css-loader', options: {sourceMap: true}},
+                    {loader: 'sass-loader', options: {sourceMap: true}},
                 ]
             },
             {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },
-            // images
-            {
+                // images
                 test: /\.(jpe?g|png|gif)$/i,
                 use: [
                     {
@@ -70,61 +79,74 @@ const config = {
             },
             {
                 test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                use: ['file-loader']
+                use: ['file-loader'],
             },
             {
-                test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+                test: /\.(ttf|eot)(\?[\s\S]+)?$/,
                 include: /fonts/,
-                use: ['file-loader']
+                use: ['file-loader'],
             },
             {
-                test: /\.modernizrrc$/,
-                use: ['modernizr-loader', 'json-loader']
+                test: /\.modernizrrc.js$/,
+                use: ['modernizr-loader'],
             },
+            {
+                test: /\.modernizrrc(\.json)?$/,
+                use: ['modernizr-loader', 'json-loader'],
+            }
         ],
     },
     resolve: {
-        extensions: [ '.ts', '.tsx', '.js' ]
-    }
-    // plugins: [
-    //     new BundleTracker({
-    //         path: __dirname,
-    //         filename: './webpack-stats.json'
-    //     }),
-    //     new UglifyJsPlugin(),
-    // ],
-    // //To run development server
-    // devServer: {
-    //     contentBase: '/static',
-    //     headers: {
-    //         'Access-Control-Allow-Origin': '*',
-    //         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-    //         'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
-    //     }
-    // },
-    // resolve: {
-    //     extensions: ['.tsx', '.ts', '.js'],
-    //     alias: {
-    //         modernizr$: path.resolve(__dirname, './private/.modernizrrc'),
-    //         // https://github.com/Eonasdan/bootstrap-datetimepicker/issues/1662
-    //         jquery: path.join(__dirname, 'node_modules/jquery/dist/jquery')
-    //     }
-    // },
-    // devtool: 'eval-source-map' // Default development sourcemap
-};
+        extensions: ['.ts', '.tsx', '.js',],
+        modules: [
+            path.resolve('static'),
+        ],
+        alias: {
+            modernizr$: path.resolve(__dirname, '/static/.modernizrrc'),
+        }
+    },
+    devServer: {
+        contentBase: path.resolve(__dirname, `static`),
+        host: `localhost`,
+        port: 8090,
+        hot: true,
+    },
+    plugins: [
+        new MiniCssExtractPlugin({filename: '[name].css'}),
+    ],
+    devtool: 'eval-source-map',
+    optimization: {
+        // the default config from webpack docs
+        splitChunks: {
+            chunks: 'async',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: true,
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true,
+                },
+            },
+        },
+    },
+}
 
-// Check if build is running in production mode, then change the sourcemap type
-// if (process.env.NODE_ENV === 'production') {
-//     config.devtool = 'source-map';
-//     config.context = __dirname + '/static';
-//     config.entry = {
-//         app: './static/ts/index.js'
-//     };
-//     config.output = {
-//         path: __dirname + '/static/dist/',
-//         filename: '[name]-[chunkhash].js',
-//         publicPath: '/static/dist/',
-//     };
-// }
 
-module.exports = config;
+if (isProdMode) {
+    config.devtool = 'source-map'
+    config.output.filename = '[name]-[chunkhash].js'
+    config.output.publicPath = '/static/dist/'
+}
+
+
+module.exports = config
