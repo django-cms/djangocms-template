@@ -1,21 +1,21 @@
 'use strict';
-process.traceDeprecation = true;
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
-require('webpack');
+
+const path = require('path');
+const webpack = require('webpack');
+const BundleTracker = require('webpack-bundle-tracker');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 
-let config = {
-    mode: "development",
+const config = {
     entry: {
-        vendor: ["./private/vendor.js"],
-        app: ["./private/main.js"],
+        global: './static/global/index.js',
+        // pages
+        homepage: './static/pages/homepage/index.js',
     },
     output: {
-        path: __dirname + '/static/dist/', // `dist` is the destination
+        filename: '[name].bundle.js',
+        path: __dirname + '/dist/',
         publicPath: process.env.DEV_SERVER_PUBLIC_PATH,
-        chunkFilename: '[name].js',
     },
     module: {
         rules: [
@@ -25,46 +25,21 @@ let config = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.js$/, //Check for all js files
-                exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader',
-                }
-            },
-            // svg needs to be loaded separately
-            {
                 test: /\.svg$/i,
-                // fonts need to be loaded
                 exclude: /fonts/,
-                loader: "svg-url-loader",
+                loader: 'svg-url-loader',
             },
             {
-                test: /\.(sass|scss|css)$/, //Check for sass or scss file names
-                use: [{
-                    loader: 'style-loader', // inject CSS to page
-                }, {
-                    loader: 'css-loader', options: {
-                        sourceMap: true
-                    }// translates CSS into CommonJS modules
-                }, {
-                    loader: 'postcss-loader', // Run post css actions
-                    options: {
-                        sourceMap: true,
-                        plugins: function () { // post css plugins, can be exported to postcss.config.js
-                            return [
-                                require('precss'),
-                                require('autoprefixer')
-                            ];
-                        }
-                    }
-                }, {
-                    // fixes https://github.com/webpack-contrib/sass-loader#problems-with-url
-                    loader: 'resolve-url-loader',
-                }, {
-                    loader: 'sass-loader', options: {
-                        sourceMap: true
-                    } // compiles Sass to CSS
-                }]
+                test: /\.(sass|scss)$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
             },
             // images
             {
@@ -74,112 +49,82 @@ let config = {
                         loader: 'file-loader',
                         options: {
                             query: {
-                                hash: "sha512",
-                                digest: "hex",
-                                name: "[name]-[hash].[ext]"
+                                hash: 'sha512',
+                                digest: 'hex',
+                                name: '[name]-[hash].[ext]'
                             }
                         }
                     },
                     {
-                        loader: "image-webpack-loader",
+                        loader: 'image-webpack-loader',
                         options: {
                             query: {
-                                bypassOnDebug: "true",
-                                mozjpeg: {
-                                    progressive: true
-                                },
-                                gifsicle: {
-                                    interlaced: true
-                                },
-                                optipng: {
-                                    optimizationLevel: 7
-                                }
+                                bypassOnDebug: 'true',
+                                mozjpeg: {progressive: true},
+                                gifsicle: {interlaced: true},
+                                optipng: {optimizationLevel: 7},
                             }
                         }
                     }
                 ]
             },
             {
-                test: /\.(woff2?|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                use: [
-                    "file-loader"
-                ]
+                test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use: ['file-loader']
             },
             {
-                test: /\.(svg)(\?[\s\S]+)?$/,
+                test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
                 include: /fonts/,
-                use: [
-                    'file-loader'
-                ]
+                use: ['file-loader']
             },
             {
                 test: /\.modernizrrc$/,
-                use: [
-                    'modernizr-loader',
-                    'json-loader'
-                ]
-            }
-        ]
-    },
-    plugins: [
-        new MiniCssExtractPlugin({
-            filename: '[name].css',
-        }),
-        new BrowserSyncPlugin({
-            // browse to http://localhost:3000/ during development,
-            // ./public directory is being served
-            host: 'localhost',
-            port: 3000,
-            proxy: 'http://localhost:8090/',
-            open: false
-        })
-    ],
-    //To run development server
-    devServer: {
-        hot: true,
-        compress: true,
-        contentBase: __dirname + '/private',
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-            "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-        }
+                use: ['modernizr-loader', 'json-loader']
+            },
+        ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
-        alias: {
-            modernizr$: path.resolve(__dirname, "./private/.modernizrrc"),
-            // https://github.com/Eonasdan/bootstrap-datetimepicker/issues/1662
-            jquery: path.join(__dirname, 'node_modules/jquery/dist/jquery')
-        }
-    },
-    devtool: "eval-cheap-module-source-map" // Default development sourcemap
+        extensions: [ '.ts', '.tsx', '.js' ]
+    }
+    // plugins: [
+    //     new BundleTracker({
+    //         path: __dirname,
+    //         filename: './webpack-stats.json'
+    //     }),
+    //     new UglifyJsPlugin(),
+    // ],
+    // //To run development server
+    // devServer: {
+    //     contentBase: '/static',
+    //     headers: {
+    //         'Access-Control-Allow-Origin': '*',
+    //         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+    //         'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+    //     }
+    // },
+    // resolve: {
+    //     extensions: ['.tsx', '.ts', '.js'],
+    //     alias: {
+    //         modernizr$: path.resolve(__dirname, './private/.modernizrrc'),
+    //         // https://github.com/Eonasdan/bootstrap-datetimepicker/issues/1662
+    //         jquery: path.join(__dirname, 'node_modules/jquery/dist/jquery')
+    //     }
+    // },
+    // devtool: 'eval-source-map' // Default development sourcemap
 };
 
-
 // Check if build is running in production mode, then change the sourcemap type
-if (process.env.NODE_ENV === "production") {
-    config.mode = "production";
-    config.devtool = "source-map";
-    config.output = {
-        path: __dirname + '/static/dist/', // `dist` is the destination
-        chunkFilename: '[name].js',
-        publicPath: "/static/dist/",
-    };
-
-    // replace style-loader with this css extraction plugin in production mode
-    config.module.rules[3].use[0] = {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-            sourceMap: true,
-            plugins: function () {
-                return [
-                    require('precss'),
-                    require('autoprefixer')
-                ];
-            }
-        }
-    }
-}
+// if (process.env.NODE_ENV === 'production') {
+//     config.devtool = 'source-map';
+//     config.context = __dirname + '/static';
+//     config.entry = {
+//         app: './static/ts/index.js'
+//     };
+//     config.output = {
+//         path: __dirname + '/static/dist/',
+//         filename: '[name]-[chunkhash].js',
+//         publicPath: '/static/dist/',
+//     };
+// }
 
 module.exports = config;

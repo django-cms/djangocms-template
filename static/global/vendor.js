@@ -11,7 +11,7 @@ require('moment-timezone');
 require('bootstrap');
 
 // this loads the django csrf protection methods for sending forms
-require('./js/getcookie.js');
+require('../../global/getcookie.js');
 
 
 // template npm libs
@@ -32,8 +32,8 @@ require('../node_modules/basictable/basictable.css');
 
 
 // Bootstrap
-require('./scss/libraries/bootstrap4.sass');
-require('./scss/libraries/font-awesome.sass');
+require('../../pages/scss/libraries/bootstrap4.sass');
+require('../../pages/scss/libraries/font-awesome.sass');
 
 // Icons
 require('@fortawesome/fontawesome-free/scss/fontawesome.scss');
