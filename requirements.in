@@ -19,7 +19,6 @@ djangocms-aldryn-forms-bootstrap4-templates
 djangocms-history
 aldryn-translation-tools
 aldryn-apphooks-config
-aldryn-newsblog # not in INSTALLED_APPS
 djangocms-text-ckeditor
 
 # django packages
