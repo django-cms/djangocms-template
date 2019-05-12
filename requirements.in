@@ -19,7 +19,7 @@ djangocms-aldryn-forms-bootstrap4-templates
 djangocms-history
 aldryn-translation-tools
 aldryn-apphooks-config
-aldryn-newsblog
+aldryn-newsblog # not in INSTALLED_APPS
 djangocms-text-ckeditor
 
 # django packages
@@ -31,13 +31,12 @@ django-filter
 django-google-tag-manager
 django-filer
 django-env-settings # settings utils for reading .env
-django-absolute # adds absolute site URL vars to context
-django-emailit # simplifies email sending
 django-import-export # csv/xsl/html/etc import/export for admin
 django-testuser
+django-absolute # adds absolute site URL vars to context
+djangorestframework
 django-allauth # user forms, social auth, allows to authenticate with email
 django-username-email # an addition to allauth
-djangorestframework
 
 # python utils
 pytz # a db of timezones
