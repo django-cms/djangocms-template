@@ -31,8 +31,8 @@ INSTALLED_APPS = [
 
     # django packages
     'allauth',
-        'allauth.account',
-        'allauth.socialaccount',
+    'allauth.account',
+    'allauth.socialaccount',
     'cuser', # for USERNAME_FIELD = 'email'
     'parler',
     'gtm',
@@ -69,27 +69,36 @@ INSTALLED_APPS = [
     'aldryn_translation_tools',  # not sure what it does, required by many aldryn packages
     'aldryn_forms_bs4_templates',
     'aldryn_forms',
-        'aldryn_forms.contrib.email_notifications',
         'captcha', # required by aldryn_forms
         'emailit', # required by aldryn_forms
         'absolute', # required by aldryn_forms, adds absolute site URL vars to context
+    'aldryn_forms.contrib.email_notifications',
     
-    # djangocms-bootstrap4
     'djangocms_bootstrap4',
-        'djangocms_bootstrap4.contrib.bootstrap4_alerts',
-        'djangocms_bootstrap4.contrib.bootstrap4_badge',
-        'djangocms_bootstrap4.contrib.bootstrap4_card',
-        'djangocms_bootstrap4.contrib.bootstrap4_carousel',
-        'djangocms_bootstrap4.contrib.bootstrap4_collapse',
-        'djangocms_bootstrap4.contrib.bootstrap4_content',
-        'djangocms_bootstrap4.contrib.bootstrap4_grid',
-        'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
-        'djangocms_bootstrap4.contrib.bootstrap4_link',
-        'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
-        'djangocms_bootstrap4.contrib.bootstrap4_media',
-        'djangocms_bootstrap4.contrib.bootstrap4_picture',
-        'djangocms_bootstrap4.contrib.bootstrap4_tabs',
-        'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+    'djangocms_bootstrap4.contrib.bootstrap4_alerts',
+    'djangocms_bootstrap4.contrib.bootstrap4_badge',
+    'djangocms_bootstrap4.contrib.bootstrap4_card',
+    'djangocms_bootstrap4.contrib.bootstrap4_carousel',
+    'djangocms_bootstrap4.contrib.bootstrap4_collapse',
+    'djangocms_bootstrap4.contrib.bootstrap4_content',
+    'djangocms_bootstrap4.contrib.bootstrap4_grid',
+    'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
+    'djangocms_bootstrap4.contrib.bootstrap4_link',
+    'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
+    'djangocms_bootstrap4.contrib.bootstrap4_media',
+    'djangocms_bootstrap4.contrib.bootstrap4_picture',
+    'djangocms_bootstrap4.contrib.bootstrap4_tabs',
+    'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+
+    # 'layout_plugins.bs4_float',
+    # 'layout_plugins.bs4_hiding',
+    # 'layout_plugins.bs4_inline_alignment',
+    # 'layout_plugins.bs4_spacer',
+    # 'layout_plugins.bs4_lightbox_gallery',
+    # 'layout_plugins.bs4_card_columns',
+    # 'layout_plugins.heading_element',
+    # 'layout_plugins.hero_image_element',
+    # 'layout_plugins.section_element',
 ]
 
 MIDDLEWARE = [
@@ -101,11 +110,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
-    # django cms
+    # django cms requirements
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.language.LanguageCookieMiddleware',
+    
+    # django cms optional
     'cms.middleware.utils.ApphookReloadMiddleware',
 ]
 
@@ -127,12 +138,12 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 
-                # django cms base
+                # django-cms requirements
                 'cms.context_processors.cms_settings',
                 'sekizai.context_processors.sekizai',
                 
-                # django-cms packages
-                'absolute.context_processors.absolute', # required by aldryn_forms
+                # aldryn_forms requirements
+                'absolute.context_processors.absolute',
             ],
         },
     },
