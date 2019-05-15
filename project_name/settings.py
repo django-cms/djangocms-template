@@ -126,7 +126,7 @@ WSGI_APPLICATION = 'project_name.wsgi.application'
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
         'DIRS': [
             'project_name/templates',
         ],
@@ -145,7 +145,8 @@ TEMPLATES = [
                 # aldryn_forms requirements
                 'absolute.context_processors.absolute',
             ],
-        },
+             'environment': 'your-app.jinja2.environment',
+        }
     },
 ]
 

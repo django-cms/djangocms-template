@@ -1,3 +1,4 @@
+// @ts-ignore
 import {subHelloWorld} from 'pages/homepage/ts/sub-module'
 
 

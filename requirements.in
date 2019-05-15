@@ -36,6 +36,7 @@ django-absolute # adds absolute site URL vars to context
 djangorestframework
 django-allauth # user forms, social auth, allows to authenticate with email
 django-username-email # an addition to allauth
+Jinja2 # jinja template lang
 
 # python utils
 pytz # a db of timezones
