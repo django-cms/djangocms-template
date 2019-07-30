@@ -2,6 +2,7 @@ import os
 
 import logging
 import sentry_sdk
+import jinja2
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
 from env_settings import env
@@ -145,7 +146,7 @@ TEMPLATES = [
                 # aldryn_forms requirements
                 'absolute.context_processors.absolute',
             ],
-             'environment': 'your-app.jinja2.environment',
+            'undefinder': jinja2.StrictUndefined,
         }
     },
 ]
