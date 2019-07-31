@@ -1,5 +1,6 @@
-The default testing user for non-prod environment: test@what.digital / test@what.digital
-
+The testing user for stage and local setup:
+- test@what.digital
+- test@what.digital
 
 ## Setup
 - install yarn https://yarnpkg.com/en/docs/install
@@ -9,18 +10,17 @@ The default testing user for non-prod environment: test@what.digital / test@what
 - `./manage.py migrate`
 - `./manage.py runserver`
 
+#### With Docker
+- `docker-compose up web`
 
-## Docker
-- There is docker support so that you dont have to set up a python virtual 
-environment on your host
-- Install docker on your machine (including docker-compose)
-- Run `docker-compose up web`
-
-
-## Pycharm
+#### .env
 - add the `.env` file in the run configuration in the `EnvFile` tab (press Cmd+Shift+. to see hidden files in the Mac OS X file dialog)
 
 
-## Custom Packages on Gitlab
-- django-env-settings
-- django-testuser
+## Notes
+Don't modify the default_plugins - if you want to use one copy past it into another place.
+
+
+## what.digital Packages
+- https://pypi.org/project/django-env-settings/
+- https://pypi.org/project/django-testuser/
