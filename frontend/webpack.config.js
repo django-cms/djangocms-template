@@ -43,7 +43,8 @@ const config = {
                                     require('precss'),
                                     require('autoprefixer'),
                                 ];
-                            }
+                            },
+                            hmr: true,
                         }
                     },
                     {loader: 'css-loader', options: {sourceMap: true}},
@@ -100,6 +101,7 @@ const config = {
         extensions: ['.ts', '.tsx', '.js',],
         modules: [
             path.resolve('frontend'),
+            'node_modules'
         ],
         alias: {
             modernizr$: path.resolve(__dirname, '/frontend/.modernizrrc'),
@@ -107,9 +109,11 @@ const config = {
     },
     devServer: {
         contentBase: path.resolve(__dirname, `frontend`),
+        headers: {'Access-Control-Allow-Origin': '*'},
         host: `localhost`,
         port: 8090,
         hot: true,
+        inline: true,
     },
     plugins: [
         new MiniCssExtractPlugin({filename: '[name].css'}),
