@@ -1,18 +1,18 @@
-'use strict'
+'use strict';
 
 
-const path = require('path')
-const MiniCssExtractPlugin = require(`mini-css-extract-plugin`)
+const path = require('path');
+const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
 
 
-const isProdMode = process.env.NODE_ENV === 'prod'
+const isProdMode = process.env.NODE_ENV === 'prod';
 
 
 const config = {
     entry: {
-        global: './static/global/index.js',
+        global: './frontend/global/index.js',
 
-        homepage: './static/pages/homepage/index.js',
+        homepage: './frontend/pages/homepage/index.js',
     },
     output: {
         filename: '[name].bundle.js',
@@ -41,7 +41,7 @@ const config = {
                             plugins: () => {
                                 return [
                                     require('precss'),
-                                    require('autoprefixer')
+                                    require('autoprefixer'),
                                 ];
                             }
                         }
@@ -99,14 +99,14 @@ const config = {
     resolve: {
         extensions: ['.ts', '.tsx', '.js',],
         modules: [
-            path.resolve('static'),
+            path.resolve('frontend'),
         ],
         alias: {
-            modernizr$: path.resolve(__dirname, '/static/.modernizrrc'),
+            modernizr$: path.resolve(__dirname, '/frontend/.modernizrrc'),
         }
     },
     devServer: {
-        contentBase: path.resolve(__dirname, `static`),
+        contentBase: path.resolve(__dirname, `frontend`),
         host: `localhost`,
         port: 8090,
         hot: true,
@@ -129,7 +129,7 @@ const config = {
             cacheGroups: {
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
-                    priority: -10
+                    priority: -10,
                 },
                 default: {
                     minChunks: 2,
@@ -143,10 +143,10 @@ const config = {
 
 
 if (isProdMode) {
-    config.devtool = 'source-map'
-    config.output.filename = '[name]-[chunkhash].js'
-    config.output.publicPath = '/static/dist/'
+    config.devtool = 'source-map';
+    config.output.filename = '[name]-[chunkhash].js';
+    config.output.publicPath = '/frontend/dist/';
 }
 
 
-module.exports = config
+module.exports = config;

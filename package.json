@@ -3,20 +3,19 @@
     "version": "1.0.0",
     "private": true,
     "engines": {
-        "node" : ">=10"
+        "node": ">=10"
     },
     "dependencies": {
         "jquery": "^3.4.1",
-        
         "webpack": "^4.31.0",
         "webpack-cli": "^3.3.2",
         "webpack-bundle-tracker": "^0.3.0",
         "typescript": "^3.4.0",
-        
         "ts-loader": "^6.0.0",
         "style-loader": "^0.21.0",
         "css-loader": "^0.28.11",
-        "sass-loader": "^7.0.3", "node-sass": "^4.9.0",
+        "sass-loader": "^7.0.3",
+        "node-sass": "^4.9.0",
         "postcss-loader": "^2.1.5",
         "precss": "^4.0.0",
         "autoprefixer": "^9.5.1",
@@ -27,7 +26,6 @@
         "url-loader": "^1.0.1",
         "exports-loader": "^0.7.0",
         "imports-loader": "^0.8.0",
-        
         "@types/jquery": "^3.3.29"
     },
     "devDependencies": {
@@ -35,7 +33,7 @@
         "webpack-dev-server": "^3.3.1"
     },
     "scripts": {
-        "start": "webpack-dev-server",
+        "start": "webpack-dev-server --config frontend/webpack.config.js --no-inline",
         "build": "NODE_ENV=prod webpack -p --config frontend/webpack.config.js"
     }
 }
