@@ -15,6 +15,23 @@ The testing user for stage and local setup:
 - `./manage.py migrate`
 - `./manage.py runserver`
 
+#### Frontend Integration with DevTools
+- open devtools and add the project folder (where manage.py is) as a workspace
+    <details>
+    <summary>image</summary>
+    
+    ![](/docs/front-int-example.png)
+    
+    </details>
+- now you can edit the source maps and save the scss using as Ctrl+S or CMD+S - webpack is going to auto reload right away
+- also the styles view is linked to the source maps
+    <details>
+    <summary>image</summary>
+    
+    ![](/docs/front-linked-styles.png)
+    
+    </details>
+
 #### With Docker
 - `docker-compose up web`
 
