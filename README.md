@@ -1,8 +1,13 @@
+## Setup
+- do a global replace of the string `project_name` on whatever you want
+- rename `project_name` directory
+
+## Admin Panel
 The testing user for stage and local setup:
 - test@what.digital
 - test@what.digital
 
-## Setup
+## Development Setup
 - install yarn https://yarnpkg.com/en/docs/install
 - `yarn install`
 - `yarn start`
