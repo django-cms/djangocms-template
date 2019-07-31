@@ -25,7 +25,7 @@ django-classy-tags==0.9.0  # via django-cms, django-sekizai
 django-cms==3.6.0
 django-emailit==0.2.4     # via aldryn-forms
 django-enumfields==1.0.0
-django-env-settings==0.12.0
+django-env-settings==0.12.1
 django-filer==1.5.0
 django-filter==2.2.0
 django-formtools==2.1     # via django-cms
@@ -53,7 +53,7 @@ djangocms-bootstrap4==1.5.0
 djangocms-file==2.3.0
 djangocms-googlemap==1.3.0
 djangocms-history==1.1.0
-djangocms-icon==1.4.0
+djangocms-icon==1.4.1
 djangocms-link==2.5.0
 djangocms-maps==0.11.0
 djangocms-modules==0.2.0
