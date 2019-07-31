@@ -1,0 +1,75 @@
+{% load cms_tags menu_tags %}
+<div class="vertical-spacer-plugin vertical-spacer-plugin-{{ instance.pk }}">
+    <style>
+        {% if instance.smart_space %}
+            /* calculate your smart space here */
+            .vertical-spacer-plugin-{{ instance.pk }} {
+                height: calc({{ instance.smart_space }}px * 0.5);
+            }
+            @media (min-width: 768px) {
+                .vertical-spacer-plugin-{{ instance.pk }} {
+                    height: calc({{ instance.smart_space }}px * 0.7);
+                }
+            }
+            @media (min-width: 992px) {
+                .vertical-spacer-plugin-{{ instance.pk }} {
+                    height: calc({{ instance.smart_space }}px * 0.8);
+                }
+            }
+            @media (min-width: 1200px) {
+                .vertical-spacer-plugin-{{ instance.pk }} {
+                    height: calc({{ instance.smart_space }}px * 0.9);
+                }
+            }
+            @media (min-width: 1400px) {
+                .vertical-spacer-plugin-{{ instance.pk }} {
+                    height: {{ instance.smart_space }}px;
+                }
+            }
+        {% endif %}
+
+        {% if instance.has_advanced_settings %}
+            .vertical-spacer-plugin-{{ instance.pk }} {
+                height: {{ instance.space_xs }}px;
+            }
+            /* Extra small devices (portrait phones, less than 576px)
+            No media query since this is the default in Bootstrap 4 */
+        {% endif %}
+
+        /* Small devices (landscape phones, 576px and up) */
+        {% if instance.space_sm %}
+            @media (min-width: 576px) {
+                .vertical-spacer-plugin-{{ instance.pk }} {
+                    height: {{ instance.space_sm }}px;
+                }
+            }
+        {% endif %}
+
+        /* Medium devices (tablets, 768px and up) */
+        {% if instance.space_md %}
+            @media (min-width: 768px) {
+                .vertical-spacer-plugin-{{ instance.pk }} {
+                    height: {{ instance.space_md }}px;
+                }
+            }
+        {% endif %}
+
+        /* Large devices (desktops, 992px and up) */
+        {% if instance.space_lg %}
+            @media (min-width: 992px) {
+                .vertical-spacer-plugin-{{ instance.pk }} {
+                    height: {{ instance.space_lg }}px;
+                }
+            }
+        {% endif %}
+
+        /* Extra large devices (large desktops, 1200px and up) */
+        {% if instance.space_xl %}
+            @media (min-width: 1200px) {
+                .vertical-spacer-plugin-{{ instance.pk }} {
+                    height: {{ instance.space_lg }}px;
+                }
+            }
+        {% endif %}
+    </style>
+</div>

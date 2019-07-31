@@ -1,0 +1,10 @@
+{% load cms_tags %}
+{% spaceless %}
+<div class="lightbox-gallery-plugin d-flex {{ instance.justify }} flex-wrap" id="lightbox-gallery-{{ instance.pk }}">
+    {% for plugin in instance.child_plugin_instances %}
+            {% with parent=instance %}
+                {% render_plugin plugin %}
+            {% endwith %}
+    {% endfor %}
+</div>
+{% endspaceless %}

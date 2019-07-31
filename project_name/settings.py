@@ -93,15 +93,15 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
-    # 'layout_plugins.bs4_float',
-    # 'layout_plugins.bs4_hiding',
-    # 'layout_plugins.bs4_inline_alignment',
-    # 'layout_plugins.bs4_spacer',
-    # 'layout_plugins.bs4_lightbox_gallery',
-    # 'layout_plugins.bs4_card_columns',
-    # 'layout_plugins.heading_element',
-    # 'layout_plugins.hero_image_element',
-    # 'layout_plugins.section_element',
+    'project_name.default_plugins.bs4_float',
+    'project_name.default_plugins.bs4_hiding',
+    'project_name.default_plugins.bs4_inline_alignment',
+    'project_name.default_plugins.bs4_spacer',
+    'project_name.default_plugins.bs4_lightbox_gallery',
+    'project_name.default_plugins.bs4_card_columns',
+    'project_name.default_plugins.heading_element',
+    'project_name.default_plugins.hero_image_element',
+    'project_name.default_plugins.section_element',
 ]
 
 MIDDLEWARE = [
@@ -129,14 +129,23 @@ WSGI_APPLICATION = 'project_name.wsgi.application'
 
 
 _TEMPLATE_CONTEXT_PROCESSORS =  [
+    'django.contrib.auth.context_processors.auth',
+    'django.template.context_processors.i18n',
     'django.template.context_processors.debug',
     'django.template.context_processors.request',
-    'django.contrib.auth.context_processors.auth',
+    'django.template.context_processors.media',
+    'django.template.context_processors.csrf',
+    'django.template.context_processors.tz',
+    'django.template.context_processors.static',
+
     'django.contrib.messages.context_processors.messages',
     
     # django-cms requirements
     'cms.context_processors.cms_settings',
     'sekizai.context_processors.sekizai',
+    
+    # django-cms optional
+    'cms.context_processors.cms_settings',
     
     # aldryn_forms requirements
     'absolute.context_processors.absolute',
@@ -202,6 +211,12 @@ TIME_INPUT_FORMATS = [
 
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend'),
+]
 
 
 EMAIL_BACKEND = env.get('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
