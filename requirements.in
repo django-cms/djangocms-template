@@ -29,14 +29,15 @@ django-admin-sortable2
 django-filter
 django-google-tag-manager
 django-filer
-django-env-settings # settings utils for reading .env
+django-env-settings >= 0.12.0 # settings utils for reading .env
+django-testuser >= 0.6.0
 django-import-export # csv/xsl/html/etc import/export for admin
-django-testuser
 django-absolute # adds absolute site URL vars to context
 djangorestframework
 django-allauth # user forms, social auth, allows to authenticate with email
 django-username-email # an addition to allauth
 Jinja2 # jinja template lang
+django-jinja
 
 # python utils
 pytz # a db of timezones

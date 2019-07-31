@@ -12,6 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = env.get_or_create_secret_key(base_dir=BASE_DIR)
 
+DJANGO_ENV_ENUM = env.DjangoEnv
 DJANGO_ENV: env.DjangoEnv = env.django_env()
 
 DEBUG: bool = env.is_debug()
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'filer',
         'easy_thumbnails',
         'mptt',
+    'django_jinja',
 
     # django cms base
     'cms',
@@ -125,31 +127,47 @@ ROOT_URLCONF = 'project_name.urls'
 HTTP_PROTOCOL = 'http' if env.is_dev() else 'https'
 WSGI_APPLICATION = 'project_name.wsgi.application'
 
+
+_TEMPLATE_CONTEXT_PROCESSORS =  [
+    'django.template.context_processors.debug',
+    'django.template.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
+    
+    # django-cms requirements
+    'cms.context_processors.cms_settings',
+    'sekizai.context_processors.sekizai',
+    
+    # aldryn_forms requirements
+    'absolute.context_processors.absolute',
+    
+    'django_settings_export.settings_export',
+]
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'BACKEND': 'django_jinja.backend.Jinja2',
         'DIRS': [
             'project_name/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                
-                # django-cms requirements
-                'cms.context_processors.cms_settings',
-                'sekizai.context_processors.sekizai',
-                
-                # aldryn_forms requirements
-                'absolute.context_processors.absolute',
-            ],
-            'undefinder': jinja2.StrictUndefined,
-        }
+            'match_extension': '.jinja2',
+            'context_processors': _TEMPLATE_CONTEXT_PROCESSORS,
+        },
+        'NAME': 'jinja2',
+    },
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'APP_DIRS': True,
+        'DIRS': [
+            'project_name/templates',
+        ],
+        'OPTIONS': {
+            'context_processors': _TEMPLATE_CONTEXT_PROCESSORS,
+        },
     },
 ]
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -265,6 +283,8 @@ WEBPACK_DEV_BUNDLE_BASE_URL = env.get(
 SETTINGS_EXPORT = [
     'WEBPACK_DEV_BUNDLE_BASE_URL',
     'WEBPACK_DEV_BUNDLE',
+    'DJANGO_ENV',
+    'DJANGO_ENV_ENUM',
     'BUSINESS_NAME',
 ]
 

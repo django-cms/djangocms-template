@@ -19,3 +19,8 @@ environment on your host
 
 ## Pycharm
 - add the `.env` file in the run configuration in the `EnvFile` tab (press Cmd+Shift+. to see hidden files in the Mac OS X file dialog)
+
+
+## Custom Packages on Gitlab
+- django-env-settings
+- django-testuser
