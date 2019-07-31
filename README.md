@@ -1,5 +1,5 @@
 ## Setup
-- do a global replace of the string `project_name` on whatever you want
+- do a global replace of the string `project_name` on whatever you want, do the same for `PROJECT_NAME`
 - rename `project_name` directory
 
 ## Admin Panel
