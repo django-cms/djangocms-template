@@ -335,25 +335,34 @@ if env.get_bool('IS_SENTRY_ENABLED', False):
     )
 
 
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'handlers': {
-#         'file': {
-#             'level': 'DEBUG',
-#             'class': 'logging.FileHandler',
-#             'filename': 'debug.log',
-#         },
-#     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['file'],
-#             'level': 'DEBUG',
-#             'propagate': True,
-#         },
-#     },
-# }
-
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'root': {
+        'level': 'DEBUG',
+        'handlers': ['console', 'file'],
+    },
+    'handlers': {
+        'console': {
+            'level': 'ERROR',
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'DEBUG',
+            # https://docs.python.org/3/library/logging.handlers.html
+            # because of https://justinmontgomery.com/rotating-logs-with-multiple-workers-in-django
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': env('LOGFILE', os.path.join(BASE_DIR, 'default.log')),
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 TEST_USER_USERNAME_AND_PASS = 'test@what.digital'
 
