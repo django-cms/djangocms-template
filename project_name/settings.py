@@ -5,6 +5,7 @@ import sentry_sdk
 import jinja2
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
+from django.contrib.staticfiles import storage
 from env_settings import env
 
 
@@ -217,6 +218,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend'),
 ]
+
+
+class PatchedManifestStaticFilesStorage(storage.ManifestStaticFilesStorage):
+    """
+    Override the replacement patterns to match URL-encoded quotations.
+    We use inlined SVG data url()s that contain url_encoded quotes which dont work
+    Since these css url() assets are encoded already by webpack we can completely ignore the content of css files.
+    Solution from: https://code.djangoproject.com/ticket/21080#comment:12
+    
+    remove css from the patterns list so no css file introspection is done
+    """
+    patterns = ()
+
+
+STATICFILES_STORAGE = 'settings.PatchedManifestStaticFilesStorage'
 
 
 EMAIL_BACKEND = env.get('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
