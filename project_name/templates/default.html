@@ -1,4 +1,4 @@
-{% load cms_tags sekizai_tags static %}
+{% load cms_tags sekizai_tags staticfiles %}
 
 
 <html lang="en">
@@ -13,8 +13,8 @@
             <link rel="stylesheet" data-cms-reload href="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/global.css">
             <link rel="stylesheet" data-cms-reload href="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/homepage.css">
         {% else %}
-            <script data-cms-reload defer="defer" src="{% static 'dist/homepage.bundle.js' %}"></script>
-            <script data-cms-reload defer="defer" src="{% static 'dist/global.bundle.js' %}"></script>
+            <script data-cms-reload defer="defer" src="{% static 'dist/homepage.js' %}"></script>
+            <script data-cms-reload defer="defer" src="{% static 'dist/global.js' %}"></script>
             
             <link rel="stylesheet" data-cms-reload href="{% static 'dist/homepage.css' %}">
             <link rel="stylesheet" data-cms-reload href="{% static 'dist/global.css' %}">

@@ -232,7 +232,7 @@ class PatchedManifestStaticFilesStorage(storage.ManifestStaticFilesStorage):
     patterns = ()
 
 
-STATICFILES_STORAGE = 'settings.PatchedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'project_name.settings.PatchedManifestStaticFilesStorage'
 
 
 EMAIL_BACKEND = env.get('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
@@ -333,6 +333,26 @@ if env.get_bool('IS_SENTRY_ENABLED', False):
         ],
         environment=DJANGO_ENV.value,
     )
+
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'file': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'filename': 'debug.log',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['file'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         },
+#     },
+# }
 
 
 TEST_USER_USERNAME_AND_PASS = 'test@what.digital'

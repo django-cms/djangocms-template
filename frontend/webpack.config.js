@@ -61,7 +61,7 @@ const config = {
                             query: {
                                 hash: 'sha512',
                                 digest: 'hex',
-                                name: '[name]-[hash].[ext]'
+                                name: '[name].[ext]'
                             }
                         }
                     },
@@ -148,7 +148,7 @@ const config = {
 
 if (isProdMode) {
     config.devtool = 'source-map';
-    config.output.filename = '[name]-[chunkhash].js';
+    config.output.filename = '[name].js';
     config.output.publicPath = '/frontend/dist/';
 }
 
