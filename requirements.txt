@@ -33,6 +33,7 @@ django-google-tag-manager==0.0.5
 django-import-export==1.2.0
 django-jinja==2.4.1
 django-js-asset==1.2.2    # via django-mptt
+django-lockdown==2.0.0
 django-mptt==0.10.0       # via django-filer
 django-parler==2.0
 django-polymorphic==2.0.3  # via django-filer
@@ -45,7 +46,7 @@ django-tablib==3.2        # via aldryn-forms
 django-testuser==0.6.0
 django-treebeard==4.3     # via django-cms
 django-username-email==2.2.4
-django==2.1.10            # via aldryn-boilerplates, django-absolute, django-admin-sortable2, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filer, django-filter, django-formtools, django-import-export, django-jinja, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-settings-export, django-simple-captcha, django-sizefield, django-testuser, django-treebeard, django-username-email, easy-thumbnails
+django==2.1.11            # via aldryn-boilerplates, django-absolute, django-admin-sortable2, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filer, django-filter, django-formtools, django-import-export, django-jinja, django-lockdown, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-settings-export, django-simple-captcha, django-sizefield, django-testuser, django-treebeard, django-username-email, easy-thumbnails
 djangocms-admin-style==1.4.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==0.0.1
 djangocms-attributes-field==1.1.0  # via aldryn-forms, djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture, djangocms-style, djangocms-video
@@ -67,20 +68,21 @@ easy-thumbnails==2.6      # via django-filer, djangocms-picture
 et-xmlfile==1.0.1         # via openpyxl
 html5lib==1.0.1           # via djangocms-text-ckeditor
 idna==2.8                 # via requests
+ipaddress==1.0.22         # via django-lockdown
 jdcal==1.4.1              # via openpyxl
 jinja2==2.10.1
 lxml==4.4.0               # via premailer
 markupsafe==1.1.1         # via jinja2
-oauthlib==3.0.2           # via requests-oauthlib
+oauthlib==3.1.0           # via requests-oauthlib
 odfpy==1.4.0              # via tablib
 openpyxl==2.4.9           # via aldryn-forms, tablib
 pillow==6.1.0             # via aldryn-forms, django-simple-captcha, djangocms-text-ckeditor, easy-thumbnails
-premailer==3.5.0          # via django-emailit
+premailer==3.6.0          # via django-emailit
 psycopg2-binary==2.8.3
 python-slugify==3.0.3     # via aldryn-translation-tools
 python3-openid==3.1.0     # via django-allauth
-pytz==2019.1
-pyyaml==5.1.1             # via tablib
+pytz==2019.2
+pyyaml==5.1.2             # via tablib
 requests-oauthlib==1.2.0  # via django-allauth
 requests==2.22.0          # via django-allauth, premailer, requests-oauthlib
 sentry-sdk==0.10.2

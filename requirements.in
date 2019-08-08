@@ -38,6 +38,7 @@ django-allauth # user forms, social auth, allows to authenticate with email
 django-username-email # an addition to allauth
 Jinja2 # jinja template lang
 django-jinja
+django-lockdown # allows to restrict access to the stage server
 
 # python utils
 pytz # a db of timezones

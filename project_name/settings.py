@@ -47,6 +47,7 @@ INSTALLED_APPS = [
         'easy_thumbnails',
         'mptt',
     'django_jinja',
+    'lockdown',
 
     # django cms base
     'cms',
@@ -113,6 +114,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'lockdown.middleware.LockdownMiddleware',
     
     # django cms requirements
     'cms.middleware.user.CurrentUserMiddleware',
@@ -352,7 +355,7 @@ LOGGING = {
             # https://docs.python.org/3/library/logging.handlers.html
             # because of https://justinmontgomery.com/rotating-logs-with-multiple-workers-in-django
             'class': 'logging.handlers.WatchedFileHandler',
-            'filename': env('LOGFILE', os.path.join(BASE_DIR, 'default.log')),
+            'filename': env.get('LOGFILE', os.path.join(BASE_DIR, 'default.log')),
         },
     },
     'loggers': {
@@ -364,7 +367,18 @@ LOGGING = {
     },
 }
 
+
 TEST_USER_USERNAME_AND_PASS = 'test@what.digital'
+
+
+LOCKDOWN_ENABLED = env.get_bool('LOCKDOWN_ENABLED', False)
+LOCKDOWN_FORM = 'lockdown.forms.AuthForm'
+LOCKDOWN_REMOTE_ADDR_EXCEPTIONS = [
+    'localhost',
+    '127.0.0.1',
+    '::1',
+]
+
 
 # allauth
 AUTHENTICATION_BACKENDS = [
