@@ -1,5 +1,10 @@
 {
     "compilerOptions": {
-        "sourceMap": true
+        "sourceMap": true,
+        "downlevelIteration": true,
+        "lib": [
+            "es2017",
+            "dom"
+        ]
     }
 }
