@@ -10,3 +10,4 @@ static-collected/
 /*.log
 backend/.secret_key
 frontend/dist
+.venv
