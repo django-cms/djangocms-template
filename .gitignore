@@ -8,5 +8,5 @@ media/
 static-collected/
 /*.sqlite3
 /*.log
-.secret_key
+backend/.secret_key
 frontend/dist

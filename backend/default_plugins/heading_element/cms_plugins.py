@@ -2,7 +2,7 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
 
-from project_name.default_plugins.module_name import MODULE_NAME
+from backend.default_plugins.module_name import MODULE_NAME
 from .models import HeadingPlugin
 
 

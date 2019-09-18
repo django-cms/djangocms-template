@@ -1,0 +1,5 @@
+*.pyc
+# db might be large
+*.sqlite3
+# db backups
+*.sqlite3*

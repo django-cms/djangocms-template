@@ -2,7 +2,6 @@ import os
 
 import logging
 import sentry_sdk
-import jinja2
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
 from django.contrib.staticfiles import storage
@@ -95,15 +94,15 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
-    'project_name.default_plugins.bs4_float',
-    'project_name.default_plugins.bs4_hiding',
-    'project_name.default_plugins.bs4_inline_alignment',
-    'project_name.default_plugins.bs4_spacer',
-    'project_name.default_plugins.bs4_lightbox_gallery',
-    'project_name.default_plugins.bs4_card_columns',
-    'project_name.default_plugins.heading_element',
-    'project_name.default_plugins.hero_image_element',
-    'project_name.default_plugins.section_element',
+    'backend.default_plugins.bs4_float',
+    'backend.default_plugins.bs4_hiding',
+    'backend.default_plugins.bs4_inline_alignment',
+    'backend.default_plugins.bs4_spacer',
+    'backend.default_plugins.bs4_lightbox_gallery',
+    'backend.default_plugins.bs4_card_columns',
+    'backend.default_plugins.heading_element',
+    'backend.default_plugins.hero_image_element',
+    'backend.default_plugins.section_element',
 ]
 
 MIDDLEWARE = [
@@ -127,7 +126,7 @@ MIDDLEWARE = [
     'cms.middleware.utils.ApphookReloadMiddleware',
 ]
 
-ROOT_URLCONF = 'project_name.urls'
+ROOT_URLCONF = 'backend.urls'
 HTTP_PROTOCOL = 'http' if env.is_dev() else 'https'
 WSGI_APPLICATION = 'project_name.wsgi.application'
 
@@ -160,7 +159,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django_jinja.backend.Jinja2',
         'DIRS': [
-            'project_name/templates',
+            'backend/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -173,7 +172,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'APP_DIRS': True,
         'DIRS': [
-            'project_name/templates',
+            'backend/templates',
         ],
         'OPTIONS': {
             'context_processors': _TEMPLATE_CONTEXT_PROCESSORS,

@@ -34,7 +34,7 @@
         "webpack-dev-server": "^3.7.2"
     },
     "scripts": {
-        "start": "webpack-dev-server --config frontend/webpack.config.js",
-        "build": "NODE_ENV=prod webpack -p --config frontend/webpack.config.js"
+        "start": "../node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
+        "build": "NODE_ENV=prod webpack -p --config webpack.config.js"
     }
 }

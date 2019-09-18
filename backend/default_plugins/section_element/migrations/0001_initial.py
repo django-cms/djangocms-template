@@ -3,7 +3,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 import enumfields.fields
-import project_name.default_plugins.section_element.models
+import backend.default_plugins.section_element.models
 
 
 class Migration(migrations.Migration):
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='section_element_sectionplugin', serialize=False, to='cms.CMSPlugin')),
                 ('name', models.CharField(default='No name', help_text='This name wont show up in the frontend, it shows on the plugin only for better orientation', max_length=2048, null=True)),
-                ('max_width', enumfields.fields.EnumField(default='1280', enum=project_name.default_plugins.section_element.models.MaxWidth, max_length=32)),
+                ('max_width', enumfields.fields.EnumField(default='1280', enum=backend.default_plugins.section_element.models.MaxWidth, max_length=32)),
             ],
             options={
                 'abstract': False,

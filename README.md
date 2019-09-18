@@ -1,7 +1,3 @@
-## Setup
-- do a global replace of the string `project_name` on whatever you want, do the same for `PROJECT_NAME`
-- rename `project_name` directory
-
 ## Admin Panel
 The testing user for stage and local setup:
 - test@what.digital
@@ -9,14 +5,16 @@ The testing user for stage and local setup:
 
 ## Development Setup
 - install yarn https://yarnpkg.com/en/docs/install
+- `cd frontend`
 - `yarn install`
 - `yarn start`
+- `cd backend`
 - `pip install -r requirements.txt`
 - `./manage.py migrate`
 - `./manage.py runserver`
 
 #### Frontend Integration with DevTools
-- open devtools and add the project folder (where manage.py is) as a workspace
+- open devtools and add the `frontend` folder as a workspace
     <details>
     <summary>image</summary>
     
@@ -34,6 +32,7 @@ The testing user for stage and local setup:
     </details>
 
 #### With Docker
+- `cd backend`
 - `docker-compose up web`
 
 #### .env
