@@ -30,7 +30,7 @@ django-admin-sortable2
 django-filter
 django-google-tag-manager
 django-filer
-django-env-settings >= 0.12.1 # settings utils for reading .env
+django-env-settings >= 0.13.0 # settings utils for reading .env
 django-testuser >= 0.6.0
 django-import-export # csv/xsl/html/etc import/export for admin
 django-absolute # adds absolute site URL vars to context
