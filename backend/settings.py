@@ -390,7 +390,6 @@ TEST_USER_USERNAME_AND_PASS = 'test@what.digital'
 LOCKDOWN_ENABLED = env.get_bool('LOCKDOWN_ENABLED', False)
 LOCKDOWN_FORM = 'lockdown.forms.AuthForm'
 LOCKDOWN_REMOTE_ADDR_EXCEPTIONS = [
-    'localhost',
     '127.0.0.1',
     '::1',
 ]
