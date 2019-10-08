@@ -12,6 +12,7 @@ Development Setup
 - `yarn start`
 - `cd backend`
 - `pip install -r requirements.txt`
+- the commands below might work only when run through intellij/pycharm `Run/Debug Configurations`, otherwise they can raise `no module name backend`
 - `./manage.py migrate`
 - `./manage.py runserver`
 
