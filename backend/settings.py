@@ -48,6 +48,7 @@ INSTALLED_APPS = [
         'mptt',
     'django_jinja',
     'lockdown',
+    'admin_reorder',
 
     # django cms base
     'cms',
@@ -104,6 +105,8 @@ INSTALLED_APPS = [
     'backend.default_plugins.heading_element',
     'backend.default_plugins.hero_image_element',
     'backend.default_plugins.section_element',
+    
+    'backend.admin',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +119,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'lockdown.middleware.LockdownMiddleware',
+    'admin_reorder.middleware.ModelAdminReorder',
     
     # django cms requirements
     'cms.middleware.user.CurrentUserMiddleware',
@@ -406,6 +410,44 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 LOGIN_REDIRECT_URL = '/'
+
+
+ADMIN_REORDER = [
+    {
+        'label': 'CMS Pages',
+        'app': 'cms',
+        'models': [
+            'cms.Page',
+            'cms.PageType',
+            {'model': 'cms.StaticPlaceholder', 'label': 'Page static placeholders'},
+        ],
+    },
+    {
+        'label': 'CMS Plugins',
+        'app': 'cms',
+        'models': [
+            {'model': 'aldryn_forms.FormSubmission', 'label': 'Dynamic forms submissions'},
+            {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
+            {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
+        ],
+    },
+    {
+        'label': 'Files',
+        'app': 'filer',
+        'models': [
+            'filer.Folder',
+            {'model': 'filer.ThumbnailOption', 'label': 'Images thumbnail options'},
+        ],
+    },
+    {
+        'label': 'Users',
+        'app': 'auth',
+        'models': [
+            'cuser.CUser',
+            'auth.Group',
+        ],
+    },
+]
 
 
 ################################################################################

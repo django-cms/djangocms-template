@@ -40,6 +40,7 @@ django-username-email # an addition to allauth
 Jinja2 # jinja template lang
 django-jinja
 django-lockdown # allows to restrict access to the stage server
+django-modeladmin-reorder # allows to reorder and regroup admin panel apps
 
 # python utils
 pytz # a db of timezones
