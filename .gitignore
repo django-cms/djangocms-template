@@ -8,6 +8,6 @@ media/
 static-collected/
 /*.sqlite3
 /*.log
-backend/.secret_key
+.secret_key
 frontend/dist
 .venv
