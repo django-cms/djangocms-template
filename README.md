@@ -1,6 +1,6 @@
 Admin Panel
 -------------------------------------------------------------------------------
-The testing user for stage and local setup:
+The login/password from the testing user on the stage and local setups (created by default):
 - test@what.digital
 - test@what.digital
 
