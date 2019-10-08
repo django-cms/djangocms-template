@@ -8,8 +8,8 @@ from django.contrib.staticfiles import storage
 from env_settings import env
 
 
-backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(backend_dir)
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = env.get_or_create_secret_key(base_dir=BASE_DIR)
 
