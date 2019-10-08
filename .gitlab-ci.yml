@@ -42,8 +42,10 @@ before_script:
 
   # copy credentials to their place
   - mkdir credentials
-  - echo "$SERVER_SSH_KEY" > credentials/$SERVER_SSH_KEY_FILENAME
-  - echo "$SECRETS_YML" > credentials/$SECRETS_YML_FILENAME
+  - echo "$SERVER_SSH_KEY_STAGE" > credentials/server-project_name-stage.pem
+  - echo "$SERVER_SSH_KEY_PROD" > credentials/server-project_name-prod.pem
+  - echo "$SECRETS_YML_STAGE" > credentials/secrets-project_name-stage.yml
+  - echo "$SECRETS_YML_PROD" > credentials/secrets-project_name-prod.yml
   - chmod 600 -R credentials/*
 
 
