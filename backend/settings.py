@@ -290,12 +290,22 @@ CMS_TEMPLATES = [
 SITE_ID = 1
 
 CMS_LANGUAGES = {
-    1: [
+    SITE_ID: [
         {
             'code': 'en',
             'name': 'English',
         },
+        {
+            'code': 'de',
+            'name': 'German',
+        },
     ],
+    'default': {
+        'fallbacks': ['en', 'de'],
+        'redirect_on_fallback': True,
+        'public': True,
+        'hide_untranslated': False,
+    }
 }
 
 
