@@ -8,7 +8,8 @@ from django.contrib.staticfiles import storage
 from env_settings import env
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+backend_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(backend_dir)
 
 SECRET_KEY = env.get_or_create_secret_key(base_dir=BASE_DIR)
 
@@ -128,7 +129,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'backend.urls'
 HTTP_PROTOCOL = 'http' if env.is_dev() else 'https'
-WSGI_APPLICATION = 'project_name.wsgi.application'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 _TEMPLATE_CONTEXT_PROCESSORS =  [
@@ -234,7 +235,7 @@ class PatchedManifestStaticFilesStorage(storage.ManifestStaticFilesStorage):
     patterns = ()
 
 
-STATICFILES_STORAGE = 'project_name.settings.PatchedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'backend.settings.PatchedManifestStaticFilesStorage'
 
 
 EMAIL_BACKEND = env.get('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
@@ -245,7 +246,7 @@ EMAIL_PORT = env.get('EMAIL_PORT', '')
 EMAIL_USE_TLS = env.get('EMAIL_USE_TLS', False)
 
 
-BUSINESS_NAME = env.get('BUSINESS_NAME', 'project_name')
+BUSINESS_NAME = env.get('BUSINESS_NAME', 'backend')
 BASE_URL = env.get('BASE_URL', 'http://localhost:8000')
 BUSINESS_EMAIL = env.get('BUSINESS_EMAIL', 'tech@what.digital')
 BUSINESS_EMAIL_VANE = '%(name)s <%(address)s>' % {
@@ -336,6 +337,8 @@ if env.get_bool('IS_SENTRY_ENABLED', False):
         environment=DJANGO_ENV.value,
     )
 
+# noinspection PyUnresolvedReferences
+file_log = env.get('LOGFILE', os.path.join(BASE_DIR, 'default.log'))
 
 LOGGING = {
     'version': 1,
@@ -354,7 +357,7 @@ LOGGING = {
             # https://docs.python.org/3/library/logging.handlers.html
             # because of https://justinmontgomery.com/rotating-logs-with-multiple-workers-in-django
             'class': 'logging.handlers.WatchedFileHandler',
-            'filename': env.get('LOGFILE', os.path.join(BASE_DIR, 'default.log')),
+            'filename': file_log,
         },
     },
     'loggers': {

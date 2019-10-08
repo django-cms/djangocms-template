@@ -1,9 +1,11 @@
-## Admin Panel
+Admin Panel
+-------------------------------------------------------------------------------
 The testing user for stage and local setup:
 - test@what.digital
 - test@what.digital
 
-## Development Setup
+Development Setup
+-------------------------------------------------------------------------------
 - install yarn https://yarnpkg.com/en/docs/install
 - `cd frontend`
 - `yarn install`
@@ -39,10 +41,10 @@ The testing user for stage and local setup:
 - add the `.env` file in the run configuration in the `EnvFile` tab (press Cmd+Shift+. to see hidden files in the Mac OS X file dialog)
 
 
-## Notes
-Don't modify the default_plugins - if you want to use one copy past it into another place.
+### Development Notes
+- Don't modify the default_plugins - if you want to use one copy past it into another place. And place it into a different plugin module, eg with the project name.
 
 
-## what.digital Packages
+### what.digital Packages
 - https://pypi.org/project/django-env-settings/
 - https://pypi.org/project/django-testuser/

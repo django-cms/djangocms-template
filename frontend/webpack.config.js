@@ -10,9 +10,9 @@ const isProdMode = process.env.NODE_ENV === 'prod';
 
 const config = {
     entry: {
-        global: './frontend/global/index.js',
+        global: './global/index.js',
 
-        homepage: './frontend/pages/homepage/index.js',
+        homepage: './pages/homepage/index.js',
     },
     output: {
         filename: '[name].bundle.js',
@@ -100,15 +100,15 @@ const config = {
     resolve: {
         extensions: ['.ts', '.tsx', '.js',],
         modules: [
-            path.resolve('frontend'),
+            path.resolve('.'),
             'node_modules'
         ],
         alias: {
-            modernizr$: path.resolve(__dirname, '/frontend/.modernizrrc'),
+            modernizr$: path.resolve(__dirname, '/.modernizrrc'),
         }
     },
     devServer: {
-        contentBase: path.resolve(__dirname, `frontend`),
+        contentBase: path.resolve(__dirname),
         headers: {'Access-Control-Allow-Origin': '*'},
         host: `localhost`,
         port: 8090,
@@ -149,7 +149,7 @@ const config = {
 if (isProdMode) {
     config.devtool = 'source-map';
     config.output.filename = '[name].js';
-    config.output.publicPath = '/frontend/dist/';
+    config.output.publicPath = '/dist/';
 }
 
 
