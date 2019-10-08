@@ -7,12 +7,12 @@ The login/password from the testing user on the stage and local setups (created 
 Development Setup
 -------------------------------------------------------------------------------
 - install yarn https://yarnpkg.com/en/docs/install
+- install node 10
 - `cd frontend`
 - `yarn install`
 - `yarn start`
 - `cd backend`
 - `pip install -r requirements.txt`
-- the commands below might work only when run through intellij/pycharm `Run/Debug Configurations`, otherwise they can raise `no module name backend`
 - `./manage.py migrate`
 - `./manage.py runserver`
 
