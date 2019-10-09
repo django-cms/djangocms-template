@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "engines": {
-        "node": ">=8.16"
+        "node": "^10.15"
     },
     "dependencies": {
         "@types/jquery": "^3.3.29",
