@@ -16,6 +16,10 @@ Development Setup
 - `./manage.py migrate`
 - `./manage.py runserver`
 
+#### Frontend Guideline
+- when you need to add a script for a new page add a new `entry` to `webpack.config.json
+- for global scripts and styles use the `global` entry
+
 #### Frontend Integration with DevTools
 - open devtools and add the `frontend` folder as a workspace
     <details>
