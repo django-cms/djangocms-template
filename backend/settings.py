@@ -502,7 +502,7 @@ CKEDITOR_SETTINGS = {
     # All styling-related config is outsourced to static/djangocms_text_ckeditor/js/ckeditor.wysiwyg.js
     # because of https://github.com/aldryn/aldryn-bootstrap3/issues/154
     # https://github.com/divio/django-cms-explorer/blob/908a88afa4e1d1176e267e77eb5c61e31ef0f9e5/static/js/addons/ckeditor.wysiwyg.js#L73
-    'stylesSet': 'default:{}/djangocms_text_ckeditor/js/ckeditor.wysiwyg.js'.format(STATIC_URL),
+    'stylesSet': 'default:{}/js/ckeditor.wysiwyg.js'.format(STATIC_URL),
     # NOTE: cms plugins don't work in 'HtmlField', at all!
     # see https://github.com/divio/djangocms-text-ckeditor/issues/317
     # This is needed so that in the TextPlugin, the real styles are showing, for example for normal text and headings
