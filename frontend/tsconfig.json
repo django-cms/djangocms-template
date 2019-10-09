@@ -5,6 +5,8 @@
         "lib": [
             "es2017",
             "dom"
-        ]
+        ],
+        "rootDir": ".",
+        "baseUrl": "."
     }
 }
