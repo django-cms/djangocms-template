@@ -22,6 +22,8 @@ ALLOWED_HOSTS = env.allowed_hosts()
 
 
 INSTALLED_APPS = [
+    'backend.auth', # for USERNAME_FIELD = 'email', before `cms` since it has a User model
+
     'djangocms_admin_style', # before `django.contrib.admin`
     
     'django.contrib.admin',
@@ -36,7 +38,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'cuser', # for USERNAME_FIELD = 'email'
+    'cuser', # for USERNAME_FIELD = 'email' in backend.auth
     'parler',
     'gtm',
     'rest_framework',
@@ -188,7 +190,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
 ]
 
-AUTH_USER_MODEL = 'cuser.CUser'
+AUTH_USER_MODEL = 'backend_auth.User'
 
 
 LANGUAGE_CODE = 'en'
@@ -440,7 +442,7 @@ ADMIN_REORDER = [
         'label': 'Users',
         'app': 'auth',
         'models': [
-            'cuser.CUser',
+            'backend_auth.User',
             'auth.Group',
         ],
     },
