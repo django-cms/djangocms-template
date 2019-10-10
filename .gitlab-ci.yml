@@ -60,7 +60,13 @@ deploy to production:
     name: production
     url: $URL_PROD
   only:
-    - master
+    refs:
+      - master
+  except: 
+    changes:
+      - docs/*
+      - README.md
+
 
 deploy to stage:
   stage: deploy
@@ -70,4 +76,9 @@ deploy to stage:
     name: stage
     url: $URL_STAGE
   only:
-    - stage
+    refs:
+      - stage
+  except: 
+    changes:
+      - docs/*
+      - README.md
