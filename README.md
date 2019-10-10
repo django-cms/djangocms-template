@@ -25,7 +25,7 @@ Development Setup
     <details>
     <summary>image</summary>
     
-    ![](/docs/front-int-example.png)
+    ![](/docs/readme/front-int-example.png)
     
     </details>
 - now you can edit the source maps and save the scss using as Ctrl+S or CMD+S - webpack is going to auto reload right away
@@ -34,7 +34,7 @@ Development Setup
     <details>
     <summary>image</summary>
     
-    ![](/docs/front-linked-styles.png)
+    ![](/docs/readme/front-linked-styles.png)
     
     </details>
 
