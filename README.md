@@ -8,7 +8,6 @@ Development Setup
 -------------------------------------------------------------------------------
 - install yarn https://yarnpkg.com/en/docs/install
 - install node 10
-- `cd frontend`
 - `yarn install`
 - `yarn start`
 - `cd backend`

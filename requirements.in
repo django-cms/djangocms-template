@@ -46,3 +46,4 @@ django-modeladmin-reorder # allows to reorder and regroup admin panel apps
 pytz # a db of timezones
 psycopg2-binary
 sentry-sdk
+python-dotenv # imprints `.env` file into the OS envs list

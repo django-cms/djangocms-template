@@ -80,7 +80,8 @@ openpyxl==2.4.9           # via aldryn-forms, tablib
 pillow==6.2.0             # via aldryn-forms, django-simple-captcha, djangocms-text-ckeditor, easy-thumbnails
 premailer==3.6.1          # via django-emailit
 psycopg2-binary==2.8.3
-python-slugify==3.0.4     # via aldryn-translation-tools
+python-dotenv==0.10.3
+python-slugify==3.0.6     # via aldryn-translation-tools
 python3-openid==3.1.0     # via django-allauth
 pytz==2019.3
 pyyaml==5.1.2             # via tablib
