@@ -10,7 +10,6 @@ Development Setup
 - install node 10
 - `yarn install`
 - `yarn start`
-- `cd backend`
 - `pip install -r requirements.txt`
 - `./manage.py migrate`
 - `./manage.py runserver`
