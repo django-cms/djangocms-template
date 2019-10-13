@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django_jinja',
     'lockdown',
     'admin_reorder',
+    'django_extensions',
 
     # django cms base
     'cms',

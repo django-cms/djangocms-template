@@ -1,5 +1,5 @@
 django-cms >= 3.7, < 3.8
-django >= 2.1, < 2.3
+django < 2.2  # some of packages do not support yet 2.2 version
 
 # django-cms plugins
 djangocms-link
@@ -41,6 +41,8 @@ Jinja2 # jinja template lang
 django-jinja
 django-lockdown # allows to restrict access to the stage server
 django-modeladmin-reorder # allows to reorder and regroup admin panel apps
+django-extensions # many django things that we don't really need, mainly for shell-plus
+    ipython # for shell-plus
 
 # python utils
 pytz # a db of timezones
