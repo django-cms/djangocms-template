@@ -45,7 +45,7 @@ Development Setup
 
 Development Notes
 -------------------------------------------------------------------------------
-Don't modify `backend.plugins.default` - if you want to rewrite one copy-past it into another module, eg `backend.plugins.plugin_name`.
+Don't modify `backend.plugins.default` unless you do that in djangocms-template project - if you want to customize one of them copy-past it into another module, eg `backend.plugins.plugin_name`.
 
 ##### Requirements Management
 Don't add random packages into requirements.in and package.json. On older projects we have requirements conflicts that can take weeks to resolve, simply because the original developers were throwing trash into the requirements one by one until the issue was gone. Or copy pasted 30 redundant requirements from the old project, and even added them to `INSTALLED_APPS`. 
