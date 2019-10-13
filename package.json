@@ -31,10 +31,9 @@
         "@types/jquery": "^3.3.29",
         "bootstrap": "^4.3.1",
             "popper.js": "^1.15.0", "//": "a peer depepndency of BS",
-        "autoprefixer": "^9.5.1",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be useless",
+        "autoprefixer": "^9.5.1",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be useless"
     },
     "devDependencies": {
-        "@sentry/webpack-plugin": "^1.9.1",
         "webpack-dev-server": "^3.8.2"
     },
     "scripts": {
