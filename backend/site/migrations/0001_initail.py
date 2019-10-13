@@ -9,8 +9,11 @@ def change_default_site_name(apps: Apps, _):
     Site = apps.get_model('sites', 'Site')
     site = Site.objects.first()
     
-    if settings.BASE_URL is None or site is None:
+    if settings.BASE_URL is None:
         return
+    
+    if site is None:
+        site = Site()
 
     is_protocol_missing = (
         'http://' not in settings.BASE_URL and
