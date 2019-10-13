@@ -429,8 +429,6 @@ ADMIN_REORDER = [
         'app': 'cms',
         'models': [
             'cms.Page',
-            'cms.PageType',
-            {'model': 'cms.StaticPlaceholder', 'label': 'Page static placeholders'},
         ],
     },
     {
