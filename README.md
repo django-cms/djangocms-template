@@ -18,7 +18,7 @@ Built on Python 3.7, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 
 Testing:
 - `./manage.py collectstatic`
-- `./manage.py test`
+- `./manage.py test --keepdb`
 
 #### Frontend Guidelines
 - when you need to add a script for a new page add a new `entry` in `webpack.config.js`
