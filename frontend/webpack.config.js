@@ -118,7 +118,7 @@ const config = {
     plugins: [
         new MiniCssExtractPlugin({filename: '[name].css'}),
     ],
-    devtool: 'cheap-module-source-map',
+    devtool: 'eval-source-map',
     optimization: {
         // the default config from webpack docs, most of it might be useless
         splitChunks: {
