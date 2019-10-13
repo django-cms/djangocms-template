@@ -1,5 +1,5 @@
 export interface DJANGO {
-    env: string, // see DJANGO_ENV
+    env: string, // see settings.DJANGO_ENV
 }
 
 
