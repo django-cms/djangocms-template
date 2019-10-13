@@ -26,12 +26,12 @@ djangocms-text-ckeditor
 django-settings-export # settings export to templates
 django-parler # model translations
 django-enumfields
-django-admin-sortable2
-django-filter
+django-admin-sortable2 # drag and drop sorting for admin
+django-filter # generic view filter helpers for front and admin panel, as `?field__gte=5`
 django-google-tag-manager
 django-filer
-django-env-settings >= 0.13.0 # settings utils for reading .env
-django-testuser >= 0.6.0
+django-env-settings >= 0.13.0 # settings utils ansible deploy, see gitlab.com/what-digital/django-env-settings
+django-testuser >= 0.6.0 # adds a test@what.digital user by default on stage and local, see gitlab.com/what-digital/django-testuser
 django-import-export # csv/xsl/html/etc import/export for admin
 django-absolute # adds absolute site URL vars to context
 djangorestframework
