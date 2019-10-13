@@ -5,6 +5,9 @@
 {% if sentry_event_id %}
     <script>
         Sentry.init({ dsn: `{{ settings.SENTRY_DSN }}` });
-        Sentry.showReportDialog({ eventId: '{{ sentry_event_id }}' })
+        Sentry.showReportDialog({
+            eventId: '{{ sentry_event_id }}',
+            title: "A server error occurred.",
+        })
     </script>
 {% endif %}
