@@ -8,8 +8,7 @@ from django.db import migrations
 def change_default_site_name(apps: Apps, _):
     Site = apps.get_model('sites', 'Site')
     site = Site.objects.first()
-    site.domain = settings.BASE_URL
-    
+
     is_protocol_missing = (
         'http://' not in settings.BASE_URL and
         'https://' not in settings.BASE_URL
@@ -19,6 +18,7 @@ def change_default_site_name(apps: Apps, _):
     else:
         base_url = "{0.netloc}".format(urlsplit(settings.BASE_URL))
 
+    site.domain = settings.BASE_URL
     site.name = base_url
     site.save()
 
