@@ -9,6 +9,7 @@ const isServerMode = process.env.NODE_ENV === 'production';
 
 
 const config = {
+    mode: 'development',
     entry: {
         global: './frontend/global/index.js',
 
