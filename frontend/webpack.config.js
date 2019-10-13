@@ -148,7 +148,7 @@ const config = {
 
 if (isServerMode) {
     config.mode = 'production';
-    config.devtool = 'source-map';
+    config.devtool = 'none';
     config.output.filename = '[name].js';
     config.output.publicPath = '/frontend/dist/';
 }
