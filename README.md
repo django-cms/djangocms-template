@@ -16,8 +16,9 @@ Built on Python 3.7, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 - `yarn start`
 
 #### Frontend Guidelines
-- when you need to add a script for a new page add a new `entry` to `webpack.config.json
+- when you need to add a script for a new page add a new `entry` in `webpack.config.js`
 - for global scripts and styles use the `global` entry
+- if you need to add a global variable to JS, add it to `backend/templates/default.html#DJANGO` const and extend `frontend/global/ts/django.ts#DJANGO`
 - if something doesn't work ask Victor, he wrote webpack.config.js
 
 #### Frontend Integration with DevTools
