@@ -32,7 +32,7 @@ Built on Python 3.7, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 - `docker-compose up web`
 
 
-Development Notes
+Development Guidelines
 -------------------------------------------------------------------------------
 Don't modify `backend.plugins.default` unless you do that in djangocms-template project - if you want to customize one of them copy-past it into another module, eg `backend.plugins.plugin_name`.
 
