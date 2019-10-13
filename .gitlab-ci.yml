@@ -65,6 +65,7 @@ deploy to production:
   except: 
     changes:
       - docs/*
+      - docs/**/*
       - README.md
 
 
@@ -81,4 +82,5 @@ deploy to stage:
   except: 
     changes:
       - docs/*
+      - docs/**/*
       - README.md
