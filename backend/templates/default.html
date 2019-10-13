@@ -5,7 +5,14 @@
     <head>
         <title>{% page_attribute "page_title" %}</title>
         {% render_block "css" %}
-        
+
+    
+        <script>
+            window.DJANGO = {
+                env: `{{ settings.DJANGO_ENV.value }}`,
+            };
+        </script>
+
         {% if settings.DJANGO_ENV.value == 'dev' %}
             <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/global.bundle.js"></script>
             <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/homepage.bundle.js"></script>
