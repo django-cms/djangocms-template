@@ -9,10 +9,10 @@ Development Setup
 - built on Python 3.7, Django 2.1, DjangoCMS 3.7
 - install yarn and node 10
 - `yarn install`
-- `yarn start`
 - `pip install -r requirements.txt`
 - `./manage.py migrate`
 - `./manage.py runserver`
+- `yarn start`
 
 #### Frontend Guidelines
 - when you need to add a script for a new page add a new `entry` to `webpack.config.json
