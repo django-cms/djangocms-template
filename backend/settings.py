@@ -489,11 +489,8 @@ DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
     ('', 'Empty'),
 ]
 
-# djangocms-maps
-MAPS_PROVIDERS = [
-    ('mapbox', 'Mapbox OSM (API key required)'),
-]
-MAPS_MAPBOX_API_KEY = env.get('MAPS_MAPBOX_API_KEY', '123')
+
+DJANGOCMS_GOOGLEMAP_API_KEY = env.get('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
 
 
 CKEDITOR_SETTINGS = {

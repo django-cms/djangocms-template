@@ -10,7 +10,7 @@ djangocms-file
 djangocms-picture
 djangocms-icon
 djangocms-bootstrap4
-djangocms-maps
+djangocms-googlemap # google maps with ability to add markers through cms admin panel
 djangocms-modules
 djangocms-style # html containers with css
 aldryn-forms
