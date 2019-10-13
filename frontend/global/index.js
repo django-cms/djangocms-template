@@ -1,2 +1,2 @@
 require('./scss/main.scss');
-require('./ts/djangocms-reload');
+require('./ts/cms-scripts-reload');
