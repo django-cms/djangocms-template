@@ -120,7 +120,7 @@ const config = {
     ],
     devtool: 'cheap-module-source-map',
     optimization: {
-        // the default config from webpack docs
+        // the default config from webpack docs, most of it might be useless
         splitChunks: {
             chunks: 'async',
             minSize: 30000,
