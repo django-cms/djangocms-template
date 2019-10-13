@@ -21,6 +21,7 @@ djangocms-history
 aldryn-translation-tools
 aldryn-apphooks-config
 djangocms-text-ckeditor
+djangocms-redirect
 
 # django packages
 django-settings-export # settings export to templates

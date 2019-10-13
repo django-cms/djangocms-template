@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'djangocms_history',
     'djangocms_modules',
 
+    # django cms packages
     'aldryn_apphooks_config',
     'aldryn_translation_tools',  # not sure what it does, required by many aldryn packages
     'aldryn_forms_bs4_templates',
@@ -86,6 +87,7 @@ INSTALLED_APPS = [
         'emailit', # required by aldryn_forms
         'absolute', # required by aldryn_forms, adds absolute site URL vars to context
     'aldryn_forms.contrib.email_notifications',
+    'djangocms_redirect',
     
     'djangocms_bootstrap4',
     'djangocms_bootstrap4.contrib.bootstrap4_alerts',
@@ -114,6 +116,7 @@ INSTALLED_APPS = [
     'backend.plugins.default.section_element',
     
     'backend.error_handler',
+    'backend.site',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +140,7 @@ MIDDLEWARE = [
     
     # django cms optional
     'cms.middleware.utils.ApphookReloadMiddleware',
+    'djangocms_redirect.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -228,7 +232,9 @@ TIME_INPUT_FORMATS = [
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+# noinspection PyUnresolvedReferences
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# noinspection PyUnresolvedReferences
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend'),
@@ -429,6 +435,7 @@ ADMIN_REORDER = [
         'app': 'cms',
         'models': [
             'cms.Page',
+            'djangocms_redirect.Redirect',
         ],
     },
     {

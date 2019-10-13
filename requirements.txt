@@ -64,6 +64,7 @@ djangocms-link==2.5.0
 djangocms-maps==0.11.0
 djangocms-modules==0.2.0
 djangocms-picture==2.3.0
+djangocms-redirect==0.4.0
 djangocms-snippet==2.2.0
 djangocms-style==2.2.0
 djangocms-text-ckeditor==3.8.0
