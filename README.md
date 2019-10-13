@@ -16,6 +16,10 @@ Built on Python 3.7, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 - `yarn install --pure-lockfile`
 - `yarn start`
 
+Testing:
+- `./manage.py collectstatic`
+- `./manage.py test`
+
 #### Frontend Guidelines
 - when you need to add a script for a new page add a new `entry` in `webpack.config.js`
 - for global scripts and styles use the `global` entry
