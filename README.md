@@ -44,3 +44,4 @@ Don't modify `backend.plugins.default` unless you do that in djangocms-template 
 Don't add random packages into requirements.in and package.json. On older projects we have requirements conflicts that can take weeks to resolve, simply because the original developers were throwing trash into the requirements one by one until the issue was gone. Or copy pasted 30 redundant requirements from the old project, and even added them to `INSTALLED_APPS`. 
 - If you add a package who's name isn't verbose enough, eg `tqdm` - add a comment about where it's used, to let others know when it can be dropped.
 - If you add a package that might be useless but you don't have the time to check - add a comment about it.
+- If you're adding a peer dependency - add it below the parent package with an indent.
