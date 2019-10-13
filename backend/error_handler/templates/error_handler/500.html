@@ -1,0 +1,10 @@
+<!--suppress JSUnresolvedVariable, JSUnresolvedFunction, ES6ModulesDependencies, JSUnresolvedLibraryURL -->
+<script src="https://browser.sentry-cdn.com/5.7.0/bundle.min.js" integrity="sha384-pHnCJ3bbzJ+LzI19wAdyBvGAjJ5vNAC59uxeRpw5WpgkSlZUQstEADxkSbBnI95q" crossorigin="anonymous"></script>
+
+
+{% if sentry_event_id %}
+    <script>
+        Sentry.init({ dsn: `{{ settings.SENTRY_DSN }}` });
+        Sentry.showReportDialog({ eventId: '{{ sentry_event_id }}' })
+    </script>
+{% endif %}

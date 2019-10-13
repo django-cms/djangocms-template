@@ -112,6 +112,8 @@ INSTALLED_APPS = [
     'backend.plugins.default.heading_element',
     'backend.plugins.default.hero_image_element',
     'backend.plugins.default.section_element',
+    
+    'backend.error_handler',
 ]
 
 MIDDLEWARE = [
