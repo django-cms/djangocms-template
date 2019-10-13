@@ -36,6 +36,8 @@ Built on Python 3.7, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 
 Development Guidelines
 -------------------------------------------------------------------------------
+This project is a fork of [djangocms-template](https://gitlab.com/what-digital/djangocms-template/), if you would like to edit the basic structure - create an MR there.
+
 Don't modify `backend.plugins.default` unless you do that in djangocms-template project - if you want to customize one of them copy-past it into another module, eg `backend.plugins.plugin_name`.
 
 ##### Requirements Management
