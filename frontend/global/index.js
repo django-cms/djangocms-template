@@ -1,2 +1,2 @@
 require('./scss/main.scss');
-require('./ts/cms-scripts-reload');
+require('./ts/on-page-edit-reload');
