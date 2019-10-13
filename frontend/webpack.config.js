@@ -5,7 +5,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
 
 
-const isServerMode = process.env.NODE_ENV !== 'dev';
+const isServerMode = process.env.NODE_ENV === 'production';
 
 
 const config = {
@@ -147,6 +147,7 @@ const config = {
 
 
 if (isServerMode) {
+    config.mode = 'production';
     config.devtool = 'source-map';
     config.output.filename = '[name].js';
     config.output.publicPath = '/frontend/dist/';
