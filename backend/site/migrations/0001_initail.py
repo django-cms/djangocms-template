@@ -18,7 +18,7 @@ def change_default_site_name(apps: Apps, _):
     else:
         base_url = "{0.netloc}".format(urlsplit(settings.BASE_URL))
 
-    site.domain = settings.BASE_URL
+    site.domain = base_url
     site.name = base_url
     site.save()
 
