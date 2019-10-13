@@ -340,13 +340,17 @@ SETTINGS_EXPORT = [
     'DJANGO_ENV',
     'DJANGO_ENV_ENUM',
     'BUSINESS_NAME',
+    'SENTRY_IS_ENABLED',
+    'SENTRY_DSN',
 ]
 
 
-if env.get_bool('IS_SENTRY_ENABLED', False):
+SENTRY_IS_ENABLED = env.get_bool('SENTRY_IS_ENABLED', False)
+SENTRY_DSN = env.get('SENTRY_DSN')
+if SENTRY_IS_ENABLED:
     # noinspection PyTypeChecker
     sentry_sdk.init(
-        dsn=env.get('SENTRY_DSN'),
+        dsn=SENTRY_DSN,
         integrations=[
             DjangoIntegration(),
             LoggingIntegration(
