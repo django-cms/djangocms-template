@@ -6,7 +6,7 @@ The login/password from the the stage and local setups (created by default):
 
 Development Setup
 -------------------------------------------------------------------------------
-Built on Python 3.7, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript.
+Built on Python 3.7, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 
 - `pip install -r requirements.txt`
 - `./manage.py migrate`
