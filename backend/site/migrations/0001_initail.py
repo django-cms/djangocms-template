@@ -8,6 +8,9 @@ from django.db import migrations
 def change_default_site_name(apps: Apps, _):
     Site = apps.get_model('sites', 'Site')
     site = Site.objects.first()
+    
+    if settings.BASE_URL is None:
+        return
 
     is_protocol_missing = (
         'http://' not in settings.BASE_URL and
