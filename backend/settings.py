@@ -6,6 +6,7 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
 from django.contrib.staticfiles import storage
 from env_settings import env
+# noinspection PyPackageRequirements
 from dotenv import load_dotenv, find_dotenv
 
 
