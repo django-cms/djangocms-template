@@ -14,12 +14,12 @@ def change_default_site_name(apps: Apps, _):
         'https://' not in settings.BASE_URL
     )
     if is_protocol_missing:
-        base_url = "{0.netloc}".format(urlsplit(f'https://{settings.BASE_URL}'))
+        domain = "{0.netloc}".format(urlsplit(f'https://{settings.BASE_URL}'))
     else:
-        base_url = "{0.netloc}".format(urlsplit(settings.BASE_URL))
+        domain = "{0.netloc}".format(urlsplit(settings.BASE_URL))
 
-    site.domain = base_url
-    site.name = base_url
+    site.domain = domain
+    site.name = domain
     site.save()
 
 
