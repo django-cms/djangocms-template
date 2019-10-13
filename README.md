@@ -6,6 +6,7 @@ The login/password from the testing user on the stage and local setups (created 
 
 Development Setup
 -------------------------------------------------------------------------------
+- built on Python 3.7, Django 2.1, DjangoCMS 3.7
 - install yarn https://yarnpkg.com/en/docs/install
 - install node 10
 - `yarn install`
@@ -14,7 +15,7 @@ Development Setup
 - `./manage.py migrate`
 - `./manage.py runserver`
 
-#### Frontend Guideline
+#### Frontend Guidelines
 - when you need to add a script for a new page add a new `entry` to `webpack.config.json
 - for global scripts and styles use the `global` entry
 
@@ -36,18 +37,14 @@ Development Setup
     
     </details>
 
-#### With Docker
-- `cd backend`
+#### Docker Setup
 - `docker-compose up web`
-
-#### .env
-- add the `.env` file in the run configuration in the `EnvFile` tab (press Cmd+Shift+. to see hidden files in the Mac OS X file dialog)
 
 
 ### Development Notes
 - Don't modify the default_plugins - if you want to use one copy past it into another place. And place it into a different plugin module, eg with the project name.
 
-
-### what.digital Packages
-- https://pypi.org/project/django-env-settings/
-- https://pypi.org/project/django-testuser/
+##### Requirements Management
+Don't add random packages into requirements.in and package.json. On older projects we have requirements conflicts that can take weeks to resolve, simply because the original developers were throwing trash into the requirements one by one until things the issue was gone. 
+- If you add a package who's name isn't verbose enough, eg `tqdm` - add a comment about where it's used, to let others know when it can be dropped.
+- If you add a package that might be useless but you don't have the time to check - add a comment about it.
