@@ -7,11 +7,11 @@ The login/password from the the stage and local setups (created by default):
 Development Setup
 -------------------------------------------------------------------------------
 - built on Python 3.7, Django 2.1, DjangoCMS 3.7
-- install yarn and node 10
-- `yarn install`
 - `pip install -r requirements.txt`
 - `./manage.py migrate`
 - `./manage.py runserver`
+- install yarn and node 10
+- `yarn install`
 - `yarn start`
 
 #### Frontend Guidelines
