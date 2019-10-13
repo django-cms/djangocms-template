@@ -12,7 +12,7 @@ const config = {
     mode: 'development',
     entry: {
         global: './frontend/global/index.js',
-
+        vendor: './frontend/vendor/index.js',
         homepage: './frontend/pages/homepage/index.js',
     },
     output: {

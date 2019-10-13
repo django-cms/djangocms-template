@@ -14,17 +14,31 @@
         </script>
 
         {% if settings.DJANGO_ENV.value == 'dev' %}
+
             <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/global.bundle.js"></script>
+            <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/vendor.bundle.js"></script>
+            
             <script data-cms-reload defer="defer" src="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/homepage.bundle.js"></script>
 
+
             <link rel="stylesheet" data-cms-reload href="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/global.css">
+            <link rel="stylesheet" data-cms-reload href="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/vendor.css">
+            
             <link rel="stylesheet" data-cms-reload href="{{ settings.WEBPACK_DEV_BUNDLE_BASE_URL }}/homepage.css">
+        
         {% else %}
-            <script data-cms-reload defer="defer" src="{% static 'dist/homepage.js' %}"></script>
+
             <script data-cms-reload defer="defer" src="{% static 'dist/global.js' %}"></script>
+            <script data-cms-reload defer="defer" src="{% static 'dist/vendor.js' %}"></script>
+            
+            <script data-cms-reload defer="defer" src="{% static 'dist/homepage.js' %}"></script>
+            
+
+            <link rel="stylesheet" data-cms-reload href="{% static 'dist/global.css' %}">
+            <link rel="stylesheet" data-cms-reload href="{% static 'dist/vendor.css' %}">
             
             <link rel="stylesheet" data-cms-reload href="{% static 'dist/homepage.css' %}">
-            <link rel="stylesheet" data-cms-reload href="{% static 'dist/global.css' %}">
+        
         {% endif %}
     </head>
     
