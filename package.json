@@ -38,6 +38,6 @@
     },
     "scripts": {
         "start": "node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
-        "build": "NODE_ENV=production webpack -p --config frontend/webpack.config.js"
+        "build": "NODE_ENV=production webpack --config frontend/webpack.config.js"
     }
 }
