@@ -38,10 +38,13 @@ Development Setup
     </details>
 
 #### Docker Setup
+- might be not working
+- `docker-compose build`
 - `docker-compose up web`
 
 
-### Development Notes
+Development Notes
+-------------------------------------------------------------------------------
 - Don't modify the default_plugins - if you want to use one copy past it into another place. And place it into a different plugin module, eg with the project name.
 
 ##### Requirements Management
