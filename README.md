@@ -31,4 +31,4 @@ Development Guidelines
 This project is a fork of [djangocms-template](https://gitlab.com/what-digital/djangocms-template/), if you would like to edit the basic structure - create an MR there.
 
 - [backend guidelines](/docs/readme/backend.md)
-- [backend guidelines](/docs/readme/frontend.md)
+- [frontend guidelines](/docs/readme/frontend.md)
