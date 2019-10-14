@@ -20,18 +20,6 @@ Testing:
 - `./manage.py collectstatic`
 - `./manage.py test --keepdb`
 
-#### Frontend Guidelines
-- when you need to add a script for a new page add a new `entry` in `webpack.config.js`
-- for global scripts and styles use the `global` entry
-- if you need to add a global variable to JS, add it to `backend/templates/default.html#DJANGO` const and extend `frontend/global/ts/django.ts#DJANGO`
-- if something doesn't work ask Victor, he wrote webpack.config.js
-
-#### Frontend Integration with DevTools
-- open devtools and add the `frontend` folder as a workspace <details><summary>image</summary> ![](/docs/readme/front-int-example.png)</details>
-- now you can edit the source maps and save the scss using as Ctrl+S or CMD+S - webpack is going to auto reload right away
-- you can also set breaking points for debugging directly on ts files
-- also the styles view is linked to the source maps <details><summary>image</summary>![](/docs/readme/front-linked-styles.png)</details>
-
 #### Docker Setup
 - might be not working
 - `docker-compose build`
@@ -42,16 +30,5 @@ Development Guidelines
 -------------------------------------------------------------------------------
 This project is a fork of [djangocms-template](https://gitlab.com/what-digital/djangocms-template/), if you would like to edit the basic structure - create an MR there.
 
-Don't modify `backend.plugins.default` unless you do that in djangocms-template project - if you want to customize one of them copy-past it into another module, eg `backend.plugins.plugin_name`.
-
-The settings.py file is split into 4 categories, keep them in mind:
-- django core
-- django packages
-- django-cms core
-- django-cms packages
-
-##### Requirements Management
-Don't add random packages into requirements.in and package.json. On older projects we have requirements conflicts that can take weeks to resolve, simply because the original developers were throwing trash into the requirements one by one until the issue was gone. Or copy pasted 30 redundant requirements from the old project, and even added them to `INSTALLED_APPS`. 
-- If you add a package who's name isn't verbose enough, eg `tqdm` - add a comment about where it's used, to let others know when it can be dropped.
-- If you add a package that might be useless but you don't have the time to check - add a comment about it.
-- If you're adding a peer dependency - add it below the parent package with an indent.
+- [backend guidelines](/docs/readme/backend.md)
+- [backend guidelines](/docs/readme/frontend.md)
