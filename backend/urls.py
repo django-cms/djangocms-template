@@ -9,7 +9,12 @@ from backend import settings
 from backend.error_handler.views import collect_500_error_user_feedback_view
 
 
-urlpatterns = i18n_patterns(
+urlpatterns = [
+    url(r'^captcha/', include('captcha.urls')),
+]
+
+
+urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     re_path(r'^accounts/', include('allauth.urls')),
     re_path(r'^', include('cms.urls')),
