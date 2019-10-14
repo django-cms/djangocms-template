@@ -504,9 +504,9 @@ CKEDITOR_SETTINGS = {
         ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
         ['Source']
     ],
-    'toolbarCanCollapse': False,
     'stylesSet': [
-        {'name': 'float left2', 'element': 'span', 'attributes': {'class': 'float-left'}},
+        {'name': 'Float Left', 'element': 'span', 'attributes': {'class': 'float-left'}},
+        {'name': 'H1', 'element': 'h1'},
     ],
     'contentsCss': [
         f'{WEBPACK_DEV_URL}global.css' if env.is_dev() else f'{STATIC_URL}/dist/global.css',
