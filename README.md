@@ -21,9 +21,9 @@ Testing:
 - `./manage.py test --keepdb`
 
 #### Docker Setup
-- might be not working
 - `docker-compose build`
-- `docker-compose up web`
+- `docker-compose up`
+- `yarn start` - outside of docker
 
 
 Development Guidelines
