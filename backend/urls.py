@@ -10,7 +10,7 @@ from backend.error_handler.views import collect_500_error_user_feedback_view
 
 
 urlpatterns = [
-    url(r'^captcha/', include('captcha.urls')),
+    url(r'^captcha/', include('captcha.urls')), # required by aldryn-forms
 ]
 
 
