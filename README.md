@@ -44,6 +44,12 @@ This project is a fork of [djangocms-template](https://gitlab.com/what-digital/d
 
 Don't modify `backend.plugins.default` unless you do that in djangocms-template project - if you want to customize one of them copy-past it into another module, eg `backend.plugins.plugin_name`.
 
+The settings.py file is split into 4 categories, respect that:
+- django core
+- django packages
+- django-cms core
+- django-cms packages
+
 ##### Requirements Management
 Don't add random packages into requirements.in and package.json. On older projects we have requirements conflicts that can take weeks to resolve, simply because the original developers were throwing trash into the requirements one by one until the issue was gone. Or copy pasted 30 redundant requirements from the old project, and even added them to `INSTALLED_APPS`. 
 - If you add a package who's name isn't verbose enough, eg `tqdm` - add a comment about where it's used, to let others know when it can be dropped.
