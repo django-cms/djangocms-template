@@ -237,7 +237,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # noinspection PyUnresolvedReferences
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend'),
+    os.path.join(BASE_DIR, 'frontend/global'),
 ]
 
 
@@ -295,38 +295,6 @@ else:
     }
 
 
-
-################################################################################
-# django-cms
-################################################################################
-
-
-CMS_TEMPLATES = [
-    ('default.html', 'default template'),
-]
-
-SITE_ID = 1
-
-CMS_LANGUAGES = {
-    SITE_ID: [
-        {
-            'code': 'en',
-            'name': 'English',
-        },
-        {
-            'code': 'de',
-            'name': 'German',
-        },
-    ],
-    'default': {
-        'fallbacks': ['en', 'de'],
-        'redirect_on_fallback': True,
-        'public': True,
-        'hide_untranslated': False,
-    }
-}
-
-
 ################################################################################
 # django packages
 ################################################################################
@@ -335,16 +303,11 @@ CMS_LANGUAGES = {
 GTM_CONTAINER_ID = env.get('GTM_CONTAINER_ID', 'GTM-1234')
 
 
-WEBPACK_DEV_BUNDLE = env.get('WEBPACK_DEV_BUNDLE')
-WEBPACK_DEV_BUNDLE_BASE_URL = env.get(
-    'WEBPACK_DEV_BUNDLE_BASE_URL',
-    default='http://localhost:8090/assets/',
-)
+WEBPACK_DEV_URL = env.get('WEBPACK_DEV_URL', default='http://localhost:8090/assets/')
 
 
 SETTINGS_EXPORT = [
-    'WEBPACK_DEV_BUNDLE_BASE_URL',
-    'WEBPACK_DEV_BUNDLE',
+    'WEBPACK_DEV_URL',
     'DJANGO_ENV',
     'DJANGO_ENV_ENUM',
     'BUSINESS_NAME',
@@ -467,7 +430,38 @@ ADMIN_REORDER = [
 
 
 ################################################################################
-# django-cms plugins
+# django-cms
+################################################################################
+
+
+CMS_TEMPLATES = [
+    ('default.html', 'default template'),
+]
+
+SITE_ID = 1
+
+CMS_LANGUAGES = {
+    SITE_ID: [
+        {
+            'code': 'en',
+            'name': 'English',
+        },
+        {
+            'code': 'de',
+            'name': 'German',
+        },
+    ],
+    'default': {
+        'fallbacks': ['en', 'de'],
+        'redirect_on_fallback': True,
+        'public': True,
+        'hide_untranslated': False,
+    }
+}
+
+
+################################################################################
+# django-cms packages
 ################################################################################
 
 
@@ -496,12 +490,10 @@ DJANGOCMS_GOOGLEMAP_API_KEY = env.get('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
 CKEDITOR_SETTINGS = {
     'language': '{{ language }}',
     'toolbar': 'CUSTOM',
-    # http://ckeditor.com/apps/ckeditor/4.4.0/samples/plugins/toolbar/toolbar.html
     'toolbar_CUSTOM': [
         ['Undo', 'Redo'],
         ['cmsplugins', '-', 'ShowBlocks'],
         ['Format', 'Styles', 'FontSize'],
-        # ['Format', 'FontSize'],
         ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord', 'RemoveFormat'],
         ['Maximize', ''],
         '/',
@@ -513,20 +505,15 @@ CKEDITOR_SETTINGS = {
         ['Source']
     ],
     'toolbarCanCollapse': False,
-    # All styling-related config is outsourced to static/djangocms_text_ckeditor/js/ckeditor.wysiwyg.js
-    # because of https://github.com/aldryn/aldryn-bootstrap3/issues/154
-    # https://github.com/divio/django-cms-explorer/blob/908a88afa4e1d1176e267e77eb5c61e31ef0f9e5/static/js/addons/ckeditor.wysiwyg.js#L73
-    'stylesSet': 'default:{}/js/ckeditor.wysiwyg.js'.format(STATIC_URL),
-    # NOTE: cms plugins don't work in 'HtmlField', at all!
-    # see https://github.com/divio/djangocms-text-ckeditor/issues/317
-    # This is needed so that in the TextPlugin, the real styles are showing, for example for normal text and headings
-
+    'stylesSet': [
+        {'name': 'float left2', 'element': 'span', 'attributes': {'class': 'float-left'}},
+    ],
     'contentsCss': [
-        '{}/dist/vendor.css'.format(STATIC_URL) if WEBPACK_DEV_BUNDLE 
-            else '{}/vendor.css'.format(WEBPACK_DEV_BUNDLE_BASE_URL),
-        '{}/dist/app.css'.format(STATIC_URL) if WEBPACK_DEV_BUNDLE
-            else '{}/app.css'.format(WEBPACK_DEV_BUNDLE_BASE_URL),
-        # default styles, this is important to keep some basic styling in the ckeditor modal, such as modal paddings
-        '{}/djangocms_text_ckeditor/ckeditor/contents.css'.format(STATIC_URL),
-    ]
+        f'{WEBPACK_DEV_URL}global.css' if env.is_dev() else f'{STATIC_URL}/dist/global.css',
+        f'{WEBPACK_DEV_URL}vendor.css' if env.is_dev() else f'{STATIC_URL}/dist/vendor.css',
+        f'{STATIC_URL}/djangocms_text_ckeditor/ckeditor/contents.css', # default required styles
+    ],
+    'config': {
+        'allowedContent': True,
+    }
 }
