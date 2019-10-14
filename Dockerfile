@@ -1,7 +1,7 @@
-FROM python:3.7-stretch
+FROM python:3.7-buster
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /code
-COPY requirements.txt /code/
-RUN pip install -r /code/requirements.txt
-COPY .. /code/
+COPY . /code/
 WORKDIR /code/
+RUN pip install -r /code/requirements.txt
+RUN python manage.py migrate
