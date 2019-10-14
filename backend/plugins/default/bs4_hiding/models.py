@@ -1,17 +1,7 @@
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
-
 from cms.models.pluginmodel import CMSPlugin
-from cms.models.fields import PageField
-
-# django filer imports
-from filer.fields.image import FilerImageField
-
-from djangocms_text_ckeditor.fields import HTMLField
-from cms.utils.compat.dj import python_2_unicode_compatible
+from django.db import models
 
 
-@python_2_unicode_compatible
 class Bootstrap4HidePluginModel(CMSPlugin):
 
     hide_on_very_small_devices = models.BooleanField(
