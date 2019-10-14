@@ -242,6 +242,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # noinspection PyUnresolvedReferences
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/'),
     os.path.join(BASE_DIR, 'frontend/global'),
 ]
 
