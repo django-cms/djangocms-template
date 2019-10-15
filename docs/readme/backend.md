@@ -5,3 +5,5 @@ The settings.py file is split into 4 categories, keep them in mind:
 - django packages
 - django-cms core
 - django-cms packages
+
+The `backend/templates` directory is only for global templates, for anything else use app specific templates per django guidelines.
