@@ -11,3 +11,4 @@ static-collected/
 .secret_key
 frontend/dist
 .venv
+node_modules/
