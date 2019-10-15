@@ -23,7 +23,9 @@ Testing:
 #### Docker Setup
 - `docker-compose build`
 - `docker-compose up`
-- `yarn start` - outside of docker
+- install yarn and node 10
+- `yarn install --pure-lockfile`
+- `yarn start`
 
 
 Development Guidelines
