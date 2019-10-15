@@ -3,7 +3,6 @@
 .env
 .aldryn
 .idea/
-webpack-stats.json
 media/
 static-collected/
 /*.sqlite3
