@@ -1,0 +1,1 @@
+require('./hero-video/index');

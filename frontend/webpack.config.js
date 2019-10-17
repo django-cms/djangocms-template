@@ -13,7 +13,10 @@ const config = {
     entry: {
         global: './frontend/global/index.js',
         vendor: './frontend/vendor/index.js',
+
         homepage: './frontend/pages/homepage/index.js',
+
+        blocks: './frontend/blocks/hero-video/index.js',
     },
     output: {
         filename: '[name].bundle.js',
