@@ -129,55 +129,9 @@ MIDDLEWARE.extend([
     'djangocms_redirect.middleware.RedirectMiddleware',
 ])
 
-_TEMPLATE_CONTEXT_PROCESSORS =  [
-    'django.contrib.auth.context_processors.auth',
-    'django.template.context_processors.i18n',
-    'django.template.context_processors.debug',
-    'django.template.context_processors.request',
-    'django.template.context_processors.media',
-    'django.template.context_processors.csrf',
-    'django.template.context_processors.tz',
-    'django.template.context_processors.static',
-
-    'django.contrib.messages.context_processors.messages',
-    
-    # django-cms requirements
-    'cms.context_processors.cms_settings',
-    'sekizai.context_processors.sekizai',
-    
-    # django-cms optional
-    'cms.context_processors.cms_settings',
-    
-    # aldryn_forms requirements
-    'absolute.context_processors.absolute',
-    
+TEMPLATE_CONTEXT_PROCESSORS.extend([
     'django_settings_export.settings_export',
-]
-TEMPLATES = [
-    {
-        'BACKEND': 'django_jinja.backend.Jinja2',
-        'DIRS': [
-            'backend/templates',
-        ],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'match_extension': '.jinja2',
-            'context_processors': _TEMPLATE_CONTEXT_PROCESSORS,
-        },
-        'NAME': 'jinja2',
-    },
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'APP_DIRS': True,
-        'DIRS': [
-            'backend/templates',
-        ],
-        'OPTIONS': {
-            'context_processors': _TEMPLATE_CONTEXT_PROCESSORS,
-        },
-    },
-]
-
+])
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -193,7 +147,6 @@ LANGUAGES = [
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/'),
-    os.path.join(BASE_DIR, 'frontend/divio'),
 ]
 
 
