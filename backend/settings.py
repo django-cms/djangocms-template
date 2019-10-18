@@ -6,8 +6,9 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
 from django.contrib.staticfiles import storage
 from env_settings import env
-# noinspection PyPackageRequirements
-from dotenv import load_dotenv, find_dotenv
+
+
+DJANGO_ENV = env.get('DJANGO_ENV', 'dev')
 
 
 ################################################################################
@@ -15,85 +16,25 @@ from dotenv import load_dotenv, find_dotenv
 ################################################################################
 
 
-load_dotenv(find_dotenv())
-
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-SECRET_KEY = env.get_or_create_secret_key(base_dir=BASE_DIR)
-
-DJANGO_ENV_ENUM = env.DjangoEnv
-DJANGO_ENV: env.DjangoEnv = env.django_env()
-
-DEBUG: bool = env.is_debug()
-
-ALLOWED_HOSTS = env.allowed_hosts()
-
-
-INSTALLED_APPS = [
-    'backend.auth', # for USERNAME_FIELD = 'email', before `cms` since it has a User model
-
-    'djangocms_admin_style', # before `django.contrib.admin`
-    
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-
-
+MIDDLEWARE.extend([
     # django packages
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'cuser', # for USERNAME_FIELD = 'email' in backend.auth
-    'parler',
     'gtm',
     'rest_framework',
     'import_export',
     'adminsortable2',
-    'test_user',
-    'filer',
-        'easy_thumbnails',
-        'mptt',
-    'django_jinja',
-    'lockdown',
     'admin_reorder',
     'django_extensions',
 
-    # django cms base
-    'cms',
-        'menus',
-        'treebeard',
-        'sekizai',
-        'django.contrib.sites',
-
 
     # django cms plugins
-    'djangocms_text_ckeditor',
-    'djangocms_link',
     'djangocms_icon',
-    'djangocms_file',
-    'djangocms_picture',
-    'djangocms_video',
-    'djangocms_googlemap',
-    'djangocms_snippet',
-    'djangocms_style',
-    'djangocms_history',
     'djangocms_modules',
 
+
     # django cms packages
-    'aldryn_apphooks_config',
-    'aldryn_translation_tools',  # not sure what it does, required by many aldryn packages
     'aldryn_forms_bs4_templates',
-    'aldryn_forms',
-        'captcha', # required by aldryn_forms
-        'emailit', # required by aldryn_forms
-        'absolute', # required by aldryn_forms, adds absolute site URL vars to context
-    'aldryn_forms.contrib.email_notifications',
     'djangocms_redirect',
-    
+
     'djangocms_bootstrap4',
     'djangocms_bootstrap4.contrib.bootstrap4_alerts',
     'djangocms_bootstrap4.contrib.bootstrap4_badge',
@@ -110,6 +51,7 @@ INSTALLED_APPS = [
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
+
     'backend.plugins.default.bs4_float',
     'backend.plugins.default.bs4_hiding',
     'backend.plugins.default.bs4_inline_alignment',
@@ -121,37 +63,15 @@ INSTALLED_APPS = [
     'backend.plugins.default.section_element',
     
     'backend.error_handler',
-    'backend.site',
-]
+])
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'lockdown.middleware.LockdownMiddleware',
+MIDDLEWARE.extend([
+    # django packages
     'admin_reorder.middleware.ModelAdminReorder',
-    
-    # django cms requirements
-    'cms.middleware.user.CurrentUserMiddleware',
-    'cms.middleware.page.CurrentPageMiddleware',
-    'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware',
-    
+
     # django cms optional
-    'cms.middleware.utils.ApphookReloadMiddleware',
     'djangocms_redirect.middleware.RedirectMiddleware',
-]
-
-ROOT_URLCONF = 'backend.urls'
-HTTP_PROTOCOL = 'http' if env.is_dev() else 'https'
-WSGI_APPLICATION = 'backend.wsgi.application'
-
+])
 
 _TEMPLATE_CONTEXT_PROCESSORS =  [
     'django.contrib.auth.context_processors.auth',
@@ -207,8 +127,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
 ]
 
-AUTH_USER_MODEL = 'backend_auth.User'
-
 
 LANGUAGE_CODE = 'en'
 LANGUAGES = [
@@ -216,88 +134,11 @@ LANGUAGES = [
     ('de', 'German'),
 ]
 
-TIME_ZONE = 'UTC'
-USE_I18N = True
-USE_L10N = True
-USE_TZ = True
 
-DATE_INPUT_FORMATS = [
-    '%d.%m.%Y', '%d.%m.%y',  # European
-    '%Y-%m-%d',  # ISO (for native mobile datepickers)
-    '%m/%d/%Y', '%m/%d/%y',  # US
-    '%d %b %Y', '%d %B %Y',  # some long formats
-]
-
-TIME_INPUT_FORMATS = [
-    '%H:%M',  # '14:30'
-    '%H:%M:%S',  # '14:30:59'
-    '%H:%M:%S.%f',  # '14:30:59.000200'
-]
-
-
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-# noinspection PyUnresolvedReferences
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# noinspection PyUnresolvedReferences
-STATIC_ROOT = os.path.join(BASE_DIR, 'static-collected')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/'),
+    os.path.join(BASE_DIR, 'frontend/divio'),
 ]
-
-
-class PatchedManifestStaticFilesStorage(storage.ManifestStaticFilesStorage):
-    """
-    Override the replacement patterns to match URL-encoded quotations.
-    We use inlined SVG data url()s that contain url_encoded quotes which dont work
-    Since these css url() assets are encoded already by webpack we can completely ignore the content of css files.
-    Solution from: https://code.djangoproject.com/ticket/21080#comment:12
-    
-    remove css from the patterns list so no css file introspection is done
-    """
-    patterns = ()
-
-
-STATICFILES_STORAGE = 'backend.settings.PatchedManifestStaticFilesStorage'
-
-
-EMAIL_BACKEND = env.get('EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
-EMAIL_HOST = env.get('EMAIL_HOST', '')
-EMAIL_HOST_PASSWORD = env.get('EMAIL_HOST_PASSWORD', '')
-EMAIL_HOST_USER = env.get('EMAIL_HOST_USER', '')
-EMAIL_PORT = env.get('EMAIL_PORT', '')
-EMAIL_USE_TLS = env.get('EMAIL_USE_TLS', False)
-
-
-BUSINESS_NAME = env.get('BUSINESS_NAME', 'backend')
-BASE_URL = env.get('BASE_URL', 'http://localhost:8000')
-BUSINESS_EMAIL = env.get('BUSINESS_EMAIL', 'tech@what.digital')
-BUSINESS_EMAIL_VANE = '%(name)s <%(address)s>' % {
-    'name': BUSINESS_NAME,
-    'address': BUSINESS_EMAIL,
-}
-DEFAULT_FROM_EMAIL = BUSINESS_EMAIL_VANE
-
-
-if env.get('DB_ENGINE') == 'django.db.backends.postgresql':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': env.get('DB_NAME', 'db'),
-            'USER': env.get('DB_USER', 'db'),
-            'PASSWORD': env.get('DB_PASSWORD', 'db'),
-            'HOST': env.get('DB_HOST', 'localhost'),
-            'PORT': env.get('DB_PORT', '5432'),
-        },
-    }
-else:
-    # noinspection PyUnresolvedReferences
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        },
-    }
 
 
 ################################################################################
@@ -334,67 +175,8 @@ if SENTRY_IS_ENABLED:
                 event_level=None,  # Send no events from log messages
             )
         ],
-        environment=DJANGO_ENV.value,
+        environment=env.get('STAGE', 'local'),
     )
-
-# noinspection PyUnresolvedReferences
-file_log = env.get('LOGFILE', os.path.join(BASE_DIR, 'default.log'))
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'root': {
-        'level': 'DEBUG',
-        'handlers': ['console', 'file'],
-    },
-    'handlers': {
-        'console': {
-            'level': 'ERROR',
-            'class': 'logging.StreamHandler',
-        },
-        'file': {
-            'level': 'DEBUG',
-            # https://docs.python.org/3/library/logging.handlers.html
-            # because of https://justinmontgomery.com/rotating-logs-with-multiple-workers-in-django
-            'class': 'logging.handlers.WatchedFileHandler',
-            'filename': file_log,
-        },
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}
-
-
-TEST_USER_USERNAME_AND_PASS = 'test@what.digital'
-
-
-LOCKDOWN_ENABLED = env.get_bool('LOCKDOWN_ENABLED', False)
-LOCKDOWN_FORM = 'lockdown.forms.AuthForm'
-LOCKDOWN_REMOTE_ADDR_EXCEPTIONS = [
-    '127.0.0.1',
-    '::1',
-]
-
-
-# allauth
-AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = HTTP_PROTOCOL
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
-LOGIN_REDIRECT_URL = '/'
 
 
 ADMIN_REORDER = [
@@ -468,15 +250,6 @@ CMS_LANGUAGES = {
 ################################################################################
 ## === django-cms packages === ##
 ################################################################################
-
-
-THUMBNAIL_HIGH_RESOLUTION = True
-THUMBNAIL_PROCESSORS = [
-    'easy_thumbnails.processors.colorspace',
-    'easy_thumbnails.processors.autocrop',
-    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-    'easy_thumbnails.processors.filters',
-]
 
 
 DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24

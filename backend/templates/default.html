@@ -13,7 +13,7 @@
             };
         </script>
 
-        {% if settings.DJANGO_ENV.value == 'dev' %}
+        {% if settings.DJANGO_ENV.value == 'local' %}
 
             <script defer src="{{ settings.WEBPACK_DEV_URL }}/global.bundle.js" data-is-reload-on-page-edit></script>
             <script defer src="{{ settings.WEBPACK_DEV_URL }}/vendor.bundle.js" data-is-reload-on-page-edit></script>

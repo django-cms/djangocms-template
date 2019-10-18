@@ -1,26 +1,13 @@
-django-cms >= 3.7, < 3.8
-django < 2.2  # some of packages do not support yet 2.2 version
-
 # django-cms plugins
-djangocms-link
-djangocms-googlemap
-djangocms-snippet
-djangocms-video
-djangocms-file
-djangocms-picture
 djangocms-icon
 djangocms-bootstrap4
 djangocms-googlemap # google maps with ability to add markers through cms admin panel
 djangocms-modules
-djangocms-style # html containers with css
-aldryn-forms
 djangocms-aldryn-forms-bootstrap4-templates
 
 # django-cms packages
-djangocms-history
 aldryn-translation-tools
 aldryn-apphooks-config
-djangocms-text-ckeditor
 djangocms-redirect
 
 # django packages
@@ -30,17 +17,12 @@ django-enumfields
 django-admin-sortable2 # drag and drop sorting for admin
 django-filter # generic view filter helpers for front and admin panel, as `?field__gte=5`
 django-google-tag-manager
-django-filer
 django-env-settings >= 0.13.0 # settings utils ansible deploy, see gitlab.com/what-digital/django-env-settings
-django-testuser >= 0.6.0 # adds a test@what.digital user by default on stage and local, see gitlab.com/what-digital/django-testuser
 django-import-export # csv/xsl/html/etc import/export for admin
 django-absolute # adds absolute site URL vars to context
 djangorestframework
-django-allauth # user forms, social auth, allows to authenticate with email
-django-username-email # an addition to allauth
 Jinja2 # jinja template lang
 django-jinja
-django-lockdown # allows to restrict access to the stage server
 django-modeladmin-reorder # allows to reorder and regroup admin panel apps
 django-extensions # many django things that we don't really need, mainly for shell-plus
     ipython # for shell-plus
