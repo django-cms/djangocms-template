@@ -1,5 +1,6 @@
 *.pyc
-# db might be large
-*.sqlite3
-# db backups
-*.sqlite3*
+*.pyo
+/.env
+/data
+/static_collected
+/node_modules
