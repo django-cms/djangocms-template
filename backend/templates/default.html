@@ -9,11 +9,11 @@
     
         <script>
             window.DJANGO = {
-                env: `{{ settings.DJANGO_ENV.value }}`,
+                env: `{{ settings.DIVIO_ENV.value }}`,
             };
         </script>
 
-        {% if settings.DJANGO_ENV.value == 'local' %}
+        {% if settings.DIVIO_ENV.value == 'local' %}
 
             <script defer src="{{ settings.WEBPACK_DEV_URL }}/global.bundle.js" data-is-reload-on-page-edit></script>
             <script defer src="{{ settings.WEBPACK_DEV_URL }}/vendor.bundle.js" data-is-reload-on-page-edit></script>
@@ -43,7 +43,8 @@
     </head>
     
     <body>
-        <h1>hello</h1>
+        <h1>hello from what-digital template</h1>
+        
         {% cms_toolbar %}
         {% placeholder "content" %}
         {% render_block "js" %}

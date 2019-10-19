@@ -17,13 +17,6 @@ Testing:
 - `./manage.py collectstatic`
 - `./manage.py test --keepdb`
 
-#### Docker Setup
-- `docker-compose build`
-- `docker-compose up`
-- install yarn and node 10
-- `yarn install --pure-lockfile`
-- `yarn start`
-
 
 Development Guidelines
 -------------------------------------------------------------------------------
