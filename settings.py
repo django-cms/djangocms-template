@@ -137,6 +137,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.default.section_element',
     
     'backend.error_handler',
+    'backend.site_default_name_fix',
 ])
 
 
