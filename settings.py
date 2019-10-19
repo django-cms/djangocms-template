@@ -27,7 +27,6 @@ INSTALLED_ADDONS = [
     'djangocms-picture',
     'djangocms-snippet',
     'djangocms-style',
-    'djangocms-text-ckeditor',
     'djangocms-video',
     'django-filer',
     # </INSTALLED_ADDONS>
@@ -103,6 +102,7 @@ INSTALLED_APPS.extend([
     # django cms packages
 
     'djangocms_icon',
+    'djangocms_text_ckeditor',
     'djangocms_modules',
     'aldryn_forms_bs4_templates',
     'djangocms_redirect',
