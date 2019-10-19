@@ -9,7 +9,7 @@ Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 - `docker-compose build`
 - `pip install divio-cli`
 - `divio project pull db test`
-- install yarn and node 10
+- install yarn and node 10 outside of docker
 - `yarn install --pure-lockfile`
 - `yarn start`
 
