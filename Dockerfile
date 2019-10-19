@@ -8,6 +8,9 @@
 FROM divio/base:4.15-py3.6-slim-stretch
 # </DOCKER_FROM>
 
+# <BOWER>
+# </BOWER>
+
 # <PYTHON>
 ENV PIP_INDEX_URL=${PIP_INDEX_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/+simple/} \
     WHEELSPROXY_URL=${WHEELSPROXY_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/}
@@ -24,7 +27,8 @@ RUN pip-reqs compile && \
 COPY . /app
 # </SOURCE>
 
-# <FRONTEND>
+
+# FRONTEND
 RUN apt update --quiet
 # for yarn
 RUN apt install --yes gnupg2 apt-transport-https
@@ -36,7 +40,6 @@ RUN apt install --yes yarn nodejs
 RUN yarn install --pure-lockfile
 RUN yarn run build
 RUN DJANGO_MODE=build python manage.py collectstatic --noinput
-# </FRONTEND>
 
 # fish
 RUN apt install --yes git fish
