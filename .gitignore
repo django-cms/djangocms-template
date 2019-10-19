@@ -1,8 +1,9 @@
 *.py[cod]
 *$py.class
+__pycache__/
 .DS_Store
 .idea/
-__pycache__/
+.venv
 
 
 media/
@@ -13,3 +14,9 @@ frontend/dist
 node_modules/
 .sass-cache
 *.css.map
+
+
+.env
+.secret_key
+db.sqlite3
+default.log
