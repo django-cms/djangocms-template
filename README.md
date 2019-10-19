@@ -1,16 +1,12 @@
-Admin Panel
--------------------------------------------------------------------------------
-The login/password from the the stage and local setups (created by default):
-- test@what.digital
-- test@what.digital
-
-
 Development Setup
 -------------------------------------------------------------------------------
-Built on Python 3.7, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
+Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 
-- `pip install -r requirements.txt`
-- `./manage.py migrate`
+- add your project ID and slug to `.aldryn`
+    - the ID can be found in the dashboard url - `https://control.divio.com/control/{org_id}/edit/{project_id}/`
+- `docker-compose build`
+- `pip install divio-cli`
+- `divio project pull db test`
 - `./manage.py runserver`
 - install yarn and node 10
 - `yarn install --pure-lockfile`

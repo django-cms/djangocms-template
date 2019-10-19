@@ -56,15 +56,30 @@ aldryn_addons.settings.load(locals())
 
 import os
 import logging
+from enum import Enum
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
-from django.contrib.staticfiles import storage
 from env_settings import env
 
 
-DJANGO_ENV = env.get('DJANGO_ENV', 'dev')
+class DivioEnv(Enum):
+    LOCAL = 'local'
+    TEST = 'test'
+    LIVE = 'live'
+
+
+DIVIO_ENV_ENUM = DivioEnv
+DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
+
+
+# fix idea errors for divio imported settings
+INSTALLED_APPS = locals()['INSTALLED_APPS']
+MIDDLEWARE = locals()['MIDDLEWARE']
+BASE_DIR = locals()['BASE_DIR']
+STATIC_URL = locals()['STATIC_URL']
+TEMPLATES = locals()['TEMPLATES']
 
 
 ################################################################################
@@ -72,8 +87,11 @@ DJANGO_ENV = env.get('DJANGO_ENV', 'dev')
 ################################################################################
 
 
-MIDDLEWARE.extend([
+# noinspection PyUnresolvedReferences
+INSTALLED_APPS.extend([
+
     # django packages
+
     'gtm',
     'rest_framework',
     'import_export',
@@ -82,12 +100,10 @@ MIDDLEWARE.extend([
     'django_extensions',
 
 
-    # django cms plugins
+    # django cms packages
+
     'djangocms_icon',
     'djangocms_modules',
-
-
-    # django cms packages
     'aldryn_forms_bs4_templates',
     'djangocms_redirect',
 
@@ -108,6 +124,8 @@ MIDDLEWARE.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
 
+    # project
+
     'backend.plugins.default.bs4_float',
     'backend.plugins.default.bs4_hiding',
     'backend.plugins.default.bs4_inline_alignment',
@@ -121,6 +139,7 @@ MIDDLEWARE.extend([
     'backend.error_handler',
 ])
 
+
 MIDDLEWARE.extend([
     # django packages
     'admin_reorder.middleware.ModelAdminReorder',
@@ -129,25 +148,20 @@ MIDDLEWARE.extend([
     'djangocms_redirect.middleware.RedirectMiddleware',
 ])
 
-TEMPLATE_CONTEXT_PROCESSORS.extend([
-    'django_settings_export.settings_export',
-])
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
 ]
 
 
-LANGUAGE_CODE = 'en'
-LANGUAGES = [
-    ('en', 'English'),
-    ('de', 'German'),
-]
-
-
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/'),
 ]
+
+default_template_engine: dict = TEMPLATES[0]
+default_template_engine['DIRS'].extend([
+    os.path.join(BASE_DIR, 'backend/templates/'),
+])
 
 
 ################################################################################
@@ -163,8 +177,8 @@ WEBPACK_DEV_URL = env.get('WEBPACK_DEV_URL', default='http://localhost:8090/asse
 
 SETTINGS_EXPORT = [
     'WEBPACK_DEV_URL',
-    'DJANGO_ENV',
-    'DJANGO_ENV_ENUM',
+    'DIVIO_ENV',
+    'DIVIO_ENV_ENUM',
     'BUSINESS_NAME',
     'SENTRY_IS_ENABLED',
     'SENTRY_DSN',
@@ -184,7 +198,7 @@ if SENTRY_IS_ENABLED:
                 event_level=None,  # Send no events from log messages
             )
         ],
-        environment=env.get('STAGE', 'local'),
+        environment=DIVIO_ENV.value,
     )
 
 
@@ -233,27 +247,6 @@ ADMIN_REORDER = [
 CMS_TEMPLATES = [
     ('default.html', 'default template'),
 ]
-
-SITE_ID = 1
-
-CMS_LANGUAGES = {
-    SITE_ID: [
-        {
-            'code': 'en',
-            'name': 'English',
-        },
-        {
-            'code': 'de',
-            'name': 'German',
-        },
-    ],
-    'default': {
-        'fallbacks': ['en', 'de'],
-        'redirect_on_fallback': True,
-        'public': True,
-        'hide_untranslated': False,
-    }
-}
 
 
 ################################################################################
