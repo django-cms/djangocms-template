@@ -212,6 +212,9 @@ ADMIN_REORDER = [
         'models': [
             'cms.Page',
             'djangocms_redirect.Redirect',
+            'cms.GlobalPagePermission',
+            'cms.PageUserGroup',
+            'cms.PageUser',
         ],
     },
     {
@@ -235,8 +238,24 @@ ADMIN_REORDER = [
         'label': 'Users',
         'app': 'auth',
         'models': [
-            'backend_auth.User',
+            {'model': 'aldryn_sso.AldrynCloudUser', 'label': 'Divio admin users'},
+            'auth.User',
             'auth.Group',
+        ],
+    },
+    {
+        'label': 'robots.txt',
+        'app': 'robots',
+        'models': [
+            {'model': 'robots.Rule', 'label': 'Access rules'},
+            'robots.Url',
+        ],
+    },
+    {
+        'label': 'Sites',
+        'app': 'sites',
+        'models': [
+            'sites.Site',
         ],
     },
 ]
