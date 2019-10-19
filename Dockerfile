@@ -37,3 +37,8 @@ RUN yarn install --pure-lockfile
 RUN yarn run build
 RUN DJANGO_MODE=build python manage.py collectstatic --noinput
 # </FRONTEND>
+
+# fish
+RUN apt install --yes git fish
+RUN curl -L https://get.oh-my.fish | fish
+RUN usermod -s /usr/bin/fish root
