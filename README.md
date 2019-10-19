@@ -14,7 +14,7 @@ Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 - `yarn start`
 
 Testing:
-- `docker-compose exec web bash -c 'python manage.py test --keepdb`
+- `docker-compose exec web bash -c 'python manage.py test --keepdb'`
 
 Shell:
 - `docker-compose exec web fish`
