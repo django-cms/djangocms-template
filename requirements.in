@@ -4,6 +4,7 @@ djangocms-text-ckeditor
 djangocms-bootstrap4
 djangocms-googlemap # google maps with ability to add markers through cms admin panel
 djangocms-modules
+aldryn-forms
 djangocms-aldryn-forms-bootstrap4-templates
 
 # django-cms packages
@@ -13,7 +14,6 @@ djangocms-redirect
 
 # django packages
 django-settings-export # settings export to templates
-django-parler # model translations
 django-enumfields
 django-admin-sortable2 # drag and drop sorting for admin
 django-filter # generic view filter helpers for front and admin panel, as `?field__gte=5`
@@ -22,14 +22,10 @@ django-env-settings >= 0.13.0 # settings utils ansible deploy, see gitlab.com/wh
 django-import-export # csv/xsl/html/etc import/export for admin
 django-absolute # adds absolute site URL vars to context
 djangorestframework
-Jinja2 # jinja template lang
-django-jinja
 django-modeladmin-reorder # allows to reorder and regroup admin panel apps
 django-extensions # many django things that we don't really need, mainly for shell-plus
     ipython # for shell-plus
 
 # python utils
 pytz # a db of timezones
-psycopg2-binary
 sentry-sdk
-python-dotenv # imprints `.env` file into the OS envs list
