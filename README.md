@@ -9,7 +9,6 @@ Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 - `docker-compose build`
 - `pip install divio-cli`
 - `divio project pull db test`
-- `./manage.py runserver`
 - install yarn and node 10
 - `yarn install --pure-lockfile`
 - `yarn start`
@@ -17,6 +16,9 @@ Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 Testing:
 - `./manage.py collectstatic`
 - `./manage.py test --keepdb`
+
+Shell:
+- `docker-compose exec web fish`
 
 
 Development Guidelines

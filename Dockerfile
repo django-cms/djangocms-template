@@ -42,6 +42,8 @@ RUN yarn run build
 RUN DJANGO_MODE=build python manage.py collectstatic --noinput
 
 # fish
+RUN apt -qq update
 RUN apt install --yes git fish
-RUN curl -L https://get.oh-my.fish | fish
 RUN usermod -s /usr/bin/fish root
+RUN curl -L https://get.oh-my.fish > fish-install
+RUN fish fish-install --noninteractive --yes 
