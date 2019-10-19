@@ -2,6 +2,7 @@ Development Setup
 -------------------------------------------------------------------------------
 Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 
+- remove djangocms-text-ckeditor from installed addons through the divio dashboard
 - add your project ID and slug to `.aldryn`
     - the ID can be found in the dashboard url - `https://control.divio.com/control/{org_id}/edit/{project_id}/`
 - `docker-compose build`

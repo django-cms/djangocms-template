@@ -162,6 +162,9 @@ default_template_engine: dict = TEMPLATES[0]
 default_template_engine['DIRS'].extend([
     os.path.join(BASE_DIR, 'backend/templates/'),
 ])
+default_template_engine['OPTIONS']['context_processors'].extend([
+    'django_settings_export.settings_export',
+])
 
 
 ################################################################################
@@ -179,7 +182,6 @@ SETTINGS_EXPORT = [
     'WEBPACK_DEV_URL',
     'DIVIO_ENV',
     'DIVIO_ENV_ENUM',
-    'BUSINESS_NAME',
     'SENTRY_IS_ENABLED',
     'SENTRY_DSN',
 ]
