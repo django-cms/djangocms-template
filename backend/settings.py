@@ -121,7 +121,7 @@ INSTALLED_APPS = [
     'backend.plugins.default.section_element',
     
     'backend.error_handler',
-    'backend.site',
+    'backend.site_default_name_fix',
 ]
 
 MIDDLEWARE = [
