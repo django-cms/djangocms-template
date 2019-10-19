@@ -16,6 +16,9 @@ Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 Testing:
 - `docker-compose exec web fish --command 'python manage.py test --keepdb'`
 
+Requirements update:
+- `docker-compose exec web fish --command 'pip-reqs compile'`
+
 Shell:
 - `docker-compose exec web fish`
 
