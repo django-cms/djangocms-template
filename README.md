@@ -14,13 +14,27 @@ Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 - `yarn start`
 
 Testing:
-- `docker-compose exec web fish --command 'python manage.py test --keepdb'`
+- `docker-compose run --rm web fish --command 'python manage.py test --keepdb'`
 
 Requirements update:
-- `docker-compose exec web fish --command 'pip-reqs compile'`
+- `docker-compose run --rm web fish --command 'pip-reqs compile'`
 
 Shell:
-- `docker-compose exec web fish`
+- `docker-compose run --rm web fish`
+- `docker-compose exec web fish` - a persistent container
+
+Update requirements.txt:
+```bash
+docker-compose run --rm web bash -c '
+
+export PIP_INDEX_URL=${PIP_INDEX_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/+simple/}
+export WHEELSPROXY_URL=${WHEELSPROXY_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/}
+
+pip-reqs compile
+pip-reqs resolve
+pip install --no-index --no-deps --requirement requirements.urls
+'
+```
 
 
 Development Guidelines
