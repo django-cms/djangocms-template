@@ -1,5 +1,5 @@
 ### Frontend Guidelines
-- when you need to add a script for a new page add a new `entry` in `webpack.config.js`
+- when you need to add a script for a new page add a new `entry` in `webpack.config.js` and a page subdir
 - for global scripts and styles use the `global` entry, and add the respective HTML code in your template
 - if you need to add a global variable to JS, add it to `backend/templates/default.html#DJANGO` const and extend `frontend/global/ts/django.ts#DJANGO`
 - if you need to add a static file, eg on url `https://localhost/static/img/icon.png` - add it to `frontend/`, everything in there will be accessible on url `/static/`
