@@ -4,7 +4,7 @@ Divio Integration Setup
 - add your `INSTALLED_ADDONS` to `requirements.in`
 - add your project ID and slug to `.aldryn`
     - the ID can be found in the dashboard url - `https://control.divio.com/control/{org_id}/edit/{project_id}/`
-- compile the requirements - see instructions below
+- compile the requirements - see the instructions below
 - remove this section from README.md
 
 
