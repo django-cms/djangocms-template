@@ -1,11 +1,17 @@
-Development Setup
+Divio Integration Setup
 -------------------------------------------------------------------------------
-Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
-
 - remove djangocms-text-ckeditor from installed addons through the divio dashboard
 - add your `INSTALLED_ADDONS` to `requirements.in`
 - add your project ID and slug to `.aldryn`
     - the ID can be found in the dashboard url - `https://control.divio.com/control/{org_id}/edit/{project_id}/`
+- compile the requirements - see instructions below
+- remove this section from README.md
+
+
+Development Setup
+-------------------------------------------------------------------------------
+Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
+
 - `docker-compose build`
 - `pip install divio-cli`
 - `divio project pull db test`
@@ -14,16 +20,9 @@ Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 - `yarn start`
 
 Testing:
-- `docker-compose run --rm web fish --command 'python manage.py test --keepdb'`
+- `docker-compose exec web fish --command 'python manage.py test --keepdb'`
 
 Requirements update:
-- `docker-compose run --rm web fish --command 'pip-reqs compile'`
-
-Shell:
-- `docker-compose run --rm web fish`
-- `docker-compose exec web fish` - a persistent container
-
-Update requirements.txt:
 ```bash
 docker-compose run --rm web bash -c '
 
@@ -35,6 +34,9 @@ pip-reqs resolve
 pip install --no-index --no-deps --requirement requirements.urls
 '
 ```
+
+Shell:
+- `docker-compose exec web fish` - a persistent container with the correct ENVs
 
 
 Development Guidelines
