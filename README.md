@@ -1,6 +1,6 @@
 Admin Panel
 -------------------------------------------------------------------------------
-The login/password from the the stage and local setups (created by default):
+The login/password from the [the stage]() and local setups (created by default):
 - test@what.digital
 - test@what.digital
 
@@ -23,10 +23,12 @@ Testing:
 #### Docker Setup
 - `docker-compose build`
 - `docker-compose up`
-- install yarn and node 10
+- install yarn and node 10 outside of docker
 - `yarn install --pure-lockfile`
 - `yarn start`
 
+Requirements update:
+- `docker-compose build`
 
 Development Guidelines
 -------------------------------------------------------------------------------
