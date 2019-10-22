@@ -84,12 +84,11 @@ const config = {
             },
             {
                 test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                use: ['file-loader'],
+                loader: 'file-loader',
             },
             {
                 test: /\.(ttf|eot)(\?[\s\S]+)?$/,
-                include: /fonts/,
-                use: ['file-loader'],
+                loader: 'file-loader',
             },
             {
                 test: /\.modernizrrc.js$/,
@@ -154,7 +153,7 @@ if (isServerMode) {
     config.mode = 'production';
     config.devtool = 'none';
     config.output.filename = '[name].js';
-    config.output.publicPath = '/frontend/dist/';
+    config.output.publicPath = '/static/dist/';
 }
 
 
