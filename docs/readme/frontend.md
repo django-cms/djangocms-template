@@ -4,6 +4,8 @@
 - if you need to add a global variable to JS, add it to `backend/templates/default.html#DJANGO` const and extend `frontend/global/ts/django.ts#DJANGO`
 - if you need to add a static file, eg on url `https://localhost/static/img/icon.png` - add it to `frontend/`, everything in there will be accessible on url `/static/`
 - if something doesn't work ask Victor, he wrote webpack.config.js
+- if you need to add a new font to css, use the global path as you normally would, eg `url('~pages/homepage/fonts/frutiger.woff')`
+- if you need to add images or other assets - add under the respective module, eg `global`, `vendor`, `pages/homepage`, etc
 
 ### Frontend Integration with DevTools
 - open devtools and add the `frontend` folder as a workspace <details><summary>image</summary> ![](/docs/readme/img/front-int-example.png)</details>
