@@ -1,4 +1,5 @@
 ### Frontend Guidelines
+- the project-specific scss styles can be in `global`, it's acceptable, but the js logic must not be
 - when you need to add a script for a new page/block add a new `entry` in `webpack.config.js` and a page/block sub module
 - for global scripts and styles use the `global` entry, and add the respective HTML code in your template
 - if you need to add a global variable to JS, add it to `backend/templates/default.html#DJANGO` const and extend `frontend/global/ts/django.ts#DJANGO`
