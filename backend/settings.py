@@ -431,6 +431,13 @@ ADMIN_REORDER = [
             'auth.Group',
         ],
     },
+    {
+        'label': 'Site settings',
+        'app': 'sites',
+        'models': [
+            'sites.Site',
+        ],
+    },
 ]
 
 
