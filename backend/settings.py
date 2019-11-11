@@ -122,6 +122,7 @@ INSTALLED_APPS = [
     
     'backend.error_handler',
     'backend.site_default_name_fix',
+    'backend.articles',
 ]
 
 MIDDLEWARE = [

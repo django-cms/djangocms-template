@@ -1,0 +1,19 @@
+{% load i18n cms_tags thumbnail %}
+
+<div class="c-teaser">
+    <div class="c-teaser__wrap">
+        <div class="c-teaser__top">
+            {{ object.created_at }} <a href="#" class="u-text-uppercased">{{ object.author.get_full_name }}</a>
+        </div>
+        <div class="c-teaser__bottom">
+            <h2 class="c-teaser__title">{% render_model object "title" %}</h2>
+            <div class="c-teaser__description">
+                {{ object.description|truncatewords:15 }}
+            </div>
+            <div class="c-teaser__link-wrap">
+                <a href="{{ object.get_absolute_url }}" class="c-teaser__link">{% trans 'Read more' %}</a>
+            </div>
+        </div>
+    </div>
+    <img class="c-teaser__img" src="{% thumbnail object.teaser_image "1920x1080" upscale=False crop subject_location=object.teaser_image.subject_location %}" alt="{{ article.title }}">
+</div>

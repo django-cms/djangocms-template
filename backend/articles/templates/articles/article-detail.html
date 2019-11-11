@@ -1,0 +1,42 @@
+{% extends "articles/base.html" %}
+{% load i18n cms_tags menu_tags apphooks_config_tags thumbnail staticfiles %}
+
+
+{% block article_content %}
+    <article class="c-article">
+      {% include 'includes/logo-menu.html' %}
+      <div class="c-page-top{% if object.is_show_darkening_filter_under_main_menu %} c-page-top--with-dark-layer{% endif %}">
+        <img class="c-page-top__img" src="{% thumbnail object.background_image "1920x1080" upscale=False crop subject_location=object.background_image.subject_location %}"/>
+      </div>
+
+        {# this sets a max-width on the white area #}
+        <div class="l-wrap">
+            <div class="c-article__content-wrap">
+                <p class="c-article__back-wrap">
+                    <a class="c-article__back" href="{% namespace_url 'article-list' %}">{% trans "Back to Overview" %}</a>
+                </p>
+                <div class="c-article__content">
+                    {# this sets a margin inside the white area for the content #}
+                    <div class="article-header">
+                        {# this simulates the djangocms plugin setup with row and column in article-body #}
+                        <h1 class="c-title c-title--medium c-title--font-weight-bold c-title--color-text-dark">{% render_model object "title" %}</h1>
+                        <div class="c-article__meta">
+                            <p class="c-article__date">{{ object.created_at }}</p>
+                            <p class="c-article__author">{{ object.author }}</p>
+                        </div>
+                        <p class="c-article__hero-text">{{ object.description }}</p>
+                    </div>
+
+                    <div class="c-article__body">
+                        {# here, editors will create rows, and columns with col-22 col-lg-20, its a standard module #}
+                        {% render_placeholder object.content %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </article>
+
+
+
+{% endblock article_content %}
