@@ -3,6 +3,9 @@ from aldryn_apphooks_config.models import AppHookConfig
 from cms.models.fields import PlaceholderField
 
 
+DEFAULT_NAMESPACE = 'articles'
+
+
 class ArticlesConfig(AppHookConfig):
     placeholder_article_detail_content = PlaceholderField(
         'article_content',

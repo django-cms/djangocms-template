@@ -2,7 +2,7 @@ from cms.models.pluginmodel import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from backend.articles.cms_appconfig import ArticlesConfig
+from backend.articles.models import ArticlesConfig
 
 
 class ArticleTeasersCMSPlugin(CMSPlugin):

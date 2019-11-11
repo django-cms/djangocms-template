@@ -1,14 +1,14 @@
-from aldryn_apphooks_config.managers.parler import \
-    AppHookConfigTranslatableManager
+from typing import Optional
+
+from aldryn_apphooks_config.managers.parler import AppHookConfigTranslatableManager
+from aldryn_translation_tools.models import TranslatedAutoSlugifyMixin
+from aldryn_translation_tools.models import TranslationHelperMixin
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.db import models
 from django.utils import timezone
 from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
-from aldryn_translation_tools.models import (
-    TranslationHelperMixin, TranslatedAutoSlugifyMixin,
-)
 from cms.models.fields import PlaceholderField
 from djangocms_redirect.models import Redirect
 from parler.managers import TranslatableQuerySet
@@ -17,15 +17,16 @@ from filer.fields.image import FilerImageField
 from django.urls import reverse, NoReverseMatch
 
 from backend.articles.cms_appconfig import ArticlesConfig
+from backend.articles.cms_appconfig import DEFAULT_NAMESPACE
 from backend.articles.models.category import Category
 from backend.auth.models import User
 
 
-def get_first_app_config() -> ArticlesConfig:
+def get_first_app_config() -> Optional[ArticlesConfig]:
     if ArticlesConfig.objects.exists():
         return ArticlesConfig.objects.first().pk
     else:
-        raise ValueError('Articles Config not found. Create a config.')
+        return None
 
 
 def update_slug(old_path, new_path):
@@ -88,11 +89,6 @@ class Article(
 
     teaser_image = FilerImageField(on_delete=models.PROTECT, related_name='teaser_image')
     background_image = FilerImageField(on_delete=models.PROTECT, related_name='background_image')
-    is_show_darkening_filter_under_main_menu = models.BooleanField(
-        default=False,
-        verbose_name='enable a darkening filter under the main menu',
-        help_text='to make menu more visible, only activate for very bright images',
-    )
 
     category = models.ForeignKey(
         Category,
@@ -133,7 +129,7 @@ class Article(
         """
         language = language or self.get_current_language()
         slug = self.safe_translation_getter('slug', language_code=language)
-        namespace = getattr(self.app_config, "namespace", "articles")
+        namespace = getattr(self.app_config, "namespace", DEFAULT_NAMESPACE)
 
         try:
             if slug:
