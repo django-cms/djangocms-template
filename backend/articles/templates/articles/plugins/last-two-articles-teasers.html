@@ -1,0 +1,29 @@
+{% load cms_tags thumbnail i18n %}
+
+<div class="l-">
+    <div class="row row--gutter-small">
+        {% for article in articles %}
+            <div class="col col-24 col-sm-12 l-mob-mb-small-gutter">
+                {% render_model_block article %}
+                    <div class="c-teaser">
+                        <div class="c-teaser__wrap">
+                            <div class="c-teaser__top">
+                                {{ article.created_at }} <a href="#" class="u-text-uppercased">{{ article.author }}</a>
+                            </div>
+                            <div class="c-teaser__bottom">
+                                <h3 class="c-teaser__title">{{ article.title }}</h3>
+                                <div class="c-teaser__description">
+                                    {{ article.description }}
+                                </div>
+                                <div class="c-teaser__link-wrap">
+                                    <a href="{{ article.get_absolute_url }}" class="c-teaser__link">{% trans 'Read more' %}</a>
+                                </div>
+                            </div>
+                        </div>
+                        <img class="c-teaser__img" src="{% thumbnail article.teaser_image "526x416" crop upscale=False %}" alt="{{ article.title }}">
+                    </div>
+                {% endrender_model_block %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
