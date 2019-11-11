@@ -227,6 +227,15 @@ ADMIN_REORDER = [
         ],
     },
     {
+        'label': 'Articles',
+        'app': 'articles',
+        'models': [
+            'articles.Article',
+            'articles.Category',
+            'articles.ArticlesConfig',
+        ],
+    },
+    {
         'label': 'Files',
         'app': 'filer',
         'models': [
