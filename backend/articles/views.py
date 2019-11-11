@@ -8,6 +8,7 @@ from menus.utils import set_language_changer
 from django.views.generic import DetailView, ListView
 
 from backend.articles.models import Article
+from backend.articles.models import Category
 
 
 class ArticleList(AppConfigMixin, ListView):

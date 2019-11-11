@@ -4,33 +4,32 @@
 #
 #    pip-compile requirements.in
 #
-aldryn-apphooks-config==0.5.2
+aldryn-apphooks-config==0.5.3
 aldryn-boilerplates==0.8.0  # via aldryn-forms
 aldryn-forms==4.0.1
 aldryn-translation-tools==0.3.0
 appnope==0.1.0            # via ipython
 backcall==0.1.0           # via ipython
-backports.csv==1.0.7      # via tablib
 cachetools==3.1.1         # via premailer
 certifi==2019.9.11        # via requests, sentry-sdk
 chardet==3.0.4            # via requests
 cssselect==1.1.0          # via premailer
 cssutils==1.0.2           # via premailer
-decorator==4.4.0          # via ipython, traitlets
+decorator==4.4.1          # via ipython, traitlets
 defusedxml==0.6.0         # via odfpy, python3-openid
 diff-match-patch==20181111  # via django-import-export
 django-absolute==0.3
 django-admin-sortable2==0.7.3
 django-allauth==0.40.0
 django-appconf==1.0.3     # via aldryn-boilerplates
-django-appdata==0.2.1     # via aldryn-apphooks-config
+django-appdata==0.2.2     # via aldryn-apphooks-config
 django-classy-tags==0.9.0  # via django-cms, django-sekizai
 django-cms==3.7.0
 django-emailit==0.2.4     # via aldryn-forms
 django-enumfields==1.0.0
-django-env-settings==0.13.0
-django-extensions==2.2.3
-django-filer==1.5.0
+django-env-settings==1.0.0
+django-extensions==2.2.5
+django-filer==1.6.0
 django-filter==2.2.0
 django-formtools==2.1     # via django-cms
 django-google-tag-manager==0.0.5
@@ -51,7 +50,7 @@ django-tablib==3.2        # via aldryn-forms
 django-testuser==0.6.0
 django-treebeard==4.3     # via django-cms
 django-username-email==2.2.4
-django==2.1.13
+django==2.1.14
 djangocms-admin-style==1.4.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==0.0.1
 djangocms-attributes-field==1.1.0  # via aldryn-forms, djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture, djangocms-style, djangocms-video
@@ -59,7 +58,7 @@ djangocms-bootstrap4==1.5.0
 djangocms-file==2.3.0
 djangocms-googlemap==1.3.0
 djangocms-history==1.1.0
-djangocms-icon==1.4.1
+djangocms-icon==1.4.2
 djangocms-link==2.5.0
 djangocms-modules==0.2.0
 djangocms-picture==2.3.0
@@ -67,19 +66,20 @@ djangocms-redirect==0.4.0
 djangocms-snippet==2.2.0
 djangocms-style==2.2.0
 djangocms-text-ckeditor==3.8.0
-djangocms-video==2.1.1
+djangocms-video==2.2.0
 djangorestframework==3.10.3
 easy-thumbnails==2.6      # via django-filer, djangocms-picture
 et-xmlfile==1.0.1         # via openpyxl
 html5lib==1.0.1           # via djangocms-text-ckeditor
 idna==2.8                 # via requests
-ipaddress==1.0.22         # via django-lockdown
+ipaddress==1.0.23         # via django-lockdown
 ipython-genutils==0.2.0   # via traitlets
-ipython==7.8.0
+ipython==7.9.0
 jdcal==1.4.1              # via openpyxl
 jedi==0.15.1              # via ipython
 jinja2==2.10.3
 lxml==4.4.1               # via premailer
+markuppy==1.14            # via tablib
 markupsafe==1.1.1         # via jinja2
 oauthlib==3.1.0           # via requests-oauthlib
 odfpy==1.4.0              # via tablib
@@ -87,26 +87,26 @@ openpyxl==2.4.9           # via aldryn-forms, tablib
 parso==0.5.1              # via jedi
 pexpect==4.7.0            # via ipython
 pickleshare==0.7.5        # via ipython
-pillow==6.2.0             # via aldryn-forms, django-simple-captcha, djangocms-text-ckeditor, easy-thumbnails
+pillow==6.2.1             # via aldryn-forms, django-simple-captcha, djangocms-text-ckeditor, easy-thumbnails
 premailer==3.6.1          # via django-emailit
 prompt-toolkit==2.0.10    # via ipython
-psycopg2-binary==2.8.3
+psycopg2-binary==2.8.4
 ptyprocess==0.6.0         # via pexpect
 pygments==2.4.2           # via ipython
 python-dotenv==0.10.3
-python-slugify==3.0.6     # via aldryn-translation-tools
+python-slugify==4.0.0     # via aldryn-translation-tools
 python3-openid==3.1.0     # via django-allauth
 pytz==2019.3
 pyyaml==5.1.2             # via tablib
-requests-oauthlib==1.2.0  # via django-allauth
+requests-oauthlib==1.3.0  # via django-allauth
 requests==2.22.0          # via django-allauth, premailer, requests-oauthlib
-sentry-sdk==0.12.3
-six==1.12.0               # via aldryn-forms, django-appconf, django-extensions, django-simple-captcha, django-tablib, html5lib, prompt-toolkit, traitlets
-tablib==0.13.0            # via aldryn-forms, django-import-export, django-tablib
+sentry-sdk==0.13.2
+six==1.13.0               # via aldryn-forms, django-appconf, django-extensions, django-simple-captcha, django-tablib, html5lib, prompt-toolkit, traitlets
+tablib==0.14.0            # via aldryn-forms, django-import-export, django-tablib
 text-unidecode==1.3       # via python-slugify
 traitlets==4.3.3          # via ipython
 unidecode==1.0.23         # via aldryn-translation-tools, django-filer
-urllib3==1.25.6           # via requests, sentry-sdk
+urllib3==1.25.7           # via requests, sentry-sdk
 wcwidth==0.1.7            # via prompt-toolkit
 webencodings==0.5.1       # via html5lib
 xlrd==1.2.0               # via tablib
@@ -114,4 +114,4 @@ xlwt==1.3.0               # via tablib
 yurl==1.0.0               # via aldryn-boilerplates
 
 # The following packages are considered to be unsafe in a requirements file:
-# setuptools==41.4.0        # via ipython
+# setuptools==41.6.0        # via ipython

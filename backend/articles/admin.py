@@ -32,6 +32,7 @@ class ArticleAdmin(
         '__str__',
         'publication_date',
         'created_at',
+        'is_active',
     ]
     
     list_filter = [

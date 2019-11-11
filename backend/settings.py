@@ -422,6 +422,7 @@ ADMIN_REORDER = [
         'models': [
             'articles.Article',
             'articles.Category',
+            'articles.ArticlesConfig',
         ],
     },
     {
