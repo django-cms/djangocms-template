@@ -18,6 +18,7 @@ Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 - install yarn and node 10 outside of docker
 - `yarn install --pure-lockfile`
 - `yarn start`
+- `docker-compose up`
 
 Testing:
 - `docker-compose exec web fish --command 'python manage.py test --keepdb'`
