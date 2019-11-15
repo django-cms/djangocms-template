@@ -1,22 +1,25 @@
+# compiled backend files
+__pycache__/
 *.py[cod]
 *$py.class
-__pycache__/
-.DS_Store
-.idea/
-.venv
+*.mo
 
-
-media/
-
-
-static-collected/
-frontend/dist
+# compiled frontend files
 node_modules/
+frontend/dist
 .sass-cache
 *.css.map
 
-
-.env
+# dev files
+.idea/
+.aldryn
 .secret_key
-db.sqlite3
-default.log
+.env
+.venv
+*.sqlite3
+/*.log
+.DS_Store
+
+# django files
+media/
+static-collected/
