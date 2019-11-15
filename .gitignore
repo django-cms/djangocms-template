@@ -1,11 +1,14 @@
 # compiled backend files
-*.pyc
-*.pyo
+__pycache__/
+*.py[cod]
+*$py.class
 *.mo
 
 # compiled frontend files
 node_modules/
 frontend/dist
+.sass-cache
+*.css.map
 
 # dev files
 .idea/
@@ -15,6 +18,7 @@ frontend/dist
 .venv
 *.sqlite3
 /*.log
+.DS_Store
 
 # django files
 media/
