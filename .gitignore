@@ -1,13 +1,21 @@
+# compiled backend files
 *.pyc
 *.pyo
-.env
-.aldryn
+*.mo
+
+# compiled frontend files
+node_modules/
+frontend/dist
+
+# dev files
 .idea/
+.aldryn
+.secret_key
+.env
+.venv
+*.sqlite3
+/*.log
+
+# django files
 media/
 static-collected/
-/*.sqlite3
-/*.log
-.secret_key
-frontend/dist
-.venv
-node_modules/
