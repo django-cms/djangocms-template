@@ -2,8 +2,6 @@ Divio Integration Setup
 -------------------------------------------------------------------------------
 - remove djangocms-text-ckeditor from installed addons through the divio dashboard
 - add your `INSTALLED_ADDONS` to `requirements.in` by merging in djangocms-template/divio - `git pull template divio --allow-unrelated-histories` - once you merge you're going to get a merge conflict in `requirements.in`, resolve it by accepting both versions 
-- add your project ID and slug to `.aldryn`
-    - the ID can be found in the dashboard url - `https://control.divio.com/control/{org_id}/edit/{project_id}/`
 - compile the requirements - see the instructions below
 - remove `pip-reqs compile` from the dockerfile
 - remove this section from README.md
@@ -13,6 +11,7 @@ Development Setup
 -------------------------------------------------------------------------------
 Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 
+- create an `.aldryn` file, it's should look as `{"id": {project_id}, "slug": "{project_slug}"}` the ID can be found in the dashboard url - `https://control.divio.com/control/{org_id}/edit/{project_id}/`, the slug is on that page as well
 - `docker-compose build`
 - `pip install divio-cli`
 - `divio project pull db test` or `docker-compose exec web fish --command 'python manage.py migrate'`
