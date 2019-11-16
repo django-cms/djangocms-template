@@ -55,6 +55,7 @@ aldryn_addons.settings.load(locals())
 import os
 import logging
 from enum import Enum
+from typing import List
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -62,22 +63,12 @@ from sentry_sdk.integrations.logging import LoggingIntegration
 from env_settings import env
 
 
-class DivioEnv(Enum):
-    LOCAL = 'local'
-    TEST = 'test'
-    LIVE = 'live'
-
-
-DIVIO_ENV_ENUM = DivioEnv
-DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
-
-
 # fix idea errors for divio imported settings
-INSTALLED_APPS = locals()['INSTALLED_APPS']
-MIDDLEWARE = locals()['MIDDLEWARE']
-BASE_DIR = locals()['BASE_DIR']
-STATIC_URL = locals()['STATIC_URL']
-TEMPLATES = locals()['TEMPLATES']
+INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
+MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
+BASE_DIR: str = locals()['BASE_DIR']
+STATIC_URL: str = locals()['STATIC_URL']
+TEMPLATES: List[dict] = locals()['TEMPLATES']
 
 
 ################################################################################
@@ -327,3 +318,18 @@ CKEDITOR_SETTINGS = {
         'allowedContent': True,
     }
 }
+
+
+################################################################################
+## === project custom === ##
+################################################################################
+
+
+class DivioEnv(Enum):
+    LOCAL = 'local'
+    TEST = 'test'
+    LIVE = 'live'
+
+
+DIVIO_ENV_ENUM = DivioEnv
+DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
