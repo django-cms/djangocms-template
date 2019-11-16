@@ -26,6 +26,9 @@ djangorestframework
 django-modeladmin-reorder # allows to reorder and regroup admin panel apps
 django-extensions # many django things that we don't really need, mainly for shell-plus
     ipython # for shell-plus
+django-allauth # user forms, social auth, allows to authenticate with email
+    django-username-email # an addition to allauth for email instead of username
+django-solo
 
 # python utils
 pytz # a db of timezones
