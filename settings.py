@@ -275,7 +275,7 @@ ADMIN_REORDER = [
 
 
 CMS_TEMPLATES = [
-    ('default.html', 'default template'),
+    ('content-full-width.html', 'full width'),
 ]
 
 
