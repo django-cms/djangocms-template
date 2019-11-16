@@ -22,6 +22,7 @@ INSTALLED_ADDONS = [
     'aldryn-django-cms',
     'djangocms-file',
     'djangocms-googlemap',
+    'djangocms-history',
     'djangocms-link',
     'djangocms-picture',
     'djangocms-snippet',
@@ -54,8 +55,8 @@ aldryn_addons.settings.load(locals())
 
 import os
 import logging
-from enum import Enum
 from typing import List
+from enum import Enum
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -68,7 +69,26 @@ INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
 MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
 BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
+HTTP_PROTOCOL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
+
+
+################################################################################
+## === project custom === ##
+################################################################################
+
+
+DATE_FORMAT = 'F j, Y'
+
+
+class DivioEnv(Enum):
+    LOCAL = 'local'
+    TEST = 'test'
+    LIVE = 'live'
+
+
+DIVIO_ENV_ENUM = DivioEnv
+DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
 
 
 ################################################################################
@@ -76,21 +96,26 @@ TEMPLATES: List[dict] = locals()['TEMPLATES']
 ################################################################################
 
 
-# noinspection PyUnresolvedReferences
+INSTALLED_APPS.insert(0, 'backend.auth')  # for USERNAME_FIELD = 'email', before `cms` since it has a User model
+
 INSTALLED_APPS.extend([
-
     # django packages
-
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'cuser', # for USERNAME_FIELD = 'email' in backend.auth
     'gtm',
+    'solo',
     'rest_framework',
     'import_export',
     'adminsortable2',
     'admin_reorder',
     'django_extensions',
-
+    'django_countries',
 
     # django cms packages
 
+    'aldryn_apphooks_config',
     'djangocms_icon',
     'djangocms_text_ckeditor',
     'djangocms_modules',
@@ -125,7 +150,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.default.heading_element',
     'backend.plugins.default.hero_image_element',
     'backend.plugins.default.section_element',
-    
+
     'backend.error_handler',
     'backend.site_default_name_fix',
 ])
@@ -145,6 +170,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+AUTH_USER_MODEL = 'backend_auth.User'
+
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/'),
 ]
@@ -158,9 +186,33 @@ default_template_engine['OPTIONS']['context_processors'].extend([
 ])
 
 
+EMAIL_BACKEND = env.get(
+    'EMAIL_BACKEND',
+    default='django.core.mail.backends.console.EmailBackend',
+)
+
+
 ################################################################################
 ## === django packages === ##
 ################################################################################
+
+
+# allauth
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = HTTP_PROTOCOL
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+AUTHENTICATED_LOGIN_REDIRECTS = False  # otherwise admins can't access the login view
+LOGIN_REDIRECT_URL = '/'
+CONFIRM_EMAIL_ON_GET = True
 
 
 GTM_CONTAINER_ID = env.get('GTM_CONTAINER_ID', 'GTM-1234')
@@ -237,9 +289,9 @@ ADMIN_REORDER = [
         'label': 'Users',
         'app': 'auth',
         'models': [
-            {'model': 'aldryn_sso.AldrynCloudUser', 'label': 'Divio admin users'},
-            'auth.User',
+            'backend_auth.User',
             'auth.Group',
+            {'model': 'aldryn_sso.AldrynCloudUser', 'label': 'Divio admin users'},
         ],
     },
     {
@@ -312,24 +364,9 @@ CKEDITOR_SETTINGS = {
     'contentsCss': [
         f'{WEBPACK_DEV_URL}global.css' if env.is_dev() else f'{STATIC_URL}/dist/global.css',
         f'{WEBPACK_DEV_URL}vendor.css' if env.is_dev() else f'{STATIC_URL}/dist/vendor.css',
-        f'{STATIC_URL}/djangocms_text_ckeditor/ckeditor/contents.css', # default required styles
+        f'{STATIC_URL}/djangocms_text_ckeditor/ckeditor/contents.css',  # default required styles
     ],
     'config': {
         'allowedContent': True,
     }
 }
-
-
-################################################################################
-## === project custom === ##
-################################################################################
-
-
-class DivioEnv(Enum):
-    LOCAL = 'local'
-    TEST = 'test'
-    LIVE = 'live'
-
-
-DIVIO_ENV_ENUM = DivioEnv
-DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))

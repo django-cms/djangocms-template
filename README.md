@@ -23,7 +23,7 @@ Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 Testing:
 - `docker-compose exec web fish --command 'python manage.py test --keepdb'`
 
-Requirements update:
+Compile requirements.txt from requirements.in, for updating the requirements run `docker-compose build`
 ```bash
 docker-compose run --rm web bash -c '
 
@@ -38,6 +38,12 @@ pip install --no-index --no-deps --requirement requirements.urls
 
 Shell:
 - `docker-compose exec web fish` - a persistent container with the correct ENVs
+
+#### How to drop the database
+You can flush the local & server db in the following way:
+- remove the db container along with its data volume
+- run migrations - now you have an empty db
+- push it to the server `divio project push db test`
 
 
 Development Guidelines
