@@ -19,7 +19,6 @@ from django.urls import reverse, NoReverseMatch
 from backend.articles.cms_appconfig import ArticlesConfig
 from backend.articles.cms_appconfig import DEFAULT_NAMESPACE
 from backend.articles.models.category import Category
-from backend.auth.models import User
 
 
 def get_first_app_config() -> Optional[ArticlesConfig]:
@@ -39,7 +38,6 @@ def update_slug(old_path, new_path):
         Redirect.objects.create(site=site, old_path=old_path, new_path=new_path)
         # update target for other existing redirects
         Redirect.objects.filter(site=site, new_path=old_path).update(new_path=new_path)
-
 
 
 class ArticleQuerySet(TranslatableQuerySet):
@@ -64,7 +62,6 @@ class ArticleManager(AppHookConfigTranslatableManager):
         return self.get_queryset().active()
 
 
-
 class Article(
     TranslatedAutoSlugifyMixin,
     TranslationHelperMixin,
@@ -81,7 +78,8 @@ class Article(
             unique=False,
             db_index=False,
             help_text=_(
-                'Auto-generated. Used in the URL. If changed, the URL will change. Clear it to have the slug re-created.'
+                'Auto-generated. Used in the URL. If changed, the URL will change. '
+                'Clear it to have the slug re-created.'
             ),
         ),
         description=models.TextField(_('description')),
@@ -97,7 +95,7 @@ class Article(
         on_delete=models.PROTECT,
     )
     author = models.ForeignKey(
-        User,
+        settings.AUTH_USER_MODEL,
         models.PROTECT,
     )
     content = PlaceholderField(slotname='article_content')

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'cuser', # for USERNAME_FIELD = 'email' in backend.auth
     'parler',
     'gtm',
+    'solo',  # django-solo
     'rest_framework',
     'import_export',
     'adminsortable2',
@@ -395,7 +396,9 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+AUTHENTICATED_LOGIN_REDIRECTS = False  # otherwise admins can't access the login view
 LOGIN_REDIRECT_URL = '/'
+CONFIRM_EMAIL_ON_GET = True
 
 
 ADMIN_REORDER = [

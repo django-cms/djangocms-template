@@ -8,9 +8,9 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     initial = True
-
+    
     dependencies = [
-        ('auth', '0009_alter_user_last_name_max_length'),
+        ('auth', '0011_update_proxy_permissions'),
     ]
 
     operations = [
@@ -22,6 +22,7 @@ class Migration(migrations.Migration):
                 ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
                 ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
                 ('email', models.EmailField(error_messages={'unique': 'A user with that email address already exists.'}, max_length=254, unique=True, verbose_name='email address')),
+                ('username', models.CharField(blank=True, help_text='Serves only cosmetic purpose, can be ignored', max_length=128)),
                 ('first_name', models.CharField(blank=True, max_length=30, verbose_name='first name')),
                 ('last_name', models.CharField(blank=True, max_length=150, verbose_name='last name')),
                 ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
