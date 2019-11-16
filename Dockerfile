@@ -15,6 +15,7 @@ FROM divio/base:4.15-py3.6-slim-stretch
 ENV PIP_INDEX_URL=${PIP_INDEX_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/+simple/} \
     WHEELSPROXY_URL=${WHEELSPROXY_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/}
 COPY requirements.* /app/
+COPY addons-dev /app/addons-dev/
 RUN pip-reqs compile && \
     pip-reqs resolve && \
     pip install \
@@ -42,7 +43,7 @@ RUN DJANGO_MODE=build python manage.py collectstatic --noinput
 
 # fish
 RUN apt -qq update
-RUN apt install --yes git fish
+RUN apt install --yes git fish nano
 RUN usermod -s /usr/bin/fish root
 RUN curl -L https://get.oh-my.fish > fish-install
 RUN fish fish-install --noninteractive --yes 
