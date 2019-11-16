@@ -46,4 +46,4 @@ RUN apt -qq update
 RUN apt install --yes git fish nano
 RUN usermod -s /usr/bin/fish root
 RUN curl -L https://get.oh-my.fish > fish-install
-RUN fish fish-install --noninteractive --yes 
+RUN fish fish-install --noninteractive --yes
