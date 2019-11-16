@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% load cms_tags sekizai_tags staticfiles %}
+
+
+{% block head_local_frontend_files %}
+    <script defer src="{{ settings.WEBPACK_DEV_URL }}/homepage.bundle.js" data-is-reload-on-page-edit></script>
+    <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/homepage.css">
+{% endblock %}
+
+{% block head_prod_frontend_files %}
+    <script defer src="{% static 'dist/homepage.js' %}" data-is-reload-on-page-edit></script>
+    <link rel="stylesheet" href="{% static 'dist/homepage.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>hello world with red css</h1>
+    
+    <main>
+        {% placeholder 'content' %}
+    </main>
+    
+    <footer>
+        {% static_placeholder 'footer' %}
+    </footer>
+{% endblock %}
