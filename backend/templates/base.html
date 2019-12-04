@@ -17,21 +17,21 @@
 
         {% if settings.DIVIO_ENV.value == 'local' %}
 
-            <script defer src="{{ settings.WEBPACK_DEV_URL }}/global.bundle.js" data-is-reload-on-page-edit></script>
             <script defer src="{{ settings.WEBPACK_DEV_URL }}/vendor.bundle.js" data-is-reload-on-page-edit></script>
+            <script defer src="{{ settings.WEBPACK_DEV_URL }}/global.bundle.js" data-is-reload-on-page-edit></script>
 
-            <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/global.css">
             <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/vendor.css">
+            <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/global.css">
             
             {% block head_local_frontend_files %}{% endblock %}
 
         {% else %}
 
+            <script defer src="{% static 'dist/vendor.js' %}" data-is-reload-on-page-edit></script>
             <script defer src="{% static 'dist/global.js' %}" data-is-reload-on-page-edit></script>
-            <script defer src="{% static 'dist/vendor.js' %}" data-is-reload-on-page-edit></script>            
 
-            <link rel="stylesheet" href="{% static 'dist/global.css' %}">
             <link rel="stylesheet" href="{% static 'dist/vendor.css' %}">
+            <link rel="stylesheet" href="{% static 'dist/global.css' %}">
             
             {% block head_prod_frontend_files %}{% endblock %}
         

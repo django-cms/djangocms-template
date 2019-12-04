@@ -20,6 +20,9 @@ Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 - `yarn start`
 - `docker-compose up`
 
+Translations generation:
+- `django-admin makemessages -l {lang_code} --no-wrap`
+
 Testing:
 - `docker-compose exec web fish --command 'python manage.py test --keepdb'`
 
