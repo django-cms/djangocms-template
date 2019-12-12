@@ -8,10 +8,9 @@
 FROM divio/base:4.15-py3.6-slim-stretch
 # </DOCKER_FROM>
 
-# <BOWER>
-# </BOWER>
-
-# <PYTHON>
+# PYTHON
+RUN apt update --quiet
+RUN apt install --yes git
 ENV PIP_INDEX_URL=${PIP_INDEX_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/+simple/} \
     WHEELSPROXY_URL=${WHEELSPROXY_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/}
 COPY requirements.* /app/
@@ -21,7 +20,6 @@ RUN pip-reqs compile && \
     pip install \
         --no-index --no-deps \
         --requirement requirements.urls
-# </PYTHON>
 
 # <SOURCE>
 COPY . /app
@@ -29,7 +27,6 @@ COPY . /app
 
 
 # FRONTEND
-RUN apt update --quiet
 # for yarn
 RUN apt install --yes gnupg2 apt-transport-https
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
@@ -43,7 +40,7 @@ RUN DJANGO_MODE=build python manage.py collectstatic --noinput
 
 # fish
 RUN apt -qq update
-RUN apt install --yes git fish nano
+RUN apt install --yes fish nano
 RUN usermod -s /usr/bin/fish root
 RUN curl -L https://get.oh-my.fish > fish-install
 RUN fish fish-install --noninteractive --yes
