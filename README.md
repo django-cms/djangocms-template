@@ -13,7 +13,7 @@ Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 
 - create an `.aldryn` file, it's should look as `{"id": {project_id}, "slug": "{project_slug}"}` the ID can be found in the dashboard url - `https://control.divio.com/control/{org_id}/edit/{project_id}/`, the slug is on that page as well
 - `docker-compose build`
-- `pip install divio-cli`
+- run `pip install divio-cli` outside of docker
 - `divio project pull db test` and `divio project pull media test` or `docker-compose exec web fish --command 'python manage.py migrate'`
 - install yarn and node 10 outside of docker
 - `yarn install --pure-lockfile`
