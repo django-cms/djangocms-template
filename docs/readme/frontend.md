@@ -7,6 +7,7 @@
 - if something doesn't work ask Victor, he wrote webpack.config.js
 - if you need to add a new font to css, use the global path as you normally would, eg `url('~pages/homepage/fonts/frutiger.woff')`
 - if you need to add images or other assets - add under the respective module, eg `global`, `vendor`, `pages/homepage`, etc
+- we need to use 24 columns config in bootstrap 4
 
 ### Frontend Integration with DevTools
 - open devtools and add the `frontend` folder as a workspace <details><summary>image</summary> ![](/docs/readme/img/front-int-example.png)</details>
