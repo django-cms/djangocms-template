@@ -1,2 +1,2 @@
-from .article_teasers import *
 from .link import *
+from .article_list import ArticleListPluginModel, Limit

@@ -1,11 +1,12 @@
 from typing import Optional
 
 from aldryn_apphooks_config.mixins import AppConfigMixin
-from django.db.models import QuerySet
-from parler.views import TranslatableSlugMixin
 from aldryn_apphooks_config.utils import get_app_instance
+from django.db.models import QuerySet
+from django.views.generic import DetailView
+from django.views.generic import ListView
 from menus.utils import set_language_changer
-from django.views.generic import DetailView, ListView
+from parler.views import TranslatableSlugMixin
 
 from backend.articles.models import Article
 from backend.articles.models import Category
@@ -17,22 +18,25 @@ class ArticleList(AppConfigMixin, ListView):
 
     def get_queryset(self) -> QuerySet:
         queryset_original = super().get_queryset().filter(is_active=True)
-        category = self._get_category_from_request()
+        category = self._get_category_from_kwargs()
         is_filtered_by_category = category is not None
         if is_filtered_by_category:
-            return queryset_original.filter(category=category).order_by('-publication_date', '-created_at')
+            return queryset_original\
+                .filter(category=category)\
+                .order_by('-publication_date', '-created_at')
         else:
             return queryset_original.order_by('-publication_date', '-created_at')
 
     def get_context_data(self, **kwargs) -> dict:
         context = super().get_context_data(**kwargs)
-        context['category_current'] = self._get_category_from_request()
+        context['category_current'] = self._get_category_from_kwargs()
         context['categories'] = Category.objects.all()
         return context
 
-    def _get_category_from_request(self) -> Optional[Category]:
-        category_slug = self.request.GET.get('category')
-        category = Category.objects.translated(slug=category_slug).first()
+    def _get_category_from_kwargs(self) -> Optional[Category]:
+        category = Category.objects\
+            .translated(slug=self.kwargs.get('slug'))\
+            .first()
         return category
 
 

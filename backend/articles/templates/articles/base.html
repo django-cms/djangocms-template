@@ -1,10 +1,12 @@
-{% extends CMS_TEMPLATE %}
+{% extends 'base.html' %}
 
-{% block main_content %}
-    <div class="articles-app">
 
+{% load cms_tags sekizai_tags staticfiles i18n menu_tags %}
+
+
+{% block content %}
+    <div class="article-app">
         {% block article_content %}
-            {# blog_list.html and blog_detail.html extend this template #}
         {% endblock %}
     </div>
-{% endblock main_content %}
+{% endblock %}

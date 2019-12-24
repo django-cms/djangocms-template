@@ -1,7 +1,6 @@
 from aldryn_apphooks_config.admin import BaseAppHookConfig
-from aldryn_translation_tools.admin import AllTranslationsMixin
-from cms.admin.placeholderadmin import PlaceholderAdminMixin, \
-    FrontendEditableAdminMixin
+from cms.admin.placeholderadmin import FrontendEditableAdminMixin
+from cms.admin.placeholderadmin import PlaceholderAdminMixin
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
 
@@ -12,29 +11,31 @@ from backend.articles.models import Category
 
 @admin.register(Category)
 class CategoryAdmin(
-    AllTranslationsMixin,
     FrontendEditableAdminMixin,
     TranslatableAdmin,
 ):
     list_display = [
         '__str__',
+        'app_config',
     ]
 
 
 @admin.register(Article)
 class ArticleAdmin(
     PlaceholderAdminMixin,
-    AllTranslationsMixin,
     FrontendEditableAdminMixin,
     TranslatableAdmin,
 ):
     list_display = [
         '__str__',
-        'publication_date',
         'created_at',
+        'author',
+        'category',
+        'publication_date',
+        'app_config',
         'is_active',
     ]
-    
+
     list_filter = [
         'app_config',
         'publication_date',
@@ -55,4 +56,4 @@ class ArticlesConfigAdmin(PlaceholderAdminMixin, BaseAppHookConfig):
         # this method **must** be implemented and **must** return the
         # fields defined in the above form, with the ``config`` prefix
         # This is dependent on the django-appdata API
-        return ()
+        return 'verbose_name',

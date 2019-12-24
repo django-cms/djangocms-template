@@ -1,12 +1,12 @@
-{% load cms_tags thumbnail i18n %}
+{% load cms_tags thumbnail i18n article_urls %}
 
 <div class="article-teasers-plugin">
     {% for article in articles %}
         {% render_model_block article %}
             <div class="article-teasers-item">
-                <a href="{{ article.get_absolute_url }}">
+                <a href="{% get_article_url article %}">
                     <img class="img-fluid thumbnail"
-                         src="{% thumbnail article.teaser_image "350x350" crop upscale %}"
+                         src="{% thumbnail article.teaser_image 360x234 crop upscale %}"
                     >
                 </a>
             </div>

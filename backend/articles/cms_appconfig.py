@@ -1,3 +1,4 @@
+from django.db import models
 from django.utils.translation import ugettext as _
 from aldryn_apphooks_config.models import AppHookConfig
 from cms.models.fields import PlaceholderField
@@ -11,6 +12,7 @@ class ArticlesConfig(AppHookConfig):
         'article_content',
         related_name='article_content',
     )
+    verbose_name = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Articles Configuration')

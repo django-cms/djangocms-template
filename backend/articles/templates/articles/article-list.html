@@ -1,77 +1,29 @@
-{% extends "articles/base.html" %}
-{% load i18n cms_tags apphooks_config_tags menu_tags staticfiles thumbnail %}
+{% extends 'articles/base.html' %}
+{% load i18n cms_tags apphooks_config_tags menu_tags staticfiles article_urls %}
 
 
 {% block article_content %}
-
-    <header class="l-header-height">
-      {% include 'includes/logo-menu-dark.html' %}
-    </header>
-
-    <div class="l-wrap">
-        <h1 class="c-title c-title--with-subtitle">{% trans 'Latest News & Thoughts' %}</h1>
-        <h2 class="c-title c-title--subtitle">{% trans 'Latest Entries' %}:</h2>
-    </div>
-
-    {# newest blog post is big #}
-    <div class="l-wrap">
-        {% for object in object_list|slice:":1" %}
-            <div class="c-teaser__col">
-                {% include "articles/includes/article-teaser.html" %}
+    <div class="row top-container">
+        <div class="col-md-6 col-sm-12">
+            <h1 class="list-title">Newsroom</h1>
+        </div>
+        <div class="col-md-6 col-sm-12 categories-list-container">
+            <div class="categories-list">
+                {% for category in categories %}
+                    <a
+                        href="{% get_category_url category %}"
+                        {% if category == category_current %}data-is-current{% endif %}
+                    >
+                        {{ category.name }}
+                    </a>
+                {% endfor%}
             </div>
-        {% endfor %}
-    </div>
-
-    {# blog post 2 and 3 are 1/2 size #}
-    <div class="l-wrap">
-        <div class="row row--gutter-small">
-            {% for object in object_list|slice:"1:3" %}
-                <div class="col-sm-12 c-teaser__col">
-                    {% include "articles/includes/article-teaser.html" %}
-                </div>
-            {% endfor %}
         </div>
     </div>
-
-    <div class="l-wrap l-article-list">
-        <h3 class="c-title c-title--subtitle c-title--25">ALL inspiration entries:</h3>
+    
+    <div class="row">
+        {% for object in object_list %}
+            {% include 'articles/includes/article-teaser.html' with article=object %}
+        {% endfor %}
     </div>
-    {# the rest is a list #}
-    <div class="l-wrap">
-
-
-      <div class="row">
-          <div class="col-sm-17 col-lg-19">
-                {% for object in object_list|slice:"3:" %}
-                    {% include 'includes/article-intro.html' %}
-                {% endfor %}
-          </div>
-
-          {# categories #}
-          <div class="col-sm-7 col-lg-5">
-              <h2 class="c-title c-title--uppercased c-title--font-weight-bold c-title--20">{% trans 'Sort by category' %}</h2>
-              <ul class="c-vertical-menu">
-                  <li class="c-vertical-menu__item">
-                      <a class="c-vertical-menu__link c-vertical-menu__link--active" href="{% namespace_url 'article-list' %}"
-                         class="{% if category == category_current %}category-current{% endif %}"
-                      >
-                          {% trans 'All Articles' context 'articles' %}
-                      </a>
-                  </li>
-                  {% for category in categories %}
-                      <li class="c-vertical-menu__item">
-                          <a class="c-vertical-menu__link" href="{% namespace_url 'article-list' %}?category={{ category.slug }}"
-                             class="{% if category == category_current %}category-current{% endif %}"
-                          >
-                              {{ category.name }}
-                          </a>
-                      </li>
-                  {% endfor %}
-              </ul>
-
-          </div>
-      </div>
-    </div>
-
-
 {% endblock %}

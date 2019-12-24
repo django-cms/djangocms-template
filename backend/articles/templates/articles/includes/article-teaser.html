@@ -1,19 +1,20 @@
-{% load i18n cms_tags thumbnail %}
+{% load i18n cms_tags thumbnail article_urls %}
 
-<div class="c-teaser">
-    <div class="c-teaser__wrap">
-        <div class="c-teaser__top">
-            {{ object.created_at }} <a href="#" class="u-text-uppercased">{{ object.author.get_full_name }}</a>
-        </div>
-        <div class="c-teaser__bottom">
-            <h2 class="c-teaser__title">{% render_model object "title" %}</h2>
-            <div class="c-teaser__description">
-                {{ object.description|truncatewords:15 }}
-            </div>
-            <div class="c-teaser__link-wrap">
-                <a href="{{ object.get_absolute_url }}" class="c-teaser__link">{% trans 'Read more' %}</a>
-            </div>
-        </div>
+
+<div class="article-app-teaser col-lg-4 col-md-6 col-sm-6 col-xs-12">
+    <div class="article-teaser-img">
+        <a href="{% get_article_url article %}">
+            <img class="img-fluid" src="{% thumbnail article.teaser_image 360x234 crop upscale %}">
+        </a>
     </div>
-    <img class="c-teaser__img" src="{% thumbnail object.teaser_image "1920x1080" upscale=False crop subject_location=object.teaser_image.subject_location %}" alt="{{ article.title }}">
+    <div class="article-teaser-date">
+        {{ article.publication_date|date:'M d, Y' }} - <em>{{ article.category.name }}</em>
+    </div>
+    <div class="article-teaser-title">
+        {{ article.title }}
+    </div>
+    <div class="article-teaser-desc">
+        {{ article.description|truncatewords:15 }}
+        <a href="{% get_article_url article %}">Read more</a>
+    </div>
 </div>
