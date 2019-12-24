@@ -1,14 +1,23 @@
-{% load cms_tags sekizai_tags staticfiles i18n %}
+{% load cms_tags sekizai_tags staticfiles i18n menu_tags recaptcha2 %}
 
 <!DOCTYPE html>
 
-
 <html lang="{% get_current_language as LANGUAGE_CODE %}">
     <head>
-        <title>{% page_attribute 'page_title' %}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>
+            {% block page_meta_title %}
+                {% page_attribute 'page_title' %} - {{ request.site.name }}
+            {% endblock %}
+        </title>
+
+        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
         {% render_block 'css' %}
 
-    
+
         <script>
             window.DJANGO = {
                 env: `{{ settings.DIVIO_ENV.value }}`,
@@ -22,7 +31,7 @@
 
             <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/vendor.css">
             <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/global.css">
-            
+
             {% block head_local_frontend_files %}{% endblock %}
 
         {% else %}
@@ -32,18 +41,52 @@
 
             <link rel="stylesheet" href="{% static 'dist/vendor.css' %}">
             <link rel="stylesheet" href="{% static 'dist/global.css' %}">
-            
+
             {% block head_prod_frontend_files %}{% endblock %}
-        
         {% endif %}
+
+        {% render_block 'head_frontend_files' %}
+
+        {% block extrahead %}{% endblock %}
     </head>
-    
-    <body>
-        
+
+    <body id="page-top" class="lang-{{ LANGUAGE_CODE }} {% render_block 'body_classes' %}">
+
         {% cms_toolbar %}
         
-        {% block content %}{% endblock %}
+        {% block content_before %}{% endblock %}
+
+        <div class="container content-container">
+            {% block messages %}
+
+                {% if messages %}
+                    <div class="text-center">
+                        {% for message in messages %}
+                            <div
+                                class="
+                                    alert
+                                    {% if message.tags == 'error' %}alert-danger{% else %}alert-{{ message.tags }}{% endif %}
+                                    alert-dismissible
+                                "
+                                role="alert"
+                            >
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+        
+            {% endblock messages %}
+        
+            {% block content %}{% endblock %}
+        </div>
+
+        {% block content_after %}{% endblock %}
         
         {% render_block 'js' %}
+
     </body>
 </html>
