@@ -23,3 +23,6 @@ frontend/dist
 # django files
 media/
 static-collected/
+
+# this is only an intermittent file that we dont want in the source
+/requirements.urls

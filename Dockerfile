@@ -8,7 +8,7 @@
 FROM divio/base:4.15-py3.6-slim-stretch
 # </DOCKER_FROM>
 
-# PYTHON
+# CUSTOM PYTHON
 RUN apt update --quiet
 RUN apt install --yes git
 ENV PIP_INDEX_URL=${PIP_INDEX_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/+simple/} \

@@ -1,4 +1,4 @@
-{% load cms_tags sekizai_tags staticfiles i18n menu_tags recaptcha2 %}
+{% load cms_tags sekizai_tags staticfiles i18n menu_tags %}
 
 <!DOCTYPE html>
 
@@ -53,7 +53,7 @@
     <body id="page-top" class="lang-{{ LANGUAGE_CODE }} {% render_block 'body_classes' %}">
 
         {% cms_toolbar %}
-        
+
         {% block content_before %}{% endblock %}
 
         <div class="container content-container">
@@ -78,14 +78,14 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-        
+
             {% endblock messages %}
-        
+
             {% block content %}{% endblock %}
         </div>
 
         {% block content_after %}{% endblock %}
-        
+
         {% render_block 'js' %}
 
     </body>
