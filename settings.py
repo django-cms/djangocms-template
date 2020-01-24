@@ -15,19 +15,13 @@ INSTALLED_ADDONS = [
     # Important: Items listed inside the next block are auto-generated.
     # Manual changes will be overwritten.
 
+    # go to divio control center and install django-cms and django-filer manually, then pull the commits that have been created by divio bot.
+
     # <INSTALLED_ADDONS>  # Warning: text inside the INSTALLED_ADDONS tags is auto-generated. Manual changes will be overwritten.
     'aldryn-addons',
     'aldryn-django',
     'aldryn-sso',
     'aldryn-django-cms',
-    'djangocms-file',
-    'djangocms-googlemap',
-    'djangocms-history',
-    'djangocms-link',
-    'djangocms-picture',
-    'djangocms-snippet',
-    'djangocms-style',
-    'djangocms-video',
     'django-filer',
     # </INSTALLED_ADDONS>
 ]
@@ -118,6 +112,14 @@ INSTALLED_APPS.extend([
     'aldryn_apphooks_config',
     'djangocms_icon',
     'djangocms_text_ckeditor',
+    'djangocms_link',
+    'djangocms_googlemap',
+    'djangocms_video',
+    'djangocms_history',
+    'djangocms_picture',
+    'djangocms_snippet',
+
+
     'djangocms_modules',
     'aldryn_forms_bs4_templates',
     'djangocms_redirect',

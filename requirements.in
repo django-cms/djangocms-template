@@ -1,6 +1,14 @@
+
 # django-cms plugins
 djangocms-icon
 djangocms-text-ckeditor
+djangocms-link
+djangocms-picture
+djangocms-file
+djangocms-history
+djangocms-snippet
+djangocms-video
+
 djangocms-bootstrap4
 djangocms-googlemap # google maps with ability to add markers through cms admin panel
 djangocms-modules

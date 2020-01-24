@@ -1,7 +1,9 @@
 Divio Integration Setup
 -------------------------------------------------------------------------------
-- remove djangocms-text-ckeditor from installed addons through the divio dashboard - only in the dashboard, it will be installed through requirements.in later
-- add your `INSTALLED_ADDONS` to `requirements.in` by merging in djangocms-template/divio - `git pull template divio --allow-unrelated-histories` - once you merge you're going to get a merge conflict in `requirements.in`, resolve it by accepting both versions 
+- create a new project on divio of the type python3, django, select custom repository and add your own
+- in the divio addons install the addons: django-cms and django-filer 
+- add another remote: `git remote add template git@gitlab.com:what-digital/djangocms-template.git` and `git fetch template -a`
+- merge in djangocms-template/divio - `git pull template divio --allow-unrelated-histories` - once you merge you're going to get some merge conflicts: resolve them by accepting both versions 
 - compile the requirements - see the instructions below
 - remove only `pip-reqs compile` command from reqs install - everything else leave as it is
 - remove this section from README.md
