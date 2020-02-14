@@ -83,6 +83,15 @@ const config = {
                 ]
             },
             {
+                test: /\.(svg)(\?[\s\S]+)?$/,
+                // svg fonts cannot be processed the way we do with svg images above
+                // therefore they are handled separately here
+                include: /fonts/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
                 test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader',
             },
