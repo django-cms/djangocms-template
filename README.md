@@ -1,3 +1,19 @@
+Divio Integration Setup
+-------------------------------------------------------------------------------
+- create a new project on divio of the type python3, django, select custom repository and add your own - ⚠️ DO NOT DEPLOY THE TEST SERVER as this migrates the db (unless you want to run into migration problems later)
+- in the divio addons install the addons: django-cms and django-filer 
+- add another remote: `git remote add template git@gitlab.com:what-digital/djangocms-template.git` and `git fetch template -a`
+- merge in djangocms-template/divio - `git pull template divio --allow-unrelated-histories` - once you merge you're going to get some merge conflicts: resolve them by accepting both versions 
+- compile the requirements - see the instructions below
+- remove only `pip-reqs compile` command from reqs install - everything else leave as it is
+- remove this section from README.md
+
+If you DID deploy the test server before merging in djangocms-template and you run into migration errors:
+
+- migrate the local db and then push it to the divio test server: `divio project push db`
+- deploy the test server on divio.com
+
+
 
 Development Setup
 -------------------------------------------------------------------------------
