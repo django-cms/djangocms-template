@@ -1,13 +1,3 @@
-Divio Integration Setup
--------------------------------------------------------------------------------
-- create a new project on divio of the type python3, django, select custom repository and add your own
-- in the divio addons install the addons: django-cms and django-filer 
-- add another remote: `git remote add template git@gitlab.com:what-digital/djangocms-template.git` and `git fetch template -a`
-- merge in djangocms-template/divio - `git pull template divio --allow-unrelated-histories` - once you merge you're going to get some merge conflicts: resolve them by accepting both versions 
-- compile the requirements - see the instructions below
-- remove only `pip-reqs compile` command from reqs install - everything else leave as it is
-- remove this section from README.md
-
 
 Development Setup
 -------------------------------------------------------------------------------
