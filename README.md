@@ -6,6 +6,7 @@ Divio Integration Setup
 - merge in djangocms-template/divio - `git pull template divio --allow-unrelated-histories` - once you merge you're going to get some merge conflicts: resolve them by accepting both versions 
 - compile the requirements - see the instructions below
 - remove only `pip-reqs compile` command from reqs install - everything else leave as it is
+- in the Development Setup below replace `create an .aldryn file` with the content as `{"id": {project_id}, "slug": "{project_slug}"}`, the ID can be found in the dashboard url - `https://control.divio.com/control/{org_id}/edit/{project_id}/`, the slug is on that page as well
 - remove this section from README.md
 
 
@@ -13,7 +14,7 @@ Development Setup
 -------------------------------------------------------------------------------
 Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 
-- create an `.aldryn` file, it's should look as `{"id": {project_id}, "slug": "{project_slug}"}` the ID can be found in the dashboard url - `https://control.divio.com/control/{org_id}/edit/{project_id}/`, the slug is on that page as well
+- create an .aldryn file
 - `docker-compose build`
 - run `pip install divio-cli` outside of docker
 - run `divio project pull db test` and `divio project pull media test` outside of docker, or `docker-compose exec web fish --command 'python manage.py migrate'`
