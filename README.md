@@ -18,7 +18,7 @@ If you DID deploy the test server before merging in djangocms-template and you r
 
 Development Setup
 -------------------------------------------------------------------------------
-Built on Python 3.6, Django 2.1, DjangoCMS 3.7, Webpack 4, TypeScript 3.
+Built on Python 3.6, Django 2.2, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 
 - create an .aldryn file
 - `docker-compose build`
