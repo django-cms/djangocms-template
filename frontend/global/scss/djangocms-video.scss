@@ -1,0 +1,21 @@
+// this is for the djangocms-video package and makes sure that youtube videos
+// will be full size (responsively)
+// to make them smaller put them into a bs4 column that is not full size
+
+.djangocms-video-plugin {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+
+  iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+}
+

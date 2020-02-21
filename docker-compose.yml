@@ -33,7 +33,10 @@ services:
   # replicate it in a Docker container called "db".
   db:
     image: postgres:9.6-alpine
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_DB: "db"
+      POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - ".:/app:rw"
