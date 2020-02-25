@@ -38,6 +38,7 @@ django-allauth # user forms, social auth, allows to authenticate with email
 django-solo
 django-countries
 django-widget-tweaks
+django-logentry-admin
 
 # python utils
 pytz # a db of timezones

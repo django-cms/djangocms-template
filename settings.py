@@ -106,6 +106,7 @@ INSTALLED_APPS.extend([
     'admin_reorder',
     'django_extensions',
     'django_countries',
+    'logentry_admin',
 
     # django cms packages
 
