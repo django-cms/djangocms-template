@@ -17,15 +17,15 @@ class ArticleList(AppConfigMixin, ListView):
     template_name = 'articles/article-list.html'
 
     def get_queryset(self) -> QuerySet:
-        queryset_original = super().get_queryset().filter(is_active=True)
+        queryset_original = super().get_queryset().published()
         category = self._get_category_from_kwargs()
         is_filtered_by_category = category is not None
         if is_filtered_by_category:
             return queryset_original\
                 .filter(category=category)\
-                .order_by('-publication_date', '-created_at')
+                .order_by('-publication_date', '-creation_date')
         else:
-            return queryset_original.order_by('-publication_date', '-created_at')
+            return queryset_original.order_by('-publication_date', '-creation_date')
 
     def get_context_data(self, **kwargs) -> dict:
         context = super().get_context_data(**kwargs)
@@ -58,7 +58,7 @@ class ArticleDetail(AppConfigMixin, TranslatableSlugMixin, DetailView):
 
     def get_queryset(self) -> QuerySet:
         """
-        Base queryset returns active Blog with respect to
+        Base queryset returns published Blog with respect to
         namespace.
         """
         qs = super().get_queryset()
@@ -70,4 +70,4 @@ class ArticleDetail(AppConfigMixin, TranslatableSlugMixin, DetailView):
         if self.request.user.is_staff or self.request.user.is_superuser:
             return qs.namespace(self.namespace)
         else:
-            return qs.active().namespace(self.namespace)
+            return qs.published().namespace(self.namespace)

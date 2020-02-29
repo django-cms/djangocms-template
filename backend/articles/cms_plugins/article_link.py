@@ -10,7 +10,7 @@ from ..models import ArticleLinkModel
 class ArticleLinkPlugin(CMSPluginBase):
     model = ArticleLinkModel
     module = MODULE_NAME
-    name = _('News Article Link')
+    name = _('Article link')
     render_template = 'articles/plugins/link-plugin.html'
     allow_children = False
     text_enabled = True

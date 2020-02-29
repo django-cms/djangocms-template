@@ -28,8 +28,8 @@ def get_first_app_config() -> Optional[ArticlesConfig]:
 
 class ArticleQuerySet(TranslatableQuerySet):
 
-    def active(self):
-        return self.filter(is_active=True)
+    def published(self):
+        return self.filter(is_published=True)
 
     def namespace(self, namespace):
         return self.filter(app_config__namespace=namespace)
@@ -44,8 +44,8 @@ class ArticleManager(AppHookConfigTranslatableManager):
     def get_queryset(self):
         return ArticleQuerySet(self.model, using=self.db)
 
-    def active(self):
-        return self.get_queryset().active()
+    def published(self):
+        return self.get_queryset().published()
 
 
 class Article(
@@ -68,10 +68,10 @@ class Article(
                 'Clear it to have the slug re-created.'
             ),
         ),
-        description=models.TextField(_('description')),
+        teaser_description=models.TextField(_('description'), blank=True),
     )
 
-    teaser_image = FilerImageField(on_delete=models.PROTECT, related_name='teaser_image')
+    teaser_image = FilerImageField(on_delete=models.PROTECT, related_name='teaser_image', blank=True, null=True)
 
     category = models.ForeignKey('articles.Category', on_delete=models.PROTECT)
     author = models.ForeignKey(
@@ -79,10 +79,10 @@ class Article(
         models.PROTECT,
     )
     content = PlaceholderField(slotname='article_content')
-    created_at = models.DateTimeField(auto_now_add=True)
-    is_active = models.BooleanField(_('is active?'), default=True)
-
+    is_published = models.BooleanField(_('is published?'), default=True)
+    
     publication_date = models.DateTimeField(default=timezone.now)
+    creation_date = models.DateTimeField(auto_now_add=True)
 
     app_config = models.ForeignKey(
         ArticlesConfig,
@@ -106,18 +106,16 @@ class Article(
         return get_article_url(article=self, lang_code=language)
 
     def save(self, *args, **kwargs):
-        # redirect the old url to the new url permanently
         is_already_has_slug = bool(self.id)
         if is_already_has_slug:
             old = Article.objects.language(self.get_current_language()).get(pk=self.pk)
-            self._update_slug(
+            self._update_slug_and_create_redirect_if_needed(
                 old_path=old.get_absolute_url(),
                 new_path=self.get_absolute_url(),
             )
         return super().save(*args, **kwargs)
 
-    def _update_slug(self, old_path, new_path):
-        """ This method compares two slugs and creates a redirect if there is a change """
+    def _update_slug_and_create_redirect_if_needed(self, old_path, new_path):
         site = Site.objects.get(pk=settings.SITE_ID)
     
         if new_path != old_path and old_path and new_path:

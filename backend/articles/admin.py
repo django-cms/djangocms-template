@@ -28,18 +28,18 @@ class ArticleAdmin(
 ):
     list_display = [
         '__str__',
-        'created_at',
         'author',
         'category',
         'publication_date',
+        'creation_date',
         'app_config',
-        'is_active',
+        'is_published',
     ]
 
     list_filter = [
         'app_config',
         'publication_date',
-        'created_at',
+        'creation_date',
         'author',
         'category',
     ]

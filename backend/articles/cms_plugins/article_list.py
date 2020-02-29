@@ -16,7 +16,7 @@ class ArticleListPlugin(CMSPluginBase):
     def render(self, context, instance, placeholder):
         context = super().render(context, instance, placeholder)
 
-        articles = Article.objects.get_queryset().namespace(instance.app_config.namespace)
+        articles = Article.objects.get_queryset().published().namespace(instance.app_config.namespace)
         context.update({
             'articles': articles[:instance.limit.value] if instance.limit.value > 0 else articles,
         })
