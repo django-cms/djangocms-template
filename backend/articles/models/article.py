@@ -81,7 +81,7 @@ class Article(
     content = PlaceholderField(slotname='article_content')
     is_published = models.BooleanField(_('is published?'), default=True)
     
-    publication_date = models.DateTimeField(default=timezone.now)
+    publication_date = models.DateTimeField(default=timezone.now, help_text="Doesn't influence the publication time, used in sorting of the articles")
     creation_date = models.DateTimeField(auto_now_add=True)
 
     app_config = models.ForeignKey(
