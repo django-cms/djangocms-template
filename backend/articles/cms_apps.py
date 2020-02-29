@@ -14,4 +14,4 @@ class ArticlesApp(CMSConfigApp):
     app_name = 'articles'
 
     def get_urls(self, *args, **kwargs) -> List[str]:
-        return ['backend.articles.urls.article_urls']
+        return ['backend.articles.urls']
