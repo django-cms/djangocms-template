@@ -119,7 +119,7 @@ INSTALLED_APPS.extend([
     'djangocms_history',
     'djangocms_picture',
     'djangocms_snippet',
-
+    'djangocms_helpers',
 
     'djangocms_modules',
     'aldryn_forms_bs4_templates',

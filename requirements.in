@@ -19,6 +19,7 @@ djangocms-aldryn-forms-bootstrap4-templates
 aldryn-translation-tools
 aldryn-apphooks-config
 djangocms-redirect
+djangocms-helpers
 
 # django packages
 django-settings-export # settings export to templates
