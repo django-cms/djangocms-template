@@ -256,9 +256,6 @@ ADMIN_REORDER = [
         'models': [
             'cms.Page',
             'djangocms_redirect.Redirect',
-            'cms.GlobalPagePermission',
-            'cms.PageUserGroup',
-            'cms.PageUser',
         ],
     },
     {
@@ -292,8 +289,10 @@ ADMIN_REORDER = [
         'app': 'auth',
         'models': [
             'backend_auth.User',
-            'auth.Group',
-            {'model': 'aldryn_sso.AldrynCloudUser', 'label': 'Divio admin users'},
+            {'model': 'auth.Group', 'label': 'User groups for everything'},
+            {'model': 'cms.PageUserGroup', 'label': 'User groups for pages'},
+            'cms.GlobalPagePermission',
+            {'model': 'aldryn_sso.AldrynCloudUser', 'label': 'Admin users from Divio'},
         ],
     },
     {
