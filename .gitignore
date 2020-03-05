@@ -12,17 +12,17 @@ frontend/dist
 
 # dev files
 .idea/
-.aldryn
+/.aldryn
+/data
+data.tar.gz
 .secret_key
 .env
 .venv
 *.sqlite3
 /*.log
 .DS_Store
+/requirements.urls
 
 # django files
 media/
 static-collected/
-
-# this is only an intermittent file that we dont want in the source
-/requirements.urls
