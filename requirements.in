@@ -8,7 +8,7 @@ djangocms-history
 djangocms-snippet
 djangocms-video
 djangocms-bootstrap4
-djangocms-googlemap # google maps with ability to add markers through cms admin panel
+djangocms-googlemap
 djangocms-modules
 aldryn-forms
 djangocms-aldryn-forms-bootstrap4-templates
@@ -26,8 +26,8 @@ django-enumfields
 django-admin-sortable2 # drag and drop sorting for admin
 django-filter # generic view filter helpers for front and admin panel, as `?field__gte=5`
 django-google-tag-manager
-django-env-settings >= 0.13.0 # settings utils ansible deploy, see gitlab.com/what-digital/django-env-settings
-django-import-export # csv/xsl/html/etc import/export for admin
+django-env-settings >= 0.13.0 # settings utils, see gitlab.com/what-digital/django-env-settings
+django-import-export
 django-absolute # adds absolute site URL vars to context
 djangorestframework
 django-modeladmin-reorder # allows to reorder and regroup admin panel apps
