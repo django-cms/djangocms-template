@@ -264,11 +264,11 @@ ADMIN_REORDER = [
         ],
     },
     {
-        'label': 'robots.txt',
+        'label': 'SEO',
         'app': 'robots',
         'models': [
-            {'model': 'robots.Rule', 'label': 'Access rules'},
-            'robots.Url',
+            {'model': 'robots.Rule', 'label': 'Access rules for robots.txt'},
+            {'model': 'robots.Url', 'label': 'Urls patterns for robots.txt'},
         ],
     },
     {
