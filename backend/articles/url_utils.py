@@ -68,17 +68,38 @@ def _get_url(
                     request_provided = context.get('request')
                 else:
                     request_provided = request
-                messages.error(request_provided, f"The {instance_name} with the slug '{instance_slug}' was not found.")
+                _add_error_message_if_not_added_yet(
+                    request=request_provided,
+                    message=f"The {instance_name} with the slug '{instance_slug}' was not found in the '{language}' language.",
+                )
             else:
                 logger.error(
                     "Article or category not found, "
                     "user not informed because you didn't provide a request argument",
                 )
-            
+                return ''
+
             try:
                 return reverse(f'{namespace}:article-list')
             except NoReverseMatch:
-                raise Exception(
-                    f"Please double check that an {instance_name} apphook page "
-                    f"in {language} language was created and published."
+                _add_error_message_if_not_added_yet(
+                    request=request_provided,
+                    message=(
+                        f"Please double check that a '{instance_name}' apphook page "
+                        f"in the '{language}' language was created and published. "
+                        f"Or that the category '{namespace}' exists in the '{language}' language."
+                    )
                 )
+                return ''
+
+
+def _add_error_message_if_not_added_yet(message: str, request: HttpRequest):
+    if _is_message_not_added_yet(message, request):
+        messages.error(request, message)
+
+
+def _is_message_not_added_yet(message: str, request: HttpRequest) -> bool:
+    for message_obj in list(messages.get_messages(request)):
+        if message_obj.message == message:
+            return False
+    return True
