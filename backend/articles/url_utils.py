@@ -68,7 +68,7 @@ def _get_url(
                     request_provided = context.get('request')
                 else:
                     request_provided = request
-                _add_error_message_if_not_added_yet(
+                _add_error_message(
                     request=request_provided,
                     message=f"The {instance_name} with the slug '{instance_slug}' was not found in the '{language}' language.",
                 )
@@ -82,7 +82,7 @@ def _get_url(
             try:
                 return reverse(f'{namespace}:article-list')
             except NoReverseMatch:
-                _add_error_message_if_not_added_yet(
+                _add_error_message(
                     request=request_provided,
                     message=(
                         f"Please double check that a '{instance_name}' apphook page "
@@ -93,9 +93,9 @@ def _get_url(
                 return ''
 
 
-def _add_error_message_if_not_added_yet(message: str, request: HttpRequest):
-    if _is_message_not_added_yet(message, request):
-        messages.error(request, message)
+def _add_error_message(message: str, request: HttpRequest):
+    # if _is_message_not_added_yet(message, request):
+    messages.error(request, message)
 
 
 def _is_message_not_added_yet(message: str, request: HttpRequest) -> bool:
