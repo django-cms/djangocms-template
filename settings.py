@@ -156,10 +156,11 @@ default_template_engine['OPTIONS']['context_processors'].extend([
 ])
 
 
-EMAIL_BACKEND = env.get(
-    'EMAIL_BACKEND',
-    default='django.core.mail.backends.console.EmailBackend',
-)
+if DIVIO_ENV == DivioEnv.LOCAL:
+    email_backend_default = 'django.core.mail.backends.console.EmailBackend'
+else:
+    email_backend_default = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = env.get('EMAIL_BACKEND', default=email_backend_default)
 
 
 ################################################################################
