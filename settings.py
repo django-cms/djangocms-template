@@ -341,3 +341,4 @@ CKEDITOR_SETTINGS = {
 }
 
 META_SITE_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
+META_USE_SITES = True
