@@ -1,4 +1,8 @@
-{% load cms_tags sekizai_tags staticfiles i18n menu_tags %}
+{% load cms_tags sekizai_tags staticfiles i18n menu_tags page_meta_tags %}
+
+
+{% page_meta request.current_page as page_meta %}
+
 
 <!DOCTYPE html>
 
@@ -13,6 +17,8 @@
                 {% page_attribute 'page_title' %} - {{ request.site.name }}
             {% endblock %}
         </title>
+    
+        {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
 
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon"/>
         {% render_block 'css' %}
@@ -47,7 +53,7 @@
 
         {% render_block 'head_frontend_files' %}
 
-        {% block extrahead %}{% endblock %}
+        {% block head %}{% endblock %}
     </head>
 
     <body id="page-top" class="lang-{{ LANGUAGE_CODE }} {% render_block 'body_classes' %}">
@@ -57,34 +63,20 @@
         {% block content_before %}{% endblock %}
 
         <div class="container content-container">
+        
             {% block messages %}
-
-                {% if messages %}
-                    <div class="text-center">
-                        {% for message in messages %}
-                            <div
-                                class="
-                                    alert
-                                    {% if message.tags == 'error' %}alert-danger{% else %}alert-{{ message.tags }}{% endif %}
-                                    alert-dismissible
-                                "
-                                role="alert"
-                            >
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-
+                {% include 'includes/messages.html' with messages=messages %}
             {% endblock messages %}
 
             {% block content %}{% endblock %}
+
         </div>
 
         {% block content_after %}{% endblock %}
+        
+        <footer>
+            {% static_placeholder 'footer' %}
+        </footer>
 
         {% render_block 'js' %}
 
