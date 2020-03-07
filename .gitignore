@@ -16,7 +16,6 @@ frontend/dist
 /data
 data.tar.gz
 .secret_key
-.env
 .venv
 *.sqlite3
 /*.log

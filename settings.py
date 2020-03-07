@@ -22,6 +22,7 @@ import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
 from env_settings import env
+from dotenv import load_dotenv, find_dotenv
 
 
 # fix idea errors for divio imported settings
@@ -36,6 +37,9 @@ TEMPLATES: List[dict] = locals()['TEMPLATES']
 ################################################################################
 ## === project custom === ##
 ################################################################################
+
+
+load_dotenv(find_dotenv('.env-for-native'))
 
 
 DATE_FORMAT = 'F j, Y'

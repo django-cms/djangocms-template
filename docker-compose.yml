@@ -12,7 +12,7 @@ services:
       - "./data:/data:rw"
     # live mode https://docs.divio.com/en/latest/how-to/local-in-live-mode.html.
     command: python manage.py runserver 0.0.0.0:80
-    env_file: .env-local
+    env_file: .env-for-docker
 
   db:
     image: postgres:9.6-alpine
