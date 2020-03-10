@@ -339,8 +339,8 @@ CKEDITOR_SETTINGS = {
         {'name': 'H1', 'element': 'h1'},
     ],
     'contentsCss': [
-        f'{WEBPACK_DEV_URL}global.css' if env.is_dev() else f'{STATIC_URL}/dist/global.css',
         f'{WEBPACK_DEV_URL}vendor.css' if env.is_dev() else f'{STATIC_URL}/dist/vendor.css',
+        f'{WEBPACK_DEV_URL}global.css' if env.is_dev() else f'{STATIC_URL}/dist/global.css',
         f'{STATIC_URL}/djangocms_text_ckeditor/ckeditor/contents.css',  # default required styles
     ],
     'config': {
