@@ -1,9 +1,11 @@
 declare var CMS: any;
 
 
-const isCmsPresent = window.hasOwnProperty('CMS');
-if (isCmsPresent) {
-    initScriptReloadListener();
+export function main() {
+    const isCmsPresent = window.hasOwnProperty('CMS');
+    if (isCmsPresent) {
+        initScriptReloadListener();
+    }
 }
 
 

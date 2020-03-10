@@ -14,9 +14,7 @@ const config = {
         global: './frontend/global/index.js',
         vendor: './frontend/vendor/index.js',
 
-        homepage: './frontend/pages/homepage/index.js',
-
-        blocks: './frontend/blocks/hero-video/index.js',
+        plugin_hero_header: './frontend/plugins/hero-video/index.js',
     },
     output: {
         filename: '[name].bundle.js',

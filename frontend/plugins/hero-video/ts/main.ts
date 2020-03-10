@@ -1,4 +1,4 @@
-import {subHelloWorld} from 'pages/homepage/ts/sub-module'
+import {subHelloWorld} from 'plugins/hero-video/ts/sub-module'
 
 
 export function main(): any {

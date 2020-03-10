@@ -1,4 +1,6 @@
-@import 'ckeditor';
-@import "djangocms-video";
-@import "djangocms-picture";
+@import 'variables';
 
+@import 'ckeditor';
+@import 'djangocms-video';
+@import 'djangocms-picture';
+@import 'font-awesome';
