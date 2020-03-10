@@ -123,11 +123,11 @@ INSTALLED_APPS.extend([
     'backend.plugins.default.bs4_hiding',
     'backend.plugins.default.bs4_inline_alignment',
     'backend.plugins.default.bs4_spacer',
-    'backend.plugins.default.bs4_lightbox_gallery',
-    'backend.plugins.default.bs4_card_columns',
     'backend.plugins.default.heading_element',
-    'backend.plugins.default.hero_image_element',
     'backend.plugins.default.section_element',
+    # not styled or missing npm dependencies
+    # 'backend.plugins.default.bs4_card_columns',
+    # 'backend.plugins.default.bs4_lightbox_gallery',
 
     'backend.error_handler',
 ])
