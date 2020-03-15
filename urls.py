@@ -1,6 +1,7 @@
 import aldryn_addons.urls
 from aldryn_django.utils import i18n_patterns
 from django.conf import settings
+from django.conf.urls import url
 from django.urls import include
 from djangocms_helpers.sentry_500_error_handler.views import collect_500_error_user_feedback_view
 
