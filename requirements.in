@@ -44,3 +44,4 @@ django-logentry-admin
 pytz # a db of timezones
 sentry-sdk
 python-dotenv
+psycopg2-binary
