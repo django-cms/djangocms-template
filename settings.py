@@ -129,8 +129,6 @@ INSTALLED_APPS.extend([
     # not styled or missing npm dependencies
     # 'backend.plugins.default.bs4_card_columns',
     # 'backend.plugins.default.bs4_lightbox_gallery',
-
-    'backend.error_handler',
 ])
 
 
