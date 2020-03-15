@@ -5,11 +5,11 @@ const path = require('path');
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
 
 
-const isServerMode = process.env.NODE_ENV === 'production';
+const isDevelopmentMode = process.env.NODE_ENV !== 'production';
 
 
 const config = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         global: './frontend/global/index.js',
         vendor: './frontend/vendor/index.js',
@@ -17,9 +17,9 @@ const config = {
         plugin_hero_header: './frontend/plugins/hero-video/index.js',
     },
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].js',
         path: __dirname + '/dist/',
-        publicPath: `http://localhost:8090/assets/`,
+        publicPath: `/static/dist/`,
     },
     module: {
         rules: [
@@ -128,7 +128,6 @@ const config = {
     plugins: [
         new MiniCssExtractPlugin({filename: '[name].css'}),
     ],
-    devtool: 'eval-source-map',
     optimization: {
         // the default config from webpack docs, most of it might be useless
         splitChunks: {
@@ -156,11 +155,11 @@ const config = {
 };
 
 
-if (isServerMode) {
-    config.mode = 'production';
-    config.devtool = 'none';
-    config.output.filename = '[name].js';
-    config.output.publicPath = '/static/dist/';
+if (isDevelopmentMode) {
+    config.mode = 'development';
+    config.devtool = 'eval-source-map';
+    config.output.filename = '[name].bundle.js';
+    config.output.publicPath = 'http://localhost:8090/assets/';
 }
 
 
