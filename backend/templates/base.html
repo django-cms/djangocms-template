@@ -32,8 +32,8 @@
 
         {% if settings.DIVIO_ENV.value == 'local' %}
 
-            <script defer src="{{ settings.WEBPACK_DEV_URL }}/vendor.bundle.js" data-is-reload-on-page-edit></script>
-            <script defer src="{{ settings.WEBPACK_DEV_URL }}/global.bundle.js" data-is-reload-on-page-edit></script>
+            <script defer src="{{ settings.WEBPACK_DEV_URL }}/vendor.bundle.js" data-is-reload-on-page-edit="true"></script>
+            <script defer src="{{ settings.WEBPACK_DEV_URL }}/global.bundle.js" data-is-reload-on-page-edit="true"></script>
 
             <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/vendor.css">
             <link rel="stylesheet" href="{{ settings.WEBPACK_DEV_URL }}/global.css">
@@ -42,8 +42,8 @@
 
         {% else %}
 
-            <script defer src="{% static 'dist/vendor.js' %}" data-is-reload-on-page-edit></script>
-            <script defer src="{% static 'dist/global.js' %}" data-is-reload-on-page-edit></script>
+            <script defer src="{% static 'dist/vendor.js' %}" data-is-reload-on-page-edit="true"></script>
+            <script defer src="{% static 'dist/global.js' %}" data-is-reload-on-page-edit="true"></script>
 
             <link rel="stylesheet" href="{% static 'dist/vendor.css' %}">
             <link rel="stylesheet" href="{% static 'dist/global.css' %}">
