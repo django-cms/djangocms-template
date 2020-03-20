@@ -76,6 +76,7 @@ INSTALLED_APPS.extend([
     'django_extensions',
     'django_countries',
     'logentry_admin',
+    'hijack_admin',
 
     # django cms packages
 
@@ -90,7 +91,7 @@ INSTALLED_APPS.extend([
     'djangocms_snippet',
     'djangocms_helpers',
     'djangocms_page_meta',
-    'meta',
+        'meta',
 
     'djangocms_modules',
     'aldryn_forms_bs4_templates',
@@ -188,13 +189,13 @@ SETTINGS_EXPORT = [
     'WEBPACK_DEV_URL',
     'DIVIO_ENV',
     'DIVIO_ENV_ENUM',
-    'SENTRY_IS_ENABLED',
+    'IS_SENTRY_ENABLED',
     'SENTRY_DSN',
 ]
 
-SENTRY_IS_ENABLED = env.get_bool('SENTRY_IS_ENABLED', False)
+IS_SENTRY_ENABLED = env.get_bool('IS_SENTRY_ENABLED', False)
 SENTRY_DSN = env.get('SENTRY_DSN')
-if SENTRY_IS_ENABLED:
+if IS_SENTRY_ENABLED:
     # noinspection PyTypeChecker
     sentry_sdk.init(
         dsn=SENTRY_DSN,
@@ -207,6 +208,11 @@ if SENTRY_IS_ENABLED:
         ],
         environment=DIVIO_ENV.value,
     )
+
+
+HIJACK_REGISTER_ADMIN = False
+HIJACK_ALLOW_GET_REQUESTS = True
+
 
 ADMIN_REORDER = [
     {
