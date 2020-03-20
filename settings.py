@@ -90,6 +90,7 @@ INSTALLED_APPS.extend([
     'djangocms_picture',
     'djangocms_snippet',
     'djangocms_helpers',
+    'djangocms_helpers.sentry_500_error_handler',
     'djangocms_page_meta',
         'meta',
 
