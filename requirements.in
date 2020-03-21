@@ -49,6 +49,7 @@ django-countries
 django-widget-tweaks
 django-logentry-admin
 django-hijack
+django-adminutils # a set of shortcuts for admin.py composition
 
 # python utils
 pytz # a db of timezones
