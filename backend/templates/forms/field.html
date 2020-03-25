@@ -1,0 +1,14 @@
+{% load widget_tweaks %}
+
+{% if form.is_bound %}
+    {% if force_error or field.errors %}
+        {% render_field field class+="is-invalid form-control" placeholder=field.label %}
+        {% for error in field.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
+    {% else %}
+        {% render_field field class+="is-valid form-control" placeholder=field.label %}
+    {% endif %}
+{% else %}
+    {% render_field field class+="form-control" %}
+{% endif %}

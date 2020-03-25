@@ -1,0 +1,7 @@
+{% if form.errors %}
+    <div class="form-group">
+        {% for error in form.non_field_errors %}
+            <p class="error">{{ error|escape }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
