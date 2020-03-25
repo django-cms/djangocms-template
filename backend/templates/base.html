@@ -54,9 +54,12 @@
         {% render_block 'head_frontend_files' %}
 
         {% block head %}{% endblock %}
+    
+        {% gtm_head settings.GTM_CONTAINER_ID %}
     </head>
 
     <body id="page-top" class="lang-{{ LANGUAGE_CODE }} {% render_block 'body_classes' %}">
+        {% gtm_body settings.GTM_CONTAINER_ID %}
 
         {% cms_toolbar %}
 
