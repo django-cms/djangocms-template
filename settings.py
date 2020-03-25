@@ -259,7 +259,8 @@ ADMIN_REORDER = [
             {'model': 'auth.Group', 'label': 'User groups for everything'},
             {'model': 'cms.PageUserGroup', 'label': 'User groups for pages'},
             'cms.GlobalPagePermission',
-            {'model': 'aldryn_sso.AldrynCloudUser', 'label': 'Admin users from Divio'},
+            # sso admin interface is broken due to Reverse for 'auth_user_change' not found. let's hide this
+            # {'model': 'aldryn_sso.AldrynCloudUser', 'label': 'Admin users from Divio'},
         ],
     },
     {
