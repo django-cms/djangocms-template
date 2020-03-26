@@ -2,9 +2,8 @@
 window.$ = window.jQuery = require("jquery");
 
 
-// bootstrap4
 require('bootstrap');
-require('./scss/bs4-with-project-vars.scss');
+
 
 // Icons
 require('@fortawesome/fontawesome-free/scss/fontawesome.scss');
