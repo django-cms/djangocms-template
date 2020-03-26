@@ -8,9 +8,12 @@ $primary-font-color: #333333;
 $button-font-color: white;
 
 $primary-color: black;
-$primary-color: $project-orange;
 $secondary-color: $project-orange;
 
+$theme-colors: (
+    "primary": $project-orange,
+    "danger": #ff4136
+);
 
 // DEMO: Below find some bs4 customisation examples:
 
