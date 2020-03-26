@@ -16,9 +16,7 @@ ENV PIP_INDEX_URL=${PIP_INDEX_URL:-https://wheels.aldryn.net/v1/aldryn-extras+py
     WHEELSPROXY_URL=${WHEELSPROXY_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/}
 COPY requirements.* /app/
 COPY addons-dev /app/addons-dev/
-# TODO: remove pip-reqs compile && \ here after creating the requirements.txt
-RUN pip-reqs compile && \
-    pip-reqs resolve && \
+RUN pip-reqs resolve && \
     pip install \
         --no-index --no-deps \
         --requirement requirements.urls
