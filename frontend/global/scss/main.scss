@@ -1,11 +1,3 @@
-@import '~bootstrap/scss/bootstrap';
-
-
 @import 'variables';
 
 @import 'font-awesome';
-
-
-// IMPORTANT: This needs to be at the very END of this file
-// according to https://getbootstrap.com/docs/4.0/getting-started/webpack/#importing-styles
-@import '~bootstrap/scss/bootstrap';
