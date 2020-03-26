@@ -17,3 +17,7 @@ build:
     - docker build --file=base.Dockerfile --cache-from $CI_REGISTRY_IMAGE:latest --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY_IMAGE:latest .
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
     - docker push $CI_REGISTRY_IMAGE:latest
+  rules:
+    - changes:
+      - base.Dockerfile
+      - .gitlab-ci.yml
