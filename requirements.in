@@ -18,7 +18,7 @@ djangocms-video
 djangocms-bootstrap4
 djangocms-googlemap
 djangocms-modules
-aldryn-forms
+https://github.com/divio/aldryn-forms/archive/5.0.1.zip#egg=aldryn-forms
 djangocms-aldryn-forms-bootstrap4-templates
 
 # django-cms packages
