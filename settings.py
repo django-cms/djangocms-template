@@ -93,11 +93,13 @@ INSTALLED_APPS.extend([
     'djangocms_helpers.sentry_500_error_handler',
     'djangocms_page_meta',
         'meta',
+
+    'aldryn_forms_bs4_templates',
     'aldryn_forms',
         'absolute',
         'aldryn_forms.contrib.email_notifications',
         'emailit',
-        'aldryn_forms_bs4_templates',
+
     'djangocms_modules',
     'djangocms_redirect',
 
