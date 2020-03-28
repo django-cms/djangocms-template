@@ -192,6 +192,8 @@ CONFIRM_EMAIL_ON_GET = True
 GTM_CONTAINER_ID = env.get('GTM_CONTAINER_ID', 'GTM-1234')
 
 WEBPACK_DEV_URL = env.get('WEBPACK_DEV_URL', default='http://localhost:8090/assets/')
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365
 
 SETTINGS_EXPORT = [
     'WEBPACK_DEV_URL',
