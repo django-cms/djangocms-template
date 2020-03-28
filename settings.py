@@ -102,6 +102,7 @@ INSTALLED_APPS.extend([
 
     'djangocms_modules',
     'djangocms_redirect',
+    'light_gallery',
 
     'djangocms_bootstrap4',
     'djangocms_bootstrap4.contrib.bootstrap4_alerts',
