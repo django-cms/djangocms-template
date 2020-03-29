@@ -54,7 +54,7 @@ django-formtools==2.2     # via django-cms
 django-getenv==1.3.2
 django-google-tag-manager==0.0.5
 django-hijack-admin==2.1.10
-django-hijack==2.1.10
+django-hijack==2.1.10     # via django-hijack-admin
 django-import-export==2.0.2
 django-js-asset==1.2.2    # via django-mptt
 django-logentry-admin==1.0.5
