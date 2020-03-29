@@ -39,7 +39,7 @@ django-appconf==1.0.3     # via aldryn-boilerplates, aldryn-sites, django-compre
 django-appdata==0.2.2     # via aldryn-apphooks-config
 django-cache-url==3.1.2
 django-classy-tags==1.0.0  # via django-cms, django-sekizai
-django-cms==3.7.1         # via aldryn-apphooks-config, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-attributes-field, djangocms-bootstrap4, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-link, djangocms-modules, djangocms-page-meta, djangocms-picture, djangocms-redirect, djangocms-snippet, djangocms-text-ckeditor, djangocms-video
+django-cms==3.7.1         # via aldryn-apphooks-config, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-attributes-field, djangocms-bootstrap4, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-light-gallery, djangocms-link, djangocms-modules, djangocms-page-meta, djangocms-picture, djangocms-redirect, djangocms-snippet, djangocms-text-ckeditor, djangocms-video
 django-compat==1.0.15     # via django-hijack, django-hijack-admin
 django-compressor==2.4
 django-countries==6.1.2
@@ -66,7 +66,7 @@ django-parler==2.0.1      # via aldryn-translation-tools
 django-polymorphic==2.1.2
 django-ranged-response==0.2.0  # via django-simple-captcha
 django-robots==4.0
-django-sekizai==1.1.0     # via django-cms, djangocms-aldryn-forms-bootstrap4-templates
+django-sekizai==1.1.0     # via django-cms, djangocms-aldryn-forms-bootstrap4-templates, djangocms-light-gallery
 django-select2==7.2.3
 django-settings-export==1.2.1
 django-simple-captcha==0.5.12
@@ -79,7 +79,7 @@ django-tablib==3.2
 django-treebeard==4.3.1   # via django-cms
 django-username-email==2.2.4
 django-widget-tweaks==1.4.8
-django==2.2.11            # via aldryn-boilerplates, aldryn-sites, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-storages, django-treebeard, django-username-email, djangocms-helpers, djangorestframework, easy-thumbnails, webservices
+django==2.2.11            # via aldryn-boilerplates, aldryn-sites, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-storages, django-treebeard, django-username-email, djangocms-helpers, djangocms-light-gallery, djangorestframework, easy-thumbnails, webservices
 djangocms-admin-style==1.5.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==0.0.1
 djangocms-attributes-field==1.2.0  # via djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture, djangocms-video
@@ -89,6 +89,7 @@ djangocms-googlemap==1.4.0
 djangocms-helpers==2.0.2
 djangocms-history==1.1.0
 djangocms-icon==1.5.0
+djangocms-light-gallery==1.1.0
 djangocms-link==2.5.0
 djangocms-modules==0.2.0
 djangocms-page-meta==0.10.0
@@ -99,7 +100,7 @@ djangocms-text-ckeditor==3.9.0
 djangocms-video==2.3.0
 djangorestframework==3.11.0
 djeese-fs==0.1.21
-easy-thumbnails==2.7      # via djangocms-picture
+easy-thumbnails==2.7      # via djangocms-light-gallery, djangocms-picture
 et-xmlfile==1.0.1         # via openpyxl
 furl==2.1.0
 html5lib==1.0.1           # via djangocms-text-ckeditor
