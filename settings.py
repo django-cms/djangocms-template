@@ -218,6 +218,7 @@ if IS_SENTRY_ENABLED:
             )
         ],
         environment=DIVIO_ENV.value,
+        send_default_pii=True,
     )
 
 

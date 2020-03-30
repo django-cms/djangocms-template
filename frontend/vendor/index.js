@@ -1,3 +1,6 @@
+import * as Sentry from '@sentry/browser';
+
+
 // this will let us have a global jQuery object
 window.$ = window.jQuery = require("jquery");
 
@@ -10,6 +13,12 @@ require('@fortawesome/fontawesome-free/scss/fontawesome.scss');
 require('@fortawesome/fontawesome-free/scss/brands.scss');
 require('@fortawesome/fontawesome-free/scss/solid.scss');
 require('@fortawesome/fontawesome-free/scss/regular.scss');
+
+
+Sentry.init({
+    dsn: '',
+    environment: DJANGO.env,
+});
 
 
 // DEMO tools that frontend engineers like
