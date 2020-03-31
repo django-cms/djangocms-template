@@ -14,6 +14,7 @@
             "@types/webpack": "^4.39.3",
 
         "file-loader": "^4.2.0",
+        "image-webpack-loader": "^6.0.0",
         "svg-url-loader": "^3.0.2",
 
         "mini-css-extract-plugin": "~0.8.0",
