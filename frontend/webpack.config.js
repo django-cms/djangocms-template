@@ -94,14 +94,6 @@ const config = {
                 test: /\.(ttf|eot)(\?[\s\S]+)?$/,
                 loader: 'file-loader',
             },
-            {
-                test: /\.modernizrrc.js$/,
-                use: ['modernizr-loader'],
-            },
-            {
-                test: /\.modernizrrc(\.json)?$/,
-                use: ['modernizr-loader', 'json-loader'],
-            }
         ],
     },
     resolve: {
