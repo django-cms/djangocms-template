@@ -102,9 +102,6 @@ const config = {
             path.resolve('frontend'),
             'node_modules'
         ],
-        alias: {
-            modernizr$: path.resolve(__dirname, '/frontend/.modernizrrc'),
-        }
     },
     devServer: {
         contentBase: path.resolve(__dirname, `frontend`),
