@@ -1,6 +1,8 @@
 version: '2'
 
-# live mode https://docs.divio.com/en/latest/how-to/local-in-live-mode.html.
+# Live Mode
+# firstly remove /static_collected from .dockerignore
+# then follow the guide - https://docs.divio.com/en/latest/how-to/local-in-live-mode.html
 services:
   web:
     build:
@@ -27,7 +29,7 @@ services:
     volumes:
       - '.:/app:rw'
       - node_modules:/app/node_modules
-    command: yarn start-in-docker
+    command: yarn webpack-dev-server-in-docker
 
   db:
     image: postgres:9.6-alpine

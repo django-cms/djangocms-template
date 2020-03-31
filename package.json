@@ -10,17 +10,17 @@
         "//": "core pakcages",
         
         "webpack": "^4.41.1",
-            "webpack-cli": "^3.3.9",  "//": "just few dev commands, might be useless",
+            "webpack-cli": "^3.3.9",  "//": "required for cli commands, eg dev server",
             "@types/webpack": "^4.39.3",
 
         "file-loader": "^4.2.0",
         "svg-url-loader": "^3.0.2",
-        
+
         "mini-css-extract-plugin": "~0.8.0",
             "node-sass": "^4.12.0",
             "precss": "^4.0.0",
-        "sass-loader": "^8.0.0",  "//": "a fallback in case mini-css fails, might be useless",
-        "css-loader": "^3.2.0",  "//": "a fallback in case mini-css fails, might be useless",
+        "sass-loader": "^8.0.0",  "//": "processes css files after mini-css",
+        "css-loader": "^3.2.0",  "//": "processes css files after mini-css",
 
         "ts-loader": "^6.2.0",
         "typescript": "^3.6.2",
@@ -29,20 +29,20 @@
         "//": "optional packages",
 
         "jquery": "^3.4.1",
-        "@types/jquery": "^3.3.29",
+            "@types/jquery": "^3.3.29",
         "bootstrap": "^4.3.1",
             "popper.js": "^1.15.0", "//": "a peer depepndency of BS, for tooltips, might be useless",
             "@types/bootstrap": "^4.3.2",
-        "autoprefixer": "^9.5.1",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be useless",
+        "autoprefixer": "^9.5.1",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be not working",
         "@sentry/browser": "^5.15.4", "//": "sentry frontend alrerts",
-        "@fortawesome/fontawesome-free": "^5.12.1"
+        "@fortawesome/fontawesome-free": "^5.12.1", "//": "for fontawesome icons, which don't seem to be working again, might be us"
     },
     "devDependencies": {
         "webpack-dev-server": "^3.8.2"
     },
     "scripts": {
-        "start": "node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
-        "start-in-docker": "NODE_ENV=docker node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
+        "webpack-dev-server": "node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
+        "webpack-dev-server-in-docker": "NODE_ENV=docker node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
         "build": "NODE_ENV=production webpack --config frontend/webpack.config.js"
     }
 }
