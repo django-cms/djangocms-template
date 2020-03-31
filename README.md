@@ -1,4 +1,4 @@
-djangocms-template project is usable by itself. You can follow the setup instructions to try it out.
+djangocms-template project is usable by itself. You can follow the local setup instructions to try it out.
 
 
 Divio Integration Setup
