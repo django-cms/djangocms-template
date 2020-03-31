@@ -33,7 +33,7 @@
         "bootstrap": "^4.3.1",
             "popper.js": "^1.15.0", "//": "a peer depepndency of BS, for tooltips, might be useless",
             "@types/bootstrap": "^4.3.2",
-        "autoprefixer": "^9.5.1",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be useless",
+        "autoprefixer": "^9.5.1",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be not working",
         "@sentry/browser": "^5.15.4", "//": "sentry frontend alrerts",
         "@fortawesome/fontawesome-free": "^5.12.1", "//": "for fontawesome icons, which don't seem to be working again, might be us"
     },
