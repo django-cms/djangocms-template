@@ -29,7 +29,7 @@
         "//": "optional packages",
 
         "jquery": "^3.4.1",
-        "@types/jquery": "^3.3.29",
+            "@types/jquery": "^3.3.29",
         "bootstrap": "^4.3.1",
             "popper.js": "^1.15.0", "//": "a peer depepndency of BS, for tooltips, might be useless",
             "@types/bootstrap": "^4.3.2",
