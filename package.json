@@ -41,8 +41,8 @@
         "webpack-dev-server": "^3.8.2"
     },
     "scripts": {
-        "dev-server": "node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
-        "dev-server-in-docker": "NODE_ENV=docker node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
-        "build-for-prod": "NODE_ENV=production webpack --config frontend/webpack.config.js"
+        "webpack-dev-server": "node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
+        "webpack-dev-server-in-docker": "NODE_ENV=docker node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
+        "build": "NODE_ENV=production webpack --config frontend/webpack.config.js"
     }
 }
