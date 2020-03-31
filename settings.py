@@ -191,12 +191,7 @@ CONFIRM_EMAIL_ON_GET = True
 
 GTM_CONTAINER_ID = env.get('GTM_CONTAINER_ID', 'GTM-1234')
 
-IS_RUN_FRONTEND_IN_DOCKER = env.get_bool('IS_RUN_FRONTEND_IN_DOCKER')
-if IS_RUN_FRONTEND_IN_DOCKER:
-    webpack_dev_domain = 'frontend'
-else:
-    webpack_dev_domain = 'localhost'
-WEBPACK_DEV_URL = env.get('WEBPACK_DEV_URL', default=f'http://{webpack_dev_domain}:8090/assets/')
+WEBPACK_DEV_URL = env.get('WEBPACK_DEV_URL', default=f'http://localhost:8090/assets/')
 STATICFILES_STORAGE = 'aldryn_django.storage.ManifestGZippedStaticFilesStorage'
 STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365
 

@@ -25,8 +25,9 @@ services:
     ports:
       - '8090:8090'
     volumes:
+      - '.:/app:rw'
       - node_modules:/app/node_modules
-    command: yarn start
+    command: yarn start-in-docker
 
   db:
     image: postgres:9.6-alpine
