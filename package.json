@@ -10,6 +10,7 @@
         "//": "core pakcages",
         
         "webpack": "^4.41.1",
+            "webpack-cli": "^3.3.9",  "//": "required for cli commands, eg dev server",
             "@types/webpack": "^4.39.3",
 
         "file-loader": "^4.2.0",
@@ -18,8 +19,8 @@
         "mini-css-extract-plugin": "~0.8.0",
             "node-sass": "^4.12.0",
             "precss": "^4.0.0",
-        "sass-loader": "^8.0.0",  "//": "a fallback in case mini-css fails, might be useless",
-        "css-loader": "^3.2.0",  "//": "a fallback in case mini-css fails, might be useless",
+            "sass-loader": "^8.0.0",  "//": "processes css files after mini-css",
+            "css-loader": "^3.2.0",  "//": "processes css files after mini-css",
 
         "ts-loader": "^6.2.0",
         "typescript": "^3.6.2",
@@ -34,7 +35,7 @@
             "@types/bootstrap": "^4.3.2",
         "autoprefixer": "^9.5.1",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be useless",
         "@sentry/browser": "^5.15.4", "//": "sentry frontend alrerts",
-        "@fortawesome/fontawesome-free": "^5.12.1", "//": "for fontawesome icons, which don't seem to be working again, might be usless"
+        "@fortawesome/fontawesome-free": "^5.12.1", "//": "for fontawesome icons, which don't seem to be working again, might be us"
     },
     "devDependencies": {
         "webpack-dev-server": "^3.8.2"
