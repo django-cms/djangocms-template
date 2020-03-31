@@ -21,5 +21,5 @@ COPY . /app
 
 
 RUN yarn install --pure-lockfile
-RUN yarn run build
+RUN yarn run build-for-prod
 RUN DJANGO_MODE=build python manage.py collectstatic --noinput
