@@ -34,7 +34,7 @@
             "@types/bootstrap": "^4.3.2",
         "autoprefixer": "^9.5.1",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be useless",
         "@sentry/browser": "^5.15.4", "//": "sentry frontend alrerts",
-        "@fortawesome/fontawesome-free": "^5.12.1", "//": "for fontawesome icons, which don't seem to be working again"
+        "@fortawesome/fontawesome-free": "^5.12.1", "//": "for fontawesome icons, which don't seem to be working again, might be usless"
     },
     "devDependencies": {
         "webpack-dev-server": "^3.8.2"
