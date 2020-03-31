@@ -1,6 +1,8 @@
 version: '2'
 
-# live mode https://docs.divio.com/en/latest/how-to/local-in-live-mode.html.
+# Live Mode
+# firstly remove /static_collected from .dockerignore
+# then follow the guide - https://docs.divio.com/en/latest/how-to/local-in-live-mode.html
 services:
   web:
     build:
