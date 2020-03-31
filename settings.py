@@ -120,6 +120,9 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
+    # TODO: the aldryn-sso bug needs to be fixed and this needs to be removed from the code base
+    'backend.aldryn_sso_custom_admin',
+
     # project
 
     'backend.plugins.default.bs4_float',
@@ -132,6 +135,7 @@ INSTALLED_APPS.extend([
     # not styled or missing npm dependencies
     # 'backend.plugins.default.bs4_card_columns',
     # 'backend.plugins.default.bs4_lightbox_gallery',
+
 ])
 
 MIDDLEWARE.extend([
@@ -228,20 +232,23 @@ HIJACK_ALLOW_GET_REQUESTS = True
 
 ADMIN_REORDER = [
     {
-        'label': 'CMS Pages',
-        'app': 'cms',
+        'label': 'Users',
+        'app': 'auth',
         'models': [
-            'cms.Page',
-            'djangocms_redirect.Redirect',
+            'backend_auth.User',
+            'auth.Group',
+            {'model': 'aldryn_sso.AldrynCloudUser', 'label': 'divio.com SSO users'},
         ],
     },
     {
-        'label': 'CMS Plugins',
+        'label': 'CMS',
         'app': 'cms',
         'models': [
-            {'model': 'aldryn_forms.FormSubmission', 'label': 'Dynamic forms submissions'},
-            {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
-            {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
+            'cms.Page',
+            'filer.Folder',
+            'djangocms_redirect.Redirect',
+            {'model': 'robots.Rule', 'label': 'Access rules for robots.txt'},
+            {'model': 'robots.Url', 'label': 'Urls patterns for robots.txt'},
         ],
     },
     {
@@ -254,38 +261,18 @@ ADMIN_REORDER = [
         ],
     },
     {
-        'label': 'Files',
-        'app': 'filer',
+        'label': 'System Administration',
+        'app': 'cms',
         'models': [
-            'filer.Folder',
-            {'model': 'filer.ThumbnailOption', 'label': 'Images thumbnail options'},
-        ],
-    },
-    {
-        'label': 'Users',
-        'app': 'auth',
-        'models': [
-            'backend_auth.User',
-            {'model': 'auth.Group', 'label': 'User groups for everything'},
-            {'model': 'cms.PageUserGroup', 'label': 'User groups for pages'},
-            'cms.GlobalPagePermission',
-            # sso admin interface is broken due to Reverse for 'auth_user_change' not found. let's hide this
-            # {'model': 'aldryn_sso.AldrynCloudUser', 'label': 'Admin users from Divio'},
-        ],
-    },
-    {
-        'label': 'SEO',
-        'app': 'robots',
-        'models': [
-            {'model': 'robots.Rule', 'label': 'Access rules for robots.txt'},
-            {'model': 'robots.Url', 'label': 'Urls patterns for robots.txt'},
-        ],
-    },
-    {
-        'label': 'Sites',
-        'app': 'sites',
-        'models': [
-            'sites.Site',
+            {'model': 'site_config.SiteConfig', 'label': 'Global Settings'},
+            {'model': 'aldryn_forms.FormSubmission', 'label': 'Dynamic forms submissions'},
+            {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
+            {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
+            {'model': 'sites.Site', 'label': 'Websites'},
+            # 'cms.GlobalPagePermission',
+            # 'cms.PageUserGroup',
+            # 'cms.PageUser',
+            # {'model': 'filer.ThumbnailOption', 'label': 'Images thumbnail options'},
         ],
     },
 ]
