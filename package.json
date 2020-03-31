@@ -10,7 +10,6 @@
         "//": "core pakcages",
         
         "webpack": "^4.41.1",
-            "webpack-cli": "^3.3.9",  "//": "just few dev commands, might be useless",
             "@types/webpack": "^4.39.3",
 
         "file-loader": "^4.2.0",
