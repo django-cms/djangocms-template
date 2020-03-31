@@ -20,8 +20,6 @@ COPY . /app
 # </SOURCE>
 
 
-# FRONTEND
-# for yarn
 RUN yarn install --pure-lockfile
 RUN yarn run build
 RUN DJANGO_MODE=build python manage.py collectstatic --noinput
