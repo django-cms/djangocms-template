@@ -86,7 +86,7 @@ djangocms-attributes-field==1.2.0  # via djangocms-bootstrap4, djangocms-file, d
 djangocms-bootstrap4==1.5.0
 djangocms-file==2.4.0
 djangocms-googlemap==1.4.0
-djangocms-helpers==2.0.2
+djangocms-helpers==2.1.0
 djangocms-history==1.1.0
 djangocms-icon==1.5.0
 djangocms-light-gallery==1.1.0

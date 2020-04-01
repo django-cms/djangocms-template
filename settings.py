@@ -120,9 +120,6 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
 
-    # TODO: the aldryn-sso bug needs to be fixed and this needs to be removed from the code base
-    'backend.aldryn_sso_custom_admin',
-
     # project
 
     'backend.plugins.default.bs4_float',

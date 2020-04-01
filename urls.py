@@ -4,6 +4,8 @@ from django.conf import settings
 from django.urls import include
 from django.urls import path
 from djangocms_helpers.sentry_500_error_handler.views import collect_500_error_user_feedback_view
+from djangocms_helpers.sentry_500_error_handler.views import not_found_404_view
+
 
 urlpatterns = [
     path('robots.txt', include('robots.urls')),
@@ -16,3 +18,4 @@ urlpatterns = [
 
 if not settings.DEBUG:
     handler500 = collect_500_error_user_feedback_view
+    handler404 = not_found_404_view

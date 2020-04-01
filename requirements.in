@@ -26,7 +26,7 @@ djangocms-aldryn-forms-bootstrap4-templates
 aldryn-translation-tools
 aldryn-apphooks-config
 djangocms-redirect
-djangocms-helpers >= 2.0.1  # bug fixes and utils as send_email
+djangocms-helpers >= 2.1.0  # bug fixes and utils as send_email, error handlers
 djangocms-page-meta
 
 # django packages
