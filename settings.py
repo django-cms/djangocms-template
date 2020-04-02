@@ -270,7 +270,6 @@ ADMIN_REORDER = [
             {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
             {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
             {'model': 'sites.Site', 'label': 'Websites'},
-            {'model': 'filer.ThumbnailOption', 'label': 'Image thumbnail options'},
             # 'cms.GlobalPagePermission',
             # 'cms.PageUserGroup',
             # 'cms.PageUser',
