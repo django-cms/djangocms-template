@@ -10,7 +10,7 @@ Divio Integration Setup
 - compile the requirements - see the instructions below
 - remove only `pip-reqs compile` command from reqs install - everything else leave as it is
 - in the Development Setup below replace `create an .aldryn file` with the content as `{"id": {project_id}, "slug": "{project_slug}"}`, the ID can be found in the dashboard url - `https://control.divio.com/control/{org_id}/edit/{project_id}/`, the slug is on that page as well
-- remove this section from README.md, along with the first sentence about djangocms-template independent setup.
+- remove this section from README.md, along with the first sentence about djangocms-template independent setup. Also remove the `docs` directory - it should be stored only within this the source repository.
 
 If you DID deploy the test server before merging in djangocms-template and you run into migration errors:
 
@@ -26,5 +26,5 @@ Built on Python 3.6, Django 2.2, DjangoCMS 3.7, Webpack 4, TypeScript 3.
 - for the rest see the general [setup instructions](https://gitlab.com/what-digital/wiki/-/blob/master/info/projects/djangocms-template/setup-instruction.md)
 
 Guidelines:
-- [backend](https://gitlab.com/what-digital/wiki/-/blob/master/info/projects/djangocms-template/guidelines/backend.md)
-- [frontend](https://gitlab.com/what-digital/wiki/-/blob/master/info/projects/djangocms-template/guidelines/frontend.md)
+- [backend](https://gitlab.com/what-digital/djangocms-template/-/blob/master/info/projects/djangocms-template/guidelines/backend.md)
+- [frontend](https://gitlab.com/what-digital/djangocms-template/-/blob/master/info/projects/djangocms-template/guidelines/frontend.md)
