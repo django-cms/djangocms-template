@@ -248,8 +248,7 @@ ADMIN_REORDER = [
             'cms.Page',
             'filer.Folder',
             'djangocms_redirect.Redirect',
-            {'model': 'robots.Rule', 'label': 'Access rules for robots.txt'},
-            {'model': 'robots.Url', 'label': 'Urls patterns for robots.txt'},
+            {'model': 'aldryn_forms.FormSubmission', 'label': 'Dynamic forms submissions'},
         ],
     },
     {
@@ -265,14 +264,22 @@ ADMIN_REORDER = [
         'label': 'System Administration',
         'app': 'cms',
         'models': [
-            {'model': 'site_config.SiteConfig', 'label': 'Global Settings'},
-            {'model': 'aldryn_forms.FormSubmission', 'label': 'Dynamic forms submissions'},
+            {'model': 'sites.Site', 'label': 'Websites'},
             {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
             {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
-            {'model': 'sites.Site', 'label': 'Websites'},
+            
+            # removed because it doesn't work on cms 3.7.1
             # 'cms.GlobalPagePermission',
             # 'cms.PageUserGroup',
             # 'cms.PageUser',
+        ],
+    },
+    {
+        'label': 'SEO',
+        'app': 'cms',
+        'models': [
+            {'model': 'robots.Rule', 'label': 'Access rules for robots.txt'},
+            {'model': 'robots.Url', 'label': 'Urls patterns for robots.txt'},
         ],
     },
 ]
