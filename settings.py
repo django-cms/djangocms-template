@@ -319,16 +319,14 @@ CKEDITOR_SETTINGS = {
         ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
         ['Source']
     ],
-    # Cannot use pixel sizes here because it is not responsive. If we hard code pixels for desktop there is no way how this can look good on mobile phones. That's why we use root em (rem). It's based on the font size defined on the html tag (root tag).
     'fontSize_sizes': '0.5rem;0.6rem;0.7rem;0.8rem;0.9rem;1.1rem;1rem;1.2rem;1.3rem;1.4rem;1.5rem;1.6rem;2rem;2.3rem;2.5rem;3rem;4rem;5rem;6rem;7rem',
     'stylesSet': [
-        {'name': 'Float Left', 'element': 'span', 'attributes': {'class': 'float-left'}},
-        {'name': 'H1', 'element': 'h1'},
+        # {'name': 'Float Left', 'element': 'span', 'attributes': {'class': 'float-left'}},
     ],
     'contentsCss': [
         f'{WEBPACK_DEV_URL}vendor.css' if DIVIO_ENV == DIVIO_ENV_ENUM.LOCAL else f'{STATIC_URL}/dist/vendor.css',
         f'{WEBPACK_DEV_URL}global.css' if DIVIO_ENV == DIVIO_ENV_ENUM.LOCAL else f'{STATIC_URL}/dist/global.css',
-        f'{STATIC_URL}/djangocms_text_ckeditor/ckeditor/contents.css',  # default required styles
+        f'{STATIC_URL}/djangocms_text_ckeditor/ckeditor/contents.css',
     ],
     'config': {
         'allowedContent': True,
