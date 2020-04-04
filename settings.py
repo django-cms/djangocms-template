@@ -332,6 +332,7 @@ CKEDITOR_SETTINGS = {
     ],
     'config': {
         'allowedContent': True,
+        'fillEmptyBlocks': False, # doesn't seem to be doing anything, but was part of the old config
     }
 }
 
