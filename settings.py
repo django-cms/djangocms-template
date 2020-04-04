@@ -314,7 +314,7 @@ CKEDITOR_SETTINGS = {
         '/',
         ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', ],
         ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
-        # we dont want 'Link', this is done by the bootstrap4 link/button plugin which covers all kind of links
+        # remove 'Link' since we have bootstrap4 link/button plugin
         ['Unlink'],
         ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
         ['Source']
