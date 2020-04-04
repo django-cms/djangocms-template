@@ -19,6 +19,7 @@ djangocms-bootstrap4
 djangocms-googlemap
 djangocms-modules
 https://github.com/divio/aldryn-forms/archive/5.0.1.zip#egg=aldryn-forms
+aldryn-forms-recaptcha-plugin
 djangocms-light-gallery
 djangocms-aldryn-forms-bootstrap4-templates
 
