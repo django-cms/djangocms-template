@@ -98,8 +98,8 @@ INSTALLED_APPS.extend([
 
     'aldryn_forms_bs4_templates',
     'aldryn_forms',
-        'aldryn_forms_recaptcha_plugin',  # overrides 'captcha' templates
-        'captcha',
+        'aldryn_forms_recaptcha_plugin',
+            'snowpenguin.django.recaptcha3',
         'absolute',
         'aldryn_forms.contrib.email_notifications',
         'emailit',
@@ -289,9 +289,9 @@ ADMIN_REORDER = [
 ]
 
 
-RECAPTCHA_PUBLIC_KEY = env.get('RECAPTCHA_PUBLIC_KEY', '6LfFXb0UAAAAAI1DL3Qh6tZkFtyO1iuwZaxj99NL')
-RECAPTCHA_PRIVATE_KEY = env.get('RECAPTCHA_PRIVATE_KEY', '6LfFXb0UAAAAAHnSuhL_Qwxzu0gziwzgmEOrAWR4')
-RECAPTCHA_REQUIRED_SCORE = 0.85
+RECAPTCHA_PUBLIC_KEY = env.get('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
+RECAPTCHA_PRIVATE_KEY = env.get('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
+RECAPTCHA_SCORE_THRESHOLD = 0.85
 
 
 ################################################################################
