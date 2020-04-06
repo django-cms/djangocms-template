@@ -172,6 +172,14 @@ else:
 EMAIL_BACKEND = env.get('EMAIL_BACKEND', default=email_backend_default)
 
 
+if DIVIO_ENV == DivioEnv.LOCAL:
+    ssl_redirect_default = False
+else:
+    ssl_redirect_default = True
+
+SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_default)
+
+
 ################################################################################
 ## === django packages === ##
 ################################################################################
