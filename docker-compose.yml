@@ -16,7 +16,7 @@ services:
       - '.:/app:rw'
       - './data:/data:rw'
     command: python manage.py runserver 0.0.0.0:80
-    env_file: .env-local
+    env_file: .env-for-docker
     depends_on:
       - db
 
