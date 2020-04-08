@@ -7,4 +7,4 @@ The project contains two main branches:
 The main features:
 - production-ready plugins setup (galleries, google maps, blog, multi-columns & responsive content, etc)
 - latest webpack version configuration with typescript and scss support, including a highly performant real-time compilation
-- latest fixes for DjangoCMS and its core ecosystem critical issues, that haven't been released to the mainstream yet (for details see djangocms-helpers package and settings)
+- latest fixes for DjangoCMS and its core ecosystem critical issues, that haven't been deployed on the mainstream yet (for details see djangocms-helpers package and settings)
