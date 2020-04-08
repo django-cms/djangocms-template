@@ -48,6 +48,7 @@ BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
 HTTP_PROTOCOL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
+CKEDITOR_SETTINGS: dict = locals()['CKEDITOR_SETTINGS']
 
 DATE_FORMAT = 'F j, Y'
 
@@ -328,7 +329,7 @@ DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
 
 DJANGOCMS_GOOGLEMAP_API_KEY = env.get('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
 
-CKEDITOR_SETTINGS = {
+CKEDITOR_SETTINGS.update({
     'language': '{{ language }}',
     'toolbar': 'CUSTOM',
     'toolbar_CUSTOM': [
@@ -345,10 +346,28 @@ CKEDITOR_SETTINGS = {
         ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
         ['Source']
     ],
-    'fontSize_sizes': '0.5rem;0.6rem;0.7rem;0.8rem;0.9rem;1.1rem;1rem;1.2rem;1.3rem;1.4rem;1.5rem;1.6rem;2rem;2.3rem;2.5rem;3rem;4rem;5rem;6rem;7rem',
-    'stylesSet': [
-        # {'name': 'Float Left', 'element': 'span', 'attributes': {'class': 'float-left'}},
-    ],
+    'fontSize_sizes': (
+        '0.5rem;'
+        '0.6rem;'
+        '0.7rem;'
+        '0.8rem;'
+        '0.9rem;'
+        '1rem;'
+        '1.1rem;'
+        '1.2rem;'
+        '1.3rem;'
+        '1.4rem;'
+        '1.5rem;'
+        '1.6rem;'
+        '2rem;'
+        '2.3rem;'
+        '2.5rem;'
+        '3rem;'
+        '4rem;'
+        '5rem;'
+        '6rem;'
+        '7rem'
+    ),
     'contentsCss': [
         f'{WEBPACK_DEV_URL}vendor.css' if DIVIO_ENV == DIVIO_ENV_ENUM.LOCAL else f'{STATIC_URL}/dist/vendor.css',
         f'{WEBPACK_DEV_URL}global.css' if DIVIO_ENV == DIVIO_ENV_ENUM.LOCAL else f'{STATIC_URL}/dist/global.css',
@@ -358,7 +377,7 @@ CKEDITOR_SETTINGS = {
         'allowedContent': True,
         'fillEmptyBlocks': False, # doesn't seem to be doing anything, but was part of the old config
     }
-}
+})
 
 # for djangocms-helpers send_email
 META_SITE_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
