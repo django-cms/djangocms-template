@@ -29,8 +29,8 @@ The most efficient and reliable setup for backend development.
 
 - `pip install -r requirements.txt`
 - add a new line - `127.0.0.1 postgres` - to your system `/etc/hosts` file
-- `docker-compose run --rm web fish --command 'python manage.py migrate'`
 - `docker-compose up db`
+- `python manage.py migrate`
 - `python manage.py runserver`
 - install yarn and node 10
 - `yarn install --pure-lockfile`
