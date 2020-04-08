@@ -15,7 +15,7 @@ For setting up the database from the stage/live server see the last section abou
 
 Perfect for people who aren't planning to do any backend development and want the real-time webpack rebuilds.
 
-- remove `IS_RUN_FRONTEND_IN_DOCKER=true` from `.env-for-docker` file  
+- remove `IS_RUN_FRONTEND_IN_DOCKER=true` from `.env-local` file  
 - `docker-compose build`
 - `docker-compose run --rm web bash --command 'python manage.py migrate'`
 - install yarn and node 10 outside of docker
@@ -28,7 +28,7 @@ Perfect for people who aren't planning to do any backend development and want th
 The most efficient and reliable setup for backend development.
 
 - `pip install -r requirements.txt`
-- in `.env-for-native` uncomment `IS_NATIVE_SETUP=true`
+- add a new line - `127.0.0.1 postgres` - to your system `/etc/hosts` file
 - `docker-compose run --rm web fish --command 'python manage.py migrate'`
 - `docker-compose up db`
 - `python manage.py runserver`

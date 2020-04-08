@@ -9,7 +9,8 @@ from sentry_sdk.integrations.logging import LoggingIntegration
 from env_settings import env
 from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv('.env-for-native'))
+
+load_dotenv(find_dotenv('.env-local'))
 
 
 ################################################################################
@@ -27,10 +28,6 @@ INSTALLED_ADDONS = [
     # </INSTALLED_ADDONS>
 ]
 
-# for native setup must be before `aldryn_addons.settings.load()`
-IS_NATIVE_SETUP = env.get_bool('IS_NATIVE_SETUP', default=False)
-if IS_NATIVE_SETUP:
-    DATABASE_URL = env.get('DATABASE_URL', 'postgres://postgres@localhost:5432/db')
 
 import aldryn_addons.settings
 
