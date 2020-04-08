@@ -2,7 +2,7 @@ This is a state of the art DjangoCMS template. It's used in at least 9 live proj
 
 The project contains two main branches:
 - `divio` - the main branch adapted for divio.com support
-- `debian` - the secondary branch for native linux servers, mostly adapted for what.digital ansible deployments, right now it's isn't officially supported.
+- `master` - the secondary branch for native linux servers, mostly adapted for what.digital ansible deployments, right now it's isn't officially supported.
 
 The main features:
 - production-ready plugins setup (galleries, google maps, blog, multi-columns & responsive content, etc)
