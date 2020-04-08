@@ -14,4 +14,4 @@ The `backend/templates` directory is only for global templates, for anything els
 
 When you're editing the env files add the changes to another inactive changes, this way you're never going to commit those changes to git.
 
-![](/info/projects/djangocms-template/guidelines/img/changset.png)
+![](/docs/guidelines/img/changset.png)
