@@ -36,11 +36,17 @@ The most efficient and reliable setup for backend development.
 - `yarn install --pure-lockfile`
 - `yarn webpack-dev-server`
 
-#### Update requirements.txt
+### Update requirements.txt
+
+###### For docker setup
 
 `docker-compose run --rm web fish --command 'pip-reqs compile; pip-reqs resolve'`
 
 For installing the compiled requirements in docker you have to rebuild it with `docker-compose build`.
+
+###### For native setup
+
+`pip-compile requirements.in > requirements.txt`
 
 ### Cloning external database and media
 
