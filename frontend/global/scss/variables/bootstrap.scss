@@ -1,13 +1,15 @@
+/*
+ * This file is imported in bootstrap during compilation - see frontend/vendor/scss/main
+ */
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 
+@import 'project';
+
 
 // DO NOT CHANGE the number of columns!
 $grid-columns: 24;
-
-$project-orange: #f8951d;
-$project-dark-blue: #252733;
 
 $primary-font-color: #333333;
 $button-font-color: white;
