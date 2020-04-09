@@ -40,7 +40,7 @@ The most efficient and reliable setup for backend development.
 
 ###### For docker setup
 
-`docker-compose run --rm web fish --command 'pip-reqs compile; pip-reqs resolve'`
+`docker-compose run --rm web fish --command 'pip-compile requirements.in > requirements.txt'`
 
 For installing the compiled requirements in docker you have to rebuild it with `docker-compose build`.
 
