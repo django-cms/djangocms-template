@@ -45,7 +45,7 @@ BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
 HTTP_PROTOCOL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
-CKEDITOR_SETTINGS: dict = locals()['CKEDITOR_SETTINGS']
+
 
 DATE_FORMAT = 'F j, Y'
 
@@ -326,7 +326,7 @@ DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
 
 DJANGOCMS_GOOGLEMAP_API_KEY = env.get('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
 
-CKEDITOR_SETTINGS.update({
+CKEDITOR_SETTINGS = {
     'language': '{{ language }}',
     'toolbar': 'CUSTOM',
     'toolbar_CUSTOM': [
@@ -374,7 +374,7 @@ CKEDITOR_SETTINGS.update({
         'allowedContent': True,
         'fillEmptyBlocks': False, # doesn't seem to be doing anything, but was part of the old config
     }
-})
+}
 
 # for djangocms-helpers send_email
 META_SITE_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
