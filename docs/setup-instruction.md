@@ -38,15 +38,11 @@ The most efficient and reliable setup for backend development.
 
 ### Update requirements.txt
 
-###### For docker setup
-
 `docker-compose run --rm web fish --command 'pip-compile requirements.in > requirements.txt'`
 
 For installing the compiled requirements in docker you have to rebuild it with `docker-compose build`.
 
-###### For native setup
-
-`pip-compile requirements.in > requirements.txt`
+On native you also have to use docker compilation, otherwise you'll introduce platform-dependant packages in the resulting txt file.
 
 ### Cloning external database and media
 
