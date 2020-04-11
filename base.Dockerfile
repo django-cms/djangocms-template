@@ -15,6 +15,7 @@ RUN fish fish-install --noninteractive --yes
 
 
 RUN pip3 install pip-tools
+RUN pip3 install --upgrade pip
 
 
 # divio envs
