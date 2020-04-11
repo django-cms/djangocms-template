@@ -14,7 +14,7 @@ djangocms-picture
 djangocms-file
 djangocms-history
 djangocms-snippet
-djangocms-video
+https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
 djangocms-bootstrap4
 djangocms-googlemap
 djangocms-modules
