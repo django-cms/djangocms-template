@@ -14,7 +14,6 @@ RUN curl -L https://get.oh-my.fish > fish-install
 RUN fish fish-install --noninteractive --yes
 
 
-RUN pip3 install pip-tools
 RUN pip3 install --upgrade pip
 
 
