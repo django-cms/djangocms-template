@@ -2,7 +2,6 @@
  * This file is imported in bootstrap during compilation - see frontend/vendor/scss/main
  */
 @import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
 
 @import 'project';
@@ -22,11 +21,6 @@ $theme-colors: (
     "danger": #ff4136
 );
 
-// DEMO: Below find some bs4 customisation examples:
 
-// $font-size-base: 1.1rem
-// $line-height-base: 1.6
-// $body-color: $primary-font-color
-
-// override the bootstrap4 $spacer variable with our own
-// $spacer: $spacer
+// override by placing it at the end
+@import '~bootstrap/scss/variables';
