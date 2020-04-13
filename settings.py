@@ -59,7 +59,15 @@ class DivioEnv(Enum):
 DIVIO_ENV_ENUM = DivioEnv
 DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
 
-INSTALLED_APPS.insert(0, 'backend.auth')  # for USERNAME_FIELD = 'email', before `cms` since it has a User model
+
+installed_apps_first = [
+    # for USERNAME_FIELD = 'email', before `cms` since it has a User model
+    'backend.auth',
+
+    # must be before `cms`
+    'djangocms_modules',
+]
+INSTALLED_APPS = installed_apps_first + INSTALLED_APPS
 
 INSTALLED_APPS.extend([
     # django packages
@@ -102,7 +110,6 @@ INSTALLED_APPS.extend([
         'aldryn_forms.contrib.email_notifications',
         'emailit',
 
-    'djangocms_modules',
     'djangocms_redirect',
     'light_gallery',
 
@@ -295,11 +302,6 @@ ADMIN_REORDER = [
 ]
 
 
-RECAPTCHA_PUBLIC_KEY = env.get('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
-RECAPTCHA_PRIVATE_KEY = env.get('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
-RECAPTCHA_SCORE_THRESHOLD = 0.85
-
-
 ################################################################################
 ## === django-cms core === ##
 ################################################################################
@@ -379,3 +381,8 @@ CKEDITOR_SETTINGS = {
 # for djangocms-helpers send_email
 META_SITE_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
 META_USE_SITES = True
+
+
+RECAPTCHA_PUBLIC_KEY = env.get('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
+RECAPTCHA_PRIVATE_KEY = env.get('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
+RECAPTCHA_SCORE_THRESHOLD = 0.85
