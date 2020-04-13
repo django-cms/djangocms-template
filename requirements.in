@@ -6,7 +6,8 @@ https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.1.1/e5e04b5b-3
 https://control.divio.com/api/v1/apps/serve/django-filer/1.7.0/633d9275-51a0-42bc-8355-143db1b20ca4/django-filer-1.7.0.tar.gz#egg=django-filer==1.7.0
 # </INSTALLED_ADDONS>
 
-# django-cms plugins
+# django-cms
+
 djangocms-icon
 djangocms-text-ckeditor
 djangocms-link
@@ -22,15 +23,14 @@ https://github.com/divio/aldryn-forms/archive/5.0.3.zip#egg=aldryn-forms
     djangocms-aldryn-forms-bootstrap4-templates
     aldryn-forms-recaptcha-plugin >= 1.0.0.2
 djangocms-light-gallery
-
-# django-cms packages
 aldryn-translation-tools
 aldryn-apphooks-config
 djangocms-redirect
 djangocms-helpers >= 2.1.0  # bug fixes and utils as send_email, error handlers
 djangocms-page-meta
 
-# django packages
+# django
+
 django-settings-export # settings export to templates
 django-enumfields
 django-admin-sortable2 # drag and drop sorting for admin
@@ -53,6 +53,7 @@ django-logentry-admin
 django-adminutils # a set of shortcuts for admin.py composition
 
 # python utils
+
 pytz # a db of timezones
 sentry-sdk
 python-dotenv
