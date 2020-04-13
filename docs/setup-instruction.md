@@ -38,7 +38,7 @@ The most efficient and reliable setup for backend development.
 
 ### Update requirements.txt
 
-`docker-compose run --rm web fish --command 'pip-reqs compile; pip-reqs resolve'`
+`docker-compose run --rm web fish --command 'pip-compile requirements.in > requirements.txt'`
 
 For installing the compiled requirements in docker you have to rebuild it with `docker-compose build`.
 
@@ -79,4 +79,5 @@ It's used in docker files as `FROM registry.gitlab.com/what-digital/djangocms-te
 - docker login registry.gitlab.com
     - here you might need to create an api key for the password
 - docker build -t registry.gitlab.com/what-digital/djangocms-template -f base.Dockerfile .
+- docker tag registry.gitlab.com/what-digital/djangocms-template:latest registry.gitlab.com/what-digital/djangocms-template:1.1.0.0
 - docker push registry.gitlab.com/what-digital/djangocms-template

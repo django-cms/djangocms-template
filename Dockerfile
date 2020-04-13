@@ -1,10 +1,10 @@
-FROM registry.gitlab.com/what-digital/djangocms-template:1.0.0.1
+FROM registry.gitlab.com/what-digital/djangocms-template:1.1.0.2
 
 
 COPY . /app/
 
 
-RUN pip-reqs resolve && pip install --no-index --no-deps --requirement requirements.urls
+RUN pip install -r requirements.txt
 
 
 RUN yarn install --pure-lockfile
