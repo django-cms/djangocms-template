@@ -263,7 +263,7 @@ ADMIN_REORDER = [
         'app': 'cms',
         'models': [
             'cms.Page',
-            'filer.Folder',
+            {'model': 'filer.Folder', 'label': 'Media'},
             'djangocms_redirect.Redirect',
             {'model': 'aldryn_forms.FormSubmission', 'label': 'Dynamic forms submissions'},
         ],
