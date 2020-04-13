@@ -1,13 +1,6 @@
 FROM divio/base:4.15-py3.6-slim-stretch
 
 
-# pip-reqs is needed only for private aldryn addons,
-# besides it casues caching issues and deployment errors every once in a while
-RUN pip install --upgrade pip
-RUN pip uninstall --yes pip-reqs
-RUN pip install pip-tools
-
-
 RUN apt-get update --quiet && apt-get install --yes git gnupg2 apt-transport-https fish gcc nano
 
 
