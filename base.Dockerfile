@@ -1,4 +1,4 @@
-FROM divio/base:4.15-py3.6-slim-stretch
+FROM divio/base:4.16-py3.6-slim-stretch
 
 
 RUN apt-get update --quiet && apt-get install --yes git gnupg2 apt-transport-https fish gcc nano
@@ -15,8 +15,3 @@ RUN apt-get update --quiet && apt-get install --yes yarn nodejs
 RUN usermod -s /usr/bin/fish root
 RUN curl -L https://get.oh-my.fish > fish-install
 RUN fish fish-install --noninteractive --yes
-
-
-# divio envs
-ENV PIP_INDEX_URL=${PIP_INDEX_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/+simple/} \
-    WHEELSPROXY_URL=${WHEELSPROXY_URL:-https://wheels.aldryn.net/v1/aldryn-extras+pypi/${WHEELS_PLATFORM:-aldryn-baseproject-py3}/}
