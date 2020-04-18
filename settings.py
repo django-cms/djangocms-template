@@ -368,6 +368,7 @@ CKEDITOR_SETTINGS = {
         '6rem;'
         '7rem'
     ),
+    'stylesSet': f'default:{STATIC_URL}global/ts/ckeditor-config.js',
     'contentsCss': [
         f'{WEBPACK_DEV_URL}vendor.css' if DIVIO_ENV == DIVIO_ENV_ENUM.LOCAL else f'{STATIC_URL}/dist/vendor.css',
         f'{WEBPACK_DEV_URL}global.css' if DIVIO_ENV == DIVIO_ENV_ENUM.LOCAL else f'{STATIC_URL}/dist/global.css',
