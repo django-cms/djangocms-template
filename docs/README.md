@@ -1,5 +1,7 @@
 This is a state of the art DjangoCMS template. It's used in at least 9 live projects at the moment.
 
+This project adheres to the following coding guidelines - https://gitlab.com/what-digital/tech-docs/-/tree/master/coding-guidelines
+
 The project contains two main branches:
 - `divio` - the main branch adapted for divio.com support
 - `master` - the secondary branch for native linux servers, mostly adapted for what.digital ansible deployments, right now it's isn't officially supported.
