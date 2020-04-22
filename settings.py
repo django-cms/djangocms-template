@@ -43,7 +43,6 @@ INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
 MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
 BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
-HTTP_PROTOCOL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
 
 
@@ -186,6 +185,9 @@ else:
     ssl_redirect_default = True
 
 SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_default)
+
+
+HTTP_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
 
 
 ################################################################################
@@ -383,7 +385,7 @@ CKEDITOR_SETTINGS = {
 }
 
 # for djangocms-helpers send_email
-META_SITE_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
+META_SITE_PROTOCOL = HTTP_PROTOCOL
 META_USE_SITES = True
 
 
