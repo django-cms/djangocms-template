@@ -8,8 +8,8 @@ https://control.divio.com/api/v1/apps/serve/aldryn-addons/1.1.0/7a2d5a44-16e2-4e
 aldryn-apphooks-config==0.5.3  # via -r requirements.in
 aldryn-boilerplates==0.8.0  # via aldryn-django-cms, aldryn-forms
 aldryn-client==2.3.5      # via aldryn-django
-https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.1.1/e5e04b5b-3c92-43c5-8075-ca5a9b0231b2/aldryn-django-cms-3.7.1.1.tar.gz#egg=aldryn-django-cms==3.7.1.1  # via -r requirements.in
-https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.11.1/c54a80f6-9ed0-4f94-9170-b3a52648d500/aldryn-django-2.2.11.1.tar.gz#egg=aldryn-django==2.2.11.1  # via -r requirements.in
+https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.2.1/52771de3-1ec7-43dc-922b-e1aec12e62cd/aldryn-django-cms-3.7.2.1.tar.gz#egg=aldryn-django-cms==3.7.2.1
+https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.12.1/c2d1c3a0-4978-4f91-84a3-749a7253f35d/aldryn-django-2.2.12.1.tar.gz#egg=aldryn-django==2.2.12.1
 aldryn-forms-recaptcha-plugin==1.0.0.2  # via -r requirements.in
 https://github.com/divio/aldryn-forms/archive/5.0.4.zip#egg=aldryn-forms  # via -r requirements.in, aldryn-forms-recaptcha-plugin, djangocms-aldryn-forms-bootstrap4-templates
 aldryn-sites==0.6.0       # via aldryn-django
