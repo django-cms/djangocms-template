@@ -16,7 +16,6 @@ aldryn-sites==0.6.0       # via aldryn-django
 aldryn-snake==1.0.1       # via aldryn-django-cms
 https://control.divio.com/api/v1/apps/serve/aldryn-sso/1.7.0/3ef75ae5-729a-4c44-ac3e-fa5950511e90/aldryn-sso-1.7.0.tar.gz#egg=aldryn-sso==1.7.0  # via -r requirements.in
 aldryn-translation-tools==0.3.0  # via -r requirements.in
-appnope==0.1.0            # via ipython
 argparse==1.4.0           # via djeese-fs
 backcall==0.1.0           # via ipython
 boto==2.49.0              # via aldryn-django
