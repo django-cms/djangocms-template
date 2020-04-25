@@ -307,6 +307,11 @@ ADMIN_REORDER = [
 ]
 
 
+RECAPTCHA_PUBLIC_KEY = env.get('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
+RECAPTCHA_PRIVATE_KEY = env.get('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
+RECAPTCHA_SCORE_THRESHOLD = 0.85
+
+
 ################################################################################
 ## === django-cms core === ##
 ################################################################################
@@ -390,8 +395,3 @@ CKEDITOR_SETTINGS = {
 # for djangocms-helpers send_email
 META_SITE_PROTOCOL = HTTP_PROTOCOL
 META_USE_SITES = True
-
-
-RECAPTCHA_PUBLIC_KEY = env.get('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
-RECAPTCHA_PRIVATE_KEY = env.get('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
-RECAPTCHA_SCORE_THRESHOLD = 0.85
