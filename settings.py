@@ -1,9 +1,14 @@
 import os
 import logging
+import sys
+import traceback
 from typing import List
 from enum import Enum
+from typing import Optional
 
 import sentry_sdk
+from djangocms_helpers.sentry_500_error_handler.ignore_io_error import ignore_io_error
+from sentry_sdk._types import Event
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
 from env_settings import env
@@ -190,12 +195,6 @@ SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_d
 HTTP_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
 
 
-# disable sentry alert when user closes his tab during loading
-UWSGI_IGNORE_SIGPIPE = True
-UWSGI_IGNORE_WRITE_ERRORS = True
-UWSGI_DISABLE_WRITE_EXCEPTION = True
-
-
 ################################################################################
 ## === django packages === ##
 ################################################################################
@@ -242,6 +241,7 @@ SENTRY_DSN = env.get('SENTRY_DSN')
 if IS_SENTRY_ENABLED:
     # noinspection PyTypeChecker
     sentry_sdk.init(
+        before_send=ignore_io_error,
         dsn=SENTRY_DSN,
         integrations=[
             DjangoIntegration(),
