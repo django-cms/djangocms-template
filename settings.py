@@ -190,6 +190,12 @@ SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_d
 HTTP_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
 
 
+# disable sentry alert when user closes his tab during loading
+UWSGI_IGNORE_SIGPIPE = True
+UWSGI_IGNORE_WRITE_ERRORS = True
+UWSGI_DISABLE_WRITE_EXCEPTION = True
+
+
 ################################################################################
 ## === django packages === ##
 ################################################################################
