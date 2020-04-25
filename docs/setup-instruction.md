@@ -20,7 +20,7 @@ Perfect for people who aren't planning to do any backend development and want th
 - `docker-compose run --rm web bash --command 'python manage.py migrate'`
 - install yarn and node 10 outside of docker
 - `yarn install --pure-lockfile`
-- `yarn webpack-dev-server`
+- `yarn start`
 - `docker-compose up web`
 
 #### Native setup
@@ -34,7 +34,7 @@ The most efficient and reliable setup for backend development.
 - `python manage.py runserver`
 - install yarn and node 10
 - `yarn install --pure-lockfile`
-- `yarn webpack-dev-server`
+- `yarn start`
 
 ### Update requirements.txt
 
