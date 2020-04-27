@@ -9,7 +9,7 @@ from djangocms_helpers.sentry_500_error_handler.views import not_found_404_view
 
 urlpatterns = [
     path('robots.txt', include('robots.urls')),
-    path('hijack/', include('hijack.urls', namespace='hijack')),
+    path('login-as-user/', include('hijack.urls', namespace='hijack')),
 ] + aldryn_addons.urls.patterns() + i18n_patterns(
     # add your own i18n patterns here
     *aldryn_addons.urls.i18n_patterns(),  # MUST be the last entry!
