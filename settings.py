@@ -8,7 +8,6 @@ from typing import Optional
 
 import sentry_sdk
 from djangocms_helpers.sentry_500_error_handler.ignore_io_error import ignore_io_error
-from sentry_sdk._types import Event
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
 from env_settings import env
