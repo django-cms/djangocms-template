@@ -11,7 +11,10 @@
 #### Fonts
 - use https://google-webfonts-helper.herokuapp.com/fonts/ to download the web font from google  (set the relative path to empty string in the configurator)
 - if you have TTFs but no web font use https://www.fontsquirrel.com/tools/webfont-generator to create one, if you have a web font just proceed to step 2
-- enable it as `url('~pages/homepage/fonts/frutiger.woff')`
+- enable it as
+    - `url('~pages/homepage/fonts/frutiger.woff')`
+    - `url('~pages/homepage/fonts/frutiger.*')`
+    - etc
 
 ### Frontend Integration with DevTools
 - open devtools and add the `frontend` folder as a workspace <details><summary>image</summary> ![](/docs/guidelines/img/front-int-example.png)</details>
