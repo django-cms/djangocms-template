@@ -15,3 +15,5 @@
     - `url('~pages/homepage/fonts/frutiger.woff')`
     - `url('~pages/homepage/fonts/frutiger.ttf')`
     - etc
+
+Also don't add fonts in index.js, add them to css. Otherwise the fonts are going to be invisible in CKEditor.
