@@ -6,7 +6,7 @@ Project setup
 This setup is highly convenient and simple, but shouldn't be used for long-term development, since docker isn't suitable for debugging, significantly degrades performance, has immature and unstable IDEA integrations, etc. But it's perfect for quick setup or people who don't want to configure python or nodejs.
 
 - docker-compose build
-- docker-compose run --rm web bash --command 'python manage.py migrate'
+- docker-compose run --rm web fish --command 'python manage.py migrate'
 - docker-compose up
 
 For setting up the database from the stage/live server see the last section about divio-cli.
@@ -17,7 +17,7 @@ Perfect for people who aren't planning to do any backend development and want th
 
 - remove `IS_RUN_FRONTEND_IN_DOCKER=true` from `.env-local` file  
 - `docker-compose build`
-- `docker-compose run --rm web bash --command 'python manage.py migrate'`
+- `docker-compose run --rm web fish --command 'python manage.py migrate'`
 - install yarn and node 10 outside of docker
 - `yarn install --pure-lockfile`
 - `yarn start`
