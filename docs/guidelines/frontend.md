@@ -11,9 +11,15 @@
 #### Fonts
 - use https://google-webfonts-helper.herokuapp.com/fonts/ to download the web font from google  (set the relative path to empty string in the configurator)
 - if you have TTFs but no web font use https://www.fontsquirrel.com/tools/webfont-generator to create one
-- enable it as
-    - `url('~pages/homepage/fonts/frutiger.woff')`
-    - `url('~pages/homepage/fonts/frutiger.ttf')`
-    - etc
+- add a directory for font files, eg `frontend/global/fonts/frutiger/` with files as `frutiger.css`, `frutiger.ttf`, `frutiger.woff`, etc
+- in `frutiger.css` import the other files as following
+```.env
+@font-face {
+    font-family: 'Frutiger';
+    src: url('frutiger.woff2') format('woff2'),
+         url('frutiger.woff') format('woff');
+}
+```
+- import it in a global scss file, eg `frontend/global/scss/text.scss` as `@import '~global/fonts/frutiger/frutiger.css';`
 
-Also don't add fonts in index.js, add them to css. Otherwise the fonts are going to be invisible in CKEditor.
+Make sure to not add them into index.js, add them to an scss. Otherwise the fonts are going to be invisible in CKEditor.
