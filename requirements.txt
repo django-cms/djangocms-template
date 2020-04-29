@@ -85,7 +85,7 @@ django==2.2.11            # via aldryn-boilerplates, aldryn-django, aldryn-forms
 djangocms-admin-style==1.5.0  # via aldryn-django-cms, django-cms
 djangocms-aldryn-forms-bootstrap4-templates==0.0.1  # via -r requirements.in
 djangocms-attributes-field==1.2.0  # via aldryn-forms, djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture, djangocms-video
-djangocms-bootstrap4==1.5.0  # via -r requirements.in
+djangocms-bootstrap4==1.6.0  # via -r requirements.in
 djangocms-file==2.4.0     # via -r requirements.in
 djangocms-googlemap==1.4.0  # via -r requirements.in
 djangocms-helpers==2.1.1.1  # via -r requirements.in
