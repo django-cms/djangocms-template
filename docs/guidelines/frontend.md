@@ -13,7 +13,7 @@
 - if you have TTFs but no web font use https://www.fontsquirrel.com/tools/webfont-generator to create one, if you have a web font just proceed to step 2
 - enable it as
     - `url('~pages/homepage/fonts/frutiger.woff')`
-    - `url('~pages/homepage/fonts/frutiger.*')`
+    - `url('~pages/homepage/fonts/frutiger.ttf')`
     - etc
 
 ### Frontend Integration with DevTools
