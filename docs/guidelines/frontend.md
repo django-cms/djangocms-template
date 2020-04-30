@@ -9,11 +9,11 @@
 - we need to use 24 columns config in bootstrap 4
 
 #### Fonts
-- use https://google-webfonts-helper.herokuapp.com/fonts/ to download the web font from google  (set the relative path to empty string in the configurator)
+- use https://google-webfonts-helper.herokuapp.com/fonts/ to download the web font from google (set the relative path to empty string in the configurator)
 - if you have TTFs but no web font use https://www.fontsquirrel.com/tools/webfont-generator to create one
-- add a directory for font files, eg `frontend/global/fonts/frutiger/` with files as `frutiger.css`, `frutiger.ttf`, `frutiger.woff`, etc
+- add a directory for font files, eg `frontend/global/fonts/frutiger/` with files as `frutiger.css`, `frutiger.woff2`, `frutiger.woff` (if ie11 is needed), etc
 - in `frutiger.css` import the other files as following
-```.env
+```css
 @font-face {
     font-family: 'Frutiger';
     src: url('frutiger.woff2') format('woff2'),
