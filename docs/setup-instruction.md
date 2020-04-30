@@ -44,12 +44,7 @@ For installing the compiled requirements in docker you have to rebuild it with `
 
 ### Cloning external database and media
 
-- create an `.aldryn` file, it should look as `{"id": "{project_id}", "slug": "{project_slug}"`, you can find those values on the control panel page eg `https://control.divio.com/control/6215/edit/81016/` the id is `81016` and the slug is can be found in the project title:
-    <details>
-
-    ![](/docs/guidelines/img/project-slug.png)
-
-    </details>
+- copy `.aldryn-example` as `.aldryn` file
 - run `pip install divio-cli` outside of docker
 - run `divio project pull db test` and `divio project pull media test` outside of docker
 
@@ -58,9 +53,6 @@ Advices
 
 ### Shell
 - `docker-compose run --rm web fish` - a disposable container
-
-### Translations
-- `django-admin makemessages -l {lang_code} --no-wrap`
 
 ### How to drop the database
 You can flush the local & server db in the following way:
