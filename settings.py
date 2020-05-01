@@ -133,6 +133,8 @@ INSTALLED_APPS.extend([
 
     # project
 
+    'backend.tests',
+    'backend.articles',
     'backend.plugins.default.bs4_float',
     'backend.plugins.default.bs4_hiding',
     'backend.plugins.default.bs4_inline_alignment',
