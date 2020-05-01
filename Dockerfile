@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/what-digital/djangocms-template:1.1.0.7
+FROM registry.gitlab.com/what-digital/djangocms-template:latest
 
 
 COPY . /app/
