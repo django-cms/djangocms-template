@@ -24,4 +24,4 @@ data.tar.gz
 
 # django files
 media/
-static-collected/
+static_collected/
