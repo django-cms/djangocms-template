@@ -1,3 +1,5 @@
+import os
+
 from cms.models import Page
 from django.test import RequestFactory
 from django.test import TestCase
@@ -12,6 +14,7 @@ class PagesTestCase(TestCase):
         self.factory = RequestFactory()
     
     def test_homepage(self):
+        print('database', os.environ['DEFAULT_DATABASE_DSN'])
         request = self.factory.get('/')
         request.user = self.user
         request.session = {}
