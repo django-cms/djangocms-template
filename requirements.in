@@ -10,7 +10,7 @@ https://control.divio.com/api/v1/apps/serve/django-filer/1.7.0/633d9275-51a0-42b
 
 djangocms-icon
 https://github.com/divio/djangocms-text-ckeditor/archive/1e96daac4dc1b1394be6d4575aa7b9bba92a1f1d.zip#egg=djangocms-text-ckeditor==3.9.0
-djangocms-link
+djangocms-link < 2.6
 djangocms-picture
 djangocms-file
 djangocms-history
