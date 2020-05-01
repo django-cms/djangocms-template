@@ -20,7 +20,7 @@ function initScriptReloadListener() {
 
 
 function forceScriptReload() {
-    const scriptSrc: string = $(this).attr('src');
+    const scriptSrc = $(this).attr('src') as string;
     $(this).remove();
     $('<script>').attr('src', scriptSrc).appendTo('head');
 }
