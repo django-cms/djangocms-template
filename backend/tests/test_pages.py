@@ -14,7 +14,7 @@ class PagesTestCase(TestCase):
         self.factory = RequestFactory()
     
     def test_homepage(self):
-        print('database', os.environ['DEFAULT_DATABASE_DSN'])
+        print('database', os.environ.get('DEFAULT_DATABASE_DSN', 'None'))
         request = self.factory.get('/')
         request.user = self.user
         request.session = {}

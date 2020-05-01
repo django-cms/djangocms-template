@@ -11,5 +11,5 @@ RUN yarn install --pure-lockfile
 RUN yarn run build
 RUN DJANGO_MODE=build python manage.py collectstatic --noinput
 
-RUN python manage.py test_pages_on_real_db > log.txt
+RUN python manage.py test_pages_on_real_db &> log.txt
 RUN echo $DEFAULT_DATABASE_DSN > test.txt
