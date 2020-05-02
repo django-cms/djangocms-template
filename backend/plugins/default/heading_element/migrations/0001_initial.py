@@ -19,9 +19,8 @@ class Migration(migrations.Migration):
             name='HeadingPlugin',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, related_name='heading_element_headingplugin', serialize=False, to='cms.CMSPlugin')),
-                ('text', models.TextField(default='Heading Text', null=True)),
+                ('text', models.CharField(max_length=2048)),
                 ('heading_tag', enumfields.fields.EnumField(default='h1', enum=backend.plugins.default.heading_element.models.HeadingTag, max_length=32)),
-                ('heading_type', enumfields.fields.EnumField(default='standard', enum=backend.plugins.default.heading_element.models.HeadingType, max_length=32)),
                 ('heading_color', enumfields.fields.EnumField(default='dark', enum=backend.plugins.default.heading_element.models.HeadingColor, max_length=32)),
                 ('heading_alignment', enumfields.fields.EnumField(default='left', enum=backend.plugins.default.heading_element.models.HeadingAlignment, max_length=32)),
             ],
