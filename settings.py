@@ -388,12 +388,14 @@ CKEDITOR_SETTINGS = {
     'contentsCss': [
         f'{WEBPACK_DEV_URL}/vendor.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/vendor.css',
         f'{WEBPACK_DEV_URL}/global.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/global.css',
-        f'{STATIC_URL}/djangocms_text_ckeditor/ckeditor/contents.css',
     ],
     'config': {
         'allowedContent': True,
         'fillEmptyBlocks': False, # doesn't seem to be doing anything, but was part of the old config
-    }
+    },
+    'pasteFromWordPromptCleanup': True,
+    'pasteFromWordRemoveFontStyles': True,
+    'forcePasteAsPlainText': True,
 }
 
 # for djangocms-helpers send_email
