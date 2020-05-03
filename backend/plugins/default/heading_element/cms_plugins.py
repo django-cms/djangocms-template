@@ -12,5 +12,5 @@ class HeadingPluginBase(CMSPluginBase):
     module = MODULE_NAME
     name = _("Heading")
     render_template = 'heading_element/heading-plugin.html'
-    allow_children = True
+    allow_children = False
     text_enabled = True
