@@ -13,9 +13,12 @@ class MaxWidth(Enum):
 
 
 class SectionPlugin(CMSPlugin):
-    name = models.CharField(max_length=2048, null=True, blank=False, default="No name", help_text="This name wont show up in the frontend, it shows on the plugin only for better orientation")
+    name = models.CharField(
+        max_length=2048, 
+        null=True, blank=True,
+        help_text="This name wont show up in the frontend, it shows on the plugin only for better orientation",
+    )
     max_width = EnumField(MaxWidth, default=MaxWidth.DEFAULT, max_length=32)
-
 
     def __str__(self):
         if self.name:
