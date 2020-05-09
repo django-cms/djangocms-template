@@ -90,7 +90,6 @@ INSTALLED_APPS.extend([
     'django_countries',
     'logentry_admin',
     'hijack_admin',
-    'robots',
 
     # django cms
 
