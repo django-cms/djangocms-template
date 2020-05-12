@@ -52,6 +52,9 @@ TEMPLATES: List[dict] = locals()['TEMPLATES']
 
 DATE_FORMAT = 'F j, Y'
 
+USE_TZ = True
+TIME_ZONE = 'Europe/Zurich'
+
 
 class DivioEnv(Enum):
     LOCAL = 'local'
