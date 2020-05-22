@@ -22,7 +22,7 @@ Divio Integration Setup
     - remove this section from README.md, along with the first sentence about djangocms-template independent setup
     - remove the `docs` directory - it should be stored only within this source repository
     - remove base.Dockerfile and .gitlab-ci.yml
-- deploy the stage server
+- deploy the stage server - on deployment you might get a migration error, in that case follow the instructions for database reset placed in `setup instructions` below
 
 
 Development Setup
