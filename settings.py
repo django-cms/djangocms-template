@@ -143,7 +143,6 @@ INSTALLED_APPS.extend([
     'backend.plugins.default.bs4_hiding',
     'backend.plugins.default.bs4_inline_alignment',
     'backend.plugins.default.bs4_spacer',
-    'backend.plugins.default.section_element',
     'backend.plugins.default.horizontal_line',
     # not styled or missing npm dependencies
     # 'backend.plugins.default.bs4_card_columns',
