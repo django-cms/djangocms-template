@@ -181,7 +181,7 @@ else:
     email_backend_default = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = env.get('EMAIL_BACKEND', default=email_backend_default)
 
-DEFAULT_FROM_EMAIL = 'Project Name <info@example.com>'
+DEFAULT_FROM_EMAIL = env.get('DEFAULT_FROM_EMAIL', 'Project Name <info@example.com>')
 
 
 if DIVIO_ENV == DivioEnv.LOCAL:
@@ -266,7 +266,6 @@ ADMIN_REORDER = [
         'models': [
             'backend_auth.User',
             'auth.Group',
-            {'model': 'aldryn_sso.AldrynCloudUser', 'label': 'divio.com SSO users'},
         ],
     },
     {
@@ -336,6 +335,33 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 ################################################################################
 
 
+CMS_PLACEHOLDER_CONF = {
+    None: {
+        'excluded_plugins': [
+            'FormPlugin',
+            'Fieldset',
+            'BooleanField',
+            'EmailField',
+            'FileField',
+            'HiddenField',
+            'PhoneField',
+            'NumberField',
+            'ImageField',
+            'MultipleSelectField',
+            'MultipleCheckboxSelectField',
+            'RadioSelectField',
+            'SelectField',
+            'TextAreaField',
+            'TextField',
+            'SubmitButton',
+            'CaptchaField',
+
+            'ReCaptchaFieldPlugin',
+        ]
+    },
+}
+
+
 DJANGOCMS_BOOTSTRAP4_GRID_SIZE = 24
 DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
     ('col', 'Column'),
@@ -397,7 +423,7 @@ CKEDITOR_SETTINGS = {
     },
     'pasteFromWordPromptCleanup': True,
     'pasteFromWordRemoveFontStyles': True,
-    'forcePasteAsPlainText': True,
+    'forcePasteAsPlainText': False,
 }
 
 # for djangocms-helpers send_email
