@@ -16,7 +16,7 @@ djangocms-file
 djangocms-history
 djangocms-snippet
 https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
-djangocms-bootstrap4
+https://github.com/divio/djangocms-bootstrap4/archive/new-plugins.zip#egg=djangocms-bootstrap4
 djangocms-googlemap
 djangocms-modules
 https://github.com/divio/aldryn-forms/archive/5.0.4.zip#egg=aldryn-forms

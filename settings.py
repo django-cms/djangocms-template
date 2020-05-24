@@ -133,6 +133,7 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
+    'djangocms_bootstrap4.contrib.bootstrap4_heading',
 
     # project
 
@@ -142,7 +143,6 @@ INSTALLED_APPS.extend([
     'backend.plugins.default.bs4_hiding',
     'backend.plugins.default.bs4_inline_alignment',
     'backend.plugins.default.bs4_spacer',
-    'backend.plugins.default.heading_element',
     'backend.plugins.default.section_element',
     'backend.plugins.default.horizontal_line',
     # not styled or missing npm dependencies

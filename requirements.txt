@@ -85,7 +85,7 @@ django==2.2.12            # via aldryn-boilerplates, aldryn-sites, django-absolu
 djangocms-admin-style==1.5.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==1.0.0.1
 djangocms-attributes-field==1.2.0  # via djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture
-djangocms-bootstrap4==1.6.0
+https://github.com/divio/djangocms-bootstrap4/archive/new-plugins.zip#egg=djangocms-bootstrap4
 djangocms-file==2.4.0
 djangocms-googlemap==1.4.0
 djangocms-helpers==2.1.1.2
