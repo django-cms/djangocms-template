@@ -95,7 +95,6 @@ INSTALLED_APPS.extend([
     'hijack_admin',
 
     # django cms
-    # django cms
 
     'djangocms_bootstrap4',
     'djangocms_bootstrap4.contrib.bootstrap4_alerts',
