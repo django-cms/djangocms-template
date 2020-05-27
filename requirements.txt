@@ -10,7 +10,7 @@ aldryn-boilerplates==0.8.0
 aldryn-client==2.3.5
 https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.2.1/52771de3-1ec7-43dc-922b-e1aec12e62cd/aldryn-django-cms-3.7.2.1.tar.gz#egg=aldryn-django-cms==3.7.2.1
 https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.12.1/c2d1c3a0-4978-4f91-84a3-749a7253f35d/aldryn-django-2.2.12.1.tar.gz#egg=aldryn-django==2.2.12.1
-https://github.com/divio/aldryn-forms/archive/5.0.4.zip#egg=aldryn-forms
+https://github.com/divio/aldryn-forms/archive/fbcbd07c3c6f32ae751b176203a3ebfc636edead.zip#egg=aldryn-forms
 aldryn-forms-recaptcha-plugin==1.0.0.2
 aldryn-sites==0.6.0
 aldryn-snake==1.0.1
