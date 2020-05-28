@@ -24,6 +24,17 @@ Divio Integration Setup
     - remove base.Dockerfile and .gitlab-ci.yml
 - deploy the stage server - on deployment you might get a migration error, in that case follow the instructions for database reset placed in `setup instructions` below
 
+### Mailtrap setup
+
+- signup with a tech eamil, eg `tech+{project}@what.digital` https://mailtrap.io/register/signup
+- save the login/password to the project's 1password vault
+- add `EMAIL_URL` to the divio envs `smtps://{username}:{password}@smtp.mailtrap.io:2525`
+
+### Sentry setup
+
+- create a new account using tech email `tech+{project}@what.digital`
+- save the login/password to the project's 1password vault
+- add `SENTRY_DSN` to the divio envs
 
 Development Setup
 -------------------------------------------------------------------------------
