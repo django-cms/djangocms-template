@@ -1,7 +1,0 @@
-{% load cms_tags thumbnail %}{% spaceless %}
-<div class="item m-1">
-    <a href="{{ instance.image.url }}" data-toggle="lightbox" data-gallery="lightbox-gallery-{{ parent.pk }}"
-       data-footer="{{ instance.caption }}">
-        <img src="{% thumbnail instance.image parent.thumbnail_size crop %}">
-    </a>
-</div>{% endspaceless %}
