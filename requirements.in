@@ -13,6 +13,7 @@ https://github.com/divio/djangocms-text-ckeditor/archive/1e96daac4dc1b1394be6d45
 djangocms-link < 2.6
 djangocms-picture
 djangocms-file
+djangocms-blog
 djangocms-history
 djangocms-snippet
 https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video

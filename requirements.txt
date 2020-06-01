@@ -8,7 +8,7 @@ https://control.divio.com/api/v1/apps/serve/aldryn-addons/1.1.0/7a2d5a44-16e2-4e
 aldryn-apphooks-config==0.6.0
 aldryn-boilerplates==0.8.0
 aldryn-client==2.3.5
-https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.2.1/52771de3-1ec7-43dc-922b-e1aec12e62cd/aldryn-django-cms-3.7.2.1.tar.gz#egg=aldryn-django-cms==3.7.2.1
+https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.3.1/b8a3ddbe-5a74-4b29-b101-51e05b04d14c/aldryn-django-cms-3.7.3.1.tar.gz#egg=aldryn-django-cms==3.7.3.1
 https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.12.1/c2d1c3a0-4978-4f91-84a3-749a7253f35d/aldryn-django-2.2.12.1.tar.gz#egg=aldryn-django==2.2.12.1
 https://github.com/divio/aldryn-forms/archive/fbcbd07c3c6f32ae751b176203a3ebfc636edead.zip#egg=aldryn-forms
 aldryn-forms-recaptcha-plugin==1.0.0.2
@@ -40,7 +40,7 @@ django-appconf==1.0.4     # via aldryn-boilerplates, aldryn-sites, django-compre
 django-appdata==0.3.0     # via aldryn-apphooks-config
 django-cache-url==3.1.2
 django-classy-tags==1.0.0  # via django-cms, django-sekizai
-django-cms==3.7.2         # via aldryn-apphooks-config, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-attributes-field, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-light-gallery, djangocms-link, djangocms-modules, djangocms-page-meta, djangocms-picture, djangocms-redirect, djangocms-snippet
+django-cms==3.7.3         # via aldryn-apphooks-config, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-apphook-setup, djangocms-attributes-field, djangocms-blog, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-light-gallery, djangocms-link, djangocms-modules, djangocms-page-meta, djangocms-picture, djangocms-redirect, djangocms-snippet
 django-compat==1.0.15     # via django-hijack, django-hijack-admin
 django-compressor==2.4
 django-countries==6.1.2
@@ -56,14 +56,14 @@ django-getenv==1.3.2
 django-google-tag-manager==0.0.5
 django-hijack-admin==2.1.10
 django-hijack==2.1.10     # via django-hijack-admin
-django-import-export==2.1.0
+django-import-export==2.2.0
 django-js-asset==1.2.2    # via django-mptt
 django-logentry-admin==1.0.6
-django-meta==1.6.1        # via djangocms-helpers, djangocms-page-meta
+django-meta==1.6.1        # via djangocms-blog, djangocms-helpers, djangocms-page-meta
 django-modeladmin-reorder==0.3.1
 django-mptt==0.11.0
 django-object-actions==2.0.0  # via django-adminutils
-django-parler==2.0.1      # via aldryn-translation-tools
+django-parler==2.0.1      # via aldryn-translation-tools, djangocms-blog
 django-polymorphic==2.1.2
 django-ranged-response==0.2.0  # via django-simple-captcha
 django-recaptcha3==0.2.0  # via aldryn-forms-recaptcha-plugin
@@ -75,16 +75,22 @@ django-simple-captcha==0.5.12
 django-simple-sso==0.14.1
 django-sizefield==1.0.0
 django-solo==1.1.3
-django-sortedm2m==3.0.0
+django-sortedm2m==3.0.0   # via djangocms-blog
 django-storages==1.8
 django-tablib==3.2
+django-taggit-autosuggest==0.3.8  # via djangocms-blog
+django-taggit-templatetags==0.2.5  # via djangocms-blog
+django-taggit==1.2.0      # via django-taggit-autosuggest, django-taggit-templatetags, djangocms-blog
+django-templatetag-sugar==1.0  # via django-taggit-templatetags
 django-treebeard==4.3.1   # via django-cms
 django-username-email==2.3.0
 django-widget-tweaks==1.4.8
-django==2.2.12            # via aldryn-boilerplates, aldryn-sites, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-storages, django-treebeard, django-username-email, djangocms-helpers, djangocms-light-gallery, djangorestframework, easy-thumbnails, webservices
+django==2.2.12            # via aldryn-boilerplates, aldryn-sites, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-storages, django-taggit, django-taggit-templatetags, django-treebeard, django-username-email, djangocms-helpers, djangocms-light-gallery, djangorestframework, easy-thumbnails, webservices
 djangocms-admin-style==1.5.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==1.0.0.1
+djangocms-apphook-setup==0.4.1  # via djangocms-blog
 djangocms-attributes-field==1.2.0  # via djangocms-file, djangocms-icon, djangocms-link, djangocms-picture
+djangocms-blog==1.1.1
 https://github.com/divio/djangocms-bootstrap4/archive/new-plugins.zip#egg=djangocms-bootstrap4
 djangocms-file==2.4.0
 djangocms-googlemap==1.4.0
@@ -102,7 +108,7 @@ https://github.com/divio/djangocms-text-ckeditor/archive/1e96daac4dc1b1394be6d45
 https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
 djangorestframework==3.11.0
 djeese-fs==0.1.21
-easy-thumbnails==2.7      # via djangocms-light-gallery, djangocms-picture
+easy-thumbnails==2.7      # via djangocms-blog, djangocms-light-gallery, djangocms-picture
 et-xmlfile==1.0.1         # via openpyxl
 furl==2.1.0
 html5lib==1.0.1
@@ -112,7 +118,7 @@ ipython==7.15.0
 itsdangerous==1.1.0       # via django-simple-sso, webservices
 jdcal==1.4.1              # via openpyxl
 jedi==0.17.0              # via ipython
-lxml==4.5.1               # via premailer
+lxml==4.5.1               # via djangocms-blog, premailer
 markuppy==1.14            # via tablib
 oauthlib==3.1.0           # via requests-oauthlib
 odfpy==1.4.1              # via tablib

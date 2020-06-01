@@ -1,0 +1,12 @@
+{% load i18n %}
+
+
+<div class="plugin plugin-blog blog-list container">
+    <div class="blog-latest-entries row blog-list-items">
+        {% for post in posts_list %}
+            {% include "djangocms_blog/includes/blog_item.html" with post=post image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+        {% empty %}
+            <p class="blog-empty">{% trans "No article found." %}</p>
+        {% endfor %}
+    </div>
+</div>

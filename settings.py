@@ -72,6 +72,9 @@ installed_apps_first = [
 
     # must be before `cms`
     'djangocms_modules',
+
+    # tempaltes override
+    'backend.blog',
 ]
 INSTALLED_APPS = installed_apps_first + INSTALLED_APPS
 
@@ -113,6 +116,10 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     'djangocms_bootstrap4.contrib.bootstrap4_heading',
     'aldryn_apphooks_config',
+    'djangocms_blog',
+        'taggit',
+        'taggit_autosuggest',
+        'sortedm2m',
     'djangocms_icon',
     'djangocms_text_ckeditor',
     'djangocms_link',
@@ -139,7 +146,6 @@ INSTALLED_APPS.extend([
     # project
 
     'backend.tests',
-    'backend.articles',
     'backend.plugins.default.bs4_float',
     'backend.plugins.default.bs4_hiding',
     'backend.plugins.default.bs4_inline_alignment',
@@ -280,13 +286,8 @@ ADMIN_REORDER = [
         ],
     },
     {
-        'label': 'Articles',
-        'app': 'articles',
-        'models': [
-            'articles.Article',
-            'articles.Category',
-            'articles.ArticlesConfig',
-        ],
+        'label': 'Blog',
+        'app': 'djangocms_blog',
     },
     {
         'label': 'System Administration',
@@ -358,7 +359,7 @@ CMS_PLACEHOLDER_CONF = {
             'CaptchaField',
 
             'ReCaptchaFieldPlugin',
-        ]
+        ],
     },
 }
 

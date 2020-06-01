@@ -1,7 +1,0 @@
-{% load cms_tags thumbnail i18n %}
-
-<div class="row">
-    {% for article in articles %}
-        {% include 'articles/includes/article-teaser.html' with article=article %}
-    {% endfor %}
-</div>
