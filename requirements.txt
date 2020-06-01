@@ -5,7 +5,7 @@
 #    pip-compile --no-index --output-file /workspace/requirements.txt /workspace/requirements.in
 #
 https://control.divio.com/api/v1/apps/serve/aldryn-addons/1.1.0/7a2d5a44-16e2-4ef8-bfe0-1e61c8601b33/aldryn-addons-1.1.0.tar.gz#egg=aldryn-addons==1.1.0
-aldryn-apphooks-config==0.5.3
+aldryn-apphooks-config==0.6.0
 aldryn-boilerplates==0.8.0
 aldryn-client==2.3.5
 https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.2.1/52771de3-1ec7-43dc-922b-e1aec12e62cd/aldryn-django-cms-3.7.2.1.tar.gz#egg=aldryn-django-cms==3.7.2.1
@@ -35,12 +35,12 @@ dj-redis-url==0.1.4
 django-absolute==0.3
 django-admin-sortable2==0.7.6
 django-adminutils==0.0.8
-django-allauth==0.41.0
+django-allauth==0.42.0
 django-appconf==1.0.4     # via aldryn-boilerplates, aldryn-sites, django-compressor, django-select2
-django-appdata==0.2.2     # via aldryn-apphooks-config
+django-appdata==0.3.0     # via aldryn-apphooks-config
 django-cache-url==3.1.2
 django-classy-tags==1.0.0  # via django-cms, django-sekizai
-django-cms==3.7.2         # via aldryn-apphooks-config, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-attributes-field, djangocms-bootstrap4, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-light-gallery, djangocms-link, djangocms-modules, djangocms-page-meta, djangocms-picture, djangocms-redirect, djangocms-snippet
+django-cms==3.7.2         # via aldryn-apphooks-config, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-attributes-field, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-light-gallery, djangocms-link, djangocms-modules, djangocms-page-meta, djangocms-picture, djangocms-redirect, djangocms-snippet
 django-compat==1.0.15     # via django-hijack, django-hijack-admin
 django-compressor==2.4
 django-countries==6.1.2
@@ -56,7 +56,7 @@ django-getenv==1.3.2
 django-google-tag-manager==0.0.5
 django-hijack-admin==2.1.10
 django-hijack==2.1.10     # via django-hijack-admin
-django-import-export==2.0.2
+django-import-export==2.1.0
 django-js-asset==1.2.2    # via django-mptt
 django-logentry-admin==1.0.6
 django-meta==1.6.1        # via djangocms-helpers, djangocms-page-meta
@@ -69,7 +69,7 @@ django-ranged-response==0.2.0  # via django-simple-captcha
 django-recaptcha3==0.2.0  # via aldryn-forms-recaptcha-plugin
 django-robots==4.0
 django-sekizai==1.1.0     # via django-cms, djangocms-aldryn-forms-bootstrap4-templates, djangocms-light-gallery
-django-select2==7.2.3
+django-select2==7.4.2
 django-settings-export==1.2.1
 django-simple-captcha==0.5.12
 django-simple-sso==0.14.1
@@ -79,12 +79,12 @@ django-sortedm2m==3.0.0
 django-storages==1.8
 django-tablib==3.2
 django-treebeard==4.3.1   # via django-cms
-django-username-email==2.2.4
+django-username-email==2.3.0
 django-widget-tweaks==1.4.8
 django==2.2.12            # via aldryn-boilerplates, aldryn-sites, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-storages, django-treebeard, django-username-email, djangocms-helpers, djangocms-light-gallery, djangorestframework, easy-thumbnails, webservices
 djangocms-admin-style==1.5.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==1.0.0.1
-djangocms-attributes-field==1.2.0  # via djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture
+djangocms-attributes-field==1.2.0  # via djangocms-file, djangocms-icon, djangocms-link, djangocms-picture
 https://github.com/divio/djangocms-bootstrap4/archive/new-plugins.zip#egg=djangocms-bootstrap4
 djangocms-file==2.4.0
 djangocms-googlemap==1.4.0
@@ -108,21 +108,21 @@ furl==2.1.0
 html5lib==1.0.1
 idna==2.9                 # via requests
 ipython-genutils==0.2.0   # via traitlets
-ipython==7.13.0
+ipython==7.15.0
 itsdangerous==1.1.0       # via django-simple-sso, webservices
 jdcal==1.4.1              # via openpyxl
 jedi==0.17.0              # via ipython
-lxml==4.5.0               # via premailer
+lxml==4.5.1               # via premailer
 markuppy==1.14            # via tablib
 oauthlib==3.1.0           # via requests-oauthlib
 odfpy==1.4.1              # via tablib
-openpyxl==2.4.9           # via tablib
+openpyxl==3.0.3           # via tablib
 orderedmultidict==1.0.1   # via furl
 parso==0.7.0              # via jedi
 pexpect==4.8.0            # via ipython
 pickleshare==0.7.5        # via ipython
 pillow==7.1.2             # via django-simple-captcha, easy-thumbnails
-premailer==3.6.1          # via django-emailit
+premailer==3.7.0          # via django-emailit
 prompt-toolkit==3.0.5     # via ipython
 psycopg2-binary==2.8.5
 psycopg2==2.7.7
@@ -137,10 +137,10 @@ rcssmin==1.0.6            # via django-compressor
 requests-oauthlib==1.3.0  # via django-allauth
 requests==2.23.0          # via aldryn-client, django-allauth, django-recaptcha3, premailer, requests-oauthlib, webservices
 rjsmin==1.1.0             # via django-compressor
-sentry-sdk==0.14.3
-six==1.14.0               # via aldryn-client, django-adminutils, django-classy-tags, django-cms, django-compat, django-compressor, django-extensions, django-meta, django-parler, django-sekizai, django-simple-captcha, django-tablib, furl, html5lib, orderedmultidict, traitlets
+sentry-sdk==0.14.4
+six==1.15.0               # via aldryn-client, django-adminutils, django-appdata, django-classy-tags, django-cms, django-compat, django-compressor, django-extensions, django-meta, django-parler, django-sekizai, django-simple-captcha, django-tablib, furl, html5lib, orderedmultidict, traitlets
 sqlparse==0.3.1           # via django
-tablib[html,ods,xls,xlsx,yaml]==1.1.0  # via django-import-export, django-tablib
+tablib[html,ods,xls,xlsx,yaml]==2.0.0  # via django-import-export, django-tablib
 tabulate==0.8.7           # via aldryn-client
 text-unidecode==1.3       # via python-slugify
 traitlets==4.3.3          # via ipython
