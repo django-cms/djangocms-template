@@ -120,6 +120,7 @@ INSTALLED_APPS.extend([
     'djangocms_video',
     'djangocms_history',
     'djangocms_picture',
+    'djangocms_file',
     'djangocms_snippet',
     'djangocms_helpers',
     'djangocms_helpers.sentry_500_error_handler',
