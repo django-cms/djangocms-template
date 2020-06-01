@@ -9,7 +9,7 @@ Divio Integration Setup
     - `git remote add divio git@git.divio.com:{project-slug}.git`, replace `{project-slug}`
 - run `git pull template master`
 - run `git push --force divio master`
-- make sure that your project and divio repositories are in sync, now switch divio to gitlab external repository
+- make sure that your project and divio repositories are in sync, now switch divio to gitlab external repository according to [divio docs](https://docs.divio.com/en/latest/how-to/resources-configure-git/)
 - set up a gitlab webhook
 - compile the requirements (see the [setup instructions](/docs/setup-instruction.md))
 - update .aldryn-example file with the values from the control page eg `https://control.divio.com/control/6215/edit/81016/` the id is `81016` and the slug is can be found in the project title:
