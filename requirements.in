@@ -26,6 +26,10 @@ https://github.com/divio/aldryn-forms/archive/fbcbd07c3c6f32ae751b176203a3ebfc63
 djangocms-light-gallery
 aldryn-translation-tools
 aldryn-apphooks-config
+djangocms-socialshare
+djangocms-algolia >= 0.1.0.1
+    django-standard-form == 1.1.1 # 1.1.4 doesn't work without divio pip-reqs
+    django-spurl == 0.6.5 # 0.6.6 doesn't work with divio pip-reqs
 djangocms-redirect
 djangocms-helpers >= 2.1.0  # bug fixes and utils as send_email, error handlers
 djangocms-page-meta
