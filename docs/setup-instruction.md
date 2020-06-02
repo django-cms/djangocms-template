@@ -45,7 +45,7 @@ For installing the compiled requirements in docker you have to rebuild it with `
 ### Cloning external database and media
 
 - copy `.aldryn-example` as `.aldryn` file
-- run `pip install divio-cli` outside of docker
+- run `pip3 install divio-cli` outside of docker
 - run `divio project pull db test` and `divio project pull media test` outside of docker
 
 Advices
