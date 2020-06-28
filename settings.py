@@ -146,11 +146,11 @@ INSTALLED_APPS.extend([
 
     # project
 
-    'backend.plugins.default.bs4_float',
-    'backend.plugins.default.bs4_hiding',
-    'backend.plugins.default.bs4_inline_alignment',
-    'backend.plugins.default.bs4_spacer',
-    'backend.plugins.default.horizontal_line',
+    'backend.plugins.bs4_float',
+    'backend.plugins.bs4_hiding',
+    'backend.plugins.bs4_inline_alignment',
+    'backend.plugins.bs4_spacer',
+    'backend.plugins.horizontal_line',
 ])
 
 MIDDLEWARE.extend([
