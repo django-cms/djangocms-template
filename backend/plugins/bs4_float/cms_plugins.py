@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from backend.plugins.default.module_name import MODULE_NAME
+from backend.plugins.module_name import MODULE_NAME
 from . import models
 
 

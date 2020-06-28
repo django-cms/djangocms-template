@@ -2,8 +2,8 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import pgettext as _
 
-from backend.plugins.default.horizontal_line.models import HorizontalLinePlugin
-from backend.plugins.default.module_name import MODULE_NAME
+from backend.plugins.horizontal_line.models import HorizontalLinePlugin
+from backend.plugins.module_name import MODULE_NAME
 
 
 @plugin_pool.register_plugin

@@ -1,6 +1,4 @@
-Don't modify `backend.plugins.default` unless you do that in djangocms-template project - if you want to customize one of them copy-past or move it into another module under the `plugins` directory, eg `backend.plugins.{project_name}.{plugin_name}`.
-
-Store project-related applications in a project module, eg `backend.dectris`. The root `backend` module reserve for non-project related apps, eg `auth` or `articles`.
+Store project-related applications in a project module, eg `backend.dectris`. The root `backend` module reserve for global non-project related apps from the template, eg `backend.auth` or `backend.site_config`.
 
 The settings.py, requirements.in and package.json files are split into categories and have comments, adhere to that.
 

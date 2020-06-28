@@ -1,24 +1,22 @@
-import os
 import logging
-import sys
-import traceback
-from typing import List
+import os
 from enum import Enum
-from typing import Optional
+from typing import List
 
 import sentry_sdk
 from djangocms_helpers.sentry_500_error_handler.ignore_io_error import ignore_io_error
+from dotenv import find_dotenv
+from dotenv import load_dotenv
+from env_settings import env
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
-from env_settings import env
-from dotenv import load_dotenv, find_dotenv
 
 
 load_dotenv(find_dotenv('.env-local'))
 
 
 ################################################################################
-## === divio === ##
+# divio
 ################################################################################
 
 
@@ -39,7 +37,7 @@ aldryn_addons.settings.load(locals())
 
 
 ################################################################################
-## === django === ##
+# django
 ################################################################################
 
 
@@ -66,17 +64,17 @@ DIVIO_ENV_ENUM = DivioEnv
 DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
 
 
-installed_apps_first = [
+installed_apps_overrides = [
     # for USERNAME_FIELD = 'email', before `cms` since it has a User model
     'backend.auth',
 
+    # templates override
+    'backend.blog',
+
     # must be before `cms`
     'djangocms_modules',
-
-    # tempaltes override
-    'backend.blog',
 ]
-INSTALLED_APPS = installed_apps_first + INSTALLED_APPS
+INSTALLED_APPS = installed_apps_overrides + INSTALLED_APPS
 
 INSTALLED_APPS.extend([
     # django
@@ -144,17 +142,15 @@ INSTALLED_APPS.extend([
         'emailit',
     'djangocms_redirect',
     'light_gallery',
+    'linkit',
 
     # project
 
-    'backend.tests',
     'backend.plugins.default.bs4_float',
     'backend.plugins.default.bs4_hiding',
     'backend.plugins.default.bs4_inline_alignment',
     'backend.plugins.default.bs4_spacer',
     'backend.plugins.default.horizontal_line',
-    # not styled or missing npm dependencies
-    # 'backend.plugins.default.bs4_card_columns',
 ])
 
 MIDDLEWARE.extend([
@@ -205,7 +201,7 @@ HTTP_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
 
 
 ################################################################################
-## === django === ##
+# django
 ################################################################################
 
 
@@ -322,7 +318,7 @@ RECAPTCHA_SCORE_THRESHOLD = 0.85
 
 
 ################################################################################
-## === django-cms core === ##
+# django-cms core
 ################################################################################
 
 
@@ -335,7 +331,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 ################################################################################
-## === django-cms optional === ##
+# django-cms optional
 ################################################################################
 
 

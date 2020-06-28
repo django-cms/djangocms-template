@@ -8,6 +8,7 @@
 - if you need to add images or other assets - add under the respective module, eg `global`, `vendor`, `pages/homepage`, etc
 - we need to use 24 columns config in bootstrap 4
 - make sure that you have a bs4 `container` alternative on any body html, because editors want to use Row/Column plugin in any place of the page, which works only inside a `container` class. Often you also need to remove the padding or create your own `container` alternative, use `@include make-container();` mixin for those cases. Also make sure that Container bs4 cms plugin always has `@include make-container();`
+- keep the comments in `package.json` intact, ie don't use `npm install {package-name} --save` command
 
 #### Fonts
 - use https://google-webfonts-helper.herokuapp.com/fonts/ to download the web font from google (set the relative path to empty string in the configurator)

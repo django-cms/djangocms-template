@@ -1,16 +1,13 @@
 ### Adding new packages and apps
 
-Don't add your project custom package within the existing template package, eg
+Don't add your project custom package within the existing template package, eg here `my_package` was added incorrectly:
 ```
 INSTALLED_APPS.extend([
     # django
 
     'allauth',
     'allauth.account',
-    [...]
-
-    'mypackage',
-
+    '{my_package}',
     'gtm',
     'solo',
 )]
@@ -25,17 +22,10 @@ INSTALLED_APPS.extend([
     'allauth.account',
     'gtm',
     'solo',
-    [...]
-
-    'mypackage',
+    'my_package',
 )]
 ```
 
 Same goes for every other file, package.json. requirements.in, etc.
 
-This allows people who merge in the latest updates from djangocms-template repository avoid merge confilicts.
-It also clearly indicates where your custom extension start.
-
-### Translations
-
-- `python manage.py makemessages -l {lang_code} --no-wrap`
+This allows people who merge in the latest updates from djangocms-template repository avoid merge conflicts or at least see clearly where you've changed the default template.
