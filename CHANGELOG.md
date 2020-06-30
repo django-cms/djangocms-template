@@ -1,3 +1,8 @@
+2020.07
+-------------------------------------------------------------------------------
+
+- added a wrapper for [linkit](https://github.com/dreipol/linkit) with djangocms-blog support, located at `backend.plugins.link`
+
 2020.06
 -------------------------------------------------------------------------------
 
