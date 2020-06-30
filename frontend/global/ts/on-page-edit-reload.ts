@@ -1,7 +1,7 @@
 declare var CMS: any;
 
 
-export function main() {
+export function initOnPageEditReloadScript() {
     const isCmsPresent = window.hasOwnProperty('CMS');
     if (isCmsPresent) {
         initScriptReloadListener();

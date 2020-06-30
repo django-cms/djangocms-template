@@ -1,4 +1,10 @@
-import {main} from 'global/ts/on-page-edit-reload'
+import {initOnPageEditReloadScript} from 'global/ts/on-page-edit-reload';
 
 
-main();
+document.addEventListener(
+    'DOMContentLoaded',
+    () => {
+        initOnPageEditReloadScript();
+    },
+    {once: true},
+)

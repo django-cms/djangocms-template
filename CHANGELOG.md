@@ -5,6 +5,7 @@
 - added [djangocms-algolia](https://gitlab.com/victor.yunenko/djangocms-algolia)
 - added [linkit](https://github.com/dreipol/linkit) that must be used for all links from now on
 - fixed the `login with divio` feature that used to raise an "email duplicate error" ([divio/aldryn-sso#66](https://github.com/divio/aldryn-sso/issues/66))
+- fixed the freezing of page after 5-10 CMS edits
 
 ### Breaking Changes
 

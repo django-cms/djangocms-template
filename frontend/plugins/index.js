@@ -1,1 +1,1 @@
-require('./hero-video/index');
+require('./demo-plugin/index');
