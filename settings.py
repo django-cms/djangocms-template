@@ -46,6 +46,7 @@ MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
 BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
+DEBUG: bool = locals()['DEBUG']
 
 
 DATE_FORMAT = 'F j, Y'
@@ -328,6 +329,14 @@ CMS_TEMPLATES = [
 
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+
+if DEBUG:
+    CMS_PAGE_CACHE = False
+    CMS_PLACEHOLDER_CACHE = False
+    CMS_PLUGIN_CACHE = False
+    MENU_CACHE_DURATION = 0
+    CMS_CONTENT_CACHE_DURATION = 0
 
 
 ################################################################################
