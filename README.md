@@ -3,7 +3,7 @@ djangocms-template project is usable by itself. You can follow the local setup i
 
 Divio Integration Setup
 -------------------------------------------------------------------------------
-- create a new project on divio of the type python3, django with default boilerplate
+- create a new project on divio without deploying it, set the type python3, django with default boilerplate
 - create a new empty repository on git and add the following remotes:
     - `git remote add template git@gitlab.com:what-digital/djangocms-template.git`
     - `git remote add divio git@git.divio.com:{project-slug}.git`, replace `{project-slug}`
