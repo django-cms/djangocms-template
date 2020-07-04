@@ -32,7 +32,7 @@ djangocms-algolia >= 0.1.0.1
 djangocms-redirect
 djangocms-helpers >= 2.1.0  # bug fixes and utils as send_email, error handlers
 djangocms-page-meta
-https://github.com/what-digital/linkit/archive/master.zip#egg=linkit==0.1.5
+https://github.com/what-digital/linkit/archive/f0327f87cdebaaa12f0f394019d2afcaf9358013.zip#egg=linkit==0.1.7
 
 # django
 

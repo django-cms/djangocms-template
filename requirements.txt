@@ -54,7 +54,7 @@ django-env-settings==1.0.0
 django-extensions==2.2.9
 django-fieldsignals==0.5.0  # via djangocms-helpers
 https://control.divio.com/api/v1/apps/serve/django-filer/1.7.1/51d763aa-2153-4038-8658-020e2b301005/django-filer-1.7.1.tar.gz#egg=django-filer==1.7.1
-https://github.com/what-digital/linkit/archive/master.zip#egg=linkit==0.1.5
+https://github.com/what-digital/linkit/archive/f0327f87cdebaaa12f0f394019d2afcaf9358013.zip#egg=linkit==0.1.7
 django-formtools==2.2     # via django-cms
 django-getenv==1.3.2
 django-google-tag-manager==0.0.5
