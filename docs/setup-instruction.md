@@ -51,6 +51,8 @@ For installing the compiled requirements in docker you have to rebuild it with `
 Advices
 -------------------------------------------------------------------------------
 
+Don't hesitate to address divio support, a significant amount of features might not work according to the docs, or there are no docs. We're also keeping an open github repository for keeping track of our past issues with divio deployments - https://github.com/what-digital/divio/issues
+
 ### Shell
 - `docker-compose run --rm web fish` - a disposable container
 

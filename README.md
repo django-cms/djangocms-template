@@ -3,7 +3,7 @@ djangocms-template project is usable by itself. You can follow the local setup i
 
 Divio Integration Setup
 -------------------------------------------------------------------------------
-- create a new project on divio of the type python3, django with default boilerplate
+- create a new project on divio without deploying it, set the type python3, django with default boilerplate
 - create a new empty repository on git and add the following remotes:
     - `git remote add template git@gitlab.com:what-digital/djangocms-template.git`
     - `git remote add divio git@git.divio.com:{project-slug}.git`, replace `{project-slug}`
@@ -22,7 +22,9 @@ Divio Integration Setup
     - remove this section from README.md, along with the first sentence about djangocms-template independent setup
     - remove the `docs` directory - it should be stored only within this source repository
     - remove base.Dockerfile and .gitlab-ci.yml
-- deploy the stage server - on deployment you might get a migration error, in that case follow the instructions for database reset placed in `setup instructions` below
+- deploy the stage server
+ 
+⚠ ️BEWARE: If you get a migration error on Divio deployment, follow the instructions for database reset placed in [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/master/docs/setup-instruction.md#how-to-drop-the-database)
 
 ### Mailtrap setup
 
