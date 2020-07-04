@@ -4,6 +4,8 @@ The settings.py, requirements.in and package.json files are split into categorie
 
 The `backend/templates` directory is only for global templates, for anything else use app specific templates per django guidelines.
 
+When you need to override a plugin templates create a directory `backend.plugins.overrides.{you_plugin_name}`.
+
 ### envs
 
 When you're editing the env files add the changes to another inactive changes, this way you're never going to commit those changes to git.

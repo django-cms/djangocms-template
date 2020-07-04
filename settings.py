@@ -333,6 +333,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 if DEBUG:
+    # there's a bug with caching - https://github.com/what-digital/divio/issues/9
     CMS_PAGE_CACHE = False
     CMS_PLACEHOLDER_CACHE = False
     CMS_PLUGIN_CACHE = False
