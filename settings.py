@@ -243,24 +243,6 @@ SETTINGS_EXPORT = [
     'GTM_CONTAINER_ID',
 ]
 
-IS_SENTRY_ENABLED = env.get_bool('IS_SENTRY_ENABLED', False)
-SENTRY_DSN = env.get('SENTRY_DSN')
-if IS_SENTRY_ENABLED:
-    # noinspection PyTypeChecker
-    sentry_sdk.init(
-        before_send=ignore_io_error,
-        dsn=SENTRY_DSN,
-        integrations=[
-            DjangoIntegration(),
-            LoggingIntegration(
-                level=logging.INFO,  # Capture info and above as breadcrumbs
-                event_level=None,  # Send no events from log messages
-            )
-        ],
-        environment=DIVIO_ENV.value,
-        send_default_pii=True,
-    )
-
 
 HIJACK_REGISTER_ADMIN = False
 HIJACK_ALLOW_GET_REQUESTS = True
