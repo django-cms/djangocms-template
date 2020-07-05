@@ -2,6 +2,7 @@
 -------------------------------------------------------------------------------
 
 - added a wrapper for [linkit](https://github.com/dreipol/linkit) with djangocms-blog support, located at `backend.plugins.link`
+- added backend.site_config example
 
 ### Documentation
 
