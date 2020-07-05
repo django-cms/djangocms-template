@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class LinkAppConfig(AppConfig):
-    name = 'backend.plugins.chance5g.link'
+    name = 'backend.plugins.link'
 
     def ready(self):
         from backend.plugins.link.link_types import PostLinkType
