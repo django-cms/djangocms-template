@@ -419,7 +419,7 @@ CKEDITOR_SETTINGS = {
     'pasteFromWordRemoveFontStyles': True,
     'forcePasteAsPlainText': False,
 }
-# djangocms-text-ckeditor uses html5lib to sanitize HTML
+# djangocms-text-ckeditor uses html5lib to sanitize HTML and deletes iframes
 TEXT_ADDITIONAL_TAGS = [
     'iframe',
 ]
