@@ -371,15 +371,16 @@ CKEDITOR_SETTINGS = {
     'toolbar': 'CUSTOM',
     'toolbar_CUSTOM': [
         ['Undo', 'Redo'],
-        ['cmsplugins', '-', 'ShowBlocks'],
+        ['cmsplugins', '-', 'ShowBlocks', 'Iframe'],
         ['Format', 'Styles', 'FontSize'],
+        ['SpellChecker'],
         ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord', 'RemoveFormat'],
         ['Maximize', ''],
         '/',
         ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', ],
+        ['Blockquote', ],
         ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
-        # remove 'Link' since we have bootstrap4 link/button plugin
-        ['Unlink'],
+        ['Link', 'Unlink', 'Anchor'],
         ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
         ['Source']
     ],
@@ -411,13 +412,17 @@ CKEDITOR_SETTINGS = {
         f'{WEBPACK_DEV_URL}/global.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/global.css',
     ],
     'config': {
-        'allowedContent': True,
+        'allowedContent': True, # allows html tags
         'fillEmptyBlocks': False, # doesn't seem to be doing anything, but was part of the old config
     },
     'pasteFromWordPromptCleanup': True,
     'pasteFromWordRemoveFontStyles': True,
     'forcePasteAsPlainText': False,
 }
+# djangocms-text-ckeditor uses html5lib to sanitize HTML
+TEXT_ADDITIONAL_TAGS = [
+    'iframe',
+]
 
 # for djangocms-helpers send_email
 META_SITE_PROTOCOL = HTTP_PROTOCOL
