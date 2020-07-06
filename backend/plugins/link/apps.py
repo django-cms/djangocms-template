@@ -5,6 +5,6 @@ class LinkAppConfig(AppConfig):
     name = 'backend.plugins.link'
 
     def ready(self):
-        from backend.plugins.link.link_types import PostLinkType
+        from backend.plugins.link.link_types import DjangocmsBlogPostLinkType
         from linkit.types import type_manager as linkit_manager
-        linkit_manager.register(PostLinkType)
+        linkit_manager.register(DjangocmsBlogPostLinkType)
