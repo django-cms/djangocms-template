@@ -99,7 +99,7 @@ djangocms-algolia==0.1.0.1
 djangocms-apphook-setup==0.4.1  # via djangocms-blog
 djangocms-attributes-field==1.2.0  # via djangocms-file, djangocms-icon, djangocms-link, djangocms-picture
 djangocms-blog==1.1.1
-https://github.com/divio/djangocms-bootstrap4/archive/new-plugins.zip#egg=djangocms-bootstrap4
+https://github.com/divio/djangocms-bootstrap4/archive/be03e751472fcbc9273a5745298c359e3e21618b.zip#egg=djangocms-bootstrap4
 djangocms-file==2.4.0
 djangocms-googlemap==1.4.0
 djangocms-helpers==2.1.1.2
