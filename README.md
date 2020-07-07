@@ -1,4 +1,4 @@
-djangocms-template project is usable by itself. You can follow the local setup instructions to try it out.
+djangocms-template project is usable by itself. You can follow the local setup instructions to try it out. A live instance is configured within what. divio organization - https://control.divio.com/control/1820/edit/83288/
 
 
 Divio Integration Setup
