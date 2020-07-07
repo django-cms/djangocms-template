@@ -4,5 +4,5 @@ from linkit.types.model import ModelLinkType
 
 class DjangocmsBlogPostLinkType(ModelLinkType):
     identifier = 'djangocms_blog'
-    type_label = 'Story'
+    type_label = 'Blog post'
     model = Post
