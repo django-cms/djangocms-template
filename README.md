@@ -18,24 +18,25 @@ Divio Integration Setup
     ![](/docs/guidelines/img/project-slug.png)
 
     </details>
+- enable mailtrap and sentry, see the instructions below
 - remove the following files and content:
-    - remove this section from README.md, along with the first sentence about djangocms-template independent setup
+    - remove this section from `README.md`, along with the first sentence about djangocms-template independent setup
     - remove the `docs` directory - it should be stored only within this source repository
-    - remove base.Dockerfile and .gitlab-ci.yml
+    - remove `base.Dockerfile`, `.gitlab-ci.yml`, `LICENSE`
 - deploy the stage server
  
 ⚠ ️BEWARE: If you get a migration error on Divio deployment, follow the instructions for database reset placed in [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/master/docs/setup-instruction.md#how-to-drop-the-database)
 
 ### Mailtrap setup
 
-- signup with a tech eamil, eg `tech+{project}@what.digital` https://mailtrap.io/register/signup
-- save the login/password to the project's 1password vault
+- signup with a tech eamil, eg `tech+{project_name}@what.digital` https://mailtrap.io/register/signup
+- save the login/password to the project's 1password vault, or send it to Victor / Mario 
 - add `EMAIL_URL` to the divio envs `smtps://{username}:{password}@smtp.mailtrap.io:2525`
 
 ### Sentry setup
 
-- create a new account using tech email `tech+{project}@what.digital`
-- save the login/password to the project's 1password vault
+- create a new account using tech email `tech+{project_name}@what.digital`
+- save the login/password to the project's 1password vault, or send it to Victor / Mario
 - add `SENTRY_DSN` to the divio envs
 
 Development Setup

@@ -69,10 +69,8 @@ installed_apps_overrides = [
     # for USERNAME_FIELD = 'email', before `cms` since it has a User model
     'backend.auth',
 
-    # templates override
     'backend.blog',
 
-    # must be before `cms`
     'djangocms_modules',
 ]
 INSTALLED_APPS = installed_apps_overrides + INSTALLED_APPS
@@ -95,6 +93,9 @@ INSTALLED_APPS.extend([
     'django_countries',
     'logentry_admin',
     'hijack_admin',
+    'djangocms_helpers',
+    'djangocms_helpers.sentry_500_error_handler',
+        'meta',
 
     # django cms
 
@@ -110,7 +111,7 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_link',
     'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
     'djangocms_bootstrap4.contrib.bootstrap4_media',
-    'djangocms_bootstrap4.contrib.bootstrap4_picture',  # must be before djangocms_picture
+    'djangocms_bootstrap4.contrib.bootstrap4_picture',  # place djangocms_picture
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     'djangocms_bootstrap4.contrib.bootstrap4_heading',
@@ -130,10 +131,7 @@ INSTALLED_APPS.extend([
     'djangocms_snippet',
     'djangocms_socialshare',
     'djangocms_algolia',
-    'djangocms_helpers',
-    'djangocms_helpers.sentry_500_error_handler',
     'djangocms_page_meta',
-        'meta',
     'aldryn_forms_bs4_templates',
     'aldryn_forms',
         'aldryn_forms_recaptcha_plugin',
