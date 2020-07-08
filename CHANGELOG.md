@@ -6,6 +6,7 @@
 - added ability to add html links and iframe to CKEditor, because there's no other way to do that in django admin
 - added django-sortedm2m for simpel sorting M2M models - it's possible with django-admin-sortable2 but the complexity is unreasonable
 - fixed spellchecker in ckeditor
+- fixed django translations
 - drop sentry config in settings and use the version from aldryn-django
 - drop custom ckeditor toolbar to avoid issues as missing spellchecker
 
