@@ -373,7 +373,6 @@ CKEDITOR_SETTINGS = {
         ['Undo', 'Redo'],
         ['cmsplugins', '-', 'ShowBlocks', 'Iframe'],
         ['Format', 'Styles', 'FontSize'],
-        ['SpellChecker'],
         ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord', 'RemoveFormat', 'Scayt'],
         ['Maximize', ''],
         '/',
