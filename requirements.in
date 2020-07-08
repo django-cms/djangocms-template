@@ -40,6 +40,7 @@ https://github.com/divio/aldryn-sso/archive/66-fix-email-duplicate-error.zip#egg
 django-settings-export # settings export to templates
 django-enumfields
 django-admin-sortable2 # drag and drop sorting for admin
+django-sortedm2m
 django-filter # generic view filter helpers for front and admin panel, as `?field__gte=5`
 django-google-tag-manager
 django-env-settings >= 0.13.0 # settings utils, see gitlab.com/what-digital/django-env-settings
