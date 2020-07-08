@@ -374,7 +374,7 @@ CKEDITOR_SETTINGS = {
         ['cmsplugins', '-', 'ShowBlocks', 'Iframe'],
         ['Format', 'Styles', 'FontSize'],
         ['SpellChecker'],
-        ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord', 'RemoveFormat'],
+        ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord', 'RemoveFormat', 'Scayt'],
         ['Maximize', ''],
         '/',
         ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', ],
