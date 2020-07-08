@@ -6,6 +6,7 @@
 - added ability to add html links and iframe to CKEditor, because there's no other way to do that in django admin
 - fixed spellchecker in ckeditor
 - drop sentry config in settings and use the version from aldryn-django
+- drop custom ckeditor toolbar to avoid issues as missing spellchecker
 
 ### Documentation
 

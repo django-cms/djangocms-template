@@ -368,21 +368,6 @@ DJANGOCMS_GOOGLEMAP_API_KEY = env.get('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
 
 CKEDITOR_SETTINGS = {
     'language': '{{ language }}',
-    'toolbar': 'CUSTOM',
-    'toolbar_CUSTOM': [
-        ['Undo', 'Redo'],
-        ['cmsplugins', '-', 'ShowBlocks', 'Iframe'],
-        ['Format', 'Styles', 'FontSize'],
-        ['TextColor', 'BGColor', '-', 'PasteText', 'PasteFromWord', 'RemoveFormat', 'Scayt'],
-        ['Maximize', ''],
-        '/',
-        ['Bold', 'Italic', 'Underline', '-', 'Subscript', 'Superscript', '-', ],
-        ['Blockquote', ],
-        ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
-        ['Link', 'Unlink', 'Anchor'],
-        ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Table'],
-        ['Source']
-    ],
     'fontSize_sizes': (
         '0.5rem;'
         '0.6rem;'
