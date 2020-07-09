@@ -38,6 +38,7 @@
         "@sentry/browser": "^5.15.4",
         "@fortawesome/fontawesome-free": "^5.12.1", "//": "for djangocms-icon",
         
+        
         "//": "project packages",
         
         
