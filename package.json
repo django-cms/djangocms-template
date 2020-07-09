@@ -36,7 +36,12 @@
             "@types/bootstrap": "^4.3.2",
         "autoprefixer": "^9.5.1",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be not working",
         "@sentry/browser": "^5.15.4",
-        "@fortawesome/fontawesome-free": "^5.12.1", "//": "for djangocms-icon"
+        "@fortawesome/fontawesome-free": "^5.12.1", "//": "for djangocms-icon",
+        
+        "//": "project packages",
+        
+        
+        
     },
     "devDependencies": {
         "webpack-dev-server": "^3.8.2"
