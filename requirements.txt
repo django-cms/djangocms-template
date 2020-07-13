@@ -16,7 +16,7 @@ aldryn-forms-recaptcha-plugin==1.0.0.2
 aldryn-search==1.1.0      # via djangocms-algolia
 aldryn-sites==0.6.0
 aldryn-snake==1.0.1
-https://github.com/divio/aldryn-sso/archive/66-fix-email-duplicate-error.zip#egg=aldryn-sso==1.7.0
+https://github.com/divio/aldryn-sso/archive/cfcca9f1bdf547bae201c6c6568a74554040c0a2.zip#egg=aldryn-sso
 aldryn-translation-tools==0.3.0
 algoliasearch-django==1.7.1  # via djangocms-algolia
 algoliasearch==1.20.0     # via algoliasearch-django

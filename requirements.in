@@ -36,7 +36,7 @@ https://github.com/what-digital/linkit/archive/86a9b203c63a72929e3a2f6e707df429e
 
 # django
 
-https://github.com/divio/aldryn-sso/archive/66-fix-email-duplicate-error.zip#egg=aldryn-sso==1.7.0
+https://github.com/divio/aldryn-sso/archive/cfcca9f1bdf547bae201c6c6568a74554040c0a2.zip#egg=aldryn-sso
 django-settings-export # settings export to templates
 django-enumfields
 django-admin-sortable2 # drag and drop sorting for admin
