@@ -1,4 +1,4 @@
-FROM divio/base:4.16-py3.6-slim-stretch
+FROM divio/base:4.17-py3.6-slim-stretch
 
 
 RUN apt-get update --quiet && apt-get install --yes git gnupg2 apt-transport-https fish gcc nano

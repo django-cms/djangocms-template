@@ -5,12 +5,13 @@
 - added backend.site_config example
 - added ability to add html links and iframe to CKEditor, because there's no other way to do that in django admin
 - added django-sortedm2m for simpel sorting M2M models - it's possible with django-admin-sortable2 but the complexity is unreasonable
+- updated docker base image to from 4.16 to 4.17
 - fixed spellchecker in ckeditor
 - fixed django translations
 - fixed `<html>`'s tag `lang` attribute, it was empty before
 - fixed ability of search engines to index the aldryn-sso login page
-- drop sentry config in settings and use the version from aldryn-django
-- drop custom ckeditor toolbar to avoid issues as missing spellchecker
+- dropped sentry config in settings and use the version from aldryn-django
+- dropped custom ckeditor toolbar to avoid issues as missing spellchecker
 
 ### Documentation
 
