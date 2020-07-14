@@ -5,6 +5,7 @@
 - added backend.site_config example
 - added ability to add html links and iframe to CKEditor, because there's no other way to do that in django admin
 - added django-sortedm2m for simpel sorting M2M models - it's possible with django-admin-sortable2 but the complexity is unreasonable
+- added test of pages on the real database that fully rollbacks a divio deployment if any page returns a 5XX code 
 - updated docker base image to from 4.16 to 4.17
 - fixed spellchecker in ckeditor
 - fixed django translations

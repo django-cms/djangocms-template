@@ -47,12 +47,16 @@ BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
 DEBUG: bool = locals()['DEBUG']
+MIGRATION_COMMANDS: List[str] = locals()['MIGRATION_COMMANDS']
 
 
 DATE_FORMAT = 'F j, Y'
 
 USE_TZ = True
 TIME_ZONE = 'Europe/Zurich'
+
+
+MIGRATION_COMMANDS.insert(0, 'python manage.py test_pages_on_real_db')
 
 
 class DivioEnv(Enum):

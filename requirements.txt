@@ -32,7 +32,7 @@ cssutils==1.0.2           # via premailer
 dataclasses==0.7
 decorator==4.4.2          # via ipython, traitlets
 defusedxml==0.6.0         # via odfpy, python3-openid
-diff-match-patch==20181111  # via django-import-export
+diff-match-patch==20200713  # via django-import-export
 dj-database-url==0.5.0
 dj-email-url==1.0.1
 dj-redis-url==0.1.4
@@ -51,8 +51,8 @@ django-countries==6.1.2
 django-emailit==0.2.4
 django-enumfields==2.0.0
 django-env-settings==1.0.0
-django-extensions==3.0.2
-django-fieldsignals==0.6.0  # via djangocms-helpers
+django-extensions==3.0.3
+django-fieldsignals==0.6.0
 https://control.divio.com/api/v1/apps/serve/django-filer/1.7.1/51d763aa-2153-4038-8658-020e2b301005/django-filer-1.7.1.tar.gz#egg=django-filer==1.7.1
 django-filter==2.3.0
 django-formtools==2.2     # via django-cms
@@ -61,10 +61,10 @@ django-google-tag-manager==0.0.5
 django-haystack==2.8.1    # via aldryn-search
 django-hijack-admin==2.1.10
 django-hijack==2.1.10     # via django-hijack-admin
-django-import-export==2.2.0
+django-import-export==2.3.0
 django-js-asset==1.2.2    # via django-mptt
 django-logentry-admin==1.0.6
-django-meta==1.7.0        # via djangocms-blog, djangocms-helpers, djangocms-page-meta
+django-meta==1.7.0        # via djangocms-blog, djangocms-page-meta
 django-modeladmin-reorder==0.3.1
 django-mptt==0.11.0
 django-object-actions==2.0.0  # via django-adminutils
@@ -80,7 +80,7 @@ django-simple-captcha==0.5.12
 django-simple-sso==0.14.1
 django-sizefield==1.0.0
 django-solo==1.1.3
-django-sortedm2m==3.0.0   # via aldryn-common, djangocms-blog
+django-sortedm2m==3.0.0
 django-spurl==0.6.5
 django-standard-form==1.1.1
 django-storages==1.8
@@ -92,7 +92,7 @@ django-templatetag-sugar==1.0  # via django-taggit-templatetags
 django-treebeard==4.3.1   # via django-cms
 django-username-email==2.3.0
 django-widget-tweaks==1.4.8
-django==2.2.14            # via aldryn-boilerplates, aldryn-sites, algoliasearch-django, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-haystack, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-standard-form, django-storages, django-taggit, django-taggit-templatetags, django-treebeard, django-username-email, djangocms-algolia, djangocms-helpers, djangocms-light-gallery, djangocms-socialshare, djangorestframework, easy-thumbnails, webservices
+django==2.2.14            # via aldryn-boilerplates, aldryn-sites, algoliasearch-django, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-haystack, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-standard-form, django-storages, django-taggit, django-taggit-templatetags, django-treebeard, django-username-email, djangocms-algolia, djangocms-light-gallery, djangocms-socialshare, djangorestframework, easy-thumbnails, webservices
 djangocms-admin-style==1.5.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==1.0.0.1
 djangocms-algolia==0.1.0.1
@@ -102,7 +102,7 @@ djangocms-blog==1.1.1
 https://github.com/divio/djangocms-bootstrap4/archive/be03e751472fcbc9273a5745298c359e3e21618b.zip#egg=djangocms-bootstrap4
 djangocms-file==2.4.0
 djangocms-googlemap==1.4.0
-djangocms-helpers==2.1.1.2
+https://gitlab.com/what-digital/djangocms-helpers/-/archive/master/djangocms-helpers-master.zip#egg=djangocms-helpers==2.1.1.4
 djangocms-history==1.2.0
 djangocms-icon==1.5.0
 djangocms-light-gallery==1.1.0
@@ -128,7 +128,7 @@ itsdangerous==1.1.0       # via django-simple-sso, webservices
 jdcal==1.4.1              # via openpyxl
 jedi==0.17.1              # via ipython
 https://github.com/what-digital/linkit/archive/86a9b203c63a72929e3a2f6e707df429eb0cf679.zip#egg=linkit==0.1.7
-lxml==4.5.1               # via aldryn-search, djangocms-blog, premailer
+lxml==4.5.2               # via aldryn-search, djangocms-blog, premailer
 markuppy==1.14            # via tablib
 oauthlib==3.1.0           # via requests-oauthlib
 odfpy==1.4.1              # via tablib
@@ -153,7 +153,7 @@ rcssmin==1.0.6            # via django-compressor
 requests-oauthlib==1.3.0  # via django-allauth
 requests==2.24.0          # via aldryn-client, algoliasearch, django-allauth, django-recaptcha3, premailer, requests-oauthlib, webservices
 rjsmin==1.1.0             # via django-compressor
-sentry-sdk==0.16.0
+sentry-sdk==0.16.1
 six==1.15.0               # via aldryn-client, aldryn-common, django-adminutils, django-appdata, django-classy-tags, django-cms, django-compat, django-compressor, django-extensions, django-meta, django-parler, django-sekizai, django-simple-captcha, django-spurl, django-tablib, furl, html5lib, orderedmultidict, traitlets
 sqlparse==0.3.1           # via django
 tablib[html,ods,xls,xlsx,yaml]==2.0.0  # via django-import-export, django-tablib
