@@ -5,46 +5,11 @@
 
 
 {% block content %}
+    <main>
+        {% placeholder 'content' %}
+    </main>
 
-    <div class="container-fluid">
-
-        <div class="row">
-            <div class="col">
-                <h2>custom CSS test</h2>
-                <p class="demo-red">hello world with red css</p>
-                <p>Remove this in frontend/pages/homepage/scss/sub-section.scss</p>
-
-                <h2>bs4 test</h2>
-                <p>We are using a customized boostrap grid with 24 cols</p>
-            </div>
-        </div>
-
-        <div class="row bs4-demo">
-            <div class="col-24 col-md-12">Col 1 - should be 50%</div>
-            <div class="col-24 col-md-12">Col 2 - should be 50% as well</div>
-        </div>
-
-        <div class="row">
-            <div class="col pt-4">
-                <h2>Customisation of bootstrap4 variables</h2>
-                <p>Comment out the demo styles in frontend/global/scss/bootstrap4-configuration.sass</p>
-                <a href="#" class="btn btn-primary">Test button - should be orange</a>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col pt-5">
-                <h2>Dynamic CMS Content</h2>
-                <p>Click on the structure button (top right icon that looks like a list) to add CMS plugins below.</p>
-            </div>
-        </div>
-
-        <main>
-            {% placeholder 'content' %}
-        </main>
-
-        <footer>
-            {% static_placeholder 'footer' %}
-        </footer>
-    </div>
+    <footer>
+        {% static_placeholder 'footer' %}
+    </footer>
 {% endblock %}
