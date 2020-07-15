@@ -32,6 +32,7 @@ Divio Integration Setup
 - signup with a tech eamil, eg `tech+{project_name}@what.digital` https://mailtrap.io/register/signup
 - save the login/password to the project's 1password vault, or send it to Victor / Mario 
 - add `EMAIL_URL` to the divio envs `smtps://{username}:{password}@smtp.mailtrap.io:2525`
+- add login/password to this README
 
 ### Sentry setup
 
