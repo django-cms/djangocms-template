@@ -11,7 +11,7 @@ aldryn-client==2.3.5
 aldryn-common==1.0.5      # via aldryn-search
 https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.3.1/b8a3ddbe-5a74-4b29-b101-51e05b04d14c/aldryn-django-cms-3.7.3.1.tar.gz#egg=aldryn-django-cms==3.7.3.1
 https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.14.1/d9db6707-c6e3-432f-aaa9-3d5c8c12f44f/aldryn-django-2.2.14.1.tar.gz#egg=aldryn-django==2.2.14.1
-https://github.com/divio/aldryn-forms/archive/5.0.5.zip#egg=aldryn-forms
+https://github.com/divio/aldryn-forms/archive/774f4a7346b21925d23945d12a21b77829c155da.zipegg=aldryn-forms==6.0.0-alpha
 aldryn-forms-recaptcha-plugin==1.0.0.2
 aldryn-search==1.1.0      # via djangocms-algolia
 aldryn-sites==0.6.0
