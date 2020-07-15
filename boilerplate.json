@@ -2,7 +2,7 @@
     "package-name": "djangocms-template",
     "templates": [],
     "identifier": "djangocms-template",
-    "version": "1.0.0.0",
+    "version": "1.0.0.1",
     "excluded": [
         ".idea/",
         "*.pyc",
