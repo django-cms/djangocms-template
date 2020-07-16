@@ -1,18 +1,22 @@
 2020.07
 -------------------------------------------------------------------------------
 
+- added a new link plugin that allows to select the link type - eg blog article, cms page, external url, etc
+- added ability to add html links and iframe to CKEditor
+- cms dynamic forms:
+    - fixed the email variables representation and validation
+    - fixed django success message that was shown on an unrelated page, seemingly on random
+    - fixed the form submission success message that could have been invisible for the user, now the page scrolls to it after a POST request
+- fixed spellchecker in CKEditor
+
+### Technical
+
 - added a wrapper for [linkit](https://github.com/dreipol/linkit) with djangocms-blog support, located at `backend.plugins.link`
 - added backend.site_config example
-- added ability to add html links and iframe to CKEditor, because there's no other way to do that in django admin
 - added django-sortedm2m for simpel sorting M2M models - it's possible with django-admin-sortable2 but the complexity is unreasonable
 - added test of pages on the real database that fully rollbacks a divio deployment if any page returns a 5XX code 
 - updated docker base image to from 4.16 to 4.17
-- updated aldryn-forms from 5th to 6th version that contains a lot of fixes
-    - fixed the email variables render and validation
-    - disabled the original Form plugin
-    - fixed django success message that was shown on an unrelated page, seemingly on random
-    - fixed form submission success message that wasn't shown to the user, now the page scrolls to it after a POST request
-- fixed spellchecker in ckeditor
+- updated aldryn-forms from 5th to 6th version that contains a lot of fixes, eg we disabled the original Form plugin
 - fixed django translations
 - fixed `<html>`'s tag `lang` attribute, it was empty before
 - fixed ability of search engines to index the aldryn-sso login page
