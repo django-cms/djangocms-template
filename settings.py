@@ -56,9 +56,6 @@ USE_TZ = True
 TIME_ZONE = 'Europe/Zurich'
 
 
-MIGRATION_COMMANDS.insert(0, 'python manage.py test_pages_on_real_db')
-
-
 class DivioEnv(Enum):
     LOCAL = 'local'
     TEST = 'test'
@@ -330,6 +327,9 @@ if DEBUG:
 ################################################################################
 # django-cms optional
 ################################################################################
+
+
+MIGRATION_COMMANDS.insert(0, 'python manage.py test_pages_on_real_db')
 
 
 CMS_PLACEHOLDER_CONF = {
