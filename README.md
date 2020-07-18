@@ -23,6 +23,7 @@ Divio Integration Setup
     - remove this section from `README.md`, along with the first sentence about djangocms-template independent setup
     - remove the `docs` directory - it should be stored only within this source repository
     - remove `base.Dockerfile`, `.gitlab-ci.yml`, `LICENSE`
+    - if you're planning to use more than one CMS language go to [frontend/global/ts/ckeditor-config.js](/frontend/global/ts/ckeditor-config.js) and remove the `scayt_autoStartup = true` line
 - deploy the stage server
  
 ⚠ ️BEWARE: If you get a migration error on Divio deployment, follow the instructions for database reset placed in [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/master/docs/setup-instruction.md#how-to-drop-the-database)
