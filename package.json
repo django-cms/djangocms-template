@@ -36,7 +36,7 @@
         "bootstrap": "^4.0.0",
             "popper.js": "^1.0.0", "//": "a peer depepndency of BS, for tooltips, might be useless",
             "@types/bootstrap": "^4.0.0",
-        "autoprefixer": "^9.0.0",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be not working",
+        "autoprefixer": "^9.0.0",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically",
             "postcss-loader": "^3.0.0",
         "@sentry/browser": "^5.0.0",
         "@fortawesome/fontawesome-free": "^5.0.0", "//": "for djangocms-icon",
