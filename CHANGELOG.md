@@ -3,6 +3,7 @@
 
 - added a new link plugin that allows to select the link type - eg blog article, cms page, external url, etc
 - added ability to add html links and iframe to CKEditor
+- added better styles compatibility with outdated browser as safari, ie11, etc
 - cms dynamic forms:
     - fixed the email variables representation and validation
     - fixed django success message that was shown on an unrelated page, seemingly on random
