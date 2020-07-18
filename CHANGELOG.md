@@ -18,7 +18,8 @@
 - updated docker base image to from 4.16 to 4.17
 - fixed django translations
 - fixed `<html>`'s tag `lang` attribute, it was empty before
-- fixed aldryn-sso email duplication issue on divio database exporta
+- fixed aldryn-sso email duplication issue on divio database export
+- fixed webpack autoprefixer config, before it wasn't working
 - disabled the ability of search engines to index the aldryn-sso login page
 - dropped sentry config in settings and use the version from aldryn-django
 - dropped custom ckeditor toolbar to avoid issues as missing spellchecker

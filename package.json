@@ -9,43 +9,42 @@
 
         "//": "core pakcages",
         
-        "webpack": "^4.41.1",
-            "webpack-cli": "^3.3.9",  "//": "required for cli commands, eg dev server",
-            "@types/webpack": "^4.39.3",
+        "webpack": "^4.0.0",
+            "webpack-dev-server": "^3.0.0",
+            "webpack-cli": "^3.0.0",  "//": "required for cli commands, eg dev server",
+            "@types/webpack": "^4.0.0",
 
-        "file-loader": "^4.2.0",
+        "file-loader": "^6.0.0",
         "image-webpack-loader": "^6.0.0",
-        "svg-url-loader": "^3.0.2",
+        "svg-url-loader": "^6.0.0",
 
-        "mini-css-extract-plugin": "~0.8.0",
+        "mini-css-extract-plugin": "~0.9.0",
             "node-sass": "^4.12.0",
             "precss": "^4.0.0",
-        "sass-loader": "^8.0.0",  "//": "processes css files after mini-css",
-        "css-loader": "^3.2.0",  "//": "handels `@import` and `url()`",
+        "sass-loader": "^9.0.0",  "//": "processes css files after mini-css",
+        "css-loader": "^3.0.0",  "//": "handels `@import` and `url()`",
+        "style-loader": "^1.0.0",
 
-        "ts-loader": "^6.2.0",
-        "typescript": "^3.6.2",
+        "ts-loader": "^8.0.0",
+        "typescript": "^3.0.0",
 
 
         "//": "optional packages",
 
-        "jquery": "^3.4.1",
-            "@types/jquery": "^3.3.29",
-        "bootstrap": "^4.3.1",
-            "popper.js": "^1.15.0", "//": "a peer depepndency of BS, for tooltips, might be useless",
-            "@types/bootstrap": "^4.3.2",
-        "autoprefixer": "^9.5.1",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be not working",
-        "@sentry/browser": "^5.15.4",
-        "@fortawesome/fontawesome-free": "^5.12.1", "//": "for djangocms-icon",
+        "jquery": "^3.0.0",
+            "@types/jquery": "^3.0.0",
+        "bootstrap": "^4.0.0",
+            "popper.js": "^1.0.0", "//": "a peer depepndency of BS, for tooltips, might be useless",
+            "@types/bootstrap": "^4.0.0",
+        "autoprefixer": "^9.0.0",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically, might be not working",
+            "postcss-loader": "^3.0.0",
+        "@sentry/browser": "^5.0.0",
+        "@fortawesome/fontawesome-free": "^5.0.0", "//": "for djangocms-icon",
         
         
         "//": "project packages"
         
         
-        
-    },
-    "devDependencies": {
-        "webpack-dev-server": "^3.8.2"
     },
     "scripts": {
         "start": "node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
