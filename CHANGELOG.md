@@ -8,7 +8,7 @@
     - fixed the email variables representation and validation
     - fixed django success message that was shown on an unrelated page, seemingly on random
     - fixed the form submission success message that could have been invisible for the user, now the page scrolls to it after a POST request
-- fixed spellchecker in CKEditor
+- fixed spellchecker in the CMS text editor
 
 ### Technical
 
