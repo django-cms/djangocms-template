@@ -15,9 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
         <title>
-            {% block page_title %}
-                {% page_attribute 'page_title' %} - {{ request.site.name }}
-            {% endblock %}
+            {% block page_title %}{% page_attribute 'page_title' %}{% endblock %} - {{ request.site.name }}
         </title>
     
         {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
