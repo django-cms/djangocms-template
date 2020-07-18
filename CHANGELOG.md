@@ -23,6 +23,7 @@
 - disabled the ability of search engines to index the aldryn-sso login page
 - dropped sentry config in settings and use the version from aldryn-django
 - dropped custom ckeditor toolbar to avoid issues as missing spellchecker
+- upgraded package.json packages
 
 #### Breaking Changes
 

@@ -12,6 +12,9 @@ const config = {
     mode: 'production',
     entry: {
         global: './frontend/global/index.js',
+        vendor: './frontend/vendor/index.js',
+
+        plugin_demo: './frontend/plugins/demo-plugin/index.js',
     },
     output: {
         filename: '[name].js',
@@ -41,14 +44,7 @@ const config = {
                         }
                     },
                     {loader: 'css-loader', options: {sourceMap: true}},
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: [
-                                require('autoprefixer'),
-                            ],
-                        }
-                    },
+
                     {loader: 'sass-loader', options: {sourceMap: true}},
                 ]
             },
