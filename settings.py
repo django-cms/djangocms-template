@@ -48,6 +48,7 @@ STATIC_URL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
 DEBUG: bool = locals()['DEBUG']
 MIGRATION_COMMANDS: List[str] = locals()['MIGRATION_COMMANDS']
+SITE_ID: int = locals()['SITE_ID']
 
 
 DATE_FORMAT = 'F j, Y'
@@ -327,6 +328,33 @@ if DEBUG:
 ################################################################################
 # django-cms optional
 ################################################################################
+
+
+LANGUAGES = [
+    ('en', "English"),
+    ('de', "German"),
+]
+
+CMS_LANGUAGES = {
+    SITE_ID: [
+        {
+            'code': 'en',
+            'name': 'English',
+        },
+        {
+            'code': 'de',
+            'name': 'German',
+        },
+    ],
+    'default': {
+        'fallbacks': ['en', 'de'],
+        'redirect_on_fallback': True,
+        'public': True,
+        'hide_untranslated': False,
+    }
+}
+
+PARLER_LANGUAGES = CMS_LANGUAGES
 
 
 MIGRATION_COMMANDS.insert(0, 'python manage.py test_pages_on_real_db')
