@@ -1,10 +1,8 @@
 /*
  * This file is imported in bootstrap during compilation - see frontend/vendor/scss/main
  */
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/mixins';
-
-@import 'project';
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/mixins';
 
 
 // DO NOT CHANGE the number of columns!
@@ -14,13 +12,13 @@ $primary-font-color: #333333;
 $button-font-color: white;
 
 $primary-color: black;
-$secondary-color: $project-orange;
+$secondary-color: orange;
 
 $theme-colors: (
-    "primary": $project-orange,
-    "danger": #ff4136
+    'primary': orange,
+    'danger': #ff4136
 );
 
 
 // override by placing it at the end
-@import '~bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/variables';

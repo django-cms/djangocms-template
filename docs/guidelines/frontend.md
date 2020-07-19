@@ -10,6 +10,7 @@
 - make sure that you have a bs4 `container` alternative on any body html, because editors want to use Row/Column plugins in any place of the page, which works only inside a `container` class. Often you also need to remove the padding or create your own `container` alternative, use `@include make-container();` mixin for those cases. Also make sure that Container bs4 cms plugin always behaves as a container class, eg with `@include make-container();`
 - keep the comments in `package.json` intact, ie don't use `yarn add` command
 - all scripts that interact with DOM must be put inside `window.addEventListener('DOMContentLoaded', () => {}, {once: true})`, don't forget the `{once: true}` argument, otherwise your event will be added as many times as editor makes changes, overloading the browser after 5-10 changes
+- prefer to keep scss in `frontend/global/`, since it's easier when it's in one place, unless you need to import something that has a noticeable influence on the global pack compilation size
 
 #### Fonts
 - use https://google-webfonts-helper.herokuapp.com/fonts/ to download the web font from google (set the relative path to empty string in the configurator)
