@@ -28,6 +28,11 @@
         "ts-loader": "^8.0.0",
         "typescript": "^3.0.0",
 
+        "vue": "^2.6.11",
+            "vue-loader": "^15.9.2",
+            "vue-template-compiler": "^2.6.11",
+            "vue-class-component": "^7.2.3",
+            "vue-property-decorator": "^9.0.0",
 
         "//": "optional packages",
 
@@ -41,9 +46,8 @@
         "@sentry/browser": "^5.0.0",
         "@fortawesome/fontawesome-free": "^5.0.0", "//": "for djangocms-icon",
         
-        
-        "//": "project packages"
-        
+        "//": "project packages",
+
         
     },
     "scripts": {

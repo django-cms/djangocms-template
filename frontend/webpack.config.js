@@ -3,6 +3,7 @@
 
 const path = require('path');
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 
 const isDevelopmentMode = process.env.NODE_ENV !== 'production';
@@ -99,6 +100,10 @@ const config = {
                 test: /\.(ttf|eot)(\?[\s\S]+)?$/,
                 loader: 'file-loader',
             },
+            {
+                test: /\.vue$/,
+                use: [{loader: 'vue-loader'}]
+            },
         ],
     },
     resolve: {
@@ -107,6 +112,9 @@ const config = {
             path.resolve('frontend'),
             'node_modules'
         ],
+        alias: {
+            vue: process.env.NODE_ENV === 'production' ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js',
+        }
     },
     devServer: {
         contentBase: path.resolve(__dirname, `frontend`),
@@ -117,6 +125,7 @@ const config = {
         inline: true,
     },
     plugins: [
+        new VueLoaderPlugin(),
         new MiniCssExtractPlugin({filename: '[name].css'}),
     ],
     optimization: {

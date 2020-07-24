@@ -443,3 +443,20 @@ TEXT_ADDITIONAL_TAGS = [
 # for djangocms-helpers send_email
 META_SITE_PROTOCOL = HTTP_PROTOCOL
 META_USE_SITES = True
+
+
+ALGOLIA = {
+    'APPLICATION_ID': env.get('ALGOLIA_APPLICATION_ID', ''),
+    'API_KEY': env.get('ALGOLIA_API_KEY', ''),
+}
+# not used but haystack demands it on its search index collection import
+HAYSTACK_CONNECTIONS = {'default': {'ENGINE': 'haystack.backends.simple_backend.SimpleEngine'}}
+ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
+    'SectionWithImageBackgroundPlugin',
+    'TocPlugin',
+    'NavBarPlugin',
+    'VerticalSpacerPlugin',
+    'Bootstrap4HidePlugin',
+    'MailchimpPlugin',
+]
+ALGOLIA_SEARCH_INDEX_TEXT_LIMIT = 8_000

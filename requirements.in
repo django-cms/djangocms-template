@@ -26,7 +26,7 @@ djangocms-light-gallery
 aldryn-translation-tools
 aldryn-apphooks-config
 djangocms-socialshare
-djangocms-algolia >= 0.1.0.1
+https://gitlab.com/victor.yunenko/djangocms-algolia/-/archive/1.3.0.4/djangocms-algolia-1.3.0.4.zip#egg=djangocms-algolia
     django-standard-form == 1.1.1 # 1.1.4 doesn't work without divio pip-reqs
     django-spurl == 0.6.5 # 0.6.6 doesn't work with divio pip-reqs
 djangocms-redirect
