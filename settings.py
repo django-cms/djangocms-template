@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from env_settings import env
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
+from link_all.dataclasses import LinkAllModel
 
 
 load_dotenv(find_dotenv('.env-local'))
@@ -459,3 +460,10 @@ ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
     'MailchimpPlugin',
 ]
 ALGOLIA_SEARCH_INDEX_TEXT_LIMIT = 8_000
+
+
+LINK_ALL_MODELS = [
+    LinkAllModel(app_label='cms', model_name='Page'),
+    LinkAllModel(app_label='djangocms_blog', model_name='Post'),
+    LinkAllModel(app_label='djangocms_blog', model_name='BlogCategory'),
+]
