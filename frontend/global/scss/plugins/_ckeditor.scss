@@ -3,7 +3,7 @@ This file is a replacement for default ckeditor contents.css,
 because it contains redundant custom styles that aren't compatible with the concept of WYSIWYG.
  */
 
-@import 'frontend/global/scss/variables/main';
+@import 'frontend/global/scss/bootstrap-variables';
 
 
 body.cke_editable {

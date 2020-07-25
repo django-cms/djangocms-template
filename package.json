@@ -33,6 +33,7 @@
             "vue-template-compiler": "^2.6.11",
             "vue-class-component": "^7.2.3",
             "vue-property-decorator": "^9.0.0",
+            "@vue/cli": "^4.4.6",
 
         "//": "optional packages",
 
@@ -46,7 +47,7 @@
         "@sentry/browser": "^5.0.0",
         "@fortawesome/fontawesome-free": "^5.0.0", "//": "for djangocms-icon",
         
-        "//": "project packages",
+        "//": "project packages"
 
         
     },
