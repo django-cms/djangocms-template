@@ -143,7 +143,7 @@ INSTALLED_APPS.extend([
         'emailit',
     'djangocms_redirect',
     'light_gallery',
-    'linkit',
+    'link_all',
 
     # project
 
@@ -152,7 +152,6 @@ INSTALLED_APPS.extend([
     'backend.plugins.bs4_inline_alignment',
     'backend.plugins.bs4_spacer',
     'backend.plugins.horizontal_line',
-    'backend.plugins.link',
 ])
 
 MIDDLEWARE.extend([
