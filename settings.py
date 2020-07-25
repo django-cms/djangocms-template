@@ -462,8 +462,7 @@ ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
 ALGOLIA_SEARCH_INDEX_TEXT_LIMIT = 8_000
 
 
-LINK_ALL_MODELS = [
-    LinkAllModel(app_label='cms', model_name='Page'),
+LINK_ALL_MODELS_ADDITIONAL = [
     LinkAllModel(app_label='djangocms_blog', model_name='Post'),
     LinkAllModel(app_label='djangocms_blog', model_name='BlogCategory'),
 ]
