@@ -32,7 +32,7 @@ https://gitlab.com/victor.yunenko/djangocms-algolia/-/archive/1.3.0.4/djangocms-
 djangocms-redirect
 https://gitlab.com/what-digital/djangocms-helpers/-/archive/master/djangocms-helpers-master.zip#egg=djangocms-helpers==2.1.1.4 # because pip reqs doesn't work, see what-digital/divio#1
 djangocms-page-meta
-https://gitlab.com/what-digital/djangocms-link-all/-/archive/0.1.0.3/djangocms-link-all-0.1.0.3.zip##egg=djangocms-link-all
+https://gitlab.com/what-digital/djangocms-link-all/-/archive/0.1.0.5/djangocms-link-all-0.1.0.5.zip##egg=djangocms-link-all
 
 # django
 

@@ -107,7 +107,7 @@ https://gitlab.com/what-digital/djangocms-helpers/-/archive/master/djangocms-hel
 djangocms-history==1.2.0
 djangocms-icon==1.5.0
 djangocms-light-gallery==1.1.0
-https://gitlab.com/what-digital/djangocms-link-all/-/archive/0.1.0.3/djangocms-link-all-0.1.0.3.zip##egg=djangocms-link-all
+https://gitlab.com/what-digital/djangocms-link-all/-/archive/0.1.0.5/djangocms-link-all-0.1.0.5.zip##egg=djangocms-link-all
 djangocms-link==2.5.0
 djangocms-modules==0.3.0
 djangocms-page-meta==0.10.0
