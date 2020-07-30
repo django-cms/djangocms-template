@@ -20,5 +20,5 @@ $theme-colors: (
 );
 
 
-// override by placing it at the end
+// must be placed at the end
 @import 'node_modules/bootstrap/scss/variables';
