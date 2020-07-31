@@ -1,12 +1,14 @@
-document.addEventListener(
-    'DOMContentLoaded',
-    () => {
-        demoPluginInit();
-    },
-    {once: true},
-)
+document.addEventListener('DOMContentLoaded', () => {
+    demoPluginInit();
+});
 
 
 function demoPluginInit() {
-    console.log('demo plugin init');
+    document.removeEventListener('DOMContentLoaded', attachListenersToDOM);
+    document.addEventListener('DOMContentLoaded', attachListenersToDOM);
+}
+
+
+function attachListenersToDOM() {
+    
 }

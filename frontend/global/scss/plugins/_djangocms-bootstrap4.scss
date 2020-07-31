@@ -1,9 +1,233 @@
-// this corrects a problem with margins for example with icons next to anchor texts in links in bootstrap4 button/link plugin
+@import 'frontend/global/scss/bootstrap-variables';
 
+
+// this corrects a problem with margins for example with icons next to anchor texts in links in bootstrap4 button/link plugin
 .fa:before {
     padding-right: 3px;
 }
-
 .fa:after {
     padding-left: 3px;
+}
+
+
+.row-plugin {
+    &--gutters {
+        &-vertical {
+            &-small {
+                @include grid-vertical-gutter-size($grid-gutter-width / 2);
+            }
+            &-normal {
+                @include grid-vertical-gutter-size($grid-gutter-width);
+            }
+            &-large {
+                @include grid-vertical-gutter-size($grid-gutter-width * 2);
+            }
+            &-extra_large {
+                @include grid-vertical-gutter-size($grid-gutter-width * 3.5);
+            }
+        }
+    }
+}
+
+
+[class^='container'], [class*=' container'] {
+    [class^='container'], [class*=' container'] {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+
+main.container-fluid {
+
+    .container-plugin {
+        $spacing-small-xl: 75px;
+        $spacing-small-lg: 60px;
+        $spacing-normal-xl: 100px;
+        $spacing-normal-lg: 70px;
+        $spacing-large-xl: 135px;
+        $spacing-large-lg: 80px;
+        $spacing-extra-large-xl: 200px;
+
+        @mixin padding-vertical($spacing) {
+            padding-top: $spacing;
+            padding-bottom: $spacing;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        @mixin margin-vertical($spacing) {
+            margin-top: $spacing;
+            margin-bottom: $spacing;
+        }
+        @mixin btn-on-black-background {
+            border-color: white;
+            color: white;
+            &:hover {
+                border-color: #9caaaf;
+                color: #9caaaf;
+            }
+        }
+
+        @mixin spacing($type, $xl, $lg: $xl, $sm: $lg) {
+            @if $type == 'internal' {
+                @include padding-vertical($xl);
+    
+                @include media-breakpoint-down(lg) {
+                    @include padding-vertical($lg);
+                }
+                @include media-breakpoint-down(sm) {
+                    @include padding-vertical($sm);
+                }
+            } @else {
+                @include margin-vertical($xl);
+                
+                @include media-breakpoint-down(lg) {
+                    @include margin-vertical($lg);
+                }
+                @include media-breakpoint-down(sm) {
+                    @include margin-vertical($sm);
+                }
+            }
+        }
+
+        @mixin spacing-internal {
+            &.container-plugin--spacing-small {
+                @include spacing(
+                    $type: 'internal',
+                    $xl: $spacing-small-xl,
+                    $lg: $spacing-small-lg,
+                );
+            }
+            &.container-plugin--spacing-normal {
+                @include spacing(
+                    $type: 'internal',
+                    $xl: $spacing-normal-xl,
+                    $lg: $spacing-normal-lg,
+                );
+            }
+            &.container-plugin--spacing-large {
+                @include spacing(
+                    $type: 'internal',
+                    $xl: $spacing-large-xl,
+                    $lg: $spacing-large-lg,
+                );
+            }
+            &.container-plugin--spacing-extra-large {
+                @include spacing(
+                    $type: 'internal',
+                    $xl: $spacing-extra-large-xl,
+                    $lg: $spacing-large-lg,
+                );
+            }
+        }
+        
+
+        // width internal
+        
+        %container-base {
+            margin-right: auto;
+            margin-left: auto;
+            padding-right: 15px;
+            padding-left: 15px;
+            width: 100%;
+        }
+        &[data-width-internal='dynamic'] .container-internal {
+            @include make-container();
+            @include make-container-max-widths();
+        }
+        &[data-width-internal='narrow'] .container-internal {
+            @extend %container-base;
+            max-width: 800px;
+        }
+        &[data-width-internal='medium-narrow'] .container-internal {
+            @extend %container-base;
+            max-width: 400px;
+        }
+        &[data-width-internal='extra-narrow'] .container-internal {
+            @extend %container-base;
+            max-width: 200px;
+        }
+
+
+        // spacing
+
+        &--spacing-small {
+            @include margin-vertical($spacing-small-xl);
+        }
+        &--spacing-normal {
+            @include spacing(
+                $type: 'external',
+                $xl: $spacing-normal-xl,
+                $lg: $spacing-normal-lg,
+            );
+        }
+        &--spacing-large {
+            @include spacing(
+                $type: 'external',
+                $xl: $spacing-large-xl,
+                $lg: $spacing-large-lg,
+            );
+        }
+        &--spacing-extra-large {
+            @include spacing(
+                $type: 'external',
+                $xl: $spacing-extra-large-xl,
+                $lg: $spacing-large-lg,
+            );
+        }
+
+
+        // background
+        
+        &--background-dark-blue,
+        &--background-gray {
+            position: relative;
+
+            &:before {
+                position: absolute;
+                top: 0;
+                right: -$grid-gutter-width / 2;
+                bottom: 0;
+                left: -$grid-gutter-width / 2;
+                display: block;
+                content: "";
+            }
+
+            > * {
+                position: relative;
+            }
+        }
+        &--background-gray {
+            &:before {
+                background-color: $card-cap-bg;
+            }
+
+            @include spacing-internal();
+
+            .form-control {
+                border-radius: $btn-border-radius;
+                border-color: #f2f4f5;
+            }
+        }
+        &--background-dark-blue {
+            color: white;
+
+            &:before {
+                background-color: theme-color('primary');
+            }
+            .btn-outline-primary {
+                @include btn-on-black-background();
+            }
+            .btn-primary {
+                @include btn-on-black-background();
+                &:hover {
+                    background-color: white;
+                    color: black;
+                    border-color: white;
+                }
+            }
+
+            @include spacing-internal();
+        }
+    }
 }

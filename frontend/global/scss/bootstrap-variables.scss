@@ -11,12 +11,12 @@ $grid-columns: 24;
 $primary-font-color: #333333;
 $button-font-color: white;
 
-$primary-color: black;
-$secondary-color: orange;
+$color-primary: black;
+$color-secondary: orange;
 
 $theme-colors: (
-    'primary': orange,
-    'danger': #ff4136
+    'primary': $color-primary,
+    'danger': $color-secondary,
 );
 
 

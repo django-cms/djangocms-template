@@ -1,10 +1,13 @@
-import {initOnPageEditReloadScript} from 'global/ts/on-page-edit-reload';
+import {initReloadScriptsOnContentRefresh} from 'global/ts/reload-scripts-on-content-refresh';
 
+
+// remember to removeEventListener on `DOMContentLoaded`, see more in docs/
 
 document.addEventListener(
     'DOMContentLoaded',
     () => {
-        initOnPageEditReloadScript();
+        initReloadScriptsOnContentRefresh();
     },
     {once: true},
-)
+);
+
