@@ -10,6 +10,17 @@
 }
 
 
+@mixin grid-vertical-gutter-size($gutter) {
+    margin-top: - $gutter / 2;
+    margin-bottom: - $gutter / 2;
+
+    > .col, > [class*="col-"] {
+        padding-top: $gutter / 2;
+        padding-bottom: $gutter / 2;
+    }
+}
+
+
 .row-plugin {
     &--gutters {
         &-vertical {
