@@ -7,10 +7,14 @@ COPY . /app/
 RUN pip install -r backend/requirements.txt
 
 
+WORKDIR /app/
+RUN DJANGO_MODE=build python manage.py collectstatic --noinput
+RUN DJANGO_MODE=build python manage.py compilemessages
+
+
 WORKDIR /app/frontend/
 RUN yarn install --pure-lockfile
 RUN yarn run build
 
+
 WORKDIR /app/
-RUN DJANGO_MODE=build python manage.py collectstatic --noinput
-RUN DJANGO_MODE=build python manage.py compilemessages
