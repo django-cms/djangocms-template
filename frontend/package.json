@@ -52,9 +52,9 @@
         
     },
     "scripts": {
-        "start": "node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
+        "start": "node_modules/.bin/webpack-dev-server --config webpack.config.js",
         "webpack-dev-server": "yarn start",
-        "webpack-dev-server-in-docker": "NODE_ENV=docker node_modules/.bin/webpack-dev-server --config frontend/webpack.config.js",
-        "build": "NODE_ENV=production webpack --config frontend/webpack.config.js"
+        "webpack-dev-server-in-docker": "NODE_ENV=docker node_modules/.bin/webpack-dev-server --config webpack.config.js",
+        "build": "NODE_ENV=production webpack --config webpack.config.js"
     }
 }

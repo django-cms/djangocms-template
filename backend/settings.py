@@ -469,3 +469,7 @@ LINK_ALL_MODELS_ADDITIONAL = [
     LinkAllModel(app_label='djangocms_blog', model_name='Post'),
     LinkAllModel(app_label='djangocms_blog', model_name='BlogCategory'),
 ]
+
+
+WSGI_APPLICATION = 'backend.wsgi.application'
+ROOT_URLCONF = 'backend.urls'
