@@ -357,6 +357,9 @@ CMS_LANGUAGES = {
 PARLER_LANGUAGES = CMS_LANGUAGES
 
 
+SHARING_VIEW_ONLY_SECRET_TOKEN = 'stage-preview'
+
+
 MIGRATION_COMMANDS.insert(0, 'python manage.py test_pages_on_real_db')
 
 
