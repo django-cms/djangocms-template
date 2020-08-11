@@ -1,15 +1,11 @@
-import logging
 import os
 from enum import Enum
 from typing import List
 
-import sentry_sdk
-from djangocms_helpers.sentry_500_error_handler.ignore_io_error import ignore_io_error
 from dotenv import find_dotenv
 from dotenv import load_dotenv
 from env_settings import env
-from sentry_sdk.integrations.django import DjangoIntegration
-from sentry_sdk.integrations.logging import LoggingIntegration
+
 from link_all.dataclasses import LinkAllModel
 
 
@@ -22,24 +18,26 @@ load_dotenv(find_dotenv('.env-local'))
 
 
 INSTALLED_ADDONS = [
-    # <INSTALLED_ADDONS>  # Warning: text inside the INSTALLED_ADDONS tags is auto-generated. Manual changes will be overwritten.
     'aldryn-addons',
     'aldryn-django',
     'aldryn-django-cms',
     'django-filer',
-    # </INSTALLED_ADDONS>
     'aldryn-sso',
 ]
+
+
+BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(BACKEND_DIR)
+ADDONS_DIR = os.path.join(BACKEND_DIR, 'addons')
+ADDONS_DEV_DIR = os.path.join(BACKEND_DIR, 'addons-dev')
+os.environ['BASE_DIR'] = BASE_DIR
+os.environ['ADDONS_DIR'] = ADDONS_DIR
+os.environ['ADDONS_DEV_DIR'] = ADDONS_DEV_DIR
 
 
 import aldryn_addons.settings
 
 aldryn_addons.settings.load(locals())
-
-
-################################################################################
-# django
-################################################################################
 
 
 INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
@@ -50,6 +48,11 @@ TEMPLATES: List[dict] = locals()['TEMPLATES']
 DEBUG: bool = locals()['DEBUG']
 MIGRATION_COMMANDS: List[str] = locals()['MIGRATION_COMMANDS']
 SITE_ID: int = locals()['SITE_ID']
+
+
+################################################################################
+# django
+################################################################################
 
 
 DATE_FORMAT = 'F j, Y'
