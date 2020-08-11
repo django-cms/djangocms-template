@@ -33,6 +33,7 @@ ADDONS_DEV_DIR = os.path.join(BACKEND_DIR, 'addons-dev')
 os.environ['BASE_DIR'] = BASE_DIR
 os.environ['ADDONS_DIR'] = ADDONS_DIR
 os.environ['ADDONS_DEV_DIR'] = ADDONS_DEV_DIR
+os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.settings'
 
 
 import aldryn_addons.settings
