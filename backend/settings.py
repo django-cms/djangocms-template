@@ -18,11 +18,11 @@ load_dotenv(find_dotenv('.env-local'))
 
 
 INSTALLED_ADDONS = [
-    'aldryn_addons',
-    'aldryn_django',
-    'aldryn_django_cms',
-    'django_filer',
-    'aldryn_sso',
+    'aldryn-addons',
+    'aldryn-django',
+    'aldryn-django-cms',
+    'django-filer',
+    'aldryn-sso',
 ]
 
 
