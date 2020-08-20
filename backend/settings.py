@@ -18,18 +18,18 @@ load_dotenv(find_dotenv('.env-local'))
 
 
 INSTALLED_ADDONS = [
-    'aldryn-addons',
-    'aldryn-django',
-    'aldryn-django-cms',
-    'django-filer',
-    'aldryn-sso',
+    'aldryn_addons',
+    'aldryn_django',
+    'aldryn_django_cms',
+    'django_filer',
+    'aldryn_sso',
 ]
 
 
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(BACKEND_DIR)
-ADDONS_DIR = os.path.join(BACKEND_DIR, 'addons')
-ADDONS_DEV_DIR = os.path.join(BACKEND_DIR, 'addons-dev')
+ADDONS_DIR = os.path.join(BASE_DIR, 'addons')
+ADDONS_DEV_DIR = os.path.join(BASE_DIR, 'addons-dev')
 os.environ['BASE_DIR'] = BASE_DIR
 os.environ['ADDONS_DIR'] = ADDONS_DIR
 os.environ['ADDONS_DEV_DIR'] = ADDONS_DEV_DIR

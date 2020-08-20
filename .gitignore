@@ -12,7 +12,6 @@ frontend/dist
 
 # dev files
 .idea/
-/.aldryn
 /data
 data.tar.gz
 .secret_key
