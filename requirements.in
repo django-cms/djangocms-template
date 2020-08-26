@@ -36,11 +36,11 @@ https://gitlab.com/what-digital/djangocms-link-all/-/archive/0.2.0.0/djangocms-l
 
 # django
 
-https://github.com/divio/aldryn-sso/archive/cfcca9f1bdf547bae201c6c6568a74554040c0a2.zip#egg=aldryn-sso
+https://github.com/divio/aldryn-sso/archive/eabf9f30530439a10f9281fb086abf8dfbba6805.zip#egg=aldryn-sso
 django-settings-export # settings export to templates
 django-enumfields
 django-admin-sortable2 # drag and drop sorting for admin
-django-sortedm2m
+django-sortedm2m # M2M drag and drop sorting for admin, don't use django-admin-sortable2 for M2M
 django-filter # generic view filter helpers for front and admin panel, as `?field__gte=5`
 django-google-tag-manager
 django-env-settings >= 0.13.0 # settings utils, see gitlab.com/what-digital/django-env-settings
@@ -49,7 +49,7 @@ django-absolute # adds absolute site URL vars to context
 djangorestframework
 django-modeladmin-reorder # allows to reorder and regroup admin panel apps
 django-extensions # many django things that we don't really need, mainly for shell-plus
-    ipython # for shell-plus
+    ipython == 7.16.1 # for shell-plus, version 7.17 fails on linux installation
 django-allauth # user forms, social auth, allows to authenticate with email
     django-username-email # an addition to allauth for email instead of username
 django-hijack-admin # allows to login as any existing user

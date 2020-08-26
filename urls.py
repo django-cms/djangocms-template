@@ -11,8 +11,9 @@ urlpatterns = [
     path('robots.txt', include('robots.urls')),
     path('login-as-user/', include('hijack.urls', namespace='hijack')),
     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
+    path('', include('link_all.api.urls')),
 ] + aldryn_addons.urls.patterns() + i18n_patterns(
-    # add your own i18n patterns here
+    
     *aldryn_addons.urls.i18n_patterns(),  # MUST be the last entry!
 )
 
