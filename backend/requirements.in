@@ -36,7 +36,7 @@ https://gitlab.com/what-digital/djangocms-link-all/-/archive/0.2.0.0/djangocms-l
 
 # django
 
-https://github.com/divio/aldryn-sso/archive/cfcca9f1bdf547bae201c6c6568a74554040c0a2.zip#egg=aldryn-sso
+https://github.com/divio/aldryn-sso/archive/eabf9f30530439a10f9281fb086abf8dfbba6805.zip#egg=aldryn-sso
 django-settings-export # settings export to templates
 django-enumfields
 django-admin-sortable2 # drag and drop sorting for admin
