@@ -24,6 +24,7 @@ Divio Integration Setup
     - remove the `docs` directory - it should be stored only within this source repository
     - remove `base.Dockerfile`, `.gitlab-ci.yml`, `LICENSE`
     - if you're planning to use more than one CMS language go to [frontend/global/ts/ckeditor-config.js](/frontend/global/ts/ckeditor-config.js) and remove the `scayt_autoStartup = true` line
+    - add the real stage domain to the last line about guest access in this readme.md file
 - deploy the stage server
  
 ⚠ ️BEWARE: If you get a migration error on Divio deployment, follow the instructions for database reset placed in [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/master/docs/setup-instruction.md#how-to-drop-the-database)
@@ -39,6 +40,9 @@ Divio Integration Setup
 - create a new account using tech email `tech+{project_name}@what.digital`
 - save the login/password to the project's 1password vault, or send it to Victor / Mario
 - add `SENTRY_DSN` to the divio envs
+
+
+You can access the stage server without logging in through the url https://{domain}.aldryn.io/?guest-access=true
 
 Development Setup
 -------------------------------------------------------------------------------
