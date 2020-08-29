@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-15 19:44+0200\n"
+"POT-Creation-Date: 2020-08-29 12:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: addons-dev/aldryn-forms/tests/test_utils.py:109
-msgid "Default"
-msgstr ""
-
-#: addons-dev/aldryn-forms/tests/test_utils.py:110
-msgid "Email only"
-msgstr ""
-
-#: addons-dev/aldryn-forms/tests/test_utils.py:111
-msgid "None"
-msgstr ""
 
 #: backend/blog/templates/djangocms_blog/plugins/latest_entries.html:9
 #: backend/blog/templates/djangocms_blog/post_list.html:48
@@ -97,10 +85,6 @@ msgstr ""
 
 #: backend/plugins/horizontal_line/cms_plugins.py:13
 msgid "field-name"
-msgstr ""
-
-#: backend/plugins/link/cms_plugins.py:12
-msgid "Link"
 msgstr ""
 
 #: backend/plugins/module_name.py:4

@@ -2,5 +2,5 @@
 *.pyo
 /.env
 /data
-/static_collected
-/node_modules
+/backend/static_collected
+/frontend/node_modules

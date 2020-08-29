@@ -20,6 +20,15 @@ At the same time you cannot just do `document.addEventListener('DOMContentLoaded
 
 Once you drop your event using `removeEventListener` you must then attach it again with `document.addEventListener('DOMContentLoaded', () => {})`.
 
+Example:
+```javascript
+function initGalleryPlugin() {
+    $('#image-plugin').lightGallery();
+}
+document.removeEventListener('DOMContentLoaded', initGalleryPlugin);
+document.addEventListener('DOMContentLoaded', initGalleryPlugin);
+```
+
 #### Fonts
 
 - use https://google-webfonts-helper.herokuapp.com/fonts/ to download the web font from google (set the relative path to empty string in the configurator)

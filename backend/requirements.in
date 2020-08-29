@@ -1,9 +1,8 @@
-# <INSTALLED_ADDONS>  # Warning: text inside the INSTALLED_ADDONS tags is auto-generated. Manual changes will be overwritten.
 https://control.divio.com/api/v1/apps/serve/aldryn-addons/1.1.0/7a2d5a44-16e2-4ef8-bfe0-1e61c8601b33/aldryn-addons-1.1.0.tar.gz#egg=aldryn-addons==1.1.0
 https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.14.1/d9db6707-c6e3-432f-aaa9-3d5c8c12f44f/aldryn-django-2.2.14.1.tar.gz#egg=aldryn-django==2.2.14.1
 https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.4.1/290eec9d-c49f-435e-8003-a476f81b7acf/aldryn-django-cms-3.7.4.1.tar.gz#egg=aldryn-django-cms==3.7.4.1
 https://control.divio.com/api/v1/apps/serve/django-filer/1.7.1/51d763aa-2153-4038-8658-020e2b301005/django-filer-1.7.1.tar.gz#egg=django-filer==1.7.1
-# </INSTALLED_ADDONS>
+
 
 # django-cms
 
@@ -16,10 +15,10 @@ djangocms-blog
 djangocms-history
 djangocms-snippet
 https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
-https://github.com/divio/djangocms-bootstrap4/archive/be03e751472fcbc9273a5745298c359e3e21618b.zip#egg=djangocms-bootstrap4
+https://github.com/divio/djangocms-bootstrap4/archive/f58105d1f892fba4be0dff37a2b78791dc42bd81.zip#egg=djangocms-bootstrap4
 djangocms-googlemap
 djangocms-modules
-https://github.com/divio/aldryn-forms/archive/00152e456b6962eb0bd60a980777216feb98cbe3.zip#egg=aldryn-forms==6.0.0-alpha
+https://github.com/divio/aldryn-forms/archive/6.0.0-alpha.zip#egg=aldryn-forms==6.0.0-alpha
     djangocms-aldryn-forms-bootstrap4-templates
     aldryn-forms-recaptcha-plugin >= 1.0.0.2
 djangocms-light-gallery
@@ -33,6 +32,7 @@ djangocms-redirect
 https://gitlab.com/what-digital/djangocms-helpers/-/archive/master/djangocms-helpers-master.zip#egg=djangocms-helpers==2.1.1.4 # because pip reqs doesn't work, see what-digital/divio#1
 djangocms-page-meta
 https://gitlab.com/what-digital/djangocms-link-all/-/archive/0.2.0.0/djangocms-link-all-0.2.0.0.zip##egg=djangocms-link-all
+
 
 # django
 
@@ -58,6 +58,7 @@ django-countries
 django-widget-tweaks
 django-logentry-admin
 django-adminutils # a set of shortcuts for admin.py composition
+
 
 # python utils
 
