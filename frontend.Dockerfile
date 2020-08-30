@@ -1,6 +1,9 @@
 FROM registry.gitlab.com/what-digital/djangocms-template:latest
 
-COPY package.json /app/package.json
-COPY yarn.lock /app/yarn.lock
+WORKDIR /app/frontend/
+COPY package.json /app/frontend/package.json
+COPY yarn.lock /app/frontend/yarn.lock
 
 RUN yarn install --pure-lockfile
+
+WORKDIR /app/
