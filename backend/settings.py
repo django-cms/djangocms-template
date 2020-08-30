@@ -149,6 +149,7 @@ INSTALLED_APPS.extend([
 
     # project
 
+    'backend.aldryn',
     'backend.plugins.bs4_float',
     'backend.plugins.bs4_hiding',
     'backend.plugins.bs4_inline_alignment',
