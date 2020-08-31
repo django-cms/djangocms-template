@@ -170,15 +170,15 @@ AUTH_USER_MODEL = 'backend_auth.User'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'backend/static_collected/')
+STATIC_ROOT = os.path.join(BACKEND_DIR, 'static_collected/')
 LOCALE_PATHS = [
-    os.path.join(BASE_DIR, 'backend/locale'),
+    os.path.join(BACKEND_DIR, 'locale'),
 ]
 ROOT_URLCONF = 'backend.urls'
 
 default_template_engine: dict = TEMPLATES[0]
 default_template_engine['DIRS'].extend([
-    os.path.join(BASE_DIR, 'backend/templates/'),
+    os.path.join(BACKEND_DIR, 'templates/'),
 ])
 
 if DIVIO_ENV == DivioEnv.LOCAL:

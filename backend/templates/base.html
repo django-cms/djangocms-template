@@ -25,9 +25,9 @@
 
 
         <script>
-            window.DJANGO = {
-                env: `{{ settings.DIVIO_ENV.value }}`,
-            };
+            document.addEventListener('DOMContentLoaded', function() {
+                window.django.env = '{{ settings.DIVIO_ENV.value }}';
+            })
         </script>
 
         {% if settings.DIVIO_ENV.value == 'local' %}

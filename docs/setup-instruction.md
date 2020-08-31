@@ -15,34 +15,36 @@ For setting up the database from the stage/live server see the last section abou
 
 Perfect for people who aren't planning to do any backend development and want the real-time webpack rebuilds.
 
-- remove `IS_RUN_FRONTEND_IN_DOCKER=true` from `.env-local` file  
 - `docker-compose build`
 - `docker-compose run --rm web fish --command 'python manage.py migrate'`
-- install yarn and node 10 outside of docker
+- install yarn & node 10 outside of docker
+- `cd frontend`
 - `yarn install --pure-lockfile`
 - `yarn start`
+- `cd ..`
 - `docker-compose up web`
 
 #### Native setup
 
 The most efficient and reliable setup for backend development.
 
-- `pip install -r requirements.txt`
+- `pip install -r backend/requirements.txt`
 - add a new line - `127.0.0.1 postgres` - to your system `/etc/hosts` file
 - `docker-compose up db`
 - `python manage.py migrate`
 - `python manage.py runserver`
 - install yarn and node 10
+- `cd frontend`
 - `yarn install --pure-lockfile`
 - `yarn start`
 
 ### Update requirements.txt
 
-`docker-compose run --rm web fish --command 'pip-reqs compile; pip-reqs resolve'`
+`docker-compose run --rm web fish --command 'cd backend; pip-reqs compile; pip-reqs resolve'`
 
 For installing the compiled requirements in docker you have to rebuild it with `docker-compose build`.
 
-### Cloning external database and media
+### Pulling the external database and media
 
 - copy `.aldryn-example` as `.aldryn` file
 - run `pip3 install divio-cli` outside of docker

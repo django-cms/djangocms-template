@@ -1,6 +1,6 @@
 ### Adding new packages and apps
 
-Don't add your project custom package within the existing template package, eg here `my_package` was added incorrectly:
+Don't add your project custom packages within the existing default list of package, eg here `my_package` was added incorrectly:
 ```
 INSTALLED_APPS.extend([
     # django

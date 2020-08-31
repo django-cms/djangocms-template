@@ -1,10 +1,10 @@
-export interface DJANGO {
+export interface django {
     env: string, // see settings.DJANGO_ENV
 }
 
 
 declare global {
     export interface Window {
-        DJANGO: DJANGO;
+        django: django;
     }
 }

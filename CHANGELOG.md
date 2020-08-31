@@ -1,3 +1,16 @@
+2020.08
+-------------------------------------------------------------------------------
+
+- added a new image plugin with better UX
+- updated the link plugin - mainly UX improvement
+
+#### Breaking Changes
+
+- changed the directory structure in order to stay closer to the django standards
+    - although a complete normalization to django ecosystem is still impossible due to the hardcoded deviations within divio bot and aldryn-django codebase
+- renamed the js `window.DJANGO` variable to `window.django` which already exists in django
+
+
 2020.07
 -------------------------------------------------------------------------------
 
