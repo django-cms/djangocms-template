@@ -7,7 +7,7 @@
 #### Breaking Changes
 
 - changed the directory structure in order to stay closer to the django standards
-    - although a complete normalization to django ecosystem is still impossible due to the hardcoded deviations within divio bot and aldryn-django codebase
+    - although a complete normalization to django ecosystem is still impossible due to the hardcoded deviations within divio bot and aldryn-django codebase (eg for addons, addons-dev, wsgi.py, etc)
 - renamed the js `window.DJANGO` variable to `window.django` which already exists in django
 
 
