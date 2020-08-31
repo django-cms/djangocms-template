@@ -12,7 +12,7 @@ aldryn-common==1.0.5      # via aldryn-search
 https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.4.1/290eec9d-c49f-435e-8003-a476f81b7acf/aldryn-django-cms-3.7.4.1.tar.gz#egg=aldryn-django-cms==3.7.4.1
 https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.14.1/d9db6707-c6e3-432f-aaa9-3d5c8c12f44f/aldryn-django-2.2.14.1.tar.gz#egg=aldryn-django==2.2.14.1
 aldryn-forms-recaptcha-plugin==1.0.0.2
-https://github.com/divio/aldryn-forms/archive/00152e456b6962eb0bd60a980777216feb98cbe3.zip#egg=aldryn-forms==6.0.0-alpha
+https://github.com/divio/aldryn-forms/archive/6.0.0-alpha.zip#egg=aldryn-forms==6.0.0-alpha
 aldryn-search==1.1.0
 aldryn-sites==0.6.0
 aldryn-snake==1.0.1
@@ -103,11 +103,11 @@ djangocms-blog==1.1.1
 https://github.com/divio/djangocms-bootstrap4/archive/f58105d1f892fba4be0dff37a2b78791dc42bd81.zip#egg=djangocms-bootstrap4
 djangocms-file==2.4.0
 djangocms-googlemap==1.4.0
-https://gitlab.com/what-digital/djangocms-helpers/-/archive/master/djangocms-helpers-master.zip#egg=djangocms-helpers==2.1.1.4
+https://gitlab.com/what-digital/djangocms-helpers/-/archive/master/djangocms-helpers-master.zip#egg=djangocms-helpers
 djangocms-history==1.2.0
 djangocms-icon==1.5.0
 djangocms-light-gallery==1.1.0
-https://gitlab.com/what-digital/djangocms-link-all/-/archive/0.2.0.0/djangocms-link-all-0.2.0.0.zip##egg=djangocms-link-all
+https://gitlab.com/what-digital/djangocms-link-all/-/archive/0.3.0.6/djangocms-link-all-0.3.0.6.zip#egg=djangocms-link-all
 djangocms-link==2.5.0
 djangocms-modules==0.3.0
 djangocms-page-meta==0.10.0
@@ -129,6 +129,7 @@ ipython==7.16.1
 itsdangerous==1.1.0       # via django-simple-sso, webservices
 jdcal==1.4.1              # via openpyxl
 jedi==0.17.2              # via ipython
+jsons==0.8.9
 lxml==4.5.2               # via aldryn-search, djangocms-blog, premailer
 markuppy==1.14            # via tablib
 oauthlib==3.1.0           # via requests-oauthlib
@@ -140,7 +141,7 @@ pexpect==4.8.0            # via ipython
 pickleshare==0.7.5        # via ipython
 pillow==7.2.0             # via django-simple-captcha, easy-thumbnails
 premailer==3.7.0          # via django-emailit
-prompt-toolkit==3.0.6     # via ipython
+prompt-toolkit==3.0.7     # via ipython
 psycopg2-binary==2.8.5
 psycopg2==2.7.7
 ptyprocess==0.6.0         # via pexpect
@@ -154,7 +155,7 @@ rcssmin==1.0.6            # via django-compressor
 requests-oauthlib==1.3.0  # via django-allauth
 requests==2.24.0          # via aldryn-client, algoliasearch, django-allauth, django-recaptcha3, premailer, requests-oauthlib, webservices
 rjsmin==1.1.0             # via django-compressor
-sentry-sdk==0.17.0
+sentry-sdk==0.17.1
 six==1.15.0               # via aldryn-client, aldryn-common, django-adminutils, django-appdata, django-cms, django-compat, django-compressor, django-meta, django-parler, django-simple-captcha, django-spurl, django-tablib, furl, html5lib, orderedmultidict, traitlets
 soupsieve==2.0.1          # via beautifulsoup4
 sqlparse==0.3.1           # via django
