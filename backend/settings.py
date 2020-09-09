@@ -9,12 +9,23 @@ from env_settings import env
 from link_all.dataclasses import LinkAllModel
 
 
-load_dotenv(find_dotenv('.env-local'))
-
-
 ################################################################################
 # divio
 ################################################################################
+
+
+class DivioEnv(Enum):
+    LOCAL = 'local'
+    TEST = 'test'
+    LIVE = 'live'
+
+
+DIVIO_ENV_ENUM = DivioEnv
+DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
+
+
+if DIVIO_ENV == DivioEnv.LOCAL:
+    load_dotenv(find_dotenv('.env-local'))
 
 
 INSTALLED_ADDONS = [
@@ -47,16 +58,6 @@ MIGRATION_COMMANDS: List[str] = locals()['MIGRATION_COMMANDS']
 SITE_ID: int = locals()['SITE_ID']
 DOMAIN: str = locals().get('DOMAIN', 'localhost')
 SITE_NAME: str = locals().get('SITE_NAME', 'dev testing site')
-
-
-class DivioEnv(Enum):
-    LOCAL = 'local'
-    TEST = 'test'
-    LIVE = 'live'
-
-
-DIVIO_ENV_ENUM = DivioEnv
-DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
 
 
 ################################################################################
@@ -301,6 +302,7 @@ ADMIN_REORDER = [
             {'model': 'robots.Url', 'label': 'Urls patterns for robots.txt'},
         ],
     },
+    # 'admin', # this will add logs
 ]
 
 
