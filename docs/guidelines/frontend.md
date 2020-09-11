@@ -10,6 +10,7 @@
 - make sure that you have a bs4 `container` alternative on any body html, because editors want to use Row/Column plugins in any place of the page, which works only inside a `container` class. Often you also need to remove the padding or create your own `container` alternative, use `@include make-container();` mixin for those cases. Also make sure that Container bs4 cms plugin always behaves as a container class, eg with `@include make-container();`
 - keep the comments in `package.json` intact, ie don't use `yarn add` command
 - prefer to keep scss in `frontend/global/`, since it's easier when it's all in one place, unless you need to import something that has a noticeable influence on the `global` pack compilation size
+- for import of svg or image files in scss use something as `background: url('~global/img/dot-line/short-blue.svg')`;
 
 #### On page reload
 
