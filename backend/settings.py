@@ -288,6 +288,7 @@ ADMIN_REORDER = [
             {'model': 'sites.Site', 'label': 'Websites'},
             {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
             {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
+            'admin.LogEntry',
             
             # removed because it doesn't work on cms 3.7.3
             # 'cms.GlobalPagePermission',
@@ -303,7 +304,6 @@ ADMIN_REORDER = [
             {'model': 'robots.Url', 'label': 'Urls patterns for robots.txt'},
         ],
     },
-    # 'admin', # this will add logs
 ]
 
 
