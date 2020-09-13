@@ -26,6 +26,7 @@ DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
 
 if DIVIO_ENV == DivioEnv.LOCAL:
     load_dotenv(find_dotenv('.env-local'))
+    CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
 
 
 INSTALLED_ADDONS = [
@@ -99,6 +100,7 @@ INSTALLED_APPS.extend([
     'logentry_admin',
     'hijack_admin',
     'djangocms_helpers',
+    'djangocms_helpers.divio',
     'djangocms_helpers.sentry_500_error_handler',
         'meta',
 
@@ -150,7 +152,6 @@ INSTALLED_APPS.extend([
 
     # project
 
-    'backend.aldryn',
     'backend.plugins.bs4_float',
     'backend.plugins.bs4_hiding',
     'backend.plugins.bs4_inline_alignment',
@@ -202,7 +203,7 @@ SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_d
 HTTP_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
 
 
-STATICFILES_STORAGE = 'backend.storage.NonStrictManifestGZippedStaticFilesStorage'
+STATICFILES_STORAGE = 'djangocms_helpers.storage.NonStrictManifestGZippedStaticFilesStorage'
 STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365  # the default is 5m
 
 
