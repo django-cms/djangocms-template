@@ -21,7 +21,7 @@ https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#e
 https://github.com/divio/djangocms-bootstrap4/archive/f58105d1f892fba4be0dff37a2b78791dc42bd81.zip#egg=djangocms-bootstrap4
 djangocms-googlemap
 djangocms-modules
-https://github.com/divio/aldryn-forms/archive/6.0.0-alpha.zip#egg=aldryn-forms==6.0.0-alpha
+https://github.com/divio/aldryn-forms/archive/6.1.0-alpha.zip#egg=aldryn-forms==6.1.0-alpha
     djangocms-aldryn-forms-bootstrap4-templates
     aldryn-forms-recaptcha-plugin
 djangocms-light-gallery
