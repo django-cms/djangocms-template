@@ -15,7 +15,9 @@ require('@fortawesome/fontawesome-free/scss/solid.scss');
 require('@fortawesome/fontawesome-free/scss/regular.scss');
 
 
-Sentry.init({
-    dsn: '',
-    environment: DJANGO.env,
+document.addEventListener('DOMContentLoaded', function() {
+    Sentry.init({
+        dsn: '',
+        environment: window.django.env,
+    });
 });
