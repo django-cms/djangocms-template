@@ -115,10 +115,8 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_content',
     'djangocms_bootstrap4.contrib.bootstrap4_grid',
     'djangocms_bootstrap4.contrib.bootstrap4_jumbotron',
-    'djangocms_bootstrap4.contrib.bootstrap4_link',
     'djangocms_bootstrap4.contrib.bootstrap4_listgroup',
     'djangocms_bootstrap4.contrib.bootstrap4_media',
-    'djangocms_bootstrap4.contrib.bootstrap4_picture',  # place djangocms_picture
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     'djangocms_bootstrap4.contrib.bootstrap4_heading',
@@ -129,11 +127,9 @@ INSTALLED_APPS.extend([
         'sortedm2m',
     'djangocms_icon',
     'djangocms_text_ckeditor',
-    'djangocms_link',
     'djangocms_googlemap',
     'djangocms_video',
     'djangocms_history',
-    'djangocms_picture',
     'djangocms_file',
     'djangocms_snippet',
     'djangocms_socialshare',
@@ -476,3 +472,4 @@ LINK_ALL_MODELS_ADDITIONAL = [
     LinkAllModel(app_label='djangocms_blog', model_name='Post'),
     LinkAllModel(app_label='djangocms_blog', model_name='BlogCategory'),
 ]
+LINK_ALL_ENABLE_BUTTON_PLUGIN = True
