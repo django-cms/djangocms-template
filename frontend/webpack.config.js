@@ -32,7 +32,15 @@ const config = {
             {
                 test: /\.svg$/i,
                 exclude: /fonts/,
-                loader: 'svg-url-loader',
+                use: [
+                    {
+                        loader: 'svg-url-loader',
+                        options: {
+                            encoding: 'base64',
+                            iesafe: true,
+                        }
+                    }
+                ],
             },
             {
                 test: /\.(sass|scss|css)$/,
