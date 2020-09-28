@@ -12,9 +12,9 @@ __pycache__/
 data/
 data.tar.gz
 backend/static_collected/
-/backend/requirements.urls
+backend/.env
+backend/requirements.urls
 *.sqlite3
-.env
 .venv
 
 # dev files
