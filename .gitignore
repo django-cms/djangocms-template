@@ -1,8 +1,6 @@
 # frontend
 frontend/node_modules/
 frontend/dist
-.sass-cache
-*.css.map
 
 # backend
 __pycache__/
@@ -14,7 +12,6 @@ data.tar.gz
 backend/static_collected/
 backend/.env
 backend/requirements.urls
-*.sqlite3
 .venv
 
 # dev files
