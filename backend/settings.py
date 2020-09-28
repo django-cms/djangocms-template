@@ -14,17 +14,17 @@ from link_all.dataclasses import LinkAllModel
 ################################################################################
 
 
-class DivioEnv(Enum):
+class DjangoEnv(Enum):
     LOCAL = 'local'
     TEST = 'test'
     LIVE = 'live'
 
 
-DIVIO_ENV_ENUM = DivioEnv
-DIVIO_ENV = DivioEnv(env.get('STAGE', 'local'))
+DJANGO_ENV_ENUM = DjangoEnv
+DJANGO_ENV = DjangoEnv(env.get('STAGE', 'local'))
 
 
-if DIVIO_ENV == DivioEnv.LOCAL:
+if DJANGO_ENV == DjangoEnv.LOCAL:
     load_dotenv(find_dotenv('.env-local'))
     CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
 
@@ -179,7 +179,7 @@ default_template_engine['DIRS'].extend([
     os.path.join(BACKEND_DIR, 'templates/'),
 ])
 
-if DIVIO_ENV == DivioEnv.LOCAL:
+if DJANGO_ENV == DjangoEnv.LOCAL:
     email_backend_default = 'django.core.mail.backends.console.EmailBackend'
 else:
     email_backend_default = 'django.core.mail.backends.smtp.EmailBackend'
@@ -188,7 +188,7 @@ EMAIL_BACKEND = env.get('EMAIL_BACKEND', default=email_backend_default)
 DEFAULT_FROM_EMAIL = env.get('DEFAULT_FROM_EMAIL', f'{SITE_NAME} <info@{DOMAIN}>')
 
 
-if DIVIO_ENV == DivioEnv.LOCAL:
+if DJANGO_ENV == DjangoEnv.LOCAL:
     ssl_redirect_default = False
 else:
     ssl_redirect_default = True
@@ -196,7 +196,7 @@ else:
 SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_default)
 
 
-HTTP_PROTOCOL = 'http' if DIVIO_ENV == DivioEnv.LOCAL else 'https'
+HTTP_PROTOCOL = 'http' if DJANGO_ENV == DjangoEnv.LOCAL else 'https'
 
 
 STATICFILES_STORAGE = 'djangocms_helpers.storage.NonStrictManifestGZippedStaticFilesStorage'
@@ -243,8 +243,8 @@ SETTINGS_EXPORT = [
     'DOMAIN',
     'SITE_NAME',
     'WEBPACK_DEV_URL',
-    'DIVIO_ENV',
-    'DIVIO_ENV_ENUM',
+    'DJANGO_ENV',
+    'DJANGO_ENV_ENUM',
     'SENTRY_DSN',
     'GTM_CONTAINER_ID',
 ]
@@ -431,8 +431,8 @@ CKEDITOR_SETTINGS = {
     ),
     'stylesSet': f'default:{STATIC_URL}global/ts/ckeditor-config.js',
     'contentsCss': [
-        f'{WEBPACK_DEV_URL}/vendor.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/vendor.css',
-        f'{WEBPACK_DEV_URL}/global.css' if DIVIO_ENV == DivioEnv.LOCAL else f'{STATIC_URL}/dist/global.css',
+        f'{WEBPACK_DEV_URL}/vendor.css' if DJANGO_ENV == DjangoEnv.LOCAL else f'{STATIC_URL}/dist/vendor.css',
+        f'{WEBPACK_DEV_URL}/global.css' if DJANGO_ENV == DjangoEnv.LOCAL else f'{STATIC_URL}/dist/global.css',
     ],
     'config': {
         'allowedContent': True, # allows html tags

@@ -27,16 +27,16 @@
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 if (window.django) {
-                    window.django.env = '{{ settings.DIVIO_ENV.value }}';
+                    window.django.env = '{{ settings.DJANGO_ENV.value }}';
                 } else {
                     window.django = {
-                        env: '{{ settings.DIVIO_ENV.value }}',
+                        env: '{{ settings.DJANGO_ENV.value }}',
                     }
                 }
             });
         </script>
 
-        {% if settings.DIVIO_ENV.value == 'local' %}
+        {% if settings.DJANGO_ENV.value == 'local' %}
 
             <script defer src="{{ settings.WEBPACK_DEV_URL }}/vendor.bundle.js" data-is-reload-on-page-edit="true"></script>
             <script defer src="{{ settings.WEBPACK_DEV_URL }}/global.bundle.js" data-is-reload-on-page-edit="true"></script>

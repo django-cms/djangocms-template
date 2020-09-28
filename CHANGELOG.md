@@ -1,3 +1,11 @@
+2020.09
+-------------------------------------------------------------------------------
+
+#### Breaking Changes
+- rename DivioEnv to DjangoEnv, as long as the related variables in settings.py
+- dropped bootstrap4 link plugin in favor of djangocms-link-all
+
+
 2020.08
 -------------------------------------------------------------------------------
 
