@@ -40,7 +40,11 @@ INSTALLED_ADDONS = [
 
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(BACKEND_DIR)
+ADDONS_DIR = os.path.join(BACKEND_DIR, 'addons')
+ADDONS_DEV_DIR = os.path.join(BACKEND_DIR, 'addons-dev')
 os.environ['BASE_DIR'] = BASE_DIR
+os.environ['ADDONS_DIR'] = ADDONS_DIR
+os.environ['ADDONS_DEV_DIR'] = ADDONS_DEV_DIR
 os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.settings'
 
 
