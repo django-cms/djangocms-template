@@ -1,25 +1,22 @@
-# compiled backend files
-__pycache__/
-*.py[cod]
-*$py.class
-*.mo
-
-# compiled frontend files
+# frontend
 frontend/node_modules/
 frontend/dist
 .sass-cache
 *.css.map
 
+# backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.mo
+data/
+data.tar.gz
+backend/static_collected/
+/backend/requirements.urls
+*.sqlite3
+.env
+.venv
+
 # dev files
 .idea/
-data.tar.gz
-.secret_key
-.venv
-*.sqlite3
-/*.log
 .DS_Store
-/backend/requirements.urls
-
-# django files
-data/
-backend/static_collected/
