@@ -28,7 +28,7 @@ services:
       - '8090:8090'
     volumes:
       - '.:/app:rw'
-      - frontend/node_modules:/app/frontend/node_modules
+      - node_modules:/app/frontend/node_modules
     command: yarn webpack-dev-server-in-docker
 
   db:
