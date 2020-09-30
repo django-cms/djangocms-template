@@ -458,6 +458,7 @@ META_USE_SITES = True
 ALGOLIA = {
     'APPLICATION_ID': env.get('ALGOLIA_APPLICATION_ID', ''),
     'API_KEY': env.get('ALGOLIA_API_KEY', ''),
+    'API_KEY_READ_ONLY': env.get('ALGOLIA_API_KEY_READ_ONLY', ''),
 }
 HAYSTACK_CONNECTIONS = {'default': {'ENGINE': 'haystack.backends.simple_backend.SimpleEngine'}}  # not used but haystack demands it on its search index collection import
 ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
