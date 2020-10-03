@@ -49,8 +49,7 @@ django-absolute # adds absolute site URL vars to context
 djangorestframework
 django-modeladmin-reorder # allows to reorder and regroup admin panel apps
 django-extensions # many django things that we don't really need, mainly for shell-plus
-    ipython < 7.17 # for shell-plus, version 7.17 doesn't support python 3.6
-        traitlets < 5 # 5th version doesn't support python 3.6
+    ipython # for shell-plus
 django-allauth # user forms, social auth, allows to authenticate with email
     django-username-email # an addition to allauth for email instead of username
 django-hijack-admin # allows to login as any existing user
@@ -67,4 +66,3 @@ pytz # a db of timezones
 sentry-sdk
 python-dotenv
 psycopg2-binary
-dataclasses
