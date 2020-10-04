@@ -335,6 +335,8 @@ if DEBUG:
     CMS_PLUGIN_CACHE = False
     MENU_CACHE_DURATION = 0
     CMS_CONTENT_CACHE_DURATION = 0
+else:
+    CMS_CONTENT_CACHE_DURATION = 60 * 60 * 5
 
 
 ################################################################################
