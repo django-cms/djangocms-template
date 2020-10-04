@@ -1,8 +1,11 @@
 2020.10
 -------------------------------------------------------------------------------
 
+- fix the content caching which was set to 5m by default - set it to 5h
+
 #### Breaking Changes
 - upgrade to python 3.7 by basing the docker image on divio/base:0.7-py3.7-slim-stretch
+- upgrade to DjangoCMS 3.8 and Django 3.0
 
 
 2020.09

@@ -4,13 +4,13 @@
 #
 #    pip-compile --no-index --output-file /workspace/requirements.txt /workspace/requirements.in
 #
-https://control.divio.com/api/v1/apps/serve/aldryn-addons/2.0.0/ef24ec0c-c20d-44f4-8f37-8a3188d90f85/aldryn-addons-2.0.0.tar.gz#egg=aldryn-addons==2.0.0
+https://control.divio.com/api/v1/apps/serve/aldryn-addons/2.0.1/75074b5c-4ff7-448b-acf9-412d78472b6b/aldryn-addons-2.0.1.tar.gz#egg=aldryn-addons==2.0.1
 aldryn-apphooks-config==0.6.0
 aldryn-boilerplates==0.8.0  # via aldryn-common
 aldryn-client==2.3.5
 aldryn-common==1.0.5      # via aldryn-search
-https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.7.4.1/290eec9d-c49f-435e-8003-a476f81b7acf/aldryn-django-cms-3.7.4.1.tar.gz#egg=aldryn-django-cms==3.7.4.1
-https://control.divio.com/api/v1/apps/serve/aldryn-django/2.2.16.1/b460938a-f357-49a3-9aef-9dfb40946551/aldryn-django-2.2.16.1.tar.gz#egg=aldryn-django==2.2.16.1
+https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.8.0.1/386e63fb-b135-4f0e-8e1d-ef2945004091/aldryn-django-cms-3.8.0.1.tar.gz#egg=aldryn-django-cms==3.8.0.1
+https://control.divio.com/api/v1/apps/serve/aldryn-django/3.0.10.1/1d7a72d3-ccc1-44b6-8457-42b831c497dc/aldryn-django-3.0.10.1.tar.gz#egg=aldryn-django==3.0.10.1
 aldryn-forms-recaptcha-plugin==1.0.0.2
 https://github.com/divio/aldryn-forms/archive/6.1.0-alpha.zip#egg=aldryn-forms==6.1.0-alpha
 aldryn-search==1.1.0      # via djangocms-algolia
@@ -21,6 +21,7 @@ aldryn-translation-tools==0.3.0
 algoliasearch-django==1.7.2  # via djangocms-algolia
 algoliasearch==1.20.0     # via algoliasearch-django
 argparse==1.4.0           # via djeese-fs
+asgiref==3.2.10           # via django
 backcall==0.2.0           # via ipython
 beautifulsoup4==4.9.3     # via djangocms-algolia
 boto==2.49.0
@@ -44,13 +45,13 @@ django-appconf==1.0.4     # via aldryn-boilerplates, aldryn-search, aldryn-sites
 django-appdata==0.3.0     # via aldryn-apphooks-config
 django-cache-url==3.1.2
 django-classy-tags==2.0.0  # via django-cms, django-sekizai, django-standard-form
-django-cms==3.7.4         # via aldryn-apphooks-config, aldryn-search, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-algolia, djangocms-apphook-setup, djangocms-attributes-field, djangocms-blog, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-light-gallery, djangocms-link, djangocms-link-all, djangocms-modules, djangocms-page-meta, djangocms-picture, djangocms-redirect, djangocms-snippet, djangocms-socialshare, djangocms-text-ckeditor
+django-cms==3.8.0rc1      # via aldryn-apphooks-config, aldryn-search, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-algolia, djangocms-apphook-setup, djangocms-attributes-field, djangocms-blog, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-light-gallery, djangocms-link, djangocms-link-all, djangocms-modules, djangocms-page-meta, djangocms-picture, djangocms-redirect, djangocms-snippet, djangocms-socialshare, djangocms-text-ckeditor
 django-compat==1.0.15     # via django-hijack, django-hijack-admin
 django-compressor==2.4
 django-countries==6.1.3
 django-emailit==0.2.4
 django-enumfields==2.0.0
-django-env-settings==1.0.0
+django-env-settings==1.1.0.0
 django-extensions==3.0.9
 django-fieldsignals==0.6.0  # via djangocms-helpers
 https://control.divio.com/api/v1/apps/serve/django-filer/2.0.0/afe0eaf3-e139-4524-8130-ddec083423d4/django-filer-2.0.0.tar.gz#egg=django-filer==2.0.0
@@ -92,28 +93,28 @@ django-templatetag-sugar==1.0  # via django-taggit-templatetags
 django-treebeard==4.3.1   # via django-cms
 django-username-email==2.4.0
 django-widget-tweaks==1.4.8
-django==2.2.16            # via aldryn-boilerplates, aldryn-sites, algoliasearch-django, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-haystack, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-standard-form, django-storages, django-taggit, django-taggit-templatetags, django-treebeard, django-username-email, djangocms-algolia, djangocms-helpers, djangocms-light-gallery, djangocms-link-all, djangocms-socialshare, djangorestframework, easy-thumbnails, webservices
+django==3.0.10            # via aldryn-boilerplates, aldryn-sites, algoliasearch-django, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-haystack, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-standard-form, django-storages, django-taggit, django-taggit-templatetags, django-treebeard, django-username-email, djangocms-algolia, djangocms-helpers, djangocms-light-gallery, djangocms-link-all, djangocms-socialshare, djangorestframework, easy-thumbnails, webservices
 djangocms-admin-style==2.0.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==1.0.0.1
-djangocms-algolia==1.3.2.0
+djangocms-algolia==1.3.3.0
 djangocms-apphook-setup==0.4.1  # via djangocms-blog
 djangocms-attributes-field==2.0.0  # via djangocms-file, djangocms-icon, djangocms-link, djangocms-picture
 djangocms-blog==1.1.1
 https://github.com/divio/djangocms-bootstrap4/archive/f58105d1f892fba4be0dff37a2b78791dc42bd81.zip#egg=djangocms-bootstrap4
 djangocms-file==3.0.0
 djangocms-googlemap==2.0.0
-djangocms-helpers==2.2.1.1
+djangocms-helpers==2.2.1.2
 djangocms-history==2.0.0
 djangocms-icon==2.0.0
 djangocms-light-gallery==1.1.0
-djangocms-link-all==0.5.0.0
+djangocms-link-all==0.5.1.0
 djangocms-link==3.0.0
 djangocms-modules==1.0.0
 djangocms-page-meta==0.10.0
 djangocms-picture==3.0.0
 djangocms-redirect==0.5.0
 djangocms-snippet==3.0.0
-djangocms-socialshare==0.1.2.1
+djangocms-socialshare==1.0.0.3
 djangocms-text-ckeditor==4.0.0
 https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
 djangorestframework==3.12.1
@@ -141,7 +142,6 @@ pickleshare==0.7.5        # via ipython
 pillow==7.2.0             # via django-simple-captcha, djangocms-text-ckeditor, easy-thumbnails
 premailer==3.7.0          # via django-emailit
 prompt-toolkit==3.0.7     # via ipython
-psycopg2-binary==2.8.6
 psycopg2==2.7.7
 ptyprocess==0.6.0         # via pexpect
 pygments==2.7.1           # via ipython
@@ -155,7 +155,7 @@ requests-oauthlib==1.3.0  # via django-allauth
 requests==2.24.0          # via aldryn-client, algoliasearch, django-allauth, django-recaptcha3, premailer, requests-oauthlib, webservices
 rjsmin==1.1.0             # via django-compressor
 sentry-sdk==0.18.0
-six==1.15.0               # via aldryn-client, aldryn-common, django-adminutils, django-appdata, django-cms, django-compat, django-compressor, django-meta, django-simple-captcha, django-spurl, django-tablib, furl, html5lib, orderedmultidict
+six==1.15.0               # via aldryn-client, aldryn-common, django-adminutils, django-appdata, django-compat, django-compressor, django-meta, django-simple-captcha, django-spurl, django-tablib, furl, html5lib, orderedmultidict
 soupsieve==2.0.1          # via beautifulsoup4
 sqlparse==0.3.1           # via django
 tablib[html,ods,xls,xlsx,yaml]==2.0.0  # via django-import-export, django-tablib
