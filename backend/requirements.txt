@@ -114,7 +114,7 @@ https://github.com/maestrofjp/djangocms-page-meta/archive/f74ba1670407c2bb648d42
 djangocms-picture==3.0.0
 https://github.com/maestrofjp/djangocms-redirect/archive/f3075345905e6c629a813d7f1878eede2f0892f5.zip#egg=djangocms-redirect
 djangocms-snippet==3.0.0
-djangocms-socialshare==1.0.0.3
+djangocms-socialshare==1.0.0.4
 djangocms-text-ckeditor==4.0.0
 https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
 djangorestframework==3.12.1
