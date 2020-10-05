@@ -12,7 +12,7 @@ aldryn-common==1.0.5      # via aldryn-search
 https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.8.0.1/386e63fb-b135-4f0e-8e1d-ef2945004091/aldryn-django-cms-3.8.0.1.tar.gz#egg=aldryn-django-cms==3.8.0.1
 https://control.divio.com/api/v1/apps/serve/aldryn-django/3.0.10.1/1d7a72d3-ccc1-44b6-8457-42b831c497dc/aldryn-django-3.0.10.1.tar.gz#egg=aldryn-django==3.0.10.1
 aldryn-forms-recaptcha-plugin==1.0.0.2
-https://github.com/divio/aldryn-forms/archive/6.2.0.rc2.zip#egg=aldryn-forms==6.2.0.rc1
+https://github.com/divio/aldryn-forms/archive/6.2.0.rc4.zip#egg=aldryn-forms==6.2.0.rc4
 aldryn-search==1.1.0      # via djangocms-algolia
 aldryn-sites==0.6.0
 aldryn-snake==2.0.0
