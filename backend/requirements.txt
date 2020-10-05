@@ -45,7 +45,7 @@ django-appconf==1.0.4     # via aldryn-boilerplates, aldryn-search, aldryn-sites
 django-appdata==0.3.0     # via aldryn-apphooks-config
 django-cache-url==3.1.2
 django-classy-tags==2.0.0  # via django-cms, django-sekizai, django-standard-form
-django-cms==3.8.0rc1      # via aldryn-apphooks-config, aldryn-search, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-algolia, djangocms-apphook-setup, djangocms-attributes-field, djangocms-blog, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-light-gallery, djangocms-link, djangocms-link-all, djangocms-modules, djangocms-page-meta, djangocms-picture, djangocms-redirect, djangocms-snippet, djangocms-socialshare, djangocms-text-ckeditor
+django-cms==3.8.0rc1      # via aldryn-apphooks-config, aldryn-search, aldryn-translation-tools, djangocms-aldryn-forms-bootstrap4-templates, djangocms-algolia, djangocms-apphook-setup, djangocms-attributes-field, djangocms-blog, djangocms-file, djangocms-googlemap, djangocms-history, djangocms-icon, djangocms-light-gallery, djangocms-link, djangocms-link-all, djangocms-modules, djangocms-picture, djangocms-snippet, djangocms-socialshare, djangocms-text-ckeditor
 django-compat==1.0.15     # via django-hijack, django-hijack-admin
 django-compressor==2.4
 django-countries==6.1.3
@@ -65,7 +65,7 @@ django-hijack==2.1.10     # via django-hijack-admin
 django-import-export==2.3.0
 django-js-asset==1.2.2    # via django-mptt
 django-logentry-admin==1.0.6
-django-meta==1.7.0        # via djangocms-blog, djangocms-helpers, djangocms-page-meta
+django-meta==1.7.0        # via djangocms-blog, djangocms-helpers
 django-modeladmin-reorder==0.3.1
 django-mptt==0.11.0
 django-object-actions==3.0.1  # via django-adminutils
@@ -110,9 +110,8 @@ djangocms-light-gallery==1.1.0
 djangocms-link-all==0.5.1.0
 djangocms-link==3.0.0
 djangocms-modules==1.0.0
-djangocms-page-meta==0.10.0
+https://github.com/maestrofjp/djangocms-page-meta/archive/develop.zip#egg=djangocms-page-meta
 djangocms-picture==3.0.0
-djangocms-redirect==0.5.0
 djangocms-snippet==3.0.0
 djangocms-socialshare==1.0.0.3
 djangocms-text-ckeditor==4.0.0
