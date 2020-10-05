@@ -46,7 +46,7 @@ You can access the stage server without logging in through the url https://{doma
 
 Development Setup
 -------------------------------------------------------------------------------
-Built on Python 3.6, Django 2.2, DjangoCMS 3.7, Webpack 4, TypeScript 3.
+Built on Python 3.7, Django 3.0, DjangoCMS 3.8, Webpack 4, TypeScript 3.
 
 See the general [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/master/docs/setup-instruction.md)
 
