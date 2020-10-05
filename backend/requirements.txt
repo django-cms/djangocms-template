@@ -110,8 +110,9 @@ djangocms-light-gallery==1.1.0
 djangocms-link-all==0.5.1.0
 djangocms-link==3.0.0
 djangocms-modules==1.0.0
-https://github.com/maestrofjp/djangocms-redirect/archive/develop.zip#egg=djangocms-redirect
+https://github.com/maestrofjp/djangocms-page-meta/archive/f74ba1670407c2bb648d422fe9139853bcd3c7c5.zip#egg=djangocms-page-meta
 djangocms-picture==3.0.0
+https://github.com/maestrofjp/djangocms-redirect/archive/f3075345905e6c629a813d7f1878eede2f0892f5.zip#egg=djangocms-redirect
 djangocms-snippet==3.0.0
 djangocms-socialshare==1.0.0.3
 djangocms-text-ckeditor==4.0.0

@@ -31,8 +31,8 @@ djangocms-socialshare
 djangocms-algolia
 djangocms-helpers
 djangocms-link-all
-https://github.com/maestrofjp/djangocms-redirect/archive/develop.zip#egg=djangocms-redirect # because the upstream isn't compatible with django 3 yet
-https://github.com/maestrofjp/djangocms-page-meta/archive/develop.zip#egg=djangocms-page-meta # because the upstream isn't compatible with django 3 yet
+https://github.com/maestrofjp/djangocms-redirect/archive/f3075345905e6c629a813d7f1878eede2f0892f5.zip#egg=djangocms-redirect # because the upstream isn't compatible with django 3 yet
+https://github.com/maestrofjp/djangocms-page-meta/archive/f74ba1670407c2bb648d422fe9139853bcd3c7c5.zip#egg=djangocms-page-meta # because the upstream isn't compatible with django 3 yet
 
 
 # django
