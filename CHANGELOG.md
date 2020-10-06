@@ -6,6 +6,7 @@
 #### Breaking Changes
 - upgraded to python 3.7 by basing the docker image on divio/base:0.7-py3.7-slim-stretch
 - upgraded to DjangoCMS 3.8 and Django 3.0
+- changed the stage anonymous access url from `https://{base}/?guest-view=true` to `https://{base}/?anonymous-access=true`
 
 
 2020.09
