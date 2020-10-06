@@ -1,7 +1,8 @@
 2020.10
 -------------------------------------------------------------------------------
 
-- fixed the content caching which was set to 5m by default - set it to 5h
+- fixed the content caching which was set to 5m by default - set it to 4h, and set menus and permissions cache to 1h
+- fixed the default django caching which was disabled completely - set it to 4h
 
 #### Breaking Changes
 - upgraded to python 3.7 by basing the docker image on divio/base:0.7-py3.7-slim-stretch

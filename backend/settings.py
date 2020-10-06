@@ -158,12 +158,18 @@ INSTALLED_APPS.extend([
     'backend.plugins.horizontal_line',
 ])
 
+middleware_top = [
+    'django.middleware.cache.UpdateCacheMiddleware',
+]
+MIDDLEWARE = middleware_top + MIDDLEWARE
 MIDDLEWARE.extend([
     # django
     'admin_reorder.middleware.ModelAdminReorder',
 
     # django cms optional
     'djangocms_redirect.middleware.RedirectMiddleware',
+    
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ])
 
 AUTH_USER_MODEL = 'backend_auth.User'
@@ -324,19 +330,29 @@ CMS_TEMPLATES = [
     ('content-full-width.html', 'full width'),
 ]
 
-
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+CMS_PERMISSION = True
 
 if DEBUG:
     # there's a bug with caching - https://github.com/what-digital/divio/issues/9
     CMS_PAGE_CACHE = False
     CMS_PLACEHOLDER_CACHE = False
     CMS_PLUGIN_CACHE = False
-    MENU_CACHE_DURATION = 0
-    CMS_CONTENT_CACHE_DURATION = 0
+    CMS_CACHE_DURATIONS = {
+        'content': 0,
+        'menu': 0,
+        'permissions': 0,
+    }
 else:
-    CMS_CONTENT_CACHE_DURATION = 60 * 60 * 5
+    one_hour = 60 * 60
+    four_hours = one_hour * 4
+    CMS_CACHE_DURATIONS = {
+        'menu': one_hour,
+        'permissions': one_hour,
+        'content': four_hours,
+    }
+    CACHE_MIDDLEWARE_SECONDS = four_hours
 
 
 ################################################################################
