@@ -341,14 +341,14 @@ if DEBUG:
     CMS_PLUGIN_CACHE = False
     CMS_CACHE_DURATIONS = {
         'content': 0,
-        'menu': 0,
+        'menus': 0,
         'permissions': 0,
     }
 else:
     one_hour = 60 * 60
     four_hours = one_hour * 4
     CMS_CACHE_DURATIONS = {
-        'menu': one_hour,
+        'menus': one_hour,
         'permissions': one_hour,
         'content': four_hours,
     }
