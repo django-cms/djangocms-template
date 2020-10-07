@@ -43,7 +43,7 @@ django-admin-sortable2 # drag and drop sorting for admin
 django-sortedm2m # M2M drag and drop sorting for admin, don't use django-admin-sortable2 for M2M
 django-filter # generic view filter helpers for front and admin panel, as `?field__gte=5`
 django-google-tag-manager
-django-env-settings # settings utils, should be replaced with another package since this one was created for our ansible script, see gitlab.com/what-digital/django-env-settings
+django-environ
 django-import-export
 django-absolute # adds absolute site URL vars to context
 djangorestframework

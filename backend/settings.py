@@ -2,16 +2,17 @@ import os
 from enum import Enum
 from typing import List
 
-from dotenv import find_dotenv
-from dotenv import load_dotenv
-from env_settings import env
-
+import environ
 from link_all.dataclasses import LinkAllModel
 
 
 ################################################################################
 # divio
 ################################################################################
+
+
+env = environ.Env()
+environ.Env.read_env()
 
 
 class DjangoEnv(Enum):
@@ -21,11 +22,10 @@ class DjangoEnv(Enum):
 
 
 DJANGO_ENV_ENUM = DjangoEnv
-DJANGO_ENV = DjangoEnv(env.get('STAGE', 'local'))
+DJANGO_ENV = DjangoEnv(env.str('STAGE', 'local'))
 
 
 if DJANGO_ENV == DjangoEnv.LOCAL:
-    load_dotenv(find_dotenv('.env-local'))
     CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
 
 
@@ -192,9 +192,9 @@ if DJANGO_ENV == DjangoEnv.LOCAL:
     email_backend_default = 'django.core.mail.backends.console.EmailBackend'
 else:
     email_backend_default = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = env.get('EMAIL_BACKEND', default=email_backend_default)
+EMAIL_BACKEND = env.str('EMAIL_BACKEND', default=email_backend_default)
 
-DEFAULT_FROM_EMAIL = env.get('DEFAULT_FROM_EMAIL', f'{SITE_NAME} <info@{DOMAIN}>')
+DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', f'{SITE_NAME} <info@{DOMAIN}>')
 
 
 if DJANGO_ENV == DjangoEnv.LOCAL:
@@ -202,7 +202,7 @@ if DJANGO_ENV == DjangoEnv.LOCAL:
 else:
     ssl_redirect_default = True
 
-SECURE_SSL_REDIRECT = env.get_bool('SECURE_SSL_REDIRECT', default=ssl_redirect_default)
+SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=ssl_redirect_default)
 
 
 HTTP_PROTOCOL = 'http' if DJANGO_ENV == DjangoEnv.LOCAL else 'https'
@@ -239,9 +239,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-GTM_CONTAINER_ID = env.get('GTM_CONTAINER_ID', 'GTM-1234')
+GTM_CONTAINER_ID = env.str('GTM_CONTAINER_ID', 'GTM-1234')
 
-WEBPACK_DEV_URL = env.get('WEBPACK_DEV_URL', default=f'http://localhost:8090/assets/')
+WEBPACK_DEV_URL = env.str('WEBPACK_DEV_URL', default=f'http://localhost:8090/assets/')
 
 
 default_template_engine['OPTIONS']['context_processors'].extend([
@@ -312,8 +312,8 @@ ADMIN_REORDER = [
 ]
 
 
-RECAPTCHA_PUBLIC_KEY = env.get('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
-RECAPTCHA_PRIVATE_KEY = env.get('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
+RECAPTCHA_PUBLIC_KEY = env.str('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')
+RECAPTCHA_PRIVATE_KEY = env.str('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
 RECAPTCHA_SCORE_THRESHOLD = 0.85
 
 
@@ -424,7 +424,7 @@ DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
     ('', 'Empty'),
 ]
 
-DJANGOCMS_GOOGLEMAP_API_KEY = env.get('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
+DJANGOCMS_GOOGLEMAP_API_KEY = env.str('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
 
 CKEDITOR_SETTINGS = {
     'language': '{{ language }}',
@@ -474,9 +474,9 @@ META_USE_SITES = True
 
 
 ALGOLIA = {
-    'APPLICATION_ID': env.get('ALGOLIA_APPLICATION_ID', ''),
-    'API_KEY': env.get('ALGOLIA_API_KEY', ''),
-    'API_KEY_READ_ONLY': env.get('ALGOLIA_API_KEY_READ_ONLY', ''),
+    'APPLICATION_ID': env.str('ALGOLIA_APPLICATION_ID', ''),
+    'API_KEY': env.str('ALGOLIA_API_KEY', ''),
+    'API_KEY_READ_ONLY': env.str('ALGOLIA_API_KEY_READ_ONLY', ''),
 }
 HAYSTACK_CONNECTIONS = {'default': {'ENGINE': 'haystack.backends.simple_backend.SimpleEngine'}}  # not used but haystack demands it on its search index collection import
 ALDRYN_SEARCH_EXCLUDED_PLUGINS = [

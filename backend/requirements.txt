@@ -51,7 +51,7 @@ django-compressor==2.4
 django-countries==6.1.3
 django-emailit==0.2.4
 django-enumfields==2.0.0
-django-env-settings==1.1.0.0
+django-environ==0.4.4
 django-extensions==3.0.9
 django-fieldsignals==0.6.0  # via djangocms-helpers
 https://control.divio.com/api/v1/apps/serve/django-filer/2.0.0/afe0eaf3-e139-4524-8130-ddec083423d4/django-filer-2.0.0.tar.gz#egg=django-filer==2.0.0
@@ -62,7 +62,7 @@ django-google-tag-manager==0.0.5
 django-haystack==3.0      # via aldryn-search
 django-hijack-admin==2.1.10
 django-hijack==2.1.10     # via django-hijack-admin
-django-import-export==2.3.0
+django-import-export==2.4.0
 django-js-asset==1.2.2    # via django-mptt
 django-logentry-admin==1.0.6
 django-meta==1.7.0        # via djangocms-blog, djangocms-helpers
@@ -93,7 +93,7 @@ django-templatetag-sugar==1.0  # via django-taggit-templatetags
 django-treebeard==4.3.1   # via django-cms
 django-username-email==2.4.0
 django-widget-tweaks==1.4.8
-django==3.0.10            # via aldryn-boilerplates, aldryn-sites, algoliasearch-django, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-env-settings, django-filter, django-formtools, django-haystack, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-standard-form, django-storages, django-taggit, django-taggit-templatetags, django-treebeard, django-username-email, djangocms-algolia, djangocms-helpers, djangocms-light-gallery, djangocms-link-all, djangocms-socialshare, djangorestframework, easy-thumbnails, webservices
+django==3.0.10            # via aldryn-boilerplates, aldryn-sites, algoliasearch-django, django-absolute, django-admin-sortable2, django-adminutils, django-allauth, django-appconf, django-appdata, django-classy-tags, django-cms, django-emailit, django-environ, django-filter, django-formtools, django-haystack, django-import-export, django-logentry-admin, django-modeladmin-reorder, django-mptt, django-polymorphic, django-ranged-response, django-sekizai, django-select2, django-settings-export, django-simple-captcha, django-simple-sso, django-sizefield, django-standard-form, django-storages, django-taggit, django-taggit-templatetags, django-treebeard, django-username-email, djangocms-algolia, djangocms-helpers, djangocms-light-gallery, djangocms-link-all, djangocms-socialshare, djangorestframework, easy-thumbnails, webservices
 djangocms-admin-style==2.0.0  # via django-cms
 djangocms-aldryn-forms-bootstrap4-templates==1.0.0.1
 djangocms-algolia==1.3.3.0
@@ -155,9 +155,9 @@ requests-oauthlib==1.3.0  # via django-allauth
 requests==2.24.0          # via aldryn-client, algoliasearch, django-allauth, django-recaptcha3, premailer, requests-oauthlib, webservices
 rjsmin==1.1.0             # via django-compressor
 sentry-sdk==0.18.0
-six==1.15.0               # via aldryn-client, aldryn-common, django-adminutils, django-appdata, django-compat, django-compressor, django-meta, django-simple-captcha, django-spurl, django-tablib, furl, html5lib, orderedmultidict
+six==1.15.0               # via aldryn-client, aldryn-common, django-adminutils, django-appdata, django-compat, django-compressor, django-environ, django-meta, django-simple-captcha, django-spurl, django-tablib, furl, html5lib, orderedmultidict
 soupsieve==2.0.1          # via beautifulsoup4
-sqlparse==0.3.1           # via django
+sqlparse==0.4.0           # via django
 tablib[html,ods,xls,xlsx,yaml]==2.0.0  # via django-import-export, django-tablib
 tabulate==0.8.7           # via aldryn-client
 text-unidecode==1.3       # via python-slugify
