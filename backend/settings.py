@@ -478,6 +478,7 @@ ALGOLIA = {
     'API_KEY': env.str('ALGOLIA_API_KEY', ''),
     'API_KEY_READ_ONLY': env.str('ALGOLIA_API_KEY_READ_ONLY', ''),
 }
+# todo: dynamically add load those vars in djangocms-algolia
 HAYSTACK_CONNECTIONS = {'default': {'ENGINE': 'haystack.backends.simple_backend.SimpleEngine'}}  # not used but haystack demands it on its search index collection import
 ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
     'SectionWithImageBackgroundPlugin',
