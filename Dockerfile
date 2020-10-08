@@ -1,6 +1,6 @@
 FROM divio/base:0.7-py3.7-slim-stretch
 
-RUN apt-get update --quiet && apt-get install --yes git gnupg2 apt-transport-https fish gcc nano
+RUN apt-get update --quiet && apt-get install --yes git gnupg2 apt-transport-https gcc nano
 
 
 # yarn
