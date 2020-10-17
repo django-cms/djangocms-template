@@ -17,7 +17,7 @@ Divio Integration Setup
 - make sure that your project and divio repositories are in sync, now switch divio to gitlab external repository according to [divio docs](https://docs.divio.com/en/latest/how-to/resources-configure-git/)
 - set up a gitlab webhook
 - compile the requirements (see the [setup instructions](/docs/setup-instruction.md))
-- update the `.divio/config.json` file with the values from your project, in order to find your slug and id run `divio project list -g`
+- update the `.divio/config-example.json` file with the values from your project, in order to find your slug and id run `divio project list -g`
 - enable mailtrap and sentry, see the instructions below
 - to test and live server add a new env variable - `DJANGO_SETTINGS_MODULE`=`backend.settings`
 - remove the following files and content:
