@@ -17,7 +17,7 @@ Divio Integration Setup
 - make sure that your project and divio repositories are in sync, now switch divio to gitlab external repository according to [divio docs](https://docs.divio.com/en/latest/how-to/resources-configure-git/)
 - set up a gitlab webhook
 - compile the requirements (see the [setup instructions](/docs/setup-instruction.md))
-- update .aldryn-example file with the values from the control page eg `https://control.divio.com/control/6215/edit/81016/` the id is `81016`
+- update the `.divio/config.json` file with the values from your project, in order to find your slug and id run `divio project list -g`
 - enable mailtrap and sentry, see the instructions below
 - remove the following files and content:
     - remove this section from `README.md`, along with the first sentence about djangocms-template independent setup
