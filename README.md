@@ -19,6 +19,7 @@ Divio Integration Setup
 - compile the requirements (see the [setup instructions](/docs/setup-instruction.md))
 - update the `.divio/config.json` file with the values from your project, in order to find your slug and id run `divio project list -g`
 - enable mailtrap and sentry, see the instructions below
+- to test and live server add a new env variable - `DJANGO_SETTINGS_MODULE`=`backend.settings`
 - remove the following files and content:
     - remove this section from `README.md`, along with the first sentence about djangocms-template independent setup
     - remove the `docs` directory - it should be stored only within this source repository
@@ -31,8 +32,8 @@ Divio Integration Setup
 
 ### Mailtrap setup
 
-- signup with a tech eamil, eg `tech+{project_name}@what.digital` https://mailtrap.io/register/signup
-- save the login/password to the project's 1password vault, or send it to Victor / Mario, and add it to this REAMDE file
+- signup with a tech email, eg `tech+{project_name}@what.digital` https://mailtrap.io/register/signup
+- save the login/password to the project's 1password vault, or send it to Victor / Mario, and add it to this README file
 - add `EMAIL_URL` to the divio envs `smtps://{username}:{password}@smtp.mailtrap.io:2525`
 
 ### Sentry setup
