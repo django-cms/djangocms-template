@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import json
 import os
 import sys
@@ -86,11 +85,13 @@ class Form(forms.BaseForm):
     )
 
     def to_settings(self, data, settings):
-        import django_cache_url
-        import dj_database_url
         import warnings
         from functools import partial
+
+        import dj_database_url
+        import django_cache_url
         from aldryn_addons.utils import boolean_ish, djsenv
+
         env = partial(djsenv, settings=settings)
 
         # BASE_DIR should already be set by aldryn-addons
@@ -276,7 +277,7 @@ class Form(forms.BaseForm):
         s['SECURE_REDIRECT_EXEMPT'] = env('SECURE_REDIRECT_EXEMPT', [])
         s['SECURE_HSTS_SECONDS'] = env('SECURE_HSTS_SECONDS', 0)
         # SESSION_COOKIE_SECURE is handled by
-        #   django.contrib.sessions.middleware.SessionMiddleware
+        # django.contrib.sessions.middleware.SessionMiddleware
         s['SESSION_COOKIE_SECURE'] = env('SESSION_COOKIE_SECURE', False)
         s['SECURE_PROXY_SSL_HEADER'] = env(
             'SECURE_PROXY_SSL_HEADER',
@@ -286,7 +287,7 @@ class Form(forms.BaseForm):
 
         # SESSION_COOKIE_HTTPONLY and SECURE_FRAME_DENY must be False for CMS
         # SESSION_COOKIE_HTTPONLY is handled by
-        #   django.contrib.sessions.middleware.SessionMiddleware
+        # django.contrib.sessions.middleware.SessionMiddleware
         s['SESSION_COOKIE_HTTPONLY'] = env('SESSION_COOKIE_HTTPONLY', False)
 
         s['SECURE_CONTENT_TYPE_NOSNIFF'] = env('SECURE_CONTENT_TYPE_NOSNIFF', False)
@@ -295,7 +296,7 @@ class Form(forms.BaseForm):
         s['MIDDLEWARE'].insert(
             s['MIDDLEWARE'].index('aldryn_sites.middleware.SiteMiddleware') + 1,
             'django.middleware.security.SecurityMiddleware',
-        )
+            )
 
     def server_settings(self, settings, env):
         settings['PORT'] = env('PORT', 80)
@@ -353,6 +354,10 @@ class Form(forms.BaseForm):
                 'py.warnings': {
                     'handlers': ['console'],
                 },
+                # Azure's storage client is too verbose at INFO level
+                'azure.storage.common.storageclient': {
+                    'level': 'WARNING',
+                },
             }
         }
 
@@ -360,10 +365,10 @@ class Form(forms.BaseForm):
         sentry_dsn = env('SENTRY_DSN')
 
         if sentry_dsn:
-            import sentry_sdk
+            from sentry_sdk import init
             from sentry_sdk.integrations.django import DjangoIntegration
 
-            sentry_sdk.init(
+            init(
                 dsn=sentry_dsn,
                 integrations=[DjangoIntegration()],
                 debug=settings['DEBUG'],
@@ -372,18 +377,54 @@ class Form(forms.BaseForm):
             )
 
     def storage_settings_for_media(self, settings, env):
-        import yurl
-        from aldryn_django.storage import parse_storage_url
-        if env('DEFAULT_STORAGE_DSN'):
-            settings['DEFAULT_STORAGE_DSN'] = env('DEFAULT_STORAGE_DSN')
-        settings['MEDIA_URL'] = env('MEDIA_URL', '/media/')
-        if 'DEFAULT_STORAGE_DSN' in settings:
-            settings.update(parse_storage_url(settings['DEFAULT_STORAGE_DSN']))
-        media_host = yurl.URL(settings['MEDIA_URL']).host
-        settings['MEDIA_URL_IS_ON_OTHER_DOMAIN'] = (
-            media_host and media_host not in settings['ALLOWED_HOSTS']
+        import furl
+
+        from aldryn_django.storage import (
+            DEFAULT_STORAGE_KEY, get_default_storage_url,
+            is_default_storage_on_other_domain, lazy_setting,
         )
+
+        # Prevent warnings from django-storages and opt-in to default object
+        # ACLs to bucket ACLs
+        settings.setdefault('AWS_DEFAULT_ACL', None)
+
+        storage_dsn = env(DEFAULT_STORAGE_KEY, )
+        if not storage_dsn:
+            dsn = furl.furl()
+            dsn.scheme = 'file'
+            dsn.path = settings['MEDIA_ROOT']
+            dsn.args.set("url", env('MEDIA_URL', '/media/'))
+            storage_dsn = str(dsn)
+        settings[DEFAULT_STORAGE_KEY] = storage_dsn
+
+        settings['DEFAULT_FILE_STORAGE'] = 'aldryn_django.storage.DefaultStorage'
+
+        # Handle MEDIA_URL
+        settings['MEDIA_URL'] = env('MEDIA_URL', '/media/')
+        if not settings['MEDIA_URL']:
+            media_url = lazy_setting(
+                'MEDIA_URL',
+                get_default_storage_url,
+                str,
+            )
+
+            settings['MEDIA_URL'] = media_url
+        elif not settings['MEDIA_URL'].endswith('/'):
+            # Django (or something else?) silently sets MEDIA_URL to an empty
+            # string if it does not end with a '/'
+            settings['MEDIA_URL'] = '{}/'.format(settings['MEDIA_URL'])
+
+        # Handle media domain for built-in serving
+        settings['MEDIA_URL_IS_ON_OTHER_DOMAIN'] = env('MEDIA_URL_IS_ON_OTHER_DOMAIN', None)
+        if not settings['MEDIA_URL_IS_ON_OTHER_DOMAIN']:
+            settings['MEDIA_URL_IS_ON_OTHER_DOMAIN'] = lazy_setting(
+                'MEDIA_URL_IS_ON_OTHER_DOMAIN',
+                is_default_storage_on_other_domain,
+                bool,
+            )
+
         settings['MEDIA_ROOT'] = env('MEDIA_ROOT', os.path.join(settings['DATA_ROOT'], 'media'))
+
         settings['MEDIA_HEADERS'] = []
 
         cmds = {}
@@ -396,9 +437,11 @@ class Form(forms.BaseForm):
         settings['THUMBNAIL_OPTIMIZE_COMMAND'] = cmds
 
     def storage_settings_for_static(self, data, settings, env):
-        import yurl
+        import furl
+
         use_gzip = not env('DISABLE_GZIP')
         use_manifest = data['use_manifeststaticfilesstorage']
+
         if use_gzip:
             if use_manifest:
                 storage = 'aldryn_django.storage.ManifestGZippedStaticFilesStorage'
@@ -412,7 +455,7 @@ class Form(forms.BaseForm):
         settings['STATICFILES_STORAGE'] = storage
 
         settings['STATIC_URL'] = env('STATIC_URL', '/static/')
-        static_host = yurl.URL(settings['STATIC_URL']).host
+        static_host = furl.furl(settings['STATIC_URL']).host
         settings['STATIC_URL_IS_ON_OTHER_DOMAIN'] = (
             static_host and static_host not in settings['ALLOWED_HOSTS']
         )
@@ -511,8 +554,9 @@ class Form(forms.BaseForm):
             settings['TIME_ZONE'] = env('TIME_ZONE')
 
     def migration_settings(self, settings, env):
-        from aldryn_django import storage
         from aldryn_addons.utils import boolean_ish
+
+        from aldryn_django import storage
 
         settings.setdefault('MIGRATION_COMMANDS', [])
         mcmds = settings['MIGRATION_COMMANDS']
