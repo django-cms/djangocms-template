@@ -386,6 +386,7 @@ PARLER_LANGUAGES = CMS_LANGUAGES
 
 
 MIGRATION_COMMANDS.insert(0, 'python manage.py test_pages_on_real_db')
+MIGRATION_COMMANDS.append('python manage.py clear_cache')
 
 
 CMS_PLACEHOLDER_CONF = {
