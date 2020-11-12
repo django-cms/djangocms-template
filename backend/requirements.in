@@ -1,8 +1,8 @@
 # <INSTALLED_ADDONS>  # Warning: text inside the INSTALLED_ADDONS tags is auto-generated. Manual changes will be overwritten.
 https://control.divio.com/api/v1/apps/serve/aldryn-addons/2.0.1/75074b5c-4ff7-448b-acf9-412d78472b6b/aldryn-addons-2.0.1.tar.gz#egg=aldryn-addons==2.0.1
-https://control.divio.com/api/v1/apps/serve/aldryn-django/3.1.2.1/beedf2d8-b024-4ca6-b55c-7deee06da4cd/aldryn-django-3.1.2.1.tar.gz#egg=aldryn-django==3.1.2.1
+https://control.divio.com/api/v1/apps/serve/aldryn-django/3.1.3.1/76c15bc4-de95-4606-b45a-879cf863d63b/aldryn-django-3.1.3.1.tar.gz#egg=aldryn-django==3.1.3.1
 https://control.divio.com/api/v1/apps/serve/aldryn-sso/2.0.0/e6eccefa-e8f5-492d-8e71-79fc99f30201/aldryn-sso-2.0.0.tar.gz#egg=aldryn-sso==2.0.0
-https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.8.0.1/386e63fb-b135-4f0e-8e1d-ef2945004091/aldryn-django-cms-3.8.0.1.tar.gz#egg=aldryn-django-cms==3.8.0.1
+https://control.divio.com/api/v1/apps/serve/aldryn-django-cms/3.8.0.2/972bef51-7182-42be-ba08-96b7e26d716d/aldryn-django-cms-3.8.0.2.tar.gz#egg=aldryn-django-cms==3.8.0.2
 https://control.divio.com/api/v1/apps/serve/django-filer/2.0.2/437dbe66-4a2c-402d-9ad9-cd104a901316/django-filer-2.0.2.tar.gz#egg=django-filer==2.0.2
 # </INSTALLED_ADDONS>
 
