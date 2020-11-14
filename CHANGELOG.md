@@ -1,10 +1,10 @@
 2020.11
 -------------------------------------------------------------------------------
 
-- upgraded to django-cms 3.8, django 3.1.3, nodejs 14, webpack 5, typescript 4
-- recompiled requirements.txt
+- upgraded to python 3.9, django-cms 3.8, django 3.1.3, nodejs 14, webpack 5, typescript 4
 - dropped aldryn-translation-tools
 - dropped divio wheels support
+
 
 2020.10
 -------------------------------------------------------------------------------

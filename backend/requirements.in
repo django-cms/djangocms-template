@@ -35,6 +35,7 @@ https://github.com/maestrofjp/djangocms-redirect/archive/f3075345905e6c629a813d7
 https://github.com/maestrofjp/djangocms-page-meta/archive/f74ba1670407c2bb648d422fe9139853bcd3c7c5.zip#egg=djangocms-page-meta # because the upstream isn't compatible with django 3 yet
     django-meta < 2.0.0
 
+
 # django
 
 django-settings-export # settings export to templates

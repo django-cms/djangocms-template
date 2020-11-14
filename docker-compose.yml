@@ -15,7 +15,7 @@ services:
     volumes:
       - '.:/app:rw'
       - './data:/data:rw'
-    command: start web
+    command: python manage.py runserver 0.0.0.0:80
     env_file: backend/.env
 
   frontend:

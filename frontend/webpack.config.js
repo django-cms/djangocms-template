@@ -54,12 +54,7 @@ const config = {
                         options: {
                             postcssOptions: {
                                 plugins: [
-                                    [
-                                        'autoprefixer',
-                                        {
-                                            // Options
-                                        },
-                                    ],
+                                    ['autoprefixer'],
                                 ],
                             },
                         },
