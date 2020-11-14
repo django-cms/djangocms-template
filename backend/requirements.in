@@ -14,27 +14,26 @@ djangocms-text-ckeditor
 djangocms-link
 djangocms-picture
 djangocms-file
-djangocms-blog
+djangocms-blog == 1.1.1
 djangocms-history
 djangocms-snippet
-https://github.com/divio/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
+https://github.com/django-cms/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
 https://github.com/django-cms/djangocms-bootstrap4/archive/017b61ffc4480145ef53f6e2828bcfbdd0ba8ae8.zip#egg=djangocms-bootstrap4
+    python-slugify
 djangocms-googlemap
 djangocms-modules
 aldryn-forms
     djangocms-aldryn-forms-bootstrap4-templates
     aldryn-forms-recaptcha-plugin
 djangocms-light-gallery
-aldryn-translation-tools
 aldryn-apphooks-config
-    https://github.com/yakky/django-appdata/archive/bugfix/django-3.zip#egg=django-appdata # because pypi 0.3.1 has a django 3 bug
 djangocms-socialshare
 djangocms-algolia
 djangocms-helpers
 djangocms-link-all
 https://github.com/maestrofjp/djangocms-redirect/archive/f3075345905e6c629a813d7f1878eede2f0892f5.zip#egg=djangocms-redirect # because the upstream isn't compatible with django 3 yet
 https://github.com/maestrofjp/djangocms-page-meta/archive/f74ba1670407c2bb648d422fe9139853bcd3c7c5.zip#egg=djangocms-page-meta # because the upstream isn't compatible with django 3 yet
-
+    django-meta < 2.0.0
 
 # django
 
@@ -66,3 +65,5 @@ django-adminutils # a set of shortcuts for admin.py composition
 pytz # a db of timezones
 sentry-sdk
 python-dotenv
+pip-tools
+https://wheels-cdn.aldryn.net/pypi/buster-py39/uwsgi/2.0.19.1/1604449341/8d3a1a2140ca6fce9f75a348799650c5/uWSGI-2.0.19.1-cp39-cp39-linux_x86_64.whl#md5=8d3a1a2140ca6fce9f75a348799650c5 # aldryn config compatible faked by divio uwsgi, which can't be found on pypi, drop it as soon as you can

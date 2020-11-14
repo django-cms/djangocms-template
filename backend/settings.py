@@ -241,7 +241,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 GTM_CONTAINER_ID = env.str('GTM_CONTAINER_ID', 'GTM-1234')
 
-WEBPACK_DEV_URL = env.str('WEBPACK_DEV_URL', default=f'http://localhost:8090/assets/')
+WEBPACK_DEV_URL = env.str('WEBPACK_DEV_URL', default=f'http://localhost:8090/')
 
 
 default_template_engine['OPTIONS']['context_processors'].extend([

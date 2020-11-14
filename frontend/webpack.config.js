@@ -47,19 +47,22 @@ const config = {
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            sourceMap: true,
-                            hmr: isDevelopmentMode,
-                        }
                     },
                     {loader: 'css-loader', options: {sourceMap: true}},
                     {
                         loader: 'postcss-loader',
                         options: {
-                            plugins: [
-                                require('autoprefixer'),
-                            ],
-                        }
+                            postcssOptions: {
+                                plugins: [
+                                    [
+                                        'autoprefixer',
+                                        {
+                                            // Options
+                                        },
+                                    ],
+                                ],
+                            },
+                        },
                     },
                     {loader: 'sass-loader', options: {sourceMap: true}},
                 ]
@@ -136,29 +139,6 @@ const config = {
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({filename: '[name].css'}),
     ],
-    optimization: {
-        // the default config from webpack docs, most of it might be useless
-        splitChunks: {
-            chunks: 'async',
-            minSize: 30000,
-            maxSize: 0,
-            minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-            automaticNameDelimiter: '~',
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10,
-                },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true,
-                },
-            },
-        },
-    },
 };
 
 
