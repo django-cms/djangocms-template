@@ -144,7 +144,7 @@ pillow==8.0.1             # via aldryn-forms, django-simple-captcha, djangocms-t
 pip-tools==5.3.1          # via -r requirements.in
 premailer==3.7.0          # via django-emailit
 prompt-toolkit==3.0.8     # via ipython
-psycopg2==2.7.7           # via aldryn-django, aldryn-django-cms
+psycopg2==2.8.6           # via aldryn-django, aldryn-django-cms
 ptyprocess==0.6.0         # via pexpect
 pycparser==2.20           # via cffi
 pygments==2.7.2           # via ipython
