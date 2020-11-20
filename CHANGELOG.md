@@ -2,6 +2,7 @@
 -------------------------------------------------------------------------------
 
 - upgraded to python 3.9, django-cms 3.8, django 3.1.3, nodejs 14, webpack 5, typescript 4
+- upgraded to djangocms-blog 1.2
 - dropped aldryn-translation-tools
 - dropped divio wheels support
 

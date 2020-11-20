@@ -40,17 +40,17 @@ The most efficient and reliable setup for backend development.
 
 ### Update requirements.txt
 
-`docker-compose run --rm web fish --command 'cd backend; pip-reqs compile; pip-reqs resolve'`
+`docker-compose run --rm web bash -c "cd backend && pip-compile requirements.in > requirements.txt"`
 
 For installing the compiled requirements in docker you have to rebuild it with `docker-compose build`.
 
 ### Pulling the external database and media
 
-- copy `.aldryn-example` as `.aldryn` file
+- `cp .divio/config-example.json .divio/config.json`
 - run `pip3 install divio-cli` outside of docker
 - run `divio project pull db test` and `divio project pull media test` outside of docker
 
-Advices
+Recommendations
 -------------------------------------------------------------------------------
 
 Don't hesitate to address divio support, a significant amount of features might not work according to the docs, or there are no docs. We're also keeping an open github repository for keeping track of our past issues with divio deployments - https://github.com/what-digital/divio/issues
