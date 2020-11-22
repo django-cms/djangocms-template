@@ -7,6 +7,14 @@
 
 {% block page_meta_title %}{{ post.get_title }}{% endblock %}
 
+{% block meta %}
+    {% thumbnail post.main_image 1200x630 crop upscale subject_location=post.main_image.subject_location as thumb %}
+    <meta property="og:title" content="{{ post.get_title }}">
+    <meta property="og:description" content="{{ post.abstract|striptags|safe }}">
+    <meta property="og:image" content="https://{{ settings.DOMAIN }}{{ thumb.url }}">
+    <meta property="og:type" content="Article">
+{% endblock meta %}
+
 {% block content_blog %}
 
 {% static_placeholder 'blog header' %}
