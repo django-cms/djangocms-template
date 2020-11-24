@@ -68,4 +68,4 @@ sentry-sdk
 python-dotenv
 pip-tools
 https://wheels-cdn.aldryn.net/pypi/buster-py39/uwsgi/2.0.19.1/1604449341/8d3a1a2140ca6fce9f75a348799650c5/uWSGI-2.0.19.1-cp39-cp39-linux_x86_64.whl#md5=8d3a1a2140ca6fce9f75a348799650c5  # aldryn-config-compatible binary faked by divio uwsgi, which can't be found on pypi, drop it as soon as you can
-psycopg2 == 2.8.6  # it will fail your reqs recompilation, this is intentional, long story short ask Victor
+psycopg2 == 2.8.6  # it will fail your reqs recompilation, this is intentional because aldryn-django-cms requires < 2.8 without a clear reason. You can drop this line, compile the requirements.txt and manually add 2.8.6 version to the compiled requirements.txt

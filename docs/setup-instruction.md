@@ -17,7 +17,7 @@ Perfect for people who aren't planning to do any backend development and want th
 
 - `docker-compose build`
 - `docker-compose run --rm web fish --command 'python manage.py migrate'`
-- install yarn & node 10 outside of docker
+- install yarn & node 14 outside of docker
 - `cd frontend`
 - `yarn install --pure-lockfile`
 - `yarn start`
@@ -33,7 +33,7 @@ The most efficient and reliable setup for backend development.
 - `docker-compose up db`
 - `python manage.py migrate`
 - `python manage.py runserver`
-- install yarn and node 10
+- install yarn and node 14
 - `cd frontend`
 - `yarn install --pure-lockfile`
 - `yarn start`
