@@ -45,3 +45,53 @@ document.addEventListener('DOMContentLoaded', initGalleryPlugin);
 - import it in a global scss file, eg `frontend/global/scss/text.scss` as `@import '~global/fonts/frutiger/frutiger.css';`
 
 Make sure to not add them into index.js, add them to an scss. Otherwise the fonts are going to be invisible in CKEditor.
+
+#### IE 11 support
+If you need IE 11 support in your project then add babel to your `package.json` (update with latest versions if needed): 
+```
+...
+        "babel-loader": "^8.1.0",
+            "@babel/preset-env": "^7.11.0",
+            "@babel/preset-typescript": "^7.10.4",
+            "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+            "@babel/plugin-proposal-decorators": "^7.10.5",
+            "@babel/plugin-proposal-class-properties": "^7.10.4",
+            "@babel/plugin-transform-spread": "^7.12.1",
+            "core-js": "^3.6.5",
+            "regenerator-runtime": "^0.13.7"
+```
+And update webpack config with babel-loader configuration:
+```
+    ...
+    target: ['web', 'es5'],
+    module: {
+        rules: [
+            ...
+            {
+                test: /\.(tsx?|jsx?|js?)$/,
+                loader: 'babel-loader',
+                exclude: [
+                    /node_modules/,
+                ],
+                options: {
+                    presets: [
+                        [
+                            '@babel/preset-env',
+                            {
+                                'modules': false,
+                                'targets': {'browsers': ['ie >= 11', 'not dead']},
+                            }
+                        ],
+                        '@babel/preset-typescript',
+                    ],
+                    plugins: [
+                        ['@babel/plugin-proposal-decorators', {'legacy': true}],
+                        ['@babel/plugin-proposal-class-properties', {'legacy': true}],
+                        ['@babel/plugin-transform-arrow-functions', {'legacy': true}],
+                        '@babel/plugin-syntax-dynamic-import',
+                        '@babel/plugin-transform-spread'
+                    ],
+                },
+            },
+            ...
+```
