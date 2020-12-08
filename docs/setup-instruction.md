@@ -15,7 +15,7 @@ For setting up the database from the stage/live server see the last section abou
 
 Perfect for people who aren't planning to do any backend development and want the real-time webpack rebuilds.
 
-- `docker-compose build`
+- `docker-compose build web`
 - `docker-compose run --rm web fish --command 'python manage.py migrate'`
 - install yarn & node 14 outside of docker
 - `cd frontend`
