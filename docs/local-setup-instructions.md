@@ -48,7 +48,7 @@ For installing the compiled requirements in docker you have to rebuild it with `
 ### Pulling the external database and media
 
 - `cp .divio/config-example.json .divio/config.json`
-- run `pip3 install divio-cli` & `divio login` outside of docker
+- run `pip install divio-cli` & `divio login` outside of docker
 - run `divio project pull db test` and `divio project pull media test` outside of docker
 
 
