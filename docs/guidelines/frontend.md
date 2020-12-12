@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', initGalleryPlugin);
 Make sure to not add them into index.js, add them to an scss. Otherwise the fonts are going to be invisible in CKEditor.
 
 #### IE 11 support
+
 If you need IE 11 support in your project then add babel to your `package.json` (use the latest versions if needed): 
 ```json
 "babel-loader": "^8.1.0",
