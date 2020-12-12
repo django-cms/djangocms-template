@@ -47,22 +47,20 @@ document.addEventListener('DOMContentLoaded', initGalleryPlugin);
 Make sure to not add them into index.js, add them to an scss. Otherwise the fonts are going to be invisible in CKEditor.
 
 #### IE 11 support
-If you need IE 11 support in your project then add babel to your `package.json` (update with latest versions if needed): 
+If you need IE 11 support in your project then add babel to your `package.json` (use the latest versions if needed): 
+```json
+"babel-loader": "^8.1.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-transform-spread": "^7.12.1",
+    "core-js": "^3.6.5",
+    "regenerator-runtime": "^0.13.7"
 ```
-...
-        "babel-loader": "^8.1.0",
-            "@babel/preset-env": "^7.11.0",
-            "@babel/preset-typescript": "^7.10.4",
-            "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-            "@babel/plugin-proposal-decorators": "^7.10.5",
-            "@babel/plugin-proposal-class-properties": "^7.10.4",
-            "@babel/plugin-transform-spread": "^7.12.1",
-            "core-js": "^3.6.5",
-            "regenerator-runtime": "^0.13.7"
-```
-And update webpack config with babel-loader configuration:
-```
-    ...
+And update the webpack config with babel-loader configuration:
+```javascript
     target: ['web', 'es5'],
     module: {
         rules: [
@@ -93,5 +91,5 @@ And update webpack config with babel-loader configuration:
                     ],
                 },
             },
-            ...
+    },
 ```
