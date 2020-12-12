@@ -28,6 +28,7 @@ Perfect for people who aren't planning to do any backend development and want th
 
 The most efficient and reliable setup for backend development.
 
+- switch to python 3.9
 - `pip install -r backend/requirements.txt`
 - add a new line - `127.0.0.1 postgres` - to your system `/etc/hosts` file
 - `docker-compose up db`
@@ -47,8 +48,9 @@ For installing the compiled requirements in docker you have to rebuild it with `
 ### Pulling the external database and media
 
 - `cp .divio/config-example.json .divio/config.json`
-- run `pip3 install divio-cli` outside of docker
+- run `pip3 install divio-cli` & `divio login` outside of docker
 - run `divio project pull db test` and `divio project pull media test` outside of docker
+
 
 Recommendations
 -------------------------------------------------------------------------------

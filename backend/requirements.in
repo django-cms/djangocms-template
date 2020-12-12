@@ -1,4 +1,4 @@
-# divio reqs that you can upgrade through the project https://control.divio.com/control/1820/edit/87818/ (access required)
+# the latest versions of aldryn-addons are located in https://gitlab.com/what-digital/djangocms-template/-/blob/master/backend/requirements.in
 
 https://control.divio.com/api/v1/apps/serve/aldryn-addons/2.0.1/75074b5c-4ff7-448b-acf9-412d78472b6b/aldryn-addons-2.0.1.tar.gz#egg=aldryn-addons==2.0.1
 https://control.divio.com/api/v1/apps/serve/aldryn-django/3.1.4.0/8a3544e2-9459-4346-a35a-5dc8512430d6/aldryn-django-3.1.4.0.tar.gz#egg=aldryn-django==3.1.4.0
@@ -65,4 +65,4 @@ django-adminutils # a set of shortcuts for admin.py composition
 sentry-sdk
 python-dotenv
 pip-tools
-https://wheels-cdn.aldryn.net/pypi/buster-py39/uwsgi/2.0.19.1/1604449341/8d3a1a2140ca6fce9f75a348799650c5/uWSGI-2.0.19.1-cp39-cp39-linux_x86_64.whl#md5=8d3a1a2140ca6fce9f75a348799650c5#egg=uwsgi  # aldryn-config-compatible binary faked by divio uwsgi, which can't be found on pypi, drop it as soon as you can
+https://wheels-cdn.aldryn.net/pypi/buster-py39/uwsgi/2.0.19.1/1604449341/8d3a1a2140ca6fce9f75a348799650c5/uWSGI-2.0.19.1-cp39-cp39-linux_x86_64.whl#md5=8d3a1a2140ca6fce9f75a348799650c5#egg=uwsgi  # aldryn-config-compatible custom binary compiled by divio, which can't be found on pypi, drop it as soon as you can
