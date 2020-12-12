@@ -23,7 +23,7 @@ Divio Project Setup
     - if you're planning to use only one CMS language, you can go to [frontend/global/ts/ckeditor-config.js](/frontend/global/ts/ckeditor-config.js) and update the SCAYT line to `scayt_autoStartup = true`
 - deploy the stage server
 
-⚠ ️BEWARE: If you get a migration error on Divio deployment, follow the instructions for database reset placed in [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/3.0.0.0/docs/setup-instruction.md#how-to-drop-the-database)
+⚠ ️BEWARE: If you get a migration error on Divio deployment, follow the instructions for database reset placed in [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/3.0.0.0/docs/local-setup-instructions.md#how-to-drop-the-database)
 
 For what.digital specific final steps see [the respective nuclino file](https://share.nuclino.com/p/djangocms-template-setup-steps-yzx_82bXA8b8YX_2xG2ccF).
 
@@ -37,6 +37,6 @@ You can access the stage server without logging in through the url https://{doma
 
 Built on Python 3.9, Django 3.1, DjangoCMS 3.8, Webpack 5, TypeScript 4.
 
-See the general [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/3.0.0.0/docs/setup-instruction.md)
+See the general [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/3.0.0.0/docs/local-setup-instructions.md)
 
 [Project intro & guidelines](https://gitlab.com/what-digital/djangocms-template/-/blob/3.0.0.0/README.md)
