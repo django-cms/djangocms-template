@@ -1,8 +1,11 @@
 djangocms-template project is usable by itself. You can follow the local setup instructions to try it out.
 
+This project can be deployed to any dockerized environment, below you can find instructions for https://divio.com setup, which is based on AWS and offers free hosting.
 
-Divio Integration Setup
+
+Divio Project Setup
 -------------------------------------------------------------------------------
+
 - create a new project on divio without deploying it, set the type python3, django with default boilerplate
 - create a new empty repository on git and add the following remotes:
     - `git remote add template git@gitlab.com:what-digital/djangocms-template.git`
@@ -37,6 +40,7 @@ You can access the stage server without logging in through the url https://{doma
 
 Development Setup
 -------------------------------------------------------------------------------
+
 Built on Python 3.9, Django 3.1, DjangoCMS 3.8, Webpack 5, TypeScript 4.
 
 See the general [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/3690eb986ad1ceb508a14bed1222a830ee03310b/docs/setup-instruction.md)
