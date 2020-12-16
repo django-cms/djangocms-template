@@ -104,9 +104,8 @@ INSTALLED_APPS.extend([
     'logentry_admin',
     'hijack_admin',
     'djangocms_helpers',
-    'djangocms_helpers.divio',
+    'djangocms_helpers.divio',  # fixes a bug in divio aldryn commands
     'djangocms_helpers.sentry_500_error_handler',
-        'meta',
 
     # django cms
 
@@ -138,6 +137,7 @@ INSTALLED_APPS.extend([
     'djangocms_socialshare',
     'djangocms_algolia',
     'djangocms_page_meta',
+        'meta',
     'aldryn_forms_bs4_templates',
     'aldryn_forms',
         'aldryn_forms_recaptcha_plugin',
