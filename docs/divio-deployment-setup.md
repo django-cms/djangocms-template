@@ -39,4 +39,4 @@ Built on Python 3.9, Django 3.1, DjangoCMS 3.8, Webpack 5, TypeScript 4.
 
 See the general [setup instructions](https://gitlab.com/what-digital/djangocms-template/-/blob/3.0.0.0/docs/local-setup-instructions.md)
 
-[Project intro & guidelines](https://gitlab.com/what-digital/djangocms-template/-/blob/3.0.0.0/README.md)
+[Project intro & guidelines](https://gitlab.com/what-digital/djangocms-template/-/blob/3.0.0.0/docs/README.md)
