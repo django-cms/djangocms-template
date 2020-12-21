@@ -70,6 +70,9 @@ SITE_NAME: str = locals().get('SITE_NAME', 'dev testing site')
 ################################################################################
 
 
+WSGI_APPLICATION = 'backend.wsgi.application'
+
+
 DATE_FORMAT = 'F j, Y'
 USE_TZ = True
 TIME_ZONE = 'Europe/Zurich'
@@ -241,7 +244,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 GTM_CONTAINER_ID = env.str('GTM_CONTAINER_ID', 'GTM-1234')
 
-WEBPACK_DEV_URL = env.str('WEBPACK_DEV_URL', default='http://localhost:8090/')
+WEBPACK_DEV_URL = env.str('WEBPACK_DEV_URL', default='http://0.0.0.0:8090')
 
 
 default_template_engine['OPTIONS']['context_processors'].extend([
