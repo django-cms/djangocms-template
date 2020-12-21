@@ -123,12 +123,14 @@ const config = {
         }
     },
     devServer: {
-        contentBase: path.resolve(__dirname),
-        headers: {'Access-Control-Allow-Origin': '*'},
+        static: {
+            directory: path.resolve(__dirname),
+        },
         host: '0.0.0.0',
         port: 8090,
-        hot: true,
-        inline: true,
+        client: {
+            port: 8090,
+        }
     },
     plugins: [
         new VueLoaderPlugin(),
