@@ -19,4 +19,5 @@ RUN DJANGO_MODE=build python manage.py collectstatic --noinput --ignore=node_mod
 RUN DJANGO_MODE=build python manage.py compilemessages
 
 
+ENV PORT=80
 CMD uwsgi --http=0.0.0.0:$PORT --module=backend.wsgi
