@@ -1,0 +1,29 @@
+[tool.isort]
+force_single_line = true
+line_length = 120
+lines_after_imports = 2
+skip = [
+    'backend/addons/',
+    'backend/addons-dev/',
+    'backend/settings.py',
+    'backend/static_collected/',
+    'frontend/',
+]
+
+
+[tool.black]
+target-version = ['py38']
+skip-string-normalization = true
+line-length = 120
+exclude = '''
+(
+  /(
+      \.git
+    | backend/addons
+    | backend/addons-dev
+    | migrations
+    | frontend
+  )/
+  | settings.py
+)
+'''

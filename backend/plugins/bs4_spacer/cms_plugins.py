@@ -3,6 +3,7 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext_lazy as _
 
 from backend.plugins.module_name import MODULE_NAME
+
 from .models import VerticalSpacerPlugin
 
 
