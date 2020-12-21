@@ -21,6 +21,7 @@ class DjangoEnv(Enum):
     LOCAL = 'local'
     TEST = 'test'
     LIVE = 'live'
+    BUILD_DOCKER = 'BUILD_DOCKER'
 
 
 DJANGO_ENV_ENUM = DjangoEnv
@@ -188,7 +189,11 @@ MIDDLEWARE = [
 ]
 
 
-DATABASE_URL = env.str('DATABASE_URL', 'sqlite://:memory:')
+if DJANGO_ENV == DjangoEnv.BUILD_DOCKER:
+    DATABASE_URL = 'sqlite://:memory:'
+else:
+    DATABASE_URL = env.str('DATABASE_URL', 'sqlite://:memory:')
+
 DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
 
 

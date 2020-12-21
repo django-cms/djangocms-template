@@ -15,8 +15,9 @@ WORKDIR /app/
 COPY . /app/
 
 
-RUN DJANGO_MODE=build python manage.py collectstatic --noinput --ignore=node_modules
-RUN DJANGO_MODE=build python manage.py compilemessages
+ENV STAGE='build_docker'
+RUN python manage.py collectstatic --noinput --ignore=node_modules
+RUN python manage.py compilemessages
 
 
 ENV PORT=80
