@@ -2,7 +2,9 @@ import os
 from enum import Enum
 from typing import List
 
+import dj_database_url
 import environ
+from django_storage_url import dsn_configured_storage_class
 from link_all.dataclasses import LinkAllModel
 
 
@@ -54,7 +56,6 @@ aldryn_addons.settings.load(locals())
 
 
 INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
-MIDDLEWARE: List[str] = locals()['MIDDLEWARE']
 BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
 TEMPLATES: List[dict] = locals()['TEMPLATES']
@@ -161,29 +162,42 @@ INSTALLED_APPS.extend([
     'backend.plugins.horizontal_line',
 ])
 
-middleware_top = [
-    'django.middleware.cache.UpdateCacheMiddleware',
-]
-MIDDLEWARE = middleware_top + MIDDLEWARE
-MIDDLEWARE.extend([
-    # django
-    'admin_reorder.middleware.ModelAdminReorder',
 
-    # django cms optional
+MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'cms.middleware.utils.ApphookReloadMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
+    'aldryn_sites.middleware.SiteMiddleware',  # matters only on divio.com
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
+    'admin_reorder.middleware.ModelAdminReorder',
     'djangocms_redirect.middleware.RedirectMiddleware',
-    
     'django.middleware.cache.FetchFromCacheMiddleware',
-])
+]
+
+
+DATABASE_URL = env.str('DATABASE_URL', 'sqlite://:memory:')
+DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
+
 
 AUTH_USER_MODEL = 'backend_auth.User'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/'),
-]
-STATIC_ROOT = os.path.join(BACKEND_DIR, 'static_collected/')
 LOCALE_PATHS = [
     os.path.join(BACKEND_DIR, 'locale'),
 ]
+
 ROOT_URLCONF = 'backend.urls'
 
 default_template_engine: dict = TEMPLATES[0]
@@ -200,19 +214,26 @@ EMAIL_BACKEND = env.str('EMAIL_BACKEND', default=email_backend_default)
 DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', f'{SITE_NAME} <info@{DOMAIN}>')
 
 
-if DJANGO_ENV == DjangoEnv.LOCAL:
-    ssl_redirect_default = False
-else:
-    ssl_redirect_default = True
-
-SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=ssl_redirect_default)
+SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
+HTTP_PROTOCOL = env.str('HTTP_PROTOCOL', 'https')
 
 
-HTTP_PROTOCOL = 'http' if DJANGO_ENV == DjangoEnv.LOCAL else 'https'
-
-
-STATICFILES_STORAGE = 'djangocms_helpers.storage.NonStrictManifestGZippedStaticFilesStorage'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/'),
+]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BACKEND_DIR, 'static_collected/')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365  # the default is 5m
+WHITENOISE_MAX_AGE = STATICFILES_DEFAULT_MAX_AGE
+
+
+DEFAULT_STORAGE_DSN = env.str('DEFAULT_STORAGE_DSN', 'file:///data/media/?url=%2Fmedia%2F')
+DefaultStorageClass = dsn_configured_storage_class('DEFAULT_STORAGE_DSN')
+DEFAULT_FILE_STORAGE = 'backend.settings.DefaultStorageClass'
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join('/data/media/')
 
 
 ################################################################################
@@ -297,7 +318,7 @@ ADMIN_REORDER = [
             {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
             {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
             'admin.LogEntry',
-            
+
             # removed because it doesn't work on cms 3.7.3
             # 'cms.GlobalPagePermission',
             # 'cms.PageUserGroup',
