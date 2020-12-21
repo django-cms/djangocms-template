@@ -1,3 +1,13 @@
+2020.12
+-------------------------------------------------------------------------------
+
+- dropped aldryn-django static serving, uwsgi, middleware
+- added heroku support & guidelines
+- improved the deployment speed - from 12m to 6.5m
+- added .flake8 and isort configurations
+- upgraded webpack-dev-server to 4.0.0-beta, which adds webpack 5 support
+
+
 2020.11
 -------------------------------------------------------------------------------
 
