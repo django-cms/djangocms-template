@@ -21,7 +21,7 @@ class DjangoEnv(Enum):
     LOCAL = 'local'
     TEST = 'test'
     LIVE = 'live'
-    BUILD_DOCKER = 'BUILD_DOCKER'
+    BUILD_DOCKER = 'build_docker'
 
 
 DJANGO_ENV_ENUM = DjangoEnv
