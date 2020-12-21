@@ -58,6 +58,7 @@ django-countries
 django-widget-tweaks
 django-logentry-admin
 django-adminutils # a set of shortcuts for admin.py composition
+dj-database-url
 
 
 # python utils
@@ -65,4 +66,5 @@ django-adminutils # a set of shortcuts for admin.py composition
 sentry-sdk
 python-dotenv
 pip-tools
-https://wheels-cdn.aldryn.net/pypi/buster-py39/uwsgi/2.0.19.1/1604449341/8d3a1a2140ca6fce9f75a348799650c5/uWSGI-2.0.19.1-cp39-cp39-linux_x86_64.whl#md5=8d3a1a2140ca6fce9f75a348799650c5#egg=uwsgi  # aldryn-config-compatible custom binary compiled by divio, which can't be found on pypi, drop it as soon as you can
+uwsgi
+whitenoise

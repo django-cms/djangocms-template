@@ -22,14 +22,14 @@ algoliasearch==1.20.0     # via algoliasearch-django
 asgiref==3.3.1            # via django
 backcall==0.2.0           # via ipython
 beautifulsoup4==4.9.3     # via djangocms-algolia
-boto3==1.16.30            # via django-storages
-botocore==1.19.30         # via boto3, s3transfer
-cachetools==4.1.1         # via premailer
-certifi==2020.11.8        # via requests, sentry-sdk
+boto3==1.16.39            # via django-storages
+botocore==1.19.39         # via boto3, s3transfer
+cachetools==4.2.0         # via premailer
+certifi==2020.12.5        # via requests, sentry-sdk
 cffi==1.14.4              # via cryptography
-chardet==3.0.4            # via requests
+chardet==4.0.0            # via requests
 click==7.1.2              # via aldryn-client, aldryn-django, pip-tools
-cryptography==3.2.1       # via pyjwt
+cryptography==3.3.1       # via pyjwt
 cssselect==1.1.0          # via premailer
 cssutils==1.0.2           # via premailer
 decorator==4.4.2          # via ipython
@@ -76,7 +76,7 @@ django-ranged-response==0.2.0  # via django-simple-captcha
 django-recaptcha3==0.4.0  # via aldryn-forms-recaptcha-plugin
 django-robots==4.0        # via aldryn-django-cms
 django-sekizai==2.0.0     # via django-cms, djangocms-aldryn-forms-bootstrap4-templates, djangocms-light-gallery
-django-select2==7.4.2     # via aldryn-django-cms
+django-select2==7.5.0     # via aldryn-django-cms
 django-settings-export==1.2.1  # via -r requirements.in
 django-simple-captcha==0.5.13  # via aldryn-django-cms
 django-simple-sso==0.14.1  # via aldryn-sso
@@ -86,7 +86,7 @@ django-sortedm2m==3.0.2   # via -r requirements.in, aldryn-common, aldryn-django
 django-spurl==0.6.7       # via aldryn-search
 django-standard-form==1.1.1  # via aldryn-search, djangocms-algolia
 django-storage-url==0.6.0  # via aldryn-django
-django-storages[boto3]==1.10.1  # via aldryn-django, django-storage-url
+django-storages[boto3]==1.11  # via aldryn-django, django-storage-url
 django-tablib==3.2        # via aldryn-forms
 django-taggit-autosuggest==0.3.8  # via djangocms-blog
 django-taggit-templatetags==0.2.5  # via djangocms-blog
@@ -148,7 +148,7 @@ prompt-toolkit==3.0.8     # via ipython
 psycopg2==2.8.6           # via aldryn-django, aldryn-django-cms
 ptyprocess==0.6.0         # via pexpect
 pycparser==2.20           # via cffi
-pygments==2.7.2           # via ipython
+pygments==2.7.3           # via ipython
 pyjwt[crypto]==1.7.1      # via django-allauth
 python-dateutil==2.8.1    # via botocore
 python-dotenv==0.15.0     # via -r requirements.in
@@ -158,12 +158,12 @@ pytz==2020.4              # via django, djangocms-blog
 pyyaml==5.3.1             # via tablib
 rcssmin==1.0.6            # via django-compressor
 requests-oauthlib==1.3.0  # via django-allauth
-requests==2.25.0          # via aldryn-client, aldryn-django-cms, algoliasearch, django-allauth, django-recaptcha3, premailer, requests-oauthlib, webservices
+requests==2.25.1          # via aldryn-client, aldryn-django-cms, algoliasearch, django-allauth, django-recaptcha3, premailer, requests-oauthlib, webservices
 rjsmin==1.1.0             # via django-compressor
 s3transfer==0.3.3         # via boto3
-sentry-sdk==0.19.4        # via -r requirements.in, aldryn-django
+sentry-sdk==0.19.5        # via -r requirements.in, aldryn-django
 six==1.15.0               # via aldryn-client, aldryn-common, aldryn-forms, cryptography, django-adminutils, django-appdata, django-compat, django-compressor, django-meta, django-simple-captcha, django-spurl, django-tablib, furl, html5lib, orderedmultidict, pip-tools, python-dateutil
-soupsieve==2.0.1          # via beautifulsoup4
+soupsieve==2.1            # via beautifulsoup4
 sqlparse==0.4.1           # via django
 tablib[html,ods,xls,xlsx,yaml]==3.0.0  # via aldryn-forms, django-import-export, django-tablib
 tabulate==0.8.7           # via aldryn-client
@@ -173,11 +173,12 @@ typish==1.9.1             # via jsons
 unidecode==1.1.1          # via django-filer
 urllib3==1.26.2           # via botocore, requests, sentry-sdk
 urlobject==2.4.3          # via django-spurl
-https://wheels-cdn.aldryn.net/pypi/buster-py39/uwsgi/2.0.19.1/1604449341/8d3a1a2140ca6fce9f75a348799650c5/uWSGI-2.0.19.1-cp39-cp39-linux_x86_64.whl#md5=8d3a1a2140ca6fce9f75a348799650c5#egg=uwsgi  # via -r requirements.in, aldryn-django
+uwsgi==2.0.19.1           # via -r requirements.in, aldryn-django
 wcwidth==0.2.5            # via prompt-toolkit
 webencodings==0.5.1       # via html5lib
 webservices[django]==0.7  # via django-simple-sso
-xlrd==1.2.0               # via tablib
+whitenoise==5.2.0         # via -r requirements.in
+xlrd==2.0.1               # via tablib
 xlwt==1.3.0               # via tablib
 yurl==1.0.0               # via aldryn-boilerplates, aldryn-django-cms, aldryn-sites
 
