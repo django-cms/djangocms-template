@@ -1,6 +1,4 @@
-from django.db import models
 from parler.models import TranslatableModel
-from parler.models import TranslatedFields
 from solo.models import SingletonModel
 
 

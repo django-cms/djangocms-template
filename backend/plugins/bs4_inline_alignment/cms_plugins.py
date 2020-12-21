@@ -15,4 +15,5 @@ class InlineAlignmentPlugin(CMSPluginBase):
 
     allow_children = True
 
+
 plugin_pool.register_plugin(InlineAlignmentPlugin)

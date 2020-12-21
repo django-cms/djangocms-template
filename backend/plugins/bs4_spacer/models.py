@@ -12,7 +12,6 @@ class VerticalSpacerPlugin(CMSPlugin):
     space_lg = models.PositiveIntegerField("large screens and above", help_text="in px for large screens and above", blank=True, null=True)
     space_xl = models.PositiveIntegerField("very large screens", help_text="in px for extra large screens", blank=True, null=True)
 
-
     def has_advanced_settings(self):
         # 0 doesnt count
         return self.space_xs or self.space_sm or self.space_md or self.space_lg or self.space_xl

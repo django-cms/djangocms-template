@@ -17,4 +17,3 @@ class Bootstrap4HidePlugin(CMSPluginBase):
 
 
 plugin_pool.register_plugin(Bootstrap4HidePlugin)
-

@@ -1,0 +1,14 @@
+[flake8]
+ignore =
+    E501 # line length limit
+    W293 # blank line contains whitespaces
+    E261 # two spaces before commit
+exclude =
+    .git/
+    backend/addons-dev/
+    backend/addons/
+    backend/static_collected/
+    frontend/
+    docs/
+per-file-ignores =
+    backend/settings.py:E131,E402
