@@ -14,7 +14,6 @@ from link_all.dataclasses import LinkAllModel
 
 
 env = environ.Env()
-environ.Env.read_env()
 
 
 class DjangoEnv(Enum):
@@ -29,6 +28,7 @@ DJANGO_ENV = DjangoEnv(env.str('STAGE', 'local'))
 
 
 if DJANGO_ENV == DjangoEnv.LOCAL:
+    environ.Env.read_env()
     CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
 
 
