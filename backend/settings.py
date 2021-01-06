@@ -241,11 +241,6 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join('/data/media/')
 
 
-################################################################################
-# django optional
-################################################################################
-
-
 # allauth
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -350,6 +345,28 @@ SHARING_VIEW_ONLY_TOKEN_KEY_NAME = 'anonymous-access'
 SHARING_VIEW_ONLY_SECRET_TOKEN = 'true'
 
 
+if DEBUG:
+    CACHE_MIDDLEWARE_SECONDS = 0
+    # there's a bug with caching - https://github.com/what-digital/divio/issues/9
+    CMS_PLACEHOLDER_CACHE = False
+    CMS_PLUGIN_CACHE = False
+    CMS_CACHE_DURATIONS = {
+        'content': 0,
+        'menus': 0,
+        'permissions': 0,
+    }
+    CMS_PAGE_CACHE = False
+else:
+    one_hour = 60 * 60
+    four_hours = one_hour * 4
+    CACHE_MIDDLEWARE_SECONDS = four_hours
+    CMS_CACHE_DURATIONS = {
+        'menus': one_hour,
+        'permissions': one_hour,
+        'content': four_hours,
+    }
+
+
 ################################################################################
 # django-cms
 ################################################################################
@@ -362,31 +379,6 @@ CMS_TEMPLATES = [
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 CMS_PERMISSION = True
-
-if DEBUG:
-    # there's a bug with caching - https://github.com/what-digital/divio/issues/9
-    CMS_PAGE_CACHE = False
-    CMS_PLACEHOLDER_CACHE = False
-    CMS_PLUGIN_CACHE = False
-    CMS_CACHE_DURATIONS = {
-        'content': 0,
-        'menus': 0,
-        'permissions': 0,
-    }
-else:
-    one_hour = 60 * 60
-    four_hours = one_hour * 4
-    CMS_CACHE_DURATIONS = {
-        'menus': one_hour,
-        'permissions': one_hour,
-        'content': four_hours,
-    }
-    CACHE_MIDDLEWARE_SECONDS = four_hours
-
-
-################################################################################
-# django-cms optional
-################################################################################
 
 
 LANGUAGES = [
