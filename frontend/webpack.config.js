@@ -130,7 +130,11 @@ const config = {
         port: 8090,
         client: {
             port: 8090,
-        }
+        },
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
+
     },
     plugins: [
         new VueLoaderPlugin(),
