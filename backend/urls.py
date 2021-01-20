@@ -1,10 +1,14 @@
 import aldryn_addons.urls
 from aldryn_django.utils import i18n_patterns
 from django.conf import settings
+from django.contrib import admin
 from django.urls import include
 from django.urls import path
 from djangocms_helpers.sentry_500_error_handler.views import collect_500_error_user_feedback_view
 from djangocms_helpers.sentry_500_error_handler.views import not_found_404_view
+
+
+admin.site.enable_nav_sidebar = False
 
 
 urlpatterns = [

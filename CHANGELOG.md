@@ -4,7 +4,7 @@
 - fixed the disabled HTTPS (it was using .env file to override the server envs)
 - fixed webpack CORS issues for fonts and assets
 - fixed cache by disabling it for local dev
-
+- disabled django 3.1 sidebar completely
 
 2020.12
 -------------------------------------------------------------------------------
@@ -23,7 +23,6 @@
 - upgraded to djangocms-blog 1.2
 - dropped aldryn-translation-tools
 - dropped divio wheels support
-
 
 2020.10
 -------------------------------------------------------------------------------
