@@ -6,6 +6,12 @@
 - fixed cache by disabling it for local dev
 - disabled django 3.1 sidebar completely
 
+### How to upgrade
+- update/remove `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_FIELDSETS` if you used it
+- rename `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_SPACING` to `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL`, consider adding `settings.DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_VERTICAL_SPACING_EXTERNAL`
+- review the bootstrap4 container plugin interface to confirm that the new fields look as you expect them to
+- if you used bootstrap4 container plugin `width_external` field - add migrations that drop it, it is no longer useful
+
 2020.12
 -------------------------------------------------------------------------------
 
