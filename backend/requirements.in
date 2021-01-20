@@ -18,7 +18,7 @@ djangocms-blog
 djangocms-history
 djangocms-snippet
 https://github.com/django-cms/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
-https://github.com/django-cms/djangocms-bootstrap4/archive/57c486a27986f7306f0436fd72d5462b1d3e1b85.zip#egg=djangocms-bootstrap4
+https://github.com/django-cms/djangocms-bootstrap4/archive/5a4bc682ca6f371d86d590cc1f072f4d31adbd9f.zip#egg=djangocms-bootstrap4
     python-slugify
 djangocms-googlemap
 djangocms-modules

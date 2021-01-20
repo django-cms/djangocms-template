@@ -102,7 +102,7 @@ djangocms-algolia==1.5.0.1  # via -r requirements.in
 djangocms-apphook-setup==0.4.1  # via djangocms-blog
 djangocms-attributes-field==2.0.0  # via aldryn-forms, djangocms-bootstrap4, djangocms-file, djangocms-icon, djangocms-link, djangocms-picture, djangocms-video
 djangocms-blog==1.2.1     # via -r requirements.in
-https://github.com/django-cms/djangocms-bootstrap4/archive/57c486a27986f7306f0436fd72d5462b1d3e1b85.zip#egg=djangocms-bootstrap4  # via -r requirements.in
+https://github.com/django-cms/djangocms-bootstrap4/archive/5a4bc682ca6f371d86d590cc1f072f4d31adbd9f.zip#egg=djangocms-bootstrap4  # via -r requirements.in
 djangocms-file==3.0.0     # via -r requirements.in
 djangocms-googlemap==2.0.0  # via -r requirements.in
 djangocms-helpers==2.2.1.3  # via -r requirements.in
