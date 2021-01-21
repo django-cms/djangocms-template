@@ -185,6 +185,7 @@ MIDDLEWARE = [
     'cms.middleware.language.LanguageCookieMiddleware',
     'admin_reorder.middleware.ModelAdminReorder',
     'djangocms_redirect.middleware.RedirectMiddleware',
+    'link_all.middleware.RedirectExceptionMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
