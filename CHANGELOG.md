@@ -3,9 +3,9 @@
 
 - fixed frontend building by installing linux package `autoconf`
 - upgraded backend & frontend dependencies to incorporate the latest security patches
-- optimize dockerfile cache and compilemessages timing
+- optimized dockerfile cache and compilemessages timing
 - improved the docker versioning schema
-- convert images to webp during webpack build
+- converted images to webp during webpack build
 - added code formatters: prettier for JS and intellij .editorconfig for HTML & SCSS
 
 2021.01
