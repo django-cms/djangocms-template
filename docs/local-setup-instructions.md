@@ -77,5 +77,4 @@ It's used in docker files as `FROM registry.gitlab.com/what-digital/djangocms-te
 - `docker login registry.gitlab.com`
     - gitlab will ask for a password - this is a bug, it's actually asking for an access token that must be created [in your profile](https://gitlab.com/profile/personal_access_tokens)
 - `docker build -t registry.gitlab.com/what-digital/djangocms-template -f base.Dockerfile .`
-- `docker tag registry.gitlab.com/what-digital/djangocms-template:latest registry.gitlab.com/what-digital/djangocms-template:{version}`, replace `{version}`, see [versioning documentation](https://gitlab.com/what-digital/tech-docs/-/blob/master/coding-guidelines/translations.md)
-- `docker push registry.gitlab.com/what-digital/djangocms-template`
+- `docker push registry.gitlab.com/what-digital/djangocms-template:{version}`
