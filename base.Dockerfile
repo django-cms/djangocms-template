@@ -1,4 +1,4 @@
-FROM divio/base:1.0-py3.9-slim-buster
+FROM divio/base:2.1-py3.9-slim-buster
 
 
 RUN apt update --quiet
@@ -8,7 +8,9 @@ RUN apt install --yes \
     fish \
     nano \
     # for building node modules & python packages
-    gcc build-essential \
+    gcc build-essential autoconf \
+    # for webpack image loader
+    libpng-dev \
     # for building psycopg2
     libpq-dev
 

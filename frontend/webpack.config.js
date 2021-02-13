@@ -72,8 +72,8 @@ const config = {
                             query: {
                                 hash: 'sha512',
                                 digest: 'hex',
-                                name: '[name].[ext]'
-                            }
+                                name: '[name].[ext]',
+                            },
                         }
                     },
                     {
@@ -84,6 +84,7 @@ const config = {
                                 mozjpeg: {progressive: true},
                                 gifsicle: {interlaced: true},
                                 optipng: {optimizationLevel: 7},
+                                webp: {quality: 80},
                             }
                         }
                     }
