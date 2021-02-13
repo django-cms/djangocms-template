@@ -6,6 +6,7 @@
 - optimize dockerfile cache and compilemessages timing
 - improved the docker versioning schema
 - convert images to webp during webpack build
+- added code formatters: prettier for JS and intellij .editorconfig for HTML & SCSS
 
 2021.01
 -------------------------------------------------------------------------------
