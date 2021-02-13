@@ -1,11 +1,13 @@
 {% load cms_tags %}
 
-<div class="float-plugin text-center float-{{ instance.float_breakpoint }}{{ instance.float_direction }}" style="
+<div class="float-plugin text-center float-{{ instance.float_breakpoint }}{{ instance.float_direction }}"
+    style="
         margin-top: {{ instance.margin_top }}px;
         margin-right: {{ instance.margin_right }}px;
         margin-bottom: {{ instance.margin_bottom }}px;
         margin-left: {{ instance.margin_left }}px;
-        ">
+        "
+>
     {% for plugin in instance.child_plugin_instances %}
         {% render_plugin plugin %}
     {% endfor %}

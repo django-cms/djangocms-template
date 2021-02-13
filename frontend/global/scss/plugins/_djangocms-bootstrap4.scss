@@ -13,8 +13,8 @@
 @mixin grid-vertical-gutter-size($gutter) {
     margin-top: - $gutter / 2;
     margin-bottom: - $gutter / 2;
-
-    > .col, > [class*="col-"] {
+    
+    > .col, > [class*='col-'] {
         padding-top: $gutter / 2;
         padding-bottom: $gutter / 2;
     }
@@ -43,14 +43,14 @@
 
 [class^='container'], [class*=' container'] {
     [class^='container'], [class*=' container'] {
-        padding-left: 0 !important;
         padding-right: 0 !important;
+        padding-left: 0 !important;
     }
 }
 
 
 main.container-fluid {
-
+    
     .container-plugin {
         $spacing-small-xl: 75px;
         $spacing-small-lg: 60px;
@@ -59,7 +59,7 @@ main.container-fluid {
         $spacing-large-xl: 135px;
         $spacing-large-lg: 80px;
         $spacing-extra-large-xl: 200px;
-
+        
         @mixin padding-vertical($spacing) {
             padding-top: $spacing;
             padding-bottom: $spacing;
@@ -78,11 +78,11 @@ main.container-fluid {
                 color: #9caaaf;
             }
         }
-
+        
         @mixin spacing($type, $xl, $lg: $xl, $sm: $lg) {
             @if $type == 'internal' {
                 @include padding-vertical($xl);
-    
+                
                 @include media-breakpoint-down(lg) {
                     @include padding-vertical($lg);
                 }
@@ -100,7 +100,7 @@ main.container-fluid {
                 }
             }
         }
-
+        
         @mixin spacing-internal {
             &.container-plugin--spacing-small {
                 @include spacing(
@@ -132,15 +132,15 @@ main.container-fluid {
             }
         }
         
-
+        
         // width internal
         
         %container-base {
+            width: 100%;
             margin-right: auto;
             margin-left: auto;
             padding-right: 15px;
             padding-left: 15px;
-            width: 100%;
         }
         &[data-width-internal='dynamic'] .container-internal {
             @include make-container();
@@ -158,10 +158,10 @@ main.container-fluid {
             @extend %container-base;
             max-width: 200px;
         }
-
-
+        
+        
         // spacing
-
+        
         &--spacing-small {
             @include margin-vertical($spacing-small-xl);
         }
@@ -186,35 +186,33 @@ main.container-fluid {
                 $lg: $spacing-large-lg,
             );
         }
-
-
+        
+        
         // background
         
         &--background-dark-blue,
         &--background-gray {
             position: relative;
-
+            
             &:before {
+                content: '';
+                display: block;
                 position: absolute;
                 top: 0;
                 right: -$grid-gutter-width / 2;
                 bottom: 0;
                 left: -$grid-gutter-width / 2;
-                display: block;
-                content: "";
             }
-
             > * {
                 position: relative;
             }
         }
+    
         &--background-gray {
+            @include spacing-internal();
             &:before {
                 background-color: $card-cap-bg;
             }
-
-            @include spacing-internal();
-
             .form-control {
                 border-radius: $btn-border-radius;
                 border-color: #f2f4f5;
@@ -222,7 +220,7 @@ main.container-fluid {
         }
         &--background-dark-blue {
             color: white;
-
+            
             &:before {
                 background-color: theme-color('primary');
             }
@@ -232,12 +230,12 @@ main.container-fluid {
             .btn-primary {
                 @include btn-on-black-background();
                 &:hover {
+                    border-color: white;
                     background-color: white;
                     color: black;
-                    border-color: white;
                 }
             }
-
+            
             @include spacing-internal();
         }
     }

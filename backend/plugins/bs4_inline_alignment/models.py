@@ -3,7 +3,6 @@ from django.db import models
 
 
 class InlineAlignmentModel(CMSPlugin):
-
     ALIGNMENT_CHOICES = (
         ('left', 'left'),
         ('center', 'center'),

@@ -7,36 +7,36 @@ because it contains redundant custom styles that aren't compatible with the conc
 
 
 body.cke_editable {
-    background-color: #fff;
     margin: 20px;
-    font-size: $font-size-base;
+    background-color: #fff;
     color: $body-color;
+    font-size: $font-size-base;
     /* Fix for missing scrollbars with RTL texts. (ckeditor#10488) */
     word-wrap: break-word;
     
     .marker {
         background-color: Yellow;
     }
-
+    
     span[lang] {
         font-style: italic;
     }
-
+    
     .code-featured {
         border: 5px solid red;
     }
     
     .math-featured {
-        padding: 20px;
-        box-shadow: 0 0 2px rgba(200, 0, 0, 1);
-        background-color: rgba(255, 0, 0, 0.05);
         margin: 10px;
+        padding: 20px;
+        background-color: rgba(255, 0, 0, 0.05);
+        box-shadow: 0 0 2px rgba(200, 0, 0, 1);
     }
     
     .image-clean {
+        padding: 0;
         border: 0;
         background: none;
-        padding: 0;
     }
     
     .image-clean > figcaption {
@@ -85,14 +85,14 @@ body.cke_editable {
 }
 
 .cke_contents_ltr blockquote {
-    padding-left: 20px;
     padding-right: 8px;
+    padding-left: 20px;
     border-left-width: 5px;
 }
 
 .cke_contents_rtl blockquote {
-    padding-left: 8px;
     padding-right: 20px;
+    padding-left: 8px;
     border-right-width: 5px;
 }
 

@@ -3,7 +3,6 @@ from django.db import models
 
 
 class FloatModel(CMSPlugin):
-
     FLOAT_CHOICES = (
         ('left', 'float left'),
         ('right', 'float right'),

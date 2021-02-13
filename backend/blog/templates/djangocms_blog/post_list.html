@@ -14,8 +14,8 @@
     {% static_placeholder 'before blog list' %}
 
     <section class="blog-list container">
-    
-    <h1>{% trans "Latest blog posts" %}</h1>
+
+        <h1>{% trans "Latest blog posts" %}</h1>
 
         {% block blog_title %}
             {% if author or archive_date or tagged_entries or category %}
@@ -25,11 +25,11 @@
                             {% trans "Articles by" %} {{ author.get_full_name }}
                         {% elif archive_date %}
                             {% trans "Archive" %} &ndash;
-                            
+
                             {% if month %}
                                 {{ archive_date|date:'F' }}
                             {% endif %}
-    
+
                             {{ year }}
                         {% elif tagged_entries %}
                             {% trans "Tag" %} &ndash; {{ tagged_entries|capfirst }}
@@ -50,7 +50,8 @@
         </div>
 
         {% if author or archive_date or tagged_entries %}
-            <p class="blog-back"><a href="{% url 'djangocms_blog:posts-latest' %}">{% trans "Back" %}</a></p>
+            <p class="blog-back"><a href="{% url 'djangocms_blog:posts-latest' %}">{% trans "Back" %}</a>
+            </p>
         {% endif %}
 
         {% if is_paginated %}
@@ -62,13 +63,14 @@
                     {% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ paginator.num_pages }}
                 </span>
                 {% if page_obj.has_next %}
-                    <a href="?{{ view.page_kwarg }}={{ page_obj.next_page_number }}">{% trans "next" %} &raquo;</a>
+                    <a href="?{{ view.page_kwarg }}={{ page_obj.next_page_number }}">{% trans "next" %}
+                        &raquo;</a>
                 {% endif %}
             </nav>
         {% endif %}
 
     </section>
-    
+
     {% static_placeholder 'after blog list' %}
 
 {% endblock %}

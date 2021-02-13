@@ -1,0 +1,10 @@
+frontend/node_modules/
+frontend/dist
+data/
+backend/static_collected/
+backend/addons-dev/
+backend/addons/
+package.json
+*.html
+*.md
+*.scss

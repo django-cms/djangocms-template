@@ -14,12 +14,12 @@ function initScriptReloadListener() {
     CMS.$(window).on(cmsPageEditedEvent, () => {
         $('script[data-is-reload-on-page-edit]').each((index, element) => {
             forceScriptReload.call(element);
-        })
+        });
         window.document.dispatchEvent(new Event('DOMContentLoaded', {
             bubbles: true,
             cancelable: true,
         }));
-    })
+    });
 }
 
 

@@ -1,0 +1,45 @@
+[*]
+indent_size = 4
+indent_style = space
+max_line_length = 92
+
+[*.scss]
+ij_scss_align_closing_brace_with_properties = false
+ij_scss_blank_lines_between_blocks = 0
+ij_scss_brace_placement = 0
+ij_scss_enforce_quotes_on_format = true
+ij_scss_keep_blank_lines_in_code = 2
+ij_scss_properties_order = content, quotes, display, visibility, position, z-index, top, right, bottom, left, box-sizing, grid, grid-after, grid-area, grid-auto-columns, grid-auto-flow, grid-auto-rows, grid-before, grid-column, grid-column-end, grid-column-gap, grid-column-start, grid-columns, grid-end, grid-gap, grid-row, grid-row-end, grid-row-gap, grid-row-start, grid-rows, grid-start, grid-template, grid-template-areas, grid-template-columns, grid-template-rows, flex, flex-basis, flex-direction, flex-flow, flex-grow, flex-shrink, flex-wrap, align-content, align-items, align-self, justify-content, order, width, min-width, max-width, height, min-height, max-height, margin, margin-top, margin-right, margin-bottom, margin-left, padding, padding-top, padding-right, padding-bottom, padding-left, float, clear, overflow, overflow-x, overflow-y, clip, zoom, columns, column-gap, column-fill, column-rule, column-span, column-count, column-width, table-layout, empty-cells, caption-side, border-spacing, border-collapse, list-style, list-style-position, list-style-type, list-style-image, transform, transform-box, transform-origin, transform-style, backface-visibility, perspective, perspective-origin, transition, transition-property, transition-duration, transition-timing-function, transition-delay, animation, animation-name, animation-duration, animation-play-state, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, border, border-top, border-right, border-bottom, border-left, border-width, border-top-width, border-right-width, border-bottom-width, border-left-width, border-style, border-top-style, border-right-style, border-bottom-style, border-left-style, border-radius, border-top-left-radius, border-top-right-radius, border-bottom-right-radius, border-bottom-left-radius, border-color, border-top-color, border-right-color, border-bottom-color, border-left-color, outline, outline-color, outline-offset, outline-style, outline-width, stroke-width, stroke-linecap, stroke-dasharray, stroke-dashoffset, stroke, opacity, background, background-attachment, background-clip, background-color, background-image, background-repeat, background-position, background-size, box-shadow, fill, color, font, font-family, font-size, font-size-adjust, font-smoothing, font-stretch, font-style, font-variant, font-weight, font-emphasize, font-emphasize-position, font-emphasize-style, letter-spacing, line-height, list-style, text-align, text-align-last, text-decoration, text-decoration-color, text-decoration-line, text-decoration-style, text-indent, text-justify, text-overflow, text-overflow-ellipsis, text-overflow-mode, text-rendering, text-outline, text-shadow, text-transform, text-wrap, word-wrap, word-break, text-emphasis, text-emphasis-color, text-emphasis-style, text-emphasis-position, vertical-align, white-space, word-spacing, hyphens, src, tab-size, counter-reset, counter-increment, resize, cursor, pointer-events, speak, user-select, nav-index, nav-up, nav-right, nav-down, nav-left,
+ij_scss_use_double_quotes = false
+ij_scss_value_alignment = 0
+
+[{*.htm,*.html,*.ng,*.sht,*.shtm,*.shtml}]
+max_line_length = 120
+ij_continuation_indent_size = 4
+ij_html_align_attributes = false
+ij_html_align_text = false
+ij_html_attribute_wrap = normal
+ij_html_block_comment_at_first_column = true
+ij_html_do_not_align_children_of_min_lines = 0
+ij_html_do_not_break_if_inline_tags = title,h1,h2,h3,h4,h5,h6,p
+ij_html_do_not_indent_children_of_tags = html,body,thead,tbody,tfoot
+ij_html_enforce_quotes = false
+ij_html_inline_tags = a,abbr,acronym,b,basefont,bdo,big,br,cite,cite,code,dfn,em,font,i,img,input,kbd,label,q,s,samp,select,small,span,strike,strong,sub,sup,textarea,tt,u,var
+ij_html_new_line_after_last_attribute = when multiline
+ij_html_new_line_before_first_attribute = never
+ij_html_quote_style = double
+
+[{*.markdown,*.md}]
+ij_markdown_force_one_space_after_blockquote_symbol = true
+ij_markdown_force_one_space_after_header_symbol = true
+ij_markdown_force_one_space_after_list_bullet = true
+ij_markdown_max_lines_around_block_elements = 1
+ij_markdown_max_lines_between_paragraphs = 1
+ij_markdown_min_lines_around_block_elements = 1
+ij_markdown_min_lines_between_paragraphs = 1
+
+[{*.py,*.pyw}]
+ij_python_optimize_imports_always_split_from_imports = true
+ij_python_optimize_imports_join_from_imports_with_same_source = false
+ij_python_optimize_imports_sort_by_type_first = true
+ij_python_optimize_imports_sort_imports = true

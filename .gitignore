@@ -11,9 +11,7 @@ data/
 data.tar.gz
 backend/static_collected/
 backend/.env
-backend/requirements.urls
 .venv
-.aldryn
 
 # dev files
 .idea/

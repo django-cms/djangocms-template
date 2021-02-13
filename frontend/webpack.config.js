@@ -1,13 +1,10 @@
 'use strict';
 
-
 const path = require('path');
 const MiniCssExtractPlugin = require(`mini-css-extract-plugin`);
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
-
 const isDevelopmentMode = process.env.NODE_ENV !== 'production';
-
 
 const config = {
     mode: 'production',
@@ -38,8 +35,8 @@ const config = {
                         options: {
                             encoding: 'base64',
                             iesafe: true,
-                        }
-                    }
+                        },
+                    },
                 ],
             },
             {
@@ -53,14 +50,12 @@ const config = {
                         loader: 'postcss-loader',
                         options: {
                             postcssOptions: {
-                                plugins: [
-                                    ['autoprefixer'],
-                                ],
+                                plugins: [['autoprefixer']],
                             },
                         },
                     },
                     {loader: 'sass-loader', options: {sourceMap: true}},
-                ]
+                ],
             },
             {
                 // images
@@ -74,7 +69,7 @@ const config = {
                                 digest: 'hex',
                                 name: '[name].[ext]',
                             },
-                        }
+                        },
                     },
                     {
                         loader: 'image-webpack-loader',
@@ -85,19 +80,17 @@ const config = {
                                 gifsicle: {interlaced: true},
                                 optipng: {optimizationLevel: 7},
                                 webp: {quality: 80},
-                            }
-                        }
-                    }
-                ]
+                            },
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(svg)(\?[\s\S]+)?$/,
                 // svg fonts cannot be processed the way we do with svg images above
                 // therefore they are handled separately here
                 include: /fonts/,
-                use: [
-                    'file-loader'
-                ]
+                use: ['file-loader'],
             },
             {
                 test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -109,19 +102,19 @@ const config = {
             },
             {
                 test: /\.vue$/,
-                use: [{loader: 'vue-loader'}]
+                use: [{loader: 'vue-loader'}],
             },
         ],
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js',],
-        modules: [
-            path.resolve('.'),
-            'node_modules'
-        ],
+        extensions: ['.ts', '.tsx', '.js'],
+        modules: [path.resolve('.'), 'node_modules'],
         alias: {
-            vue: process.env.NODE_ENV === 'production' ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js',
-        }
+            vue:
+                process.env.NODE_ENV === 'production'
+                    ? 'vue/dist/vue.min.js'
+                    : 'vue/dist/vue.js',
+        },
     },
     devServer: {
         static: {
@@ -135,14 +128,12 @@ const config = {
         headers: {
             'Access-Control-Allow-Origin': '*',
         },
-
     },
     plugins: [
         new VueLoaderPlugin(),
         new MiniCssExtractPlugin({filename: '[name].css'}),
     ],
 };
-
 
 if (isDevelopmentMode) {
     config.mode = 'development';
@@ -157,8 +148,7 @@ const isDockerMode = process.env.NODE_ENV === 'docker';
 if (isDockerMode) {
     config.devServer.watchOptions = {
         poll: 100, // enable polling since fsevents are not supported in docker
-    }
+    };
 }
-
 
 module.exports = config;

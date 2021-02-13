@@ -18,19 +18,18 @@ class SpacerPluginBase(CMSPluginBase):
     text_enabled = True
 
     fieldsets = [
-        (None, {
-            'fields': (
-                'smart_space',
-            )
-        }),
-        (_('Advanced settings'), {
-            'classes': ('collapse',),
-            'fields': (
-                'space_xs',
-                'space_sm',
-                'space_md',
-                'space_lg',
-                'space_xl',
-            )
-        }),
+        (None, {'fields': ('smart_space',)}),
+        (
+            _('Advanced settings'),
+            {
+                'classes': ('collapse',),
+                'fields': (
+                    'space_xs',
+                    'space_sm',
+                    'space_md',
+                    'space_lg',
+                    'space_xl',
+                ),
+            },
+        ),
     ]

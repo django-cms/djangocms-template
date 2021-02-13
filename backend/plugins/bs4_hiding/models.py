@@ -3,7 +3,6 @@ from django.db import models
 
 
 class Bootstrap4HidePluginModel(CMSPlugin):
-
     hide_on_very_small_devices = models.BooleanField(
         default=False,
         help_text="hide on very small devices and upwards",

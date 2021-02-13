@@ -17,65 +17,74 @@
 
 {% block content_blog %}
 
-{% static_placeholder 'blog header' %}
+    {% static_placeholder 'blog header' %}
 
-<section
-    class="section-with-image-background-plugin"
-    style="background: url('{% thumbnail post.main_image 2560x350 crop=True subject_location=post.main_image.subject_location %}'); height: 350px;"
->
-</section>
+    <section
+        class="section-with-image-background-plugin"
+        style="background: url('{% thumbnail post.main_image 2560x350 crop=True subject_location=post.main_image.subject_location %}'); height: 350px;"
+    >
+    </section>
 
-<section class="container">
-    <div class="row">
-    
-        <article id="post-{{ post.slug }}" class="post-item post-detail col-lg-17 col-md-24">
-            <header>
-        
-                <h1 class="post-title">{% render_model post "title" %}</h1>
-                {% if post.subtitle %}
-                    <h3>{% render_model post "subtitle" %}</h3>
+    <section class="container">
+        <div class="row">
+
+            <article id="post-{{ post.slug }}" class="post-item post-detail col-lg-17 col-md-24">
+                <header>
+
+                    <h1 class="post-title">{% render_model post "title" %}</h1>
+                    {% if post.subtitle %}
+                        <h3>{% render_model post "subtitle" %}</h3>
+                    {% endif %}
+                    {% block blog_meta %}
+                        {% include "djangocms_blog/includes/blog_meta.html" %}
+                    {% endblock %}
+                </header>
+
+                {% if post.app_config.use_placeholder %}
+                    <div class="blog-content">{% render_placeholder post.content %}</div>
+                {% else %}
+                    <div class="blog-content"
+                    >{% render_model post "post_text" "post_text" "" "safe" %}</div>
                 {% endif %}
-                {% block blog_meta %}
-                    {% include "djangocms_blog/includes/blog_meta.html" %}
-                {% endblock %}
-            </header>
-        
-            {% if post.app_config.use_placeholder %}
-                <div class="blog-content">{% render_placeholder post.content %}</div>
-            {% else %}
-                <div class="blog-content">{% render_model post "post_text" "post_text" "" "safe" %}</div>
-            {% endif %}
-            {% if view.liveblog_enabled %}
-                {% include "liveblog/includes/post_detail.html" %}
-            {% endif %}
-    
-            {% page_meta request.current_page as meta %}
-            
-            <div class="djangocms-socialshare-plugin">
-                <a class="icon" href="https://www.facebook.com/sharer/sharer.php?u={{ meta.url }}" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a class="icon" href="https://www.linkedin.com/sharing/share-offsite/?url={{ meta.url }}" target="_blank">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a class="icon" href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site {{ meta.url }}." target="_blank">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
+                {% if view.liveblog_enabled %}
+                    {% include "liveblog/includes/post_detail.html" %}
+                {% endif %}
 
-            {% if post.related.exists %}
-                <section class="post-detail-list">
-                    {% for related in post.related.all %}
-                        {% include "djangocms_blog/includes/blog_item.html" with post=related image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
-                    {% endfor %}
-                </section>
-            {% endif %}
-        </article>
-            
-        <aside class="post-detail-aside aside-right col-7">
-            {% static_placeholder 'Blog post sidebar' %}
-        </aside>
+                {% page_meta request.current_page as meta %}
 
-    </div>
-</section>
+                <div class="djangocms-socialshare-plugin">
+                    <a class="icon" href="https://www.facebook.com/sharer/sharer.php?u={{ meta.url }}"
+                        target="_blank"
+                    >
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="icon"
+                        href="https://www.linkedin.com/sharing/share-offsite/?url={{ meta.url }}"
+                        target="_blank"
+                    >
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="icon"
+                        href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site {{ meta.url }}."
+                        target="_blank"
+                    >
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+
+                {% if post.related.exists %}
+                    <section class="post-detail-list">
+                        {% for related in post.related.all %}
+                            {% include "djangocms_blog/includes/blog_item.html" with post=related image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+                        {% endfor %}
+                    </section>
+                {% endif %}
+            </article>
+
+            <aside class="post-detail-aside aside-right col-7">
+                {% static_placeholder 'Blog post sidebar' %}
+            </aside>
+
+        </div>
+    </section>
 {% endblock content_blog %}
