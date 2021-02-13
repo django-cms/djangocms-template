@@ -6,46 +6,51 @@
         "node": "^14.0"
     },
     "dependencies": {
+
         "//": "core pakcages",
+        
         "webpack": "^5.0.0",
-        "webpack-dev-server": "^4.0.0-beta.0",
-        "webpack-cli": "^4.0.0",
-        "//": "required for cli commands, eg dev server",
+            "webpack-dev-server": "^4.0.0-beta.0",
+            "webpack-cli": "^4.0.0",  "//": "required for cli commands, eg dev server",
+
         "file-loader": "^6.0.0",
         "image-webpack-loader": "^7.0.0",
         "svg-url-loader": "^7.0.0",
+
         "mini-css-extract-plugin": "^1.0.0",
-        "node-sass": "^5.0.0",
-        "precss": "^4.0.0",
-        "sass-loader": "^11.0.0",
-        "//": "processes css files after mini-css",
-        "css-loader": "^5.0.0",
-        "//": "handels `@import` and `url()`",
+            "node-sass": "^5.0.0",
+            "precss": "^4.0.0",
+        "sass-loader": "^11.0.0",  "//": "processes css files after mini-css",
+        "css-loader": "^5.0.0",  "//": "handels `@import` and `url()`",
         "style-loader": "^2.0.0",
+
         "ts-loader": "^8.0.0",
         "typescript": "^4.0.0",
+
         "vue": "^2.6.11",
-        "vue-loader": "^15.9.2",
-        "vue-template-compiler": "^2.6.11",
-        "vue-class-component": "^7.2.3",
-        "vue-property-decorator": "^9.0.0",
-        "@vue/cli": "^4.4.6",
-        "@babel/core": "^7.11.4",
+            "vue-loader": "^15.9.2",
+            "vue-template-compiler": "^2.6.11",
+            "vue-class-component": "^7.2.3",
+            "vue-property-decorator": "^9.0.0",
+            "@vue/cli": "^4.4.6",
+            "@babel/core": "^7.11.4",
+
         "//": "optional packages",
+
         "jquery": "^3.0.0",
-        "@types/jquery": "^3.0.0",
+            "@types/jquery": "^3.0.0",
         "bootstrap": "^4.0.0",
-        "popper.js": "^1.0.0",
-        "//": "a peer depepndency of BS, for tooltips, might be useless",
-        "@types/bootstrap": "^4.0.0",
-        "autoprefixer": "^10.0.0",
-        "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically",
-        "postcss-loader": "^5.0.0",
-        "postcss": "^8.0.0",
+            "popper.js": "^1.0.0", "//": "a peer depepndency of BS, for tooltips, might be useless",
+            "@types/bootstrap": "^4.0.0",
+        "autoprefixer": "^10.0.0",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically",
+            "postcss-loader": "^5.0.0",
+            "postcss": "^8.0.0",
         "@sentry/browser": "^6.0.0",
-        "@fortawesome/fontawesome-free": "^5.0.0",
-        "//": "for djangocms-icon",
+        "@fortawesome/fontawesome-free": "^5.0.0", "//": "for djangocms-icon",
+        
         "//": "project packages"
+
+        
     },
     "scripts": {
         "start": "webpack serve",
