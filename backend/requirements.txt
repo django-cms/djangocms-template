@@ -109,7 +109,7 @@ djangocms-helpers==2.2.1.3  # via -r requirements.in
 djangocms-history==2.0.0  # via -r requirements.in
 djangocms-icon==2.0.0     # via -r requirements.in, djangocms-bootstrap4
 djangocms-light-gallery==1.1.0  # via -r requirements.in
-djangocms-link-all==0.6.1.0  # via -r requirements.in
+djangocms-link-all==0.6.1.1  # via -r requirements.in
 djangocms-link==3.0.0     # via -r requirements.in, djangocms-bootstrap4
 djangocms-modules==1.0.0  # via -r requirements.in
 djangocms-page-meta==1.0.1  # via -r requirements.in
