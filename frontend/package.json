@@ -15,6 +15,7 @@
 
         "file-loader": "^6.0.0",
         "image-webpack-loader": "^7.0.0",
+            "imagemin-gifsicle": "^7.0.0", "//": "only used on macos to run dev server",
         "svg-url-loader": "^7.0.0",
 
         "mini-css-extract-plugin": "^1.0.0",
