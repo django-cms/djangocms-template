@@ -234,12 +234,14 @@ STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365  # the default is 5m
 WHITENOISE_MAX_AGE = STATICFILES_DEFAULT_MAX_AGE
 
 
-DEFAULT_STORAGE_DSN = env.str('DEFAULT_STORAGE_DSN', 'file:///data/media/?url=%2Fmedia%2F')
 DefaultStorageClass = dsn_configured_storage_class('DEFAULT_STORAGE_DSN')
-DEFAULT_FILE_STORAGE = 'backend.settings.DefaultStorageClass'
-
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join('/data/media/')
+if env.str('DEFAULT_STORAGE_DSN', ''):
+    DEFAULT_STORAGE_DSN = env.str('DEFAULT_STORAGE_DSN')
+    DEFAULT_FILE_STORAGE = 'backend.settings.DefaultStorageClass'
+else:
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'data/media/')
 
 
 # allauth
