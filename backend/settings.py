@@ -274,7 +274,7 @@ WEBPACK_DEV_URL = env.str('WEBPACK_DEV_URL', default='http://0.0.0.0:8090')
 default_template_engine['OPTIONS']['context_processors'].extend([
     'django_settings_export.settings_export',
 ])
-SENTRY_DSN = locals().get('SENTRY_DSN', '')
+SENTRY_DSN = env.str('SENTRY_DSN', '')
 SETTINGS_EXPORT = [
     'DOMAIN',
     'SITE_NAME',
