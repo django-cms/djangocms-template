@@ -264,7 +264,7 @@ CONFIRM_EMAIL_ON_GET = True
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},  # removes frustrating validations, eg `too similar to your email`
 ]
-ALDRYN_SSO_LOGIN_URL_PREFIX = 'admin'
+ALDRYN_SSO_LOGIN_URL_PREFIX = 'divio'
 
 
 GTM_CONTAINER_ID = env.str('GTM_CONTAINER_ID', 'GTM-1234')
