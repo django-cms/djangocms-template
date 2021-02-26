@@ -1,6 +1,7 @@
 2021.02
 -------------------------------------------------------------------------------
 
+- fixed djangocms-link-all double anchor `#` bug
 - fixed frontend building by installing linux package `autoconf`
 - upgraded backend & frontend dependencies to incorporate the latest security patches
 - optimized dockerfile cache and compilemessages timing
