@@ -1,6 +1,8 @@
 2021.02
 -------------------------------------------------------------------------------
 
+- recompiled requirements.txt
+- bumped aldryn-django to 3.1.7.0
 - fixed djangocms-link-all double anchor `#` bug
 - fixed frontend building by installing linux package `autoconf`
 - upgraded backend & frontend dependencies to incorporate the latest security patches
