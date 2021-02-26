@@ -4,7 +4,9 @@ from django.db import models
 
 class VerticalSpacerPlugin(CMSPlugin):
     smart_space = models.PositiveIntegerField(
-        "Default Space", default=0, help_text="in px, for desktop, height on other devices is calculated automatically"
+        "Default Space",
+        default=0,
+        help_text="in px, for desktop, height on other devices is calculated automatically",
     )
 
     space_xs = models.PositiveIntegerField(
@@ -15,13 +17,22 @@ class VerticalSpacerPlugin(CMSPlugin):
         null=True,
     )
     space_sm = models.PositiveIntegerField(
-        "small screens and above", help_text="in px for small screens and above", blank=True, null=True
+        "small screens and above",
+        help_text="in px for small screens and above",
+        blank=True,
+        null=True,
     )
     space_md = models.PositiveIntegerField(
-        "medium screens and above", help_text="in px for medium screens and above", blank=True, null=True
+        "medium screens and above",
+        help_text="in px for medium screens and above",
+        blank=True,
+        null=True,
     )
     space_lg = models.PositiveIntegerField(
-        "large screens and above", help_text="in px for large screens and above", blank=True, null=True
+        "large screens and above",
+        help_text="in px for large screens and above",
+        blank=True,
+        null=True,
     )
     space_xl = models.PositiveIntegerField(
         "very large screens", help_text="in px for extra large screens", blank=True, null=True

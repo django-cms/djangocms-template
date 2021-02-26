@@ -1,6 +1,6 @@
 [tool.isort]
 force_single_line = true
-line_length = 120
+line_length = 97
 lines_after_imports = 2
 skip = [
     'backend/addons/',
@@ -14,7 +14,7 @@ skip = [
 [tool.black]
 target-version = ['py38']
 skip-string-normalization = true
-line-length = 120
+line-length = 97
 exclude = '''
 (
   /(
