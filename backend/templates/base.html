@@ -27,6 +27,7 @@
 
 
     <script>
+        const DJANGO_ENV = '{{ settings.DJANGO_ENV.value }}';
         document.addEventListener('DOMContentLoaded', function () {
             if (window.django) {
                 window.django.env = '{{ settings.DJANGO_ENV.value }}';

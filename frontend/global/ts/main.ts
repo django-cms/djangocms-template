@@ -1,13 +1,24 @@
 import {initReloadScriptsOnContentRefresh} from 'global/ts/reload-scripts-on-content-refresh';
+import * as Sentry from '@sentry/browser';
 
 
-// remember to removeEventListener on `DOMContentLoaded`, see more in docs/
+try {
+    document.removeEventListener('DOMContentLoaded', initScripts);
+} catch (error) {
+    // todo try catch might be redundant
+}
+document.addEventListener('DOMContentLoaded', initScripts);
 
-document.addEventListener(
-    'DOMContentLoaded',
-    () => {
-        initReloadScriptsOnContentRefresh();
-    },
-    {once: true},
-);
 
+function initScripts() {
+    tryScriptExecution(initReloadScriptsOnContentRefresh);
+}
+
+
+function tryScriptExecution(callable: CallableFunction) {
+    try {
+        callable()
+    } catch (error) {
+        Sentry.captureException(error);
+    }
+}

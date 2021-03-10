@@ -1,3 +1,9 @@
+2021.01
+-------------------------------------------------------------------------------
+
+- fixed frontend sentry loading, now it captures the first scripts execution exceptions
+- fixed the issue with frontend components being incorrectly reloaded after a content change, which caused browser memory overload
+
 2021.02
 -------------------------------------------------------------------------------
 

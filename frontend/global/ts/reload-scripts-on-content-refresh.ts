@@ -24,7 +24,19 @@ function initScriptReloadListener() {
 
 
 function forceScriptReload() {
-    const scriptSrc = $(this).attr('src') as string;
-    $(this).remove();
-    $('<script>').attr('src', scriptSrc).appendTo('head');
+    const isScriptHasSourceAttr = $(this).attr('src');
+    if (isScriptHasSourceAttr) {
+        const scriptSrc = $(this).attr('src') as string;
+        $(this).remove();
+        $('<script>').attr('src', scriptSrc).appendTo('head');
+    } else {
+        const scriptBody = $(this).html();
+        const scriptParent = $(this).parent()
+        $(this).remove();
+        eval(
+            $('<script/>', {html: scriptBody})
+                .appendTo(scriptParent)
+                .text()
+        );
+    }
 }
