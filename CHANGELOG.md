@@ -3,6 +3,7 @@
 
 - fixed frontend sentry loading, now it captures the first scripts execution exceptions
 - fixed the issue with frontend components being incorrectly reloaded after a content change, which caused browser memory overload
+- fixed CKEditor WYSIWYG styles
 
 2021.02
 -------------------------------------------------------------------------------

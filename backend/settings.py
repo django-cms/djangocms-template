@@ -460,6 +460,7 @@ CKEDITOR_SETTINGS = {
         '0.7rem;'
         '0.8rem;'
         '0.9rem;'
+        '0.95rem;'
         '1rem;'
         '1.1rem;'
         '1.2rem;'
@@ -478,8 +479,8 @@ CKEDITOR_SETTINGS = {
     ),
     'stylesSet': f'default:{STATIC_URL}global/ts/ckeditor-config.js',
     'contentsCss': [
-        f'{WEBPACK_DEV_URL}/vendor.css' if DJANGO_ENV == DjangoEnv.LOCAL else f'{STATIC_URL}/dist/vendor.css',
-        f'{WEBPACK_DEV_URL}/global.css' if DJANGO_ENV == DjangoEnv.LOCAL else f'{STATIC_URL}/dist/global.css',
+        f'{WEBPACK_DEV_URL}/vendor.css' if DJANGO_ENV == DjangoEnv.LOCAL else f'{STATIC_URL}dist/vendor.css',
+        f'{WEBPACK_DEV_URL}/global.css' if DJANGO_ENV == DjangoEnv.LOCAL else f'{STATIC_URL}dist/global.css',
     ],
     'config': {
         'allowedContent': True, # allows html tags
