@@ -20,7 +20,7 @@ Perfect for people who aren't planning to do any backend development and want th
 - install yarn & node 14 outside of docker
 - `cd frontend`
 - `yarn install --pure-lockfile`
-- `yarn start`
+- `yarn serve`
 - `cd ..`
 - `docker-compose up web`
 
@@ -37,7 +37,7 @@ The most efficient and reliable setup for backend development.
 - install yarn and node 14
 - `cd frontend`
 - `yarn install --pure-lockfile`
-- `yarn start`
+- `yarn serve`
 
 ### Update requirements.txt
 
