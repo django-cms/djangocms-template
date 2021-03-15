@@ -120,7 +120,7 @@ django-classy-tags==2.0.0
     #   django-cms
     #   django-sekizai
     #   django-standard-form
-https://github.com/django-cms/django-cms/archive/bb545503fd36207a148a6cac69275133da5e536b.zip#egg=django-cms==3.8.1
+https://github.com/victor-yunenko/django-cms/archive/0785bcc12b7f774c363d81ebbea5984d655c235f.zip#egg=django-cms==3.8.1
     # via
     #   -r requirements.in
     #   aldryn-apphooks-config
