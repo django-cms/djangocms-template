@@ -7,7 +7,7 @@ try {
 } catch (error) {
     // todo try catch might be redundant
 }
-document.addEventListener('DOMContentLoaded', initScripts);
+document.addEventListener('DOMContentLoaded', initScripts, {once: true});
 
 
 function initScripts() {
