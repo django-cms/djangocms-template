@@ -367,7 +367,7 @@ djangocms-icon==2.0.0
     #   djangocms-bootstrap4
 djangocms-light-gallery==1.1.0
     # via -r requirements.in
-djangocms-link-all==0.6.1.1
+djangocms-link-all==0.6.1.2
     # via -r requirements.in
 djangocms-link==3.0.0
     # via
