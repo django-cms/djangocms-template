@@ -25,6 +25,12 @@
     <link rel="shortcut icon" href="{% static 'global/img/favicon.ico' %}" type="image/x-icon"/>
     {% render_block 'css' %}
 
+    {% for lang_code, url in languages %}
+        {% if lang_code == settings.LANGUAGE_CODE %}
+            <link rel="alternate" href="{{ url }}" hreflang="x-default" />
+        {% endif %}
+        <link rel="alternate" hreflang="{{ lang_code }}" href="{{ url }}"/>
+    {% endfor %}
 
     <script>
         const DJANGO_ENV = '{{ settings.DJANGO_ENV.value }}';

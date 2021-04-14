@@ -1,6 +1,7 @@
 2021.03
 -------------------------------------------------------------------------------
 
+- added SEO language hrefs
 - fixed the django-cms treebeard bug
 - fixed frontend sentry loading, now it captures the first scripts execution exceptions
 - fixed the issue with frontend components being incorrectly reloaded after a content change, which caused browser memory overload
