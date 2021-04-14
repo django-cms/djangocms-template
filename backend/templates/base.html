@@ -29,7 +29,7 @@
         {% if lang_code == settings.LANGUAGE_CODE %}
             <link rel="alternate" href="{{ url }}" hreflang="x-default" />
         {% endif %}
-        <link rel="alternate" hreflang="{{ lang_code }}" href="{{ url }}"/>
+        <link rel="alternate" href="{{ url }}" hreflang="{{ lang_code }}"/>
     {% endfor %}
 
     <script>
