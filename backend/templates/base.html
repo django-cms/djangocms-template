@@ -25,11 +25,11 @@
     <link rel="shortcut icon" href="{% static 'global/img/favicon.ico' %}" type="image/x-icon"/>
     {% render_block 'css' %}
 
-    {% for lang_code, url in languages %}
-        {% if lang_code == settings.LANGUAGE_CODE %}
-            <link rel="alternate" href="{{ url }}" hreflang="x-default" />
+    {% for language in languages %}
+        {% if language.0 == settings.LANGUAGE_CODE %}
+            <link rel="alternate" href="{{request.scheme}}://{{request.META.HTTP_HOST}}{% page_language_url language.0 %}" hreflang="x-default" />
         {% endif %}
-        <link rel="alternate" href="{{ url }}" hreflang="{{ lang_code }}"/>
+        <link rel="alternate" hreflang="{{ language.0 }}" href="{{request.scheme}}://{{request.META.HTTP_HOST}}{% page_language_url language.0 %}"/>
     {% endfor %}
 
     <script>
