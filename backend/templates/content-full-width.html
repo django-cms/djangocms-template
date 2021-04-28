@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% load cms_tags sekizai_tags static %}
+
+
+{% block content %}
+  <main>
+    {% placeholder 'content' %}
+  </main>
+
+  <footer>
+    {% static_placeholder 'footer' %}
+  </footer>
+{% endblock %}

@@ -112,6 +112,7 @@ INSTALLED_APPS.extend([
     'djangocms_helpers',
     'djangocms_helpers.divio',  # fixes a bug in divio aldryn commands
     'djangocms_helpers.sentry_500_error_handler',
+    'livereload',
 
     # django cms
 
