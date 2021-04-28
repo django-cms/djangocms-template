@@ -5,6 +5,7 @@ from typing import List
 import dj_database_url
 import environ
 from django_storage_url import dsn_configured_storage_class
+
 from link_all.dataclasses import LinkAllModel
 
 
@@ -211,6 +212,49 @@ default_template_engine['DIRS'].extend([
     os.path.join(BACKEND_DIR, 'templates/'),
 ])
 
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BACKEND_DIR, 'templates/'),
+        ],
+        'OPTIONS': {
+            'debug': True,
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.template.context_processors.media',
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.tz',
+                'django.template.context_processors.static',
+                'aldryn_django.context_processors.debug',
+                'sekizai.context_processors.sekizai',
+                'cms.context_processors.cms_settings',
+                'aldryn_snake.template_api.template_processor',
+                'django_settings_export.settings_export',
+            ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                (
+                    'pypugjs.ext.django.Loader',
+                    [
+                        'django.template.loaders.filesystem.Loader',
+                        'django.template.loaders.app_directories.Loader',
+                    ],
+                )
+            ],
+            'builtins': [
+                'pypugjs.ext.django.templatetags',
+            ],
+        },
+    }
+]
+
+
 if DJANGO_ENV == DjangoEnv.LOCAL:
     email_backend_default = 'django.core.mail.backends.console.EmailBackend'
 else:
@@ -272,9 +316,6 @@ GTM_CONTAINER_ID = env.str('GTM_CONTAINER_ID', 'GTM-1234')
 WEBPACK_DEV_URL = env.str('WEBPACK_DEV_URL', default='http://0.0.0.0:8090')
 
 
-default_template_engine['OPTIONS']['context_processors'].extend([
-    'django_settings_export.settings_export',
-])
 SENTRY_DSN = env.str('SENTRY_DSN', '')
 SETTINGS_EXPORT = [
     'DOMAIN',
@@ -378,7 +419,7 @@ else:
 
 
 CMS_TEMPLATES = [
-    ('content-full-width.html', 'full width'),
+    ('content-full-width.pug', 'full width'),
 ]
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'

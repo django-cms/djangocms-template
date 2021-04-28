@@ -13,9 +13,10 @@ ij_scss_properties_order = content, quotes, display, visibility, position, z-ind
 ij_scss_use_double_quotes = false
 ij_scss_value_alignment = 0
 
-[{*.htm,*.html,*.ng,*.sht,*.shtm,*.shtml}]
+[{*.htm,*.html,*.ng,*.sht,*.shtm,*.shtml,*.pug}]
 max_line_length = 120
-ij_continuation_indent_size = 4
+indent_size = 2
+ij_continuation_indent_size = 2
 ij_html_align_attributes = false
 ij_html_align_text = false
 ij_html_attribute_wrap = normal

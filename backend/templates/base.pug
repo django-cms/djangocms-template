@@ -1,0 +1,32 @@
+- load cms_tags sekizai_tags static i18n menu_tags page_meta_tags gtm_tags
+
+
+- page_meta request.current_page as page_meta
+
+- get_current_language as lang_code
+
+    
+html(lang="{{ lang_code }}")
+  head
+    meta(charset="UTF-8")
+    title
+      block page_title
+        - page_attribute 'page_title'
+      block meta
+        - include "djangocms_page_meta/meta.html" with meta=page_meta
+      - render_block 'css'
+    script.
+      const DJANGO_ENV = '{{ settings.DJANGO_ENV.value }}';
+    if settings.DJANGO_ENV.value == 'local'
+      script(defer src='{{ settings.WEBPACK_DEV_URL }}/vendor.bundle.js' data-is-reload-on-page-edit='true')
+      script(defer src='{{ settings.WEBPACK_DEV_URL }}/global.bundle.js' data-is-reload-on-page-edit='true')
+      link(rel='stylesheet' href='{{ settings.WEBPACK_DEV_URL }}/vendor.css')
+      link(rel='stylesheet' href='{{ settings.WEBPACK_DEV_URL }}/global.css')
+    else
+      script(defer src="{% static 'dist/vendor.js' %}" data-is-reload-on-page-edit='true')
+      script(defer src="{% static 'dist/global.js' %}" data-is-reload-on-page-edit='true')
+      link(rel='stylesheet' href="{% static 'dist/vendor.css' %}")
+      link(rel='stylesheet' href="{% static 'dist/global.css' %}")
+  body
+    footer
+      - static_placeholder 'footer'
