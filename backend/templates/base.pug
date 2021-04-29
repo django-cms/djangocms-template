@@ -2,7 +2,6 @@
 
 
 - page_meta request.current_page as page_meta
-
 - get_current_language as lang_code
 
     
@@ -22,11 +21,20 @@ html(lang="{{ lang_code }}")
       script(defer src='{{ settings.WEBPACK_DEV_URL }}/global.bundle.js' data-is-reload-on-page-edit='true')
       link(rel='stylesheet' href='{{ settings.WEBPACK_DEV_URL }}/vendor.css')
       link(rel='stylesheet' href='{{ settings.WEBPACK_DEV_URL }}/global.css')
+      block head_local_frontend_files
     else
       script(defer src="{% static 'dist/vendor.js' %}" data-is-reload-on-page-edit='true')
       script(defer src="{% static 'dist/global.js' %}" data-is-reload-on-page-edit='true')
       link(rel='stylesheet' href="{% static 'dist/vendor.css' %}")
       link(rel='stylesheet' href="{% static 'dist/global.css' %}")
-  body
+      block head_prod_frontend_files
+    - render_block "head_frontend_files"
+    block head
+  body(class="lang-{{ lang_code }} {% render_block 'body_classes' %}")
+    - cms_toolbar
+    .container
+      block messages
+      block content
     footer
       - static_placeholder 'footer'
+    - render_block "js"
