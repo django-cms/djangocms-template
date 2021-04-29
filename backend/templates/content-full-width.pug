@@ -1,16 +1,10 @@
-- load cms_tags
+- extends 'base.html'
+- load cms_tags sekizai_tags static
 
-html(lang="en")
-    head
-        title= pageTitle
-        script(type='text/javascript').
-            if (foo) {
-                bar()
-            }
-    body
-        h1.title PugJS - node template engine
-        #container
-            if you_are_using_pug
-                p You are amazing
-            else
-                p Get on it!
+
+block content
+  main
+    - placeholder 'content'
+  
+  footer
+    - static_placeholder 'footer'
