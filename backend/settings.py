@@ -60,7 +60,6 @@ aldryn_addons.settings.load(locals())
 INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
 BASE_DIR: str = locals()['BASE_DIR']
 STATIC_URL: str = locals()['STATIC_URL']
-TEMPLATES: List[dict] = locals()['TEMPLATES']
 DEBUG: bool = locals()['DEBUG']
 MIGRATION_COMMANDS: List[str] = locals()['MIGRATION_COMMANDS']
 SITE_ID: int = locals()['SITE_ID']
@@ -207,11 +206,6 @@ LOCALE_PATHS = [
 ]
 
 ROOT_URLCONF = 'backend.urls'
-
-default_template_engine: dict = TEMPLATES[0]
-default_template_engine['DIRS'].extend([
-    os.path.join(BACKEND_DIR, 'templates/'),
-])
 
 TEMPLATES = [
     {
