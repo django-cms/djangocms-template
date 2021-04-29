@@ -61,6 +61,7 @@ django-logentry-admin
 django-adminutils # a set of shortcuts for admin.py composition
 dj-database-url
 livereload
+pypugjs
 
 
 # python utils
