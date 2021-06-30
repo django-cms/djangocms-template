@@ -140,7 +140,7 @@ INSTALLED_APPS.extend([
     'djangocms_file',
     'djangocms_snippet',
     'djangocms_socialshare',
-    'djangocms_algolia',
+    # 'djangocms_algolia',
     'djangocms_page_meta',
         'meta',
     'aldryn_forms_bs4_templates',
@@ -370,6 +370,16 @@ else:
         'permissions': one_hour,
         'content': four_hours,
     }
+
+
+DEFAULT_RENDERER_CLASSES = (
+    'rest_framework.renderers.JSONRenderer',
+)
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES,
+    'DEFAULT_PERMISSION_CLASSES': 'rest_framework.permissions.IsAuthenticated'
+}
 
 
 ################################################################################

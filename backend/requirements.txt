@@ -24,7 +24,7 @@ aldryn-common==1.0.5
     # via aldryn-search
 https://github.com/victor-yunenko/aldryn-django-cms/archive/3.8.0.3.zip#egg=aldryn-django-cms==3.8.0.3
     # via -r requirements.in
-https://control.divio.com/api/v1/apps/serve/aldryn-django/3.1.7.0/d132cf4b-4651-4d75-8863-eec3a08a24fa/aldryn-django-3.1.7.0.tar.gz#egg=aldryn-django==3.1.7.0
+https://control.divio.com/api/v1/apps/serve/aldryn-django/3.1.12.0/317e70eb-6763-4802-92f9-da6140c0b4a5/aldryn-django-3.1.12.0.tar.gz#egg=aldryn-django==3.1.12.0
     # via -r requirements.in
 aldryn-forms-recaptcha-plugin==1.0.0.2
     # via -r requirements.in
@@ -281,7 +281,7 @@ django-username-email==2.4.1
     # via -r requirements.in
 django-widget-tweaks==1.4.8
     # via -r requirements.in
-django==3.1.7
+django==3.1.12
     # via
     #   aldryn-addons
     #   aldryn-boilerplates

@@ -30,7 +30,7 @@ services:
         command: yarn webpack-dev-server-in-docker
 
     db:
-        image: postgres:9.6-alpine
+        image: postgres:10.16-alpine
         ports:
             - '5432:5432'
         environment:
