@@ -178,6 +178,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'csp.middleware.CSPMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
@@ -380,6 +381,31 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES,
     'DEFAULT_PERMISSION_CLASSES': 'rest_framework.permissions.IsAuthenticated'
 }
+
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_HTTPONLY = True
+
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+
+# CSP settings have to be updated if some external media source is used
+CSP_DEFAULT_SRC = ("*", "'self'",)
+CSP_STYLE_SRC = ("*", "'self'", "'unsafe-eval'", "'unsafe-inline'", )
+CSP_SCRIPT_SRC = ("*", "'self'", "'unsafe-eval'", "'unsafe-inline'", )
+CSP_INCLUDE_NONCE_IN = ["script-src"]
+CSP_FONT_SRC = ("*", )
+CSP_IMG_SRC = (
+    "*", "'self'", "https://*.divio-media.org", "https://www.google.com/", "https://www.google-analytics.com/",
+    "data:"
+)
+CSP_MEDIA_SRC = ("*", "'self'", "https://*.divio-media.org", "data:")
 
 
 ################################################################################

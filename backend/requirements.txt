@@ -41,25 +41,25 @@ aldryn-snake==2.0.0
     # via aldryn-django-cms
 https://control.divio.com/api/v1/apps/serve/aldryn-sso/2.0.0/e6eccefa-e8f5-492d-8e71-79fc99f30201/aldryn-sso-2.0.0.tar.gz#egg=aldryn-sso==2.0.0
     # via -r requirements.in
-algoliasearch-django==1.7.3
+algoliasearch-django==2.0.0
     # via djangocms-algolia
-algoliasearch==1.20.0
+algoliasearch==2.5.0
     # via algoliasearch-django
-asgiref==3.3.1
+asgiref==3.4.1
     # via django
 backcall==0.2.0
     # via ipython
 beautifulsoup4==4.9.3
     # via djangocms-algolia
-boto3==1.17.27
+boto3==1.17.105
     # via django-storages
-botocore==1.20.27
+botocore==1.20.105
     # via
     #   boto3
     #   s3transfer
-cachetools==4.2.1
+cachetools==4.2.2
     # via premailer
-certifi==2020.12.5
+certifi==2021.5.30
     # via
     #   requests
     #   sentry-sdk
@@ -67,18 +67,18 @@ cffi==1.14.5
     # via cryptography
 chardet==4.0.0
     # via requests
-click==7.1.2
+click==8.0.1
     # via
     #   aldryn-client
     #   aldryn-django
     #   pip-tools
-cryptography==3.4.6
+cryptography==3.4.7
     # via pyjwt
 cssselect==1.1.0
     # via premailer
-cssutils==2.2.0
+cssutils==2.3.0
     # via premailer
-decorator==4.4.2
+decorator==5.0.9
     # via ipython
 defusedxml==0.7.1
     # via
@@ -98,7 +98,7 @@ django-absolute==0.3
     # via
     #   -r requirements.in
     #   django-emailit
-django-admin-sortable2==0.7.8
+django-admin-sortable2==1.0
     # via -r requirements.in
 django-adminutils==0.0.10
     # via -r requirements.in
@@ -150,9 +150,11 @@ https://github.com/victor-yunenko/django-cms/archive/0785bcc12b7f774c363d81ebbea
     #   djangocms-video
 django-compat==1.0.15
     # via django-hijack-admin
-django-compressor==2.4
+django-compressor==2.4.1
     # via aldryn-django-cms
-django-countries==7.0
+django-countries==7.2.1
+    # via -r requirements.in
+django-csp==3.7
     # via -r requirements.in
 django-emailit==0.2.4
     # via aldryn-forms
@@ -162,7 +164,7 @@ django-enumfields==2.1.1
     #   djangocms-bootstrap4
 django-environ==0.4.5
     # via -r requirements.in
-django-extensions==3.1.1
+django-extensions==3.1.3
     # via -r requirements.in
 django-fieldsignals==0.6.0
     # via djangocms-helpers
@@ -182,7 +184,7 @@ https://control.divio.com/api/v1/apps/serve/django-filer/2.0.2/437dbe66-4a2c-402
     #   djangocms-video
 django-filter==2.4.0
     # via -r requirements.in
-django-formtools==2.2
+django-formtools==2.3
     # via django-cms
 django-getenv==1.3.2
     # via
@@ -200,7 +202,7 @@ django-import-export==2.5.0
     # via -r requirements.in
 django-js-asset==1.2.2
     # via django-mptt
-django-logentry-admin==1.0.6
+django-logentry-admin==1.1.0
     # via -r requirements.in
 django-meta==2.0.0
     # via
@@ -211,7 +213,7 @@ django-modeladmin-reorder==0.3.1
     # via -r requirements.in
 django-mptt==0.12.0
     # via django-filer
-django-object-actions==3.0.1
+django-object-actions==3.0.2
     # via django-adminutils
 django-parler==2.2
     # via
@@ -230,11 +232,11 @@ django-sekizai==2.0.0
     #   django-cms
     #   djangocms-aldryn-forms-bootstrap4-templates
     #   djangocms-light-gallery
-django-select2==7.6.2
+django-select2==7.7.1
     # via aldryn-django-cms
 django-settings-export==1.2.1
     # via -r requirements.in
-django-simple-captcha==0.5.13
+django-simple-captcha==0.5.14
     # via aldryn-django-cms
 django-simple-sso==0.14.1
     # via aldryn-sso
@@ -266,7 +268,7 @@ django-taggit-autosuggest==0.3.8
     # via djangocms-blog
 django-taggit-templatetags==0.2.5
     # via djangocms-blog
-django-taggit==1.3.0
+django-taggit==1.5.0
     # via
     #   django-taggit-autosuggest
     #   django-taggit-templatetags
@@ -277,7 +279,7 @@ django-treebeard==4.5.1
     # via
     #   aldryn-django-cms
     #   django-cms
-django-username-email==2.4.1
+django-username-email==2.4.2
     # via -r requirements.in
 django-widget-tweaks==1.4.8
     # via -r requirements.in
@@ -297,7 +299,9 @@ django==3.1.12
     #   django-appdata
     #   django-classy-tags
     #   django-cms
+    #   django-csp
     #   django-emailit
+    #   django-extensions
     #   django-filer
     #   django-filter
     #   django-formtools
@@ -357,7 +361,7 @@ djangocms-file==3.0.0
     # via -r requirements.in
 djangocms-googlemap==2.0.0
     # via -r requirements.in
-djangocms-helpers==2.2.1.3
+djangocms-helpers==2.2.2.0
     # via -r requirements.in
 djangocms-history==2.0.0
     # via -r requirements.in
@@ -395,7 +399,7 @@ djangocms-text-ckeditor==4.0.0
     #   djangocms-bootstrap4
 https://github.com/django-cms/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
     # via -r requirements.in
-djangorestframework==3.12.2
+djangorestframework==3.12.4
     # via -r requirements.in
 easy-thumbnails==2.7.1
     # via
@@ -404,9 +408,9 @@ easy-thumbnails==2.7.1
     #   djangocms-blog
     #   djangocms-light-gallery
     #   djangocms-picture
-et-xmlfile==1.0.1
+et-xmlfile==1.1.0
     # via openpyxl
-furl==2.1.0
+furl==2.1.2
     # via
     #   aldryn-django
     #   aldryn-sso
@@ -417,9 +421,9 @@ idna==2.10
     # via requests
 ipython-genutils==0.2.0
     # via traitlets
-ipython==7.21.0
+ipython==7.25.0
     # via -r requirements.in
-itsdangerous==1.1.0
+itsdangerous==2.0.1
     # via
     #   aldryn-sso
     #   django-simple-sso
@@ -430,9 +434,9 @@ jmespath==0.10.0
     # via
     #   boto3
     #   botocore
-jsons==1.4.0
+jsons==1.4.2
     # via djangocms-link-all
-lxml==4.6.2
+lxml==4.6.3
     # via
     #   aldryn-django-cms
     #   aldryn-search
@@ -440,7 +444,9 @@ lxml==4.6.2
     #   premailer
 markuppy==1.14
     # via tablib
-oauthlib==3.1.0
+matplotlib-inline==0.1.2
+    # via ipython
+oauthlib==3.1.1
     # via requests-oauthlib
 odfpy==1.4.1
     # via tablib
@@ -448,25 +454,27 @@ openpyxl==3.0.7
     # via tablib
 orderedmultidict==1.0.1
     # via furl
-parso==0.8.1
+parso==0.8.2
     # via jedi
+pep517==0.10.0
+    # via pip-tools
 pexpect==4.8.0
     # via ipython
 pickleshare==0.7.5
     # via ipython
-pillow==8.1.2
+pillow==8.3.0
     # via
     #   aldryn-forms
     #   django-simple-captcha
     #   djangocms-text-ckeditor
     #   easy-thumbnails
-pip-tools==5.5.0
+pip-tools==6.2.0
     # via -r requirements.in
-premailer==3.7.0
+premailer==3.9.0
     # via django-emailit
-prompt-toolkit==3.0.17
+prompt-toolkit==3.0.19
     # via ipython
-psycopg2==2.8.6
+psycopg2==2.9.1
     # via
     #   aldryn-django
     #   aldryn-django-cms
@@ -474,15 +482,15 @@ ptyprocess==0.7.0
     # via pexpect
 pycparser==2.20
     # via cffi
-pygments==2.8.1
+pygments==2.9.0
     # via ipython
-pyjwt[crypto]==2.0.1
+pyjwt[crypto]==2.1.0
     # via django-allauth
 python-dateutil==2.8.1
     # via botocore
-python-dotenv==0.15.0
+python-dotenv==0.18.0
     # via -r requirements.in
-python-slugify==4.0.1
+python-slugify==5.0.2
     # via -r requirements.in
 python3-openid==3.2.0
     # via django-allauth
@@ -508,13 +516,13 @@ requests==2.25.1
     #   webservices
 rjsmin==1.1.0
     # via django-compressor
-s3transfer==0.3.4
+s3transfer==0.4.2
     # via boto3
-sentry-sdk==1.0.0
+sentry-sdk==1.1.0
     # via
     #   -r requirements.in
     #   aldryn-django
-six==1.15.0
+six==1.16.0
     # via
     #   aldryn-client
     #   aldryn-common
@@ -531,7 +539,7 @@ six==1.15.0
     #   html5lib
     #   orderedmultidict
     #   python-dateutil
-soupsieve==2.2
+soupsieve==2.2.1
     # via beautifulsoup4
 sqlparse==0.4.1
     # via django
@@ -544,13 +552,17 @@ tabulate==0.8.9
     # via aldryn-client
 text-unidecode==1.3
     # via python-slugify
+toml==0.10.2
+    # via pep517
 traitlets==5.0.5
-    # via ipython
-typish==1.9.1
+    # via
+    #   ipython
+    #   matplotlib-inline
+typish==1.9.2
     # via jsons
 unidecode==1.1.2
     # via django-filer
-urllib3==1.26.3
+urllib3==1.26.6
     # via
     #   botocore
     #   requests
@@ -567,6 +579,8 @@ webencodings==0.5.1
     # via html5lib
 webservices[django]==0.7
     # via django-simple-sso
+wheel==0.36.2
+    # via pip-tools
 whitenoise==5.2.0
     # via -r requirements.in
 xlrd==2.0.1

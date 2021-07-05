@@ -1,6 +1,13 @@
 2021.06
 -------------------------------------------------------------------------------
 
+- Added security settings for CSRF, CSP, HSTS, session cookies
+- Recompiled requirements.txt (a few packages updated)
+- Updated frontend packages (webpack, webpack-dev-server, bootstrap to 4.6.0, some dependencies)
+
+2021.06
+-------------------------------------------------------------------------------
+
 - added default DRF settings: disabled browsable API, default IsAuthenticated permission
 - updated django and aldryn-django to version 3.1.12.0
 - disabled djangocms-algolia by default (uncomment djangocms_algolia in INSTALLED_APPS to enable)

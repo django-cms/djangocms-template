@@ -60,6 +60,7 @@ django-widget-tweaks
 django-logentry-admin
 django-adminutils # a set of shortcuts for admin.py composition
 dj-database-url
+django-csp
 
 
 # python utils
