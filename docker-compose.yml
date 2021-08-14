@@ -27,7 +27,9 @@ services:
         volumes:
             - '.:/app:rw'
             - node_modules:/app/frontend/node_modules
-        command: yarn webpack-dev-server-in-docker
+        command: webpack-dev-server --config webpack.config.js
+        environment:
+            NODE_ENV: 'docker'
 
     db:
         image: postgres:10.16-alpine

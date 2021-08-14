@@ -1,6 +1,6 @@
-import aldryn_addons.urls
-from aldryn_django.utils import i18n_patterns
+from django.conf.urls.i18n import i18n_patterns
 from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include
 from django.urls import path
@@ -10,18 +10,19 @@ from djangocms_helpers.sentry_500_error_handler.views import not_found_404_view
 
 admin.site.enable_nav_sidebar = False
 
-urlpatterns = (
-    [
+urlpatterns = [
         path('robots.txt', include('robots.urls')),
-        path('login-as-user/', include('hijack.urls', namespace='hijack')),
+        # path('login-as-user/', include('hijack.urls', namespace='hijack')),
         path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
         path('', include('link_all.api.urls')),
-    ]
-    + aldryn_addons.urls.patterns()
-    + i18n_patterns(
-        *aldryn_addons.urls.i18n_patterns(),  # MUST be the last entry!
+        path('filer/', include('filer.urls')),
+        path('admin/', admin.site.urls),
+    ] + i18n_patterns(
+        path('', include('cms.urls')),
     )
-)
+
+if settings.DEBUG:
+    urlpatterns.extend(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
 
 if not settings.DEBUG:
     handler500 = collect_500_error_user_feedback_view

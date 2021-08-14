@@ -17,7 +17,7 @@ const config = {
     output: {
         filename: '[name].js',
         path: __dirname + '/dist/',
-        publicPath: `/static/dist/`,
+        publicPath: '/static/dist/',
     },
     module: {
         rules: [

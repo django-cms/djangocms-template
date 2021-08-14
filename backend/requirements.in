@@ -1,15 +1,27 @@
-# the latest versions of aldryn-addons are located in https://gitlab.com/what-digital/djangocms-template/-/blob/master/backend/requirements.in
+django-cms>3.8,<4
+django>=3.1,<3.2  # 3.2 has dark admin theme which looks bad in custom django CMS admin views
+boto3  # for (optional) s3 storage
+psycopg2  # postgresql support
+python-dotenv
+pip-tools
+uwsgi
+whitenoise  # serving static files
 
-https://control.divio.com/api/v1/apps/serve/aldryn-addons/2.0.1/75074b5c-4ff7-448b-acf9-412d78472b6b/aldryn-addons-2.0.1.tar.gz#egg=aldryn-addons==2.0.1
-https://control.divio.com/api/v1/apps/serve/aldryn-django/3.1.12.0/317e70eb-6763-4802-92f9-da6140c0b4a5/aldryn-django-3.1.12.0.tar.gz#egg=aldryn-django==3.1.12.0
-https://control.divio.com/api/v1/apps/serve/aldryn-sso/2.0.0/e6eccefa-e8f5-492d-8e71-79fc99f30201/aldryn-sso-2.0.0.tar.gz#egg=aldryn-sso==2.0.0
-https://control.divio.com/api/v1/apps/serve/django-filer/2.0.2/437dbe66-4a2c-402d-9ad9-cd104a901316/django-filer-2.0.2.tar.gz#egg=django-filer==2.0.2
-https://github.com/victor-yunenko/aldryn-django-cms/archive/3.8.0.3.zip#egg=aldryn-django-cms==3.8.0.3
-    https://github.com/victor-yunenko/django-cms/archive/0785bcc12b7f774c363d81ebbea5984d655c235f.zip#egg=django-cms==3.8.1  # override for fixing the treebeard bug
+django_storage_url
+
+https://github.com/divio/aldryn-sso/archive/refs/heads/master.zip#egg=aldryn-sso  # there is no pypi package of this
+
+# Django Filer - optional, but used in most projects
+easy_thumbnails
+django-filer
+django-mptt
+html5lib
+Pillow
 
 
 # django-cms
 
+djangocms-admin-style
 djangocms-icon
 djangocms-text-ckeditor
 djangocms-link
@@ -18,8 +30,8 @@ djangocms-file
 djangocms-blog
 djangocms-history
 djangocms-snippet
-https://github.com/django-cms/djangocms-video/archive/1-fix-default-player-size.zip#egg=djangocms-video
-https://github.com/django-cms/djangocms-bootstrap4/archive/5a4bc682ca6f371d86d590cc1f072f4d31adbd9f.zip#egg=djangocms-bootstrap4
+https://github.com/django-cms/djangocms-video/archive/refs/heads/master.zip#egg=djangocms-video  # wait for responsiveness fix to be on pypi
+https://github.com/django-cms/djangocms-bootstrap4/archive/7f887cd99ed5e11f59dcc77a97773bbce6c70d80.zip#egg=djangocms-bootstrap4  # TODO: This needs to be cleaned up. Also check this pull request: https://github.com/django-cms/djangocms-bootstrap4/pull/137
     python-slugify
 djangocms-googlemap
 djangocms-modules
@@ -30,7 +42,7 @@ djangocms-light-gallery
 aldryn-apphooks-config
 djangocms-socialshare
 djangocms-algolia
-djangocms-helpers
+djangocms-helpers  # https://gitlab.com/what-digital/djangocms-helpers - underlying bugs need to be fixed in the respective repos before this can be removed
 djangocms-link-all
 djangocms-redirect
 djangocms-page-meta
@@ -53,7 +65,7 @@ django-extensions # many django things that we don't really need, mainly for she
     ipython # for shell-plus
 django-allauth # user forms, social auth, allows to authenticate with email
     django-username-email # an addition to allauth for email instead of username
-django-hijack-admin # allows to login as any existing user
+django-hijack-admin<3 # allows to login as any existing user
 django-solo
 django-countries
 django-widget-tweaks
@@ -62,11 +74,5 @@ django-adminutils # a set of shortcuts for admin.py composition
 dj-database-url
 django-csp
 
-
-# python utils
-
 sentry-sdk
-python-dotenv
-pip-tools
-uwsgi
-whitenoise
+django-robots

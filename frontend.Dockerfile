@@ -1,6 +1,6 @@
-FROM registry.gitlab.com/what-digital/djangocms-template:3.0
-
-WORKDIR /app/frontend/
+FROM node:14
+WORKDIR /app/frontend
 COPY frontend/package.json .
 COPY frontend/yarn.lock .
 RUN yarn install --pure-lockfile
+RUN yarn global add webpack-dev-server webpack

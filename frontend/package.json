@@ -8,7 +8,7 @@
     "dependencies": {
 
         "//": "core pakcages",
-        
+
         "webpack": "^5.42.1",
             "webpack-dev-server": "^4.0.0-beta.3",
             "webpack-cli": "^4.7.2",  "//": "required for cli commands, eg dev server",
@@ -48,10 +48,10 @@
             "postcss": "^8.0.0",
         "@sentry/browser": "^6.0.0",
         "@fortawesome/fontawesome-free": "^5.0.0", "//": "for djangocms-icon",
-        
+
         "//": "project packages"
 
-        
+
     },
     "scripts": {
         "start": "webpack serve",
