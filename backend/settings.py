@@ -645,7 +645,8 @@ ALDRYN_SSO_LOGIN_WHITE_LIST.extend([
     reverse_lazy('aldryn_sso_login'),
     reverse_lazy('aldryn_sso_localdev_login'),
     reverse_lazy('aldryn_localdev_create_user'),
-    '/static/*'
+    '/static/*',
+    '/admin/*',
 ])
 
 ALDRYN_SSO_OVERIDE_ADMIN_LOGIN_VIEW = ALDRYN_SSO_ENABLE_SSO_LOGIN or ALDRYN_SSO_ENABLE_LOGIN_FORM or ALDRYN_SSO_ENABLE_LOCALDEV
