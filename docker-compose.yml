@@ -26,6 +26,11 @@ services:
             - '8090:8090'
         volumes:
             - './frontend:/app:rw'
+            # We want to ignore an existing frontend/node_modules
+            # this allows a host-system yarn install and a docker based yarn work
+            # side by side
+            # read more at https://stackoverflow.com/questions/29181032/add-a-volume-to-docker-but-exclude-a-sub-folder
+            - '/app/node_modules/'  # remove node_modules from the volume content
         working_dir: /app
         command: yarn webpack-dev-server-in-docker
 
