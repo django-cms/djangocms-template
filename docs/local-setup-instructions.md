@@ -7,6 +7,12 @@ Project setup
 
 For setting up the database from the stage/live server see the last section about divio-cli.
 
+### Frontend
+
+- the frontend is starting up automagically in hot reload modus. This means you can change SCSS and the content in your browser will update instantly.
+- If you want to keep an eye on the console output you can run the frontend separately in a terminal like `docker compose up frontend`
+- You can also run the frontend on your host system if you happen to have node / yarn installed. Open a terminal, cd into the frontend folder and run `yarn serve` 
+
 
 ### Update requirements.txt
 

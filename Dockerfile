@@ -1,4 +1,4 @@
-FROM node:14 AS frontend-build
+FROM node:16 AS frontend-build
 COPY frontend/package.json .
 COPY frontend/yarn.lock .
 RUN yarn install --pure-lockfile

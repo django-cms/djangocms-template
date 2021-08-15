@@ -116,14 +116,12 @@ const config = {
         },
     },
     devServer: {
-        static: {
-            directory: path.resolve(__dirname),
-        },
         allowedHosts: [
             '.nip.io',
             '127.0.0.1',
             '0.0.0.0'
         ],
+        hot: true, // HMR
         host: '0.0.0.0',
         port: 8090,
         headers: {

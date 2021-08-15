@@ -11,7 +11,7 @@ It's also possible to run this project locally out of the box, you can clone it 
 - Python 3.9
 - Django 3.1
 - DjangoCMS 3.8
-- Node 14
+- Node 16
 - Webpack 5
 - TypeScript 4
 - Bootstrap 4

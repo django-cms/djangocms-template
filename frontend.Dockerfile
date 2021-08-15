@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:16
 
 COPY frontend/package.json /package.json
 COPY frontend/yarn.lock /yarn.lock
