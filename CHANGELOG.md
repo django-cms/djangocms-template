@@ -6,6 +6,7 @@
 - new docker-based build process
 - proper whitenoise static files integration
 - proper frontend webpack-dev-server hot reload setup
+- fix HMR (webpack dev server hot reloading)
 
 
 2021.06
