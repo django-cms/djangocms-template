@@ -136,6 +136,8 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     'djangocms_bootstrap4.contrib.bootstrap4_heading',
+    'djangocms_picture',
+    'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'aldryn_apphooks_config',
     'djangocms_blog',
         'taggit',
@@ -272,7 +274,7 @@ WHITENOISE_MAX_AGE = STATICFILES_DEFAULT_MAX_AGE
 # Media files
 # DEFAULT_FILE_STORAGE is configured using DEFAULT_STORAGE_DSN
 # read the setting value from the environment variable
-DEFAULT_STORAGE_DSN = os.environ.get('DEFAULT_STORAGE_DSN')
+DEFAULT_STORAGE_DSN = os.environ.get('DEFAULT_STORAGE_DSN', 'file:///data/media/?url=%2Fmedia%2F')
 # dsn_configured_storage_class() requires the name of the setting
 DefaultStorageClass = dsn_configured_storage_class('DEFAULT_STORAGE_DSN')
 # Django's DEFAULT_FILE_STORAGE requires the class name
@@ -415,17 +417,18 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': 'rest_framework.permissions.IsAuthenticated'
 }
 
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = 'None'
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_SAMESITE = 'None'
 
-SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
 
-SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_SAMESITE = 'None'
+    SESSION_COOKIE_HTTPONLY = True
 
-SECURE_HSTS_SECONDS = 31536000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 
 # CSP settings have to be updated if some external media source is used
@@ -448,6 +451,7 @@ CSP_MEDIA_SRC = ("*", "'self'", "https://*.divio-media.org", "data:")
 
 CMS_TEMPLATES = [
     ('content-full-width.html', 'full width'),
+    ('whitenoise-static-files-demo.html', 'Static File Demo'),
 ]
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
