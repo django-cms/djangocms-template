@@ -4,6 +4,7 @@ from typing import List
 
 import dj_database_url
 import environ
+from django.urls import reverse_lazy
 from django_storage_url import dsn_configured_storage_class
 from link_all.dataclasses import LinkAllModel
 
@@ -13,7 +14,7 @@ from link_all.dataclasses import LinkAllModel
 ################################################################################
 
 
-env = environ.Env()
+env = environ.Env()  # better way to read env vars
 
 
 class DjangoEnv(Enum):
@@ -24,11 +25,11 @@ class DjangoEnv(Enum):
 
 
 DJANGO_ENV_ENUM = DjangoEnv
-DJANGO_ENV = DjangoEnv(env.str('STAGE', 'local'))
+DJANGO_ENV = DjangoEnv(env.str('STAGE', default='local'))
 
 
 if DJANGO_ENV == DjangoEnv.LOCAL:
-    environ.Env.read_env()
+    # environ.Env.read_env()  not needed for Docker setup
     CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
 
 
@@ -56,16 +57,16 @@ USE_TZ = True
 TIME_ZONE = 'Europe/Zurich'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG') == "True"
+DEBUG = env.bool('DEBUG', default=False)
 
 # this is set by Divio environment automatically
-SECRET_KEY = os.environ.get('SECRET_KEY', "this-is-not-very-random")
+SECRET_KEY = env.bool('SECRET_KEY', default="this-is-not-very-random")
 
-ALLOWED_HOSTS = [os.environ.get('DOMAIN'),]
+ALLOWED_HOSTS = [env.str('DOMAIN', default=""),]
 if DEBUG:
     ALLOWED_HOSTS = ["*",]
 
-SITE_ID = os.environ.get('SITE_ID', 1)
+SITE_ID = env.int('SITE_ID', default=1)
 
 INSTALLED_APPS = []
 installed_apps_overrides = [
@@ -86,11 +87,12 @@ INSTALLED_APPS.extend([
     'allauth.socialaccount',
     'cuser',  # for USERNAME_FIELD = 'email' in backend.auth
 
-    'aldryn_sso',
-
     # django
     'djangocms_admin_style',  # must be before django admin to override templates
     'django.contrib.admin',
+
+    'aldryn_sso',  # aldryn_sso must be after django.contrib.admin so it can unregister the User/Group Admin if necessary.
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -187,6 +189,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'aldryn_sso.middleware.AccessControlMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
@@ -208,7 +211,7 @@ MIDDLEWARE = [
 
 # Configure database using DATABASE_URL; fall back to sqlite in memory when no
 # environment variable is available, e.g. during Docker build
-DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite://:memory:')
+DATABASE_URL = env.str('DATABASE_URL', default='sqlite://:memory:')
 DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
 
 
@@ -274,7 +277,7 @@ WHITENOISE_MAX_AGE = STATICFILES_DEFAULT_MAX_AGE
 # Media files
 # DEFAULT_FILE_STORAGE is configured using DEFAULT_STORAGE_DSN
 # read the setting value from the environment variable
-DEFAULT_STORAGE_DSN = os.environ.get('DEFAULT_STORAGE_DSN', 'file:///data/media/?url=%2Fmedia%2F')
+DEFAULT_STORAGE_DSN = env.str('DEFAULT_STORAGE_DSN', default='file:///data/media/?url=%2Fmedia%2F')
 # dsn_configured_storage_class() requires the name of the setting
 DefaultStorageClass = dsn_configured_storage_class('DEFAULT_STORAGE_DSN')
 # Django's DEFAULT_FILE_STORAGE requires the class name
@@ -303,7 +306,6 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},  # removes frustrating validations, eg `too similar to your email`
 ]
-ALDRYN_SSO_LOGIN_URL_PREFIX = 'divio'
 
 
 GTM_CONTAINER_ID = env.str('GTM_CONTAINER_ID', 'GTM-1234')
@@ -334,6 +336,7 @@ ADMIN_REORDER = [
         'app': 'auth',
         'models': [
             'backend_auth.User',
+            'aldryn_sso.AldrynCloudUser',
             'auth.Group',
         ],
     },
@@ -380,10 +383,6 @@ ADMIN_REORDER = [
 RECAPTCHA_PUBLIC_KEY = env.str('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')  # those are djangocms-template v3 keys that allow localhost testing
 RECAPTCHA_PRIVATE_KEY = env.str('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
 RECAPTCHA_SCORE_THRESHOLD = 0.85
-
-
-SHARING_VIEW_ONLY_TOKEN_KEY_NAME = 'anonymous-access'
-SHARING_VIEW_ONLY_SECRET_TOKEN = 'true'
 
 
 if DEBUG:
@@ -614,3 +613,42 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters',
 )
+
+
+# divio.com SSO - this is only relevant if you deploy to divio.com
+ALDRYN_SSO_HIDE_USER_MANAGEMENT = False
+ALDRYN_SSO_LOGIN_WHITE_LIST = []  # https://docs.divio.com/en/latest/reference/addons-key/#aldryn-sso-login-white-list
+ALDRYN_SSO_LOGIN_URL_PREFIX = 'divio'
+SSO_DSN = env.str('SSO_DSN', default=None)
+
+ALDRYN_SSO_ENABLE_LOCALDEV = False
+if DJANGO_ENV == DjangoEnv.LOCAL:
+    ALDRYN_SSO_ENABLE_LOCALDEV = True
+
+ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = False
+if DJANGO_ENV == DjangoEnv.TEST:  # stage servers must be protected
+    ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = True
+
+ALDRYN_SSO_ENABLE_SSO_LOGIN = env.bool('ALDRYN_SSO_ENABLE_SSO_LOGIN', default=False)
+ALDRYN_SSO_ENABLE_LOGIN_FORM = env.bool('ALDRYN_SSO_ENABLE_LOGIN_FORM', default=True)
+
+# allow anonymous preview everywhere
+# https://docs.divio.com/en/latest/reference/addons-key/#test-site-protection
+SHARING_VIEW_ONLY_TOKEN_KEY_NAME = 'anonymous-access'
+SHARING_VIEW_ONLY_SECRET_TOKEN = 'true'
+# LOGIN_URL = 'aldryn_sso_login'
+ALDRYN_SSO_ENABLE_AUTO_SSO_LOGIN = env.bool('ALDRYN_SSO_ENABLE_AUTO_SSO_LOGIN', default=True)
+
+
+ALDRYN_SSO_LOGIN_WHITE_LIST.extend([
+    reverse_lazy('simple-sso-login'),
+    reverse_lazy('aldryn_sso_login'),
+    reverse_lazy('aldryn_sso_localdev_login'),
+    reverse_lazy('aldryn_localdev_create_user'),
+    '/static/*'
+])
+
+ALDRYN_SSO_OVERIDE_ADMIN_LOGIN_VIEW = ALDRYN_SSO_ENABLE_SSO_LOGIN or ALDRYN_SSO_ENABLE_LOGIN_FORM or ALDRYN_SSO_ENABLE_LOCALDEV
+
+if ALDRYN_SSO_OVERIDE_ADMIN_LOGIN_VIEW:
+    LOGIN_URL = 'aldryn_sso_login'
