@@ -29,7 +29,7 @@ DJANGO_ENV = DjangoEnv(env.str('STAGE', default='local'))
 
 
 if DJANGO_ENV == DjangoEnv.LOCAL:
-    # environ.Env.read_env()  not needed for Docker setup
+    # environ.Env.read_env()  not needed for Docker setup, done via docker-compose.yml
     CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
 
 
@@ -60,7 +60,7 @@ TIME_ZONE = 'Europe/Zurich'
 DEBUG = env.bool('DEBUG', default=False)
 
 # this is set by Divio environment automatically
-SECRET_KEY = env.bool('SECRET_KEY', default="this-is-not-very-random")
+SECRET_KEY = env.str('SECRET_KEY', default="this-is-not-very-random")
 
 ALLOWED_HOSTS = [env.str('DOMAIN', default=""),]
 if DEBUG:
