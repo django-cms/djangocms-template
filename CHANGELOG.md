@@ -1,6 +1,11 @@
 2021.08
 -------------------------------------------------------------------------------
-- completely removed the aldryn stack and fully implemented whitenoise
+- completely removed the aldryn stack (aldryn-addons, aldryn-django, aldryn-djangocms)
+- django CMS 3.9
+- abandon custom docker images
+- new docker-based build process
+- proper whitenoise static files integration
+- proper frontend webpack-dev-server hot reload setup
 
 
 2021.06
