@@ -626,10 +626,14 @@ if DJANGO_ENV == DjangoEnv.LOCAL:
     ALDRYN_SSO_ENABLE_LOCALDEV = True
 
 ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = False
-if DJANGO_ENV == DjangoEnv.TEST:  # stage servers must be protected
-    ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = True
+if DJANGO_ENV == DjangoEnv.TEST:
+    ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = True  # stage servers must be protected
+    ALDRYN_SSO_ENABLE_LOCALDEV = True
 
 ALDRYN_SSO_ENABLE_SSO_LOGIN = env.bool('ALDRYN_SSO_ENABLE_SSO_LOGIN', default=False)
+if SSO_DSN:  # production SSO is configured, let's activate SSO
+    ALDRYN_SSO_ENABLE_SSO_LOGIN = True
+
 ALDRYN_SSO_ENABLE_LOGIN_FORM = env.bool('ALDRYN_SSO_ENABLE_LOGIN_FORM', default=True)
 
 # allow anonymous preview everywhere
@@ -645,8 +649,8 @@ ALDRYN_SSO_LOGIN_WHITE_LIST.extend([
     reverse_lazy('aldryn_sso_login'),
     reverse_lazy('aldryn_sso_localdev_login'),
     reverse_lazy('aldryn_localdev_create_user'),
-    '/static/*',
-    '/admin/*',
+    '/static/*',  # because we're using whitenoise, static files are delivered through django
+    '/admin/*',  # for the logout route
 ])
 
 ALDRYN_SSO_OVERIDE_ADMIN_LOGIN_VIEW = ALDRYN_SSO_ENABLE_SSO_LOGIN or ALDRYN_SSO_ENABLE_LOGIN_FORM or ALDRYN_SSO_ENABLE_LOCALDEV
