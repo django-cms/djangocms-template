@@ -1,6 +1,4 @@
-Project setup
--------------------------------------------------------------------------------
-
+# Project setup
 
 - docker-compose up --build -d
 - docker-compose exec web manage.py migrate'
@@ -12,7 +10,7 @@ For setting up the database from the stage/live server see the last section abou
 - the frontend is starting up automagically in hot reload modus. This means you can change SCSS and the content in your browser will update instantly.
 - If you want to keep an eye on the console output you can run the frontend separately in a terminal like `docker compose up frontend`
 - You can also run the frontend on your host system if you happen to have node / yarn installed. Open a terminal, cd into the frontend folder and run `yarn serve` 
-
+- For debugging you can see a webpack dev server asset report here: http://0.0.0.0:8090/webpack-dev-server
 
 ### Update requirements.txt
 
@@ -27,8 +25,7 @@ For installing the compiled requirements in docker you have to rebuild it with `
 - run `divio project pull db test` and `divio project pull media test` outside of docker
 
 
-Recommendations
--------------------------------------------------------------------------------
+## Recommendations
 
 Don't hesitate to address divio support, a significant amount of features might not work according to the docs, or there are no docs. We're also keeping an open github repository for keeping track of our past issues with divio deployments - https://github.com/what-digital/divio/issues
 
