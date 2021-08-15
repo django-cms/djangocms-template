@@ -16,7 +16,7 @@ services:
             - '.:/app:rw'
             - './data:/data:rw'
         command: python manage.py runserver 0.0.0.0:80
-        env_file: backend/.env
+        env_file: backend/.local-env
 
     frontend:
         build:
@@ -25,11 +25,9 @@ services:
         ports:
             - '8090:8090'
         volumes:
-            - '.:/app:rw'
-            - node_modules:/app/frontend/node_modules
-        command: webpack-dev-server --config webpack.config.js
-        environment:
-            NODE_ENV: 'docker'
+            - './frontend:/app:rw'
+        working_dir: /app
+        command: yarn webpack-dev-server-in-docker
 
     db:
         image: postgres:10.16-alpine
@@ -41,5 +39,3 @@ services:
         volumes:
             - '.:/app:rw'
 
-volumes:
-    node_modules:

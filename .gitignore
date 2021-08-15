@@ -10,7 +10,7 @@ __pycache__/
 data/
 data.tar.gz
 backend/static_collected/
-backend/.env
+backend/.local-env
 .venv
 
 # dev files

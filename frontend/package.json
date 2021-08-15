@@ -6,58 +6,44 @@
         "node": "^14.0"
     },
     "dependencies": {
-
-        "//": "core pakcages",
-
-        "webpack": "^5.42.1",
-            "webpack-dev-server": "^4.0.0-beta.3",
-            "webpack-cli": "^4.7.2",  "//": "required for cli commands, eg dev server",
-
+        "@babel/core": "^7.15.0",
+        "@fortawesome/fontawesome-free": "^5.0.0",
+        "@sentry/browser": "^6.0.0",
+        "@types/bootstrap": "^4.6.0",
+        "@types/jquery": "^3.0.0",
+        "@vue/cli": "^4.5.13",
+        "autoprefixer": "^10.0.0",
+        "bootstrap": "^4.6.0",
+        "css-loader": "^6.2.0",
         "file-loader": "^6.2.0",
         "image-webpack-loader": "^7.0.1",
-            "imagemin-gifsicle": "^7.0.0", "//": "only used on macos to run dev server",
-        "svg-url-loader": "^7.1.1",
-
-        "mini-css-extract-plugin": "^2.1.0",
-            "node-sass": "^6.0.1",
-            "precss": "^4.0.0",
-        "sass-loader": "^12.1.0",  "//": "processes css files after mini-css",
-        "css-loader": "^5.2.6",  "//": "handels `@import` and `url()`",
-        "style-loader": "^3.0.0",
-
-        "ts-loader": "^9.2.3",
-        "typescript": "^4.3.5",
-
-        "vue": "^2.6.11",
-            "vue-loader": "^15.9.2",
-            "vue-template-compiler": "^2.6.11",
-            "vue-class-component": "^7.2.3",
-            "vue-property-decorator": "^9.0.0",
-            "@vue/cli": "^4.4.6",
-            "@babel/core": "^7.11.4",
-
-        "//": "optional packages",
-
+        "imagemin-gifsicle": "^7.0.0",
         "jquery": "^3.0.0",
-            "@types/jquery": "^3.0.0",
-        "bootstrap": "^4.6.0",
-            "popper.js": "^1.0.0", "//": "a peer depepndency of BS, for tooltips, might be useless",
-            "@types/bootstrap": "^4.6.0",
-        "autoprefixer": "^10.0.0",  "//": "adds browser prefixes as `-webkit-` and `-moz-` automatically",
-            "postcss-loader": "^5.0.0",
-            "postcss": "^8.0.0",
-        "@sentry/browser": "^6.0.0",
-        "@fortawesome/fontawesome-free": "^5.0.0", "//": "for djangocms-icon",
-
-        "//": "project packages"
-
-
+        "mini-css-extract-plugin": "^2.2.0",
+        "node-sass": "^6.0.1",
+        "popper.js": "^1.0.0",
+        "postcss": "^8.0.0",
+        "postcss-loader": "^5.0.0",
+        "precss": "^4.0.0",
+        "sass-loader": "^12.1.0",
+        "style-loader": "^3.2.1",
+        "svg-url-loader": "^7.1.1",
+        "ts-loader": "^9.2.5",
+        "typescript": "^4.3.5",
+        "vue": "^2.6.11",
+        "vue-class-component": "^7.2.6",
+        "vue-loader": "^15.9.8",
+        "vue-property-decorator": "^9.1.2",
+        "vue-template-compiler": "^2.6.14",
+        "webpack": "^5.50.0",
+        "webpack-cli": "^4.7.2",
+        "webpack-dev-server": "^4.0.0-rc.0"
     },
     "scripts": {
         "start": "webpack serve",
         "serve": "webpack serve",
         "webpack-dev-server": "yarn start",
-        "webpack-dev-server-in-docker": "NODE_ENV=docker node_modules/.bin/webpack-dev-server --config webpack.config.js",
+        "webpack-dev-server-in-docker": "NODE_ENV=docker /node_modules/.bin/webpack-dev-server --config webpack.config.js",
         "build": "NODE_ENV=production webpack --config webpack.config.js"
     }
 }

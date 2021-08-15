@@ -1,8 +1,8 @@
 /*
  * This file is imported in bootstrap during compilation - see vendor/scss/main
  */
-@import 'node_modules/bootstrap/scss/functions';
-@import 'node_modules/bootstrap/scss/mixins';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/mixins';
 
 
 // DO NOT CHANGE the number of columns!
@@ -21,4 +21,4 @@ $theme-colors: (
 
 
 // must be placed at the end
-@import 'node_modules/bootstrap/scss/variables';
+@import '~bootstrap/scss/variables';

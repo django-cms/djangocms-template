@@ -111,23 +111,24 @@ const config = {
         modules: [path.resolve('.'), 'node_modules'],
         alias: {
             vue:
-                process.env.NODE_ENV === 'production'
-                    ? 'vue/dist/vue.min.js'
-                    : 'vue/dist/vue.js',
+                process.env.NODE_ENV === 'production' ?
+                    'vue/dist/vue.min.js' : 'vue/dist/vue.js',
         },
     },
     devServer: {
         static: {
             directory: path.resolve(__dirname),
         },
+        allowedHosts: [
+            '.nip.io',
+            '127.0.0.1',
+            '0.0.0.0'
+        ],
         host: '0.0.0.0',
         port: 8090,
-        client: {
-            port: 8090,
-        },
         headers: {
             'Access-Control-Allow-Origin': '*',
-        },
+        }
     },
     plugins: [
         new VueLoaderPlugin(),
@@ -146,7 +147,7 @@ if (isDevelopmentMode) {
 
 const isDockerMode = process.env.NODE_ENV === 'docker';
 if (isDockerMode) {
-    config.devServer.watchOptions = {
+    config.watchOptions = {
         poll: 100, // enable polling since fsevents are not supported in docker
     };
 }
