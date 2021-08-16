@@ -627,14 +627,15 @@ if DJANGO_ENV == DjangoEnv.LOCAL:
 ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = False
 if DJANGO_ENV == DjangoEnv.TEST:
     ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = True  # stage servers must be protected
+    ALDRYN_SSO_ENABLE_LOCALDEV = True
 
+if ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN:
     # apparently the middleware is not checking ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN
     # so we have to manage this here so that live sites can be public.
     # see https://github.com/divio/aldryn-sso/blob/master/aldryn_config.py#L115
     position = MIDDLEWARE.index(
         'django.contrib.auth.middleware.AuthenticationMiddleware') + 1
     MIDDLEWARE.insert(position, 'aldryn_sso.middleware.AccessControlMiddleware')
-    ALDRYN_SSO_ENABLE_LOCALDEV = True
 
 ALDRYN_SSO_ENABLE_SSO_LOGIN = env.bool('ALDRYN_SSO_ENABLE_SSO_LOGIN', default=False)
 if SSO_DSN:  # production SSO is configured, let's activate SSO
