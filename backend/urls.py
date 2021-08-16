@@ -7,7 +7,6 @@ from django.urls import path, re_path
 from djangocms_helpers.sentry_500_error_handler.views import collect_500_error_user_feedback_view
 from djangocms_helpers.sentry_500_error_handler.views import not_found_404_view
 
-
 admin.site.enable_nav_sidebar = False
 
 urlpatterns = [

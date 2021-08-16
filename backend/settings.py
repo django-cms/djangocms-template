@@ -58,7 +58,8 @@ TIME_ZONE = 'Europe/Zurich'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
-
+# you can use this on the live environment to get the full exception stack trace in the logs
+DEBUG_PROPAGATE_EXCEPTIONS = env.bool('DEBUG_PROPAGATE_EXCEPTIONS', default=False)
 # this is set by Divio environment automatically
 SECRET_KEY = env.str('SECRET_KEY', default="this-is-not-very-random")
 
@@ -650,15 +651,21 @@ SHARING_VIEW_ONLY_SECRET_TOKEN = 'true'
 # LOGIN_URL = 'aldryn_sso_login'
 ALDRYN_SSO_ENABLE_AUTO_SSO_LOGIN = env.bool('ALDRYN_SSO_ENABLE_AUTO_SSO_LOGIN', default=True)
 
+if ALDRYN_SSO_ENABLE_LOCALDEV:
+    # because thouse routes are conditionally inserted in urls.py
+    ALDRYN_SSO_LOGIN_WHITE_LIST.extend([
+        reverse_lazy('aldryn_sso_localdev_login'),
+        reverse_lazy('aldryn_localdev_create_user'),
+    ])
 
 ALDRYN_SSO_LOGIN_WHITE_LIST.extend([
     reverse_lazy('simple-sso-login'),
     reverse_lazy('aldryn_sso_login'),
-    reverse_lazy('aldryn_sso_localdev_login'),
-    reverse_lazy('aldryn_localdev_create_user'),
     '/static/*',  # because we're using whitenoise, static files are delivered through django
     '/admin/*',  # for the logout route
 ])
+
+
 
 if ALDRYN_SSO_ENABLE_SSO_LOGIN:
     CLOUD_USER_SESSION_EXPIRATION = 24 * 60 * 60 * 7  # 1 week

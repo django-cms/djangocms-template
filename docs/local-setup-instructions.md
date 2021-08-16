@@ -41,3 +41,21 @@ You can flush the local & server db in the following way:
 ### How to edit an external package in docker
 - Firstly the files that pycharm/intellij shows you in the docker remote files are editable but have no effect - it's just a copy-past of the real files
 - See the divio guide - https://docs.divio.com/en/latest/how-to/create-addon.html
+
+
+### Simulating the live environment locally
+
+Sometimes nasty errors only show up on production environments. Here is how you can simulate a production environment locally to catch those nasty ones.
+
+1. Add and set some env vars in `.env-local` 
+
+```
+DEBUG=False
+STAGE=live
+DEBUG_PROPAGATE_EXCEPTIONS = True
+SSO_DSN=https://user:pass@control.divio.com/auth/  # ssh into the liveserver and printenv for this info
+DOMAIN=djangocms-template.0.0.0.0.nip.io
+```
+2. Run `docker-compose run frontend yarn build`
+3. Then run `./manage.py collectstatic --ignore node_modules`
+4. and then rerun `docker-compose up web -d`
