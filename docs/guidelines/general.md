@@ -1,21 +1,11 @@
 ### Adding new packages and apps
 
-Don't add your project custom packages within the existing default list of package, eg here `my_package` was added incorrectly:
-```
-INSTALLED_APPS.extend([
-    # django
+Add your project custom packages to the end of the list of packages.
 
-    'allauth',
-    'allauth.account',
-    '{my_package}',
-    'gtm',
-    'solo',
-)]
-```
+'my_package' was added correctly:
 
-Add them at the bottom of the list instead, eg
 ```
-INSTALLED_APPS.extend([
+INSTALLED_APPS = [
     # django
 
     'allauth',
@@ -23,7 +13,20 @@ INSTALLED_APPS.extend([
     'gtm',
     'solo',
     'my_package',
-)]
+]
+```
+
+'my_package' was NOT added correctly:
+```
+INSTALLED_APPS = [
+    # django
+
+    'allauth',
+    'allauth.account',
+    'my_package',
+    'gtm',
+    'solo',
+]
 ```
 
 Same goes for every other file, package.json. requirements.in, etc.

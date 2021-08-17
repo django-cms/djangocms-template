@@ -1,23 +1,24 @@
-FROM registry.gitlab.com/what-digital/djangocms-template:3.0
-
-
-COPY backend/requirements.txt /app/backend/requirements.txt
-RUN pip install --no-deps --no-cache-dir -r /app/backend/requirements.txt
-
-
-WORKDIR /app/frontend/
+FROM node:16 AS frontend-build
 COPY frontend/package.json .
 COPY frontend/yarn.lock .
 RUN yarn install --pure-lockfile
-COPY frontend/ /app/frontend/
+COPY frontend/ .
 RUN yarn run build
 
 
+FROM python:3.8 as django-build
+
+RUN apt-get update && apt-get install -y gettext
+
+COPY backend/requirements.in /app/backend/requirements.in
+# RUN pip install --no-deps --no-cache-dir -r /app/backend/requirements.txt
+RUN pip install -r /app/backend/requirements.in
+
 WORKDIR /app/
 COPY . /app/
+# copies over the compiled sources from node image above
+COPY --from=frontend-build /dist /app/frontend/dist
 
-
-ENV STAGE='build_docker'
 RUN python manage.py collectstatic --noinput --ignore=node_modules
 RUN python manage.py compilemessages --ignore=node_modules
 

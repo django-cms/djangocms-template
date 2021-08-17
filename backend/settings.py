@@ -4,6 +4,7 @@ from typing import List
 
 import dj_database_url
 import environ
+from django.urls import reverse_lazy
 from django_storage_url import dsn_configured_storage_class
 from link_all.dataclasses import LinkAllModel
 
@@ -13,7 +14,7 @@ from link_all.dataclasses import LinkAllModel
 ################################################################################
 
 
-env = environ.Env()
+env = environ.Env()  # better way to read env vars
 
 
 class DjangoEnv(Enum):
@@ -24,45 +25,21 @@ class DjangoEnv(Enum):
 
 
 DJANGO_ENV_ENUM = DjangoEnv
-DJANGO_ENV = DjangoEnv(env.str('STAGE', 'local'))
+DJANGO_ENV = DjangoEnv(env.str('STAGE', default='local'))
 
 
 if DJANGO_ENV == DjangoEnv.LOCAL:
-    environ.Env.read_env()
+    # environ.Env.read_env()  not needed for Docker setup, done via docker-compose.yml
     CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
-
-
-INSTALLED_ADDONS = [
-    'aldryn-addons',
-    'aldryn-django',
-    'aldryn-django-cms',
-    'django-filer',
-    'aldryn-sso',
-]
 
 
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(BACKEND_DIR)
-ADDONS_DIR = os.path.join(BACKEND_DIR, 'addons')
-ADDONS_DEV_DIR = os.path.join(BACKEND_DIR, 'addons-dev')
 os.environ['BASE_DIR'] = BASE_DIR
-os.environ['ADDONS_DIR'] = ADDONS_DIR
-os.environ['ADDONS_DEV_DIR'] = ADDONS_DEV_DIR
 os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.settings'
 
 
-import aldryn_addons.settings
-
-aldryn_addons.settings.load(locals())
-
-
-INSTALLED_APPS: List[str] = locals()['INSTALLED_APPS']
 BASE_DIR: str = locals()['BASE_DIR']
-STATIC_URL: str = locals()['STATIC_URL']
-TEMPLATES: List[dict] = locals()['TEMPLATES']
-DEBUG: bool = locals()['DEBUG']
-MIGRATION_COMMANDS: List[str] = locals()['MIGRATION_COMMANDS']
-SITE_ID: int = locals()['SITE_ID']
 DOMAIN: str = locals().get('DOMAIN', 'localhost')
 SITE_NAME: str = locals().get('SITE_NAME', 'dev testing site')
 
@@ -79,7 +56,20 @@ DATE_FORMAT = 'F j, Y'
 USE_TZ = True
 TIME_ZONE = 'Europe/Zurich'
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = env.bool('DEBUG', default=False)
+# you can use this on the live environment to get the full exception stack trace in the logs
+DEBUG_PROPAGATE_EXCEPTIONS = env.bool('DEBUG_PROPAGATE_EXCEPTIONS', default=False)
+# this is set by Divio environment automatically
+SECRET_KEY = env.str('SECRET_KEY', default="this-is-not-very-random")
 
+ALLOWED_HOSTS = [env.str('DOMAIN', default=""),]
+if DEBUG:
+    ALLOWED_HOSTS = ["*",]
+
+SITE_ID = env.int('SITE_ID', default=1)
+
+INSTALLED_APPS = []
 installed_apps_overrides = [
     # for USERNAME_FIELD = 'email', before `cms` since it has a User model
     'backend.auth',
@@ -91,12 +81,33 @@ installed_apps_overrides = [
 INSTALLED_APPS = installed_apps_overrides + INSTALLED_APPS
 
 INSTALLED_APPS.extend([
-    # django
 
+    # custom user
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'cuser',  # for USERNAME_FIELD = 'email' in backend.auth
+
+    # django
+    'djangocms_admin_style',  # must be before django admin to override templates
+    'django.contrib.admin',
+
+    'aldryn_sso',  # aldryn_sso must be after django.contrib.admin so it can unregister the User/Group Admin if necessary.
+
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'whitenoise.runserver_nostatic',  # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    # key django CMS modules
+    'cms',
+    'menus',
+    'treebeard',
+    'sekizai',
+
     'gtm',
     'solo',
     'rest_framework',
@@ -107,10 +118,11 @@ INSTALLED_APPS.extend([
     'widget_tweaks',
     'django_countries',
     'logentry_admin',
-    'hijack_admin',
     'djangocms_helpers',
     'djangocms_helpers.divio',  # fixes a bug in divio aldryn commands
     'djangocms_helpers.sentry_500_error_handler',
+
+    'robots',
 
     # django cms
 
@@ -127,6 +139,8 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
     'djangocms_bootstrap4.contrib.bootstrap4_heading',
+    'djangocms_picture',
+    'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'aldryn_apphooks_config',
     'djangocms_blog',
         'taggit',
@@ -154,6 +168,11 @@ INSTALLED_APPS.extend([
     'light_gallery',
     'link_all',
 
+    # django-filer
+    'easy_thumbnails',
+    'filer',
+    'mptt',
+
     # project
 
     'backend.plugins.bs4_float',
@@ -174,7 +193,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
-    'aldryn_sites.middleware.SiteMiddleware',  # matters only on divio.com
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -191,11 +209,9 @@ MIDDLEWARE = [
 ]
 
 
-if DJANGO_ENV == DjangoEnv.BUILD_DOCKER:
-    DATABASE_URL = 'sqlite://:memory:'
-else:
-    DATABASE_URL = env.str('DATABASE_URL', 'sqlite://:memory:')
-
+# Configure database using DATABASE_URL; fall back to sqlite in memory when no
+# environment variable is available, e.g. during Docker build
+DATABASE_URL = env.str('DATABASE_URL', default='sqlite://:memory:')
 DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
 
 
@@ -207,10 +223,33 @@ LOCALE_PATHS = [
 
 ROOT_URLCONF = 'backend.urls'
 
-default_template_engine: dict = TEMPLATES[0]
-default_template_engine['DIRS'].extend([
-    os.path.join(BACKEND_DIR, 'templates/'),
-])
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BACKEND_DIR, 'templates/'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.tz',
+                'django.template.context_processors.i18n',
+                'django_settings_export.settings_export',
+                'cms.context_processors.cms_settings',
+                'sekizai.context_processors.sekizai',
+
+            ],
+        },
+    },
+]
+
 
 if DJANGO_ENV == DjangoEnv.LOCAL:
     email_backend_default = 'django.core.mail.backends.console.EmailBackend'
@@ -235,12 +274,14 @@ STATICFILES_DEFAULT_MAX_AGE = 60 * 60 * 24 * 365  # the default is 5m
 WHITENOISE_MAX_AGE = STATICFILES_DEFAULT_MAX_AGE
 
 
+# Media files
+# DEFAULT_FILE_STORAGE is configured using DEFAULT_STORAGE_DSN
+# read the setting value from the environment variable
+DEFAULT_STORAGE_DSN = env.str('DEFAULT_STORAGE_DSN', default='file:///data/media/?url=%2Fmedia%2F')
+# dsn_configured_storage_class() requires the name of the setting
 DefaultStorageClass = dsn_configured_storage_class('DEFAULT_STORAGE_DSN')
-if env.str('DEFAULT_STORAGE_DSN', ''):
-    DEFAULT_STORAGE_DSN = env.str('DEFAULT_STORAGE_DSN')
-    DEFAULT_FILE_STORAGE = 'backend.settings.DefaultStorageClass'
-else:
-    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+# Django's DEFAULT_FILE_STORAGE requires the class name
+DEFAULT_FILE_STORAGE = 'backend.settings.DefaultStorageClass'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'data/media/')
 
@@ -265,7 +306,6 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},  # removes frustrating validations, eg `too similar to your email`
 ]
-ALDRYN_SSO_LOGIN_URL_PREFIX = 'divio'
 
 
 GTM_CONTAINER_ID = env.str('GTM_CONTAINER_ID', 'GTM-1234')
@@ -273,9 +313,6 @@ GTM_CONTAINER_ID = env.str('GTM_CONTAINER_ID', 'GTM-1234')
 WEBPACK_DEV_URL = env.str('WEBPACK_DEV_URL', default='http://0.0.0.0:8090')
 
 
-default_template_engine['OPTIONS']['context_processors'].extend([
-    'django_settings_export.settings_export',
-])
 SENTRY_DSN = env.str('SENTRY_DSN', '')
 SETTINGS_EXPORT = [
     'DOMAIN',
@@ -299,6 +336,7 @@ ADMIN_REORDER = [
         'app': 'auth',
         'models': [
             'backend_auth.User',
+            'aldryn_sso.AldrynCloudUser',
             'auth.Group',
         ],
     },
@@ -347,10 +385,6 @@ RECAPTCHA_PRIVATE_KEY = env.str('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nV
 RECAPTCHA_SCORE_THRESHOLD = 0.85
 
 
-SHARING_VIEW_ONLY_TOKEN_KEY_NAME = 'anonymous-access'
-SHARING_VIEW_ONLY_SECRET_TOKEN = 'true'
-
-
 if DEBUG:
     CACHE_MIDDLEWARE_SECONDS = 0
     # there's a bug with caching - https://github.com/what-digital/divio/issues/9
@@ -382,17 +416,18 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': 'rest_framework.permissions.IsAuthenticated'
 }
 
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_SAMESITE = 'None'
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_SAMESITE = 'None'
 
-SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
 
-SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_SAMESITE = 'None'
-SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_SAMESITE = 'None'
+    SESSION_COOKIE_HTTPONLY = True
 
-SECURE_HSTS_SECONDS = 31536000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 
 # CSP settings have to be updated if some external media source is used
@@ -415,12 +450,14 @@ CSP_MEDIA_SRC = ("*", "'self'", "https://*.divio-media.org", "data:")
 
 CMS_TEMPLATES = [
     ('content-full-width.html', 'full width'),
+    ('whitenoise-static-files-demo.html', 'Static File Demo'),
 ]
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 CMS_PERMISSION = True
 
+LANGUAGE_CODE = "en"
 
 LANGUAGES = [
     ('en', "English"),
@@ -447,8 +484,13 @@ CMS_LANGUAGES = {
 PARLER_LANGUAGES = CMS_LANGUAGES
 
 
-MIGRATION_COMMANDS.insert(0, 'python manage.py test_pages_on_real_db')
-MIGRATION_COMMANDS.append('python manage.py clear_cache')
+# for divio deployment, overrides control.divio.com
+MIGRATION_COMMANDS = [
+    'python manage.py migrate',
+    'python manage.py collectstatic --noinput',
+    'python manage.py test_pages_on_real_db',
+    'python manage.py clear_cache',
+]
 
 
 CMS_PLACEHOLDER_CONF = {
@@ -560,3 +602,77 @@ LINK_ALL_MODELS_ADDITIONAL = [
     LinkAllModel(app_label='djangocms_blog', model_name='BlogCategory'),
 ]
 LINK_ALL_ENABLE_BUTTON_PLUGIN = True
+
+
+# django-filer
+THUMBNAIL_HIGH_RESOLUTION = True
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    #'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
+
+
+# divio.com SSO - this is only relevant if you deploy to divio.com
+ALDRYN_SSO_HIDE_USER_MANAGEMENT = False
+ALDRYN_SSO_LOGIN_WHITE_LIST = []  # https://docs.divio.com/en/latest/reference/addons-key/#aldryn-sso-login-white-list
+ALDRYN_SSO_LOGIN_URL_PREFIX = 'divio'
+SSO_DSN = env.str('SSO_DSN', default=None)
+
+ALDRYN_SSO_ENABLE_LOCALDEV = False
+if DJANGO_ENV == DjangoEnv.LOCAL:
+    ALDRYN_SSO_ENABLE_LOCALDEV = True
+
+ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = False
+if DJANGO_ENV == DjangoEnv.TEST:
+    ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = True  # stage servers must be protected
+    ALDRYN_SSO_ENABLE_LOCALDEV = True
+
+if ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN:
+    # apparently the middleware is not checking ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN
+    # so we have to manage this here so that live sites can be public.
+    # see https://github.com/divio/aldryn-sso/blob/master/aldryn_config.py#L115
+    position = MIDDLEWARE.index(
+        'django.contrib.auth.middleware.AuthenticationMiddleware') + 1
+    MIDDLEWARE.insert(position, 'aldryn_sso.middleware.AccessControlMiddleware')
+
+ALDRYN_SSO_ENABLE_SSO_LOGIN = env.bool('ALDRYN_SSO_ENABLE_SSO_LOGIN', default=False)
+if SSO_DSN:  # production SSO is configured, let's activate SSO
+    ALDRYN_SSO_ENABLE_SSO_LOGIN = True
+
+ALDRYN_SSO_ENABLE_LOGIN_FORM = env.bool('ALDRYN_SSO_ENABLE_LOGIN_FORM', default=True)
+
+# allow anonymous preview everywhere
+# https://docs.divio.com/en/latest/reference/addons-key/#test-site-protection
+SHARING_VIEW_ONLY_TOKEN_KEY_NAME = 'anonymous-access'
+SHARING_VIEW_ONLY_SECRET_TOKEN = 'true'
+# LOGIN_URL = 'aldryn_sso_login'
+ALDRYN_SSO_ENABLE_AUTO_SSO_LOGIN = env.bool('ALDRYN_SSO_ENABLE_AUTO_SSO_LOGIN', default=True)
+
+if ALDRYN_SSO_ENABLE_LOCALDEV:
+    # because thouse routes are conditionally inserted in urls.py
+    ALDRYN_SSO_LOGIN_WHITE_LIST.extend([
+        reverse_lazy('aldryn_sso_localdev_login'),
+        reverse_lazy('aldryn_localdev_create_user'),
+    ])
+
+ALDRYN_SSO_LOGIN_WHITE_LIST.extend([
+    reverse_lazy('simple-sso-login'),
+    reverse_lazy('aldryn_sso_login'),
+    '/static/*',  # because we're using whitenoise, static files are delivered through django
+    '/admin/*',  # for the logout route
+])
+
+
+
+if ALDRYN_SSO_ENABLE_SSO_LOGIN:
+    CLOUD_USER_SESSION_EXPIRATION = 24 * 60 * 60 * 7  # 1 week
+
+ALDRYN_SSO_OVERIDE_ADMIN_LOGIN_VIEW = ALDRYN_SSO_ENABLE_SSO_LOGIN or \
+                                      ALDRYN_SSO_ENABLE_LOGIN_FORM or \
+                                      ALDRYN_SSO_ENABLE_LOCALDEV
+
+if ALDRYN_SSO_OVERIDE_ADMIN_LOGIN_VIEW:
+    LOGIN_URL = 'aldryn_sso_login'
