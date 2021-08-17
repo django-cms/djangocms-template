@@ -37,9 +37,9 @@ backcall==0.2.0
     # via ipython
 beautifulsoup4==4.9.3
     # via djangocms-algolia
-boto3==1.18.21
+boto3==1.18.23
     # via -r backend/requirements.in
-botocore==1.21.21
+botocore==1.21.23
     # via
     #   boto3
     #   s3transfer
@@ -182,7 +182,7 @@ django-environ==0.4.5
     # via -r backend/requirements.in
 django-extensions==3.1.3
     # via -r backend/requirements.in
-django-fieldsignals==0.6.0
+django-fieldsignals==0.7.0
     # via djangocms-helpers
 django-filer==2.0.2
     # via
@@ -246,7 +246,7 @@ django-sekizai==2.0.0
     #   djangocms-light-gallery
 django-settings-export==1.2.1
     # via -r backend/requirements.in
-django-simple-sso==0.14.1
+django-simple-sso==1.1.0
     # via aldryn-sso
 django-sizefield==1.0.0
     # via aldryn-forms
@@ -378,7 +378,7 @@ ipython==7.26.0
     # via -r backend/requirements.in
 ipython-genutils==0.2.0
     # via traitlets
-itsdangerous==2.0.1
+itsdangerous==0.24
     # via
     #   aldryn-sso
     #   django-simple-sso
