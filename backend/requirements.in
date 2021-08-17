@@ -76,3 +76,6 @@ django-csp
 
 sentry-sdk
 django-robots
+
+django-simple-sso<1
+

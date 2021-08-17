@@ -10,9 +10,8 @@ FROM python:3.8 as django-build
 
 RUN apt-get update && apt-get install -y gettext
 
-COPY backend/requirements.in /app/backend/requirements.in
-# RUN pip install --no-deps --no-cache-dir -r /app/backend/requirements.txt
-RUN pip install -r /app/backend/requirements.in
+COPY backend/requirements.txt /app/backend/requirements.txt
+RUN pip install --no-deps --no-cache-dir -r /app/backend/requirements.txt
 
 WORKDIR /app/
 COPY . /app/

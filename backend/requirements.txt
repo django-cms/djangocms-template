@@ -246,8 +246,10 @@ django-sekizai==2.0.0
     #   djangocms-light-gallery
 django-settings-export==1.2.1
     # via -r backend/requirements.in
-django-simple-sso==1.1.0
-    # via aldryn-sso
+django-simple-sso==0.14.1
+    # via
+    #   -r backend/requirements.in
+    #   aldryn-sso
 django-sizefield==1.0.0
     # via aldryn-forms
 django-solo==1.1.5
@@ -378,7 +380,7 @@ ipython==7.26.0
     # via -r backend/requirements.in
 ipython-genutils==0.2.0
     # via traitlets
-itsdangerous==0.24
+itsdangerous==2.0.1
     # via
     #   aldryn-sso
     #   django-simple-sso
