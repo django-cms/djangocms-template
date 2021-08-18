@@ -8,7 +8,6 @@ Divio Project Setup
    2. go to Env Vars and set `DEBUG` to `True` for the test env
    3. go to Settings and set the following Release Commands:
       - `python manage.py migrate`
-      - `python manage.py collectstatic --noinput`
       - `python manage.py clear_cache`
       - `python manage.py test_pages_on_real_db`
    4. go to Repository and set up a webhook for your repository
