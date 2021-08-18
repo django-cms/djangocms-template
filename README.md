@@ -10,7 +10,7 @@ It's also possible to run this project locally out of the box, you can clone it 
 - Debian 10
 - Python 3.9
 - Django 3.1
-- DjangoCMS 3.8
+- Django CMS 3.9
 - Node 16
 - Webpack 5
 - TypeScript 4
