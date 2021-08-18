@@ -628,7 +628,6 @@ if DJANGO_ENV == DjangoEnv.LOCAL:
 ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = False
 if DJANGO_ENV == DjangoEnv.TEST:
     ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = True  # stage servers must be protected
-    ALDRYN_SSO_ENABLE_LOCALDEV = True
 
 if ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN:
     # apparently the middleware is not checking ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN
