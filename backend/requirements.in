@@ -9,7 +9,7 @@ whitenoise  # serving static files
 
 django_storage_url
 
-https://github.com/divio/aldryn-sso/archive/refs/heads/master.zip#egg=aldryn-sso  # there is no pypi package of this
+aldryn-sso
 
 # Django Filer - optional, but used in most projects
 easy_thumbnails
@@ -77,5 +77,4 @@ django-csp
 sentry-sdk
 django-robots
 
-django-simple-sso<1
 
