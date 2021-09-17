@@ -314,6 +314,7 @@ WEBPACK_DEV_URL = env.str('WEBPACK_DEV_URL', default='http://0.0.0.0:8090')
 
 
 SENTRY_DSN = env.str('SENTRY_DSN', '')
+
 SETTINGS_EXPORT = [
     'DOMAIN',
     'SITE_NAME',
@@ -626,8 +627,9 @@ if DJANGO_ENV == DjangoEnv.LOCAL:
     ALDRYN_SSO_ENABLE_LOCALDEV = True
 
 ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = False
-if DJANGO_ENV == DjangoEnv.TEST:
-    ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = True  # stage servers must be protected
+if DJANGO_ENV == DjangoEnv.TEST or env.bool('ALDRYN_SSO_ENABLE_AUTO_SSO_LOGIN', default=False):
+    # stage servers must always be protected, live servers only if env var is explicitely set
+    ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = True
 
 if ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN:
     # apparently the middleware is not checking ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN
