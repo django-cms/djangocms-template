@@ -627,7 +627,7 @@ if DJANGO_ENV == DjangoEnv.LOCAL:
     ALDRYN_SSO_ENABLE_LOCALDEV = True
 
 ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = False
-if DJANGO_ENV == DjangoEnv.TEST or env.bool('ALDRYN_SSO_ENABLE_AUTO_SSO_LOGIN', default=False):
+if DJANGO_ENV == DjangoEnv.TEST or env.bool('ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN', default=False):
     # stage servers must always be protected, live servers only if env var is explicitely set
     ALDRYN_SSO_ALWAYS_REQUIRE_LOGIN = True
 
