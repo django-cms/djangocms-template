@@ -29,7 +29,6 @@ DJANGO_ENV = DjangoEnv(env.str('STAGE', default='local'))
 
 
 if DJANGO_ENV == DjangoEnv.LOCAL:
-    # environ.Env.read_env()  not needed for Docker setup, done via docker-compose.yml
     CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
 
 
@@ -38,8 +37,9 @@ BASE_DIR = os.path.dirname(BACKEND_DIR)
 os.environ['BASE_DIR'] = BASE_DIR
 os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.settings'
 
-
 BASE_DIR: str = locals()['BASE_DIR']
+
+# environ.Env.read_env(os.path.join(BASE_DIR, '.local-env'))  # Uncomment if you use local setup without docker
 DOMAIN: str = locals().get('DOMAIN', 'localhost')
 SITE_NAME: str = locals().get('SITE_NAME', 'dev testing site')
 
@@ -167,6 +167,7 @@ INSTALLED_APPS.extend([
     'djangocms_redirect',
     'light_gallery',
     'link_all',
+    'captcha',  # See https://github.com/divio/aldryn-forms/issues/168
 
     # django-filer
     'easy_thumbnails',
@@ -209,9 +210,9 @@ MIDDLEWARE = [
 ]
 
 
-# Configure database using DATABASE_URL; fall back to sqlite in memory when no
+# Configure database using DATABASE_URL; fall back to sqlite file when no
 # environment variable is available, e.g. during Docker build
-DATABASE_URL = env.str('DATABASE_URL', default='sqlite://:memory:')
+DATABASE_URL = env.str('DATABASE_URL', default=f'sqlite:///{BASE_DIR}/db.sqlite')
 DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
 
 

@@ -1,7 +1,7 @@
 # Project setup
 
-- docker-compose up --build -d
-- docker-compose exec web manage.py migrate'
+- `docker-compose up --build -d`
+- `docker-compose exec web manage.py migrate`
 
 For setting up the database from the stage/live server see the last section about divio-cli.
 
@@ -24,6 +24,20 @@ For installing the compiled requirements in docker you have to rebuild it with `
 - run `pip install divio-cli` & `divio login` outside of docker
 - run `divio project pull db test` and `divio project pull media test` outside of docker
 
+## Local setup without Docker 
+
+This setup is useful when execution performance is important and you don't want to use Docker for the backend and frontend, only for DB.
+Using of virtualenv (and other [tools](https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html)) is very useful here, you might want to run something like this to prepare your local environment:
+
+- `mkvirtualenv myproject`
+- `pip install -r backend/requirements.txt`
+
+1. Start DB via docker-compose: `docker-compose up db` 
+2. Enable reading local env file to **settings.py**: `environ.Env.read_env(os.path.join(BASE_DIR, '.local-env'))` 
+3. Run the backend: `python manage.py runserver`
+4. Run the frontend: 
+   1. `cd frontend`
+   2. `yarn start`
 
 ## Recommendations
 
