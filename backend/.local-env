@@ -1,0 +1,16 @@
+DEBUG=True
+STAGE=local
+DATABASE_URL=postgres://postgres@postgres:5432/db
+HTTP_PROTOCOL=http
+SECURE_SSL_REDIRECT=false
+IS_RUN_FRONTEND_IN_DOCKER=true
+
+# IS_LINK_ALL_DEV=true
+
+
+# for a simulation of a live environment:
+# DEBUG=False
+# STAGE=live
+# DEBUG_PROPAGATE_EXCEPTIONS = True
+# SSO_DSN=https://user:pass@control.divio.com/auth/
+# DOMAIN=djangocms-template.0.0.0.0.nip.io

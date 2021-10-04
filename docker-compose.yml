@@ -16,7 +16,7 @@ services:
             - '.:/app:rw'
             - './data:/data:rw'
         command: python manage.py runserver 0.0.0.0:80
-        env_file: backend/.env
+        env_file: backend/.local-env
 
     frontend:
         build:
@@ -25,8 +25,13 @@ services:
         ports:
             - '8090:8090'
         volumes:
-            - '.:/app:rw'
-            - node_modules:/app/frontend/node_modules
+            - './frontend:/app:rw'
+            # We want to ignore an existing frontend/node_modules
+            # this allows a host-system yarn install and a docker based yarn work
+            # side by side
+            # read more at https://stackoverflow.com/questions/29181032/add-a-volume-to-docker-but-exclude-a-sub-folder
+            - '/app/node_modules/'  # remove node_modules from the volume content
+        working_dir: /app
         command: yarn webpack-dev-server-in-docker
 
     db:
@@ -39,5 +44,3 @@ services:
         volumes:
             - '.:/app:rw'
 
-volumes:
-    node_modules:
