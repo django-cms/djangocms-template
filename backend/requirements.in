@@ -31,7 +31,7 @@ djangocms-blog
 djangocms-history
 djangocms-snippet
 https://github.com/django-cms/djangocms-video/archive/refs/heads/master.zip#egg=djangocms-video  # wait for responsiveness fix to be on pypi
-https://github.com/django-cms/djangocms-bootstrap4/archive/7f887cd99ed5e11f59dcc77a97773bbce6c70d80.zip#egg=djangocms-bootstrap4  # TODO: This needs to be cleaned up. Also check this pull request: https://github.com/django-cms/djangocms-bootstrap4/pull/137
+djangocms-bootstrap4
     python-slugify
 djangocms-googlemap
 djangocms-modules
