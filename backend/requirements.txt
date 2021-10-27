@@ -308,7 +308,7 @@ djangocms-attributes-field==2.0.0
     #   djangocms-video
 djangocms-blog==1.2.3
     # via -r backend/requirements.in
-https://github.com/django-cms/djangocms-bootstrap4/archive/7f887cd99ed5e11f59dcc77a97773bbce6c70d80.zip#egg=djangocms-bootstrap4
+djangocms-bootstrap4==2.0.0
     # via -r backend/requirements.in
 djangocms-file==3.0.0
     # via -r backend/requirements.in
