@@ -138,7 +138,6 @@ INSTALLED_APPS.extend([
     'djangocms_bootstrap4.contrib.bootstrap4_media',
     'djangocms_bootstrap4.contrib.bootstrap4_tabs',
     'djangocms_bootstrap4.contrib.bootstrap4_utilities',
-    'djangocms_bootstrap4.contrib.bootstrap4_heading',
     'djangocms_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'aldryn_apphooks_config',
@@ -167,7 +166,6 @@ INSTALLED_APPS.extend([
     'djangocms_redirect',
     'light_gallery',
     'link_all',
-    'captcha',  # See https://github.com/divio/aldryn-forms/issues/168
 
     # django-filer
     'easy_thumbnails',
@@ -456,7 +454,7 @@ CMS_TEMPLATES = [
     ('whitenoise-static-files-demo.html', 'Static File Demo'),
 ]
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = 'SAMEORIGIN'  # for the iframe-embedded django admin
 
 CMS_PERMISSION = True
 
