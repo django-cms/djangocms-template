@@ -262,6 +262,7 @@ DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', f'{SITE_NAME} <info@{DOMAIN}>
 
 
 SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
+# PREPEND_WWW = True (if you want to redirect domain.com/... to www.domain.com/...
 HTTP_PROTOCOL = env.str('HTTP_PROTOCOL', 'https')
 
 
