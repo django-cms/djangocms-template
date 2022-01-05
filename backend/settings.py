@@ -81,7 +81,8 @@ installed_apps_overrides = [
 INSTALLED_APPS = installed_apps_overrides + INSTALLED_APPS
 
 INSTALLED_APPS.extend([
-
+    ## BEWARE: any application added here will not show their models in django admin UNLESS you configure them below in the ADMIN_REORDER setting.
+    
     # custom user
     'allauth',
     'allauth.account',
@@ -179,6 +180,8 @@ INSTALLED_APPS.extend([
     'backend.plugins.bs4_inline_alignment',
     'backend.plugins.bs4_spacer',
     'backend.plugins.horizontal_line',
+    
+    ## BEWARE: any application added here will not show their models in django admin UNLESS you configure them below in the ADMIN_REORDER setting.
 ])
 
 
