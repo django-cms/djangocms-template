@@ -1,7 +1,7 @@
 # Project setup
 
-- `docker-compose up --build -d`
-- `docker-compose exec python web manage.py migrate`
+- `docker compose up --build -d`
+- `docker compose exec python web manage.py migrate`
 
 For setting up the database from the stage/live server see the last section about divio-cli.
 
