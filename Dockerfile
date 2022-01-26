@@ -19,7 +19,7 @@ COPY . /app/
 COPY --from=frontend-build /dist /app/frontend/dist
 
 RUN python manage.py collectstatic --noinput --ignore=node_modules
-RUN python manage.py compilemessages --ignore=node_modules
+RUN python manage.py compilemessages
 
 
 ENV PORT=80
