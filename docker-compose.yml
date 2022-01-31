@@ -8,8 +8,6 @@ services:
         build:
             context: '.'
             dockerfile: Dockerfile
-        links:
-            - 'db:postgres'
         ports:
             - '8000:80'
         volumes:
@@ -35,7 +33,7 @@ services:
         command: yarn webpack-dev-server-in-docker
 
     db:
-        image: postgres:10.16-alpine
+        image: postgres:13.5-alpine
         ports:
             - '5432:5432'
         environment:

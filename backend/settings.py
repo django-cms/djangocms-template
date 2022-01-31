@@ -3,6 +3,8 @@ from enum import Enum
 from typing import List
 
 import dj_database_url
+import dj_email_url
+import django_cache_url
 import environ
 from django.urls import reverse_lazy
 from django_storage_url import dsn_configured_storage_class
@@ -27,11 +29,6 @@ class DjangoEnv(Enum):
 DJANGO_ENV_ENUM = DjangoEnv
 DJANGO_ENV = DjangoEnv(env.str('STAGE', default='local'))
 
-
-if DJANGO_ENV == DjangoEnv.LOCAL:
-    CACHE_URL = 'locmem://'  # to disable a warning from aldryn-django
-
-
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(BACKEND_DIR)
 os.environ['BASE_DIR'] = BASE_DIR
@@ -42,11 +39,6 @@ BASE_DIR: str = locals()['BASE_DIR']
 # environ.Env.read_env(os.path.join(BASE_DIR, '.local-env'))  # Uncomment if you use local setup without docker
 DOMAIN: str = locals().get('DOMAIN', 'localhost')
 SITE_NAME: str = locals().get('SITE_NAME', 'dev testing site')
-
-
-################################################################################
-# django
-################################################################################
 
 
 WSGI_APPLICATION = 'backend.wsgi.application'
@@ -82,7 +74,7 @@ INSTALLED_APPS = installed_apps_overrides + INSTALLED_APPS
 
 INSTALLED_APPS.extend([
     ## BEWARE: any application added here will not show their models in django admin UNLESS you configure them below in the ADMIN_REORDER setting.
-    
+
     # custom user
     'allauth',
     'allauth.account',
@@ -180,7 +172,7 @@ INSTALLED_APPS.extend([
     'backend.plugins.bs4_inline_alignment',
     'backend.plugins.bs4_spacer',
     'backend.plugins.horizontal_line',
-    
+
     ## BEWARE: any application added here will not show their models in django admin UNLESS you configure them below in the ADMIN_REORDER setting.
 ])
 
@@ -253,13 +245,20 @@ TEMPLATES = [
 ]
 
 
-if DJANGO_ENV == DjangoEnv.LOCAL:
-    email_backend_default = 'django.core.mail.backends.console.EmailBackend'
-else:
-    email_backend_default = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = env.str('EMAIL_BACKEND', default=email_backend_default)
+# translating the EMAIL_URL env var into django email settings
+email_config = dj_email_url.config(env="EMAIL_URL", default="console:")
+vars().update(email_config)  # this loads the standard django email settings such as EMAIL_HOST, etc.
 
-DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', f'{SITE_NAME} <info@{DOMAIN}>')
+# EMAIL_FROM should be included in the EMAIL_URL, see https://github.com/migonzalvar/dj-email-url#set-from-email-addresses
+SERVER_EMAIL = email_config.get('SERVER_EMAIL', 'root@localhost')
+DEFAULT_FROM_EMAIL = email_config.get('DEFAULT_FROM_EMAIL', f'{SITE_NAME} <info@{DOMAIN}>')
+
+
+if DJANGO_ENV == DjangoEnv.LOCAL:
+    CACHE_URL = 'dummy://'  # to disable a warning from aldryn-django
+
+# avoid locmem as default on production, it doesn't work properly
+CACHES = {'default': django_cache_url.config(default="dummy://")}
 
 
 SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=True)
@@ -388,6 +387,16 @@ RECAPTCHA_PUBLIC_KEY = env.str('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtM
 RECAPTCHA_PRIVATE_KEY = env.str('RECAPTCHA_PRIVATE_KEY', '6LcI2-YUAAAAADHRo9w9nVNtPW2tPx9MS4yqEvD6')
 RECAPTCHA_SCORE_THRESHOLD = 0.85
 
+
+# Caching
+# to disable django caching completely, you can also do:
+# {
+#     'default': {
+#         'BACKEND': '',
+#     }
+# }
+# beware that you will have to disable django CMS caching separately from this
+# by removing the django CMS caching middleware
 
 if DEBUG:
     CACHE_MIDDLEWARE_SECONDS = 0

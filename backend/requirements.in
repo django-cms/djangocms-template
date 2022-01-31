@@ -8,6 +8,11 @@ uwsgi
 whitenoise  # serving static files
 
 django_storage_url
+dj-database-url
+django-cache-url
+dj-email-url  # For parsing EMAIL_URL env variable
+
+django-csp
 
 aldryn-sso
 
@@ -52,7 +57,10 @@ djangocms-page-meta
 
 django-settings-export # settings export to templates
 django-enumfields
-django-admin-sortable2 # drag and drop sorting for admin
+
+# django-admin-sortable2==1.0.3 and higher requires Django>=3.2
+django-admin-sortable2<1.0.3 # drag and drop sorting for admin
+
 django-sortedm2m # M2M drag and drop sorting for admin, don't use django-admin-sortable2 for M2M
 django-filter # generic view filter helpers for front and admin panel, as `?field__gte=5`
 django-google-tag-manager
@@ -71,8 +79,6 @@ django-countries
 django-widget-tweaks
 django-logentry-admin
 django-adminutils # a set of shortcuts for admin.py composition
-dj-database-url
-django-csp
 
 sentry-sdk
 django-robots

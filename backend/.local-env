@@ -1,6 +1,6 @@
 DEBUG=True
 STAGE=local
-DATABASE_URL=postgres://postgres@postgres:5432/db
+DATABASE_URL=postgres://postgres@db:5432/db
 HTTP_PROTOCOL=http
 SECURE_SSL_REDIRECT=false
 IS_RUN_FRONTEND_IN_DOCKER=true
