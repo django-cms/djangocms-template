@@ -27,7 +27,12 @@ class DjangoEnv(Enum):
 
 
 DJANGO_ENV_ENUM = DjangoEnv
-DJANGO_ENV = DjangoEnv(env.str('STAGE', default='local'))
+
+# we need to fallback DJANGO_ENV to 'test' because feature environment on divio sets STAGE to arbitrary values
+try:
+    DJANGO_ENV = DjangoEnv(env.str('STAGE', 'local'))
+except:
+    DJANGO_ENV = DjangoEnv.TEST
 
 BACKEND_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(BACKEND_DIR)
