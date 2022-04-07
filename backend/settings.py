@@ -631,7 +631,7 @@ THUMBNAIL_PROCESSORS = (
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters',
 )
-
+THUMBNAIL_DEFAULT_STORAGE = DEFAULT_FILE_STORAGE  # easy-thumbnails does not respect DEFAULT_FILE_STORAGE
 
 # divio.com SSO - this is only relevant if you deploy to divio.com
 ALDRYN_SSO_HIDE_USER_MANAGEMENT = False
