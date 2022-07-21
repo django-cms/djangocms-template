@@ -164,6 +164,7 @@ INSTALLED_APPS.extend([
     'djangocms_redirect',
     'light_gallery',
     'link_all',
+    'parler',
 
     # django-filer
     'easy_thumbnails',
