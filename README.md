@@ -7,11 +7,11 @@ It's also possible to run this project locally out of the box, you can clone it 
 
 ## Tech Stack
 
-- Debian 10
-- Python 3.9
-- Django 3.1
-- Django CMS 3.9
-- Node 16
+- Python 3.10.6
+- Django 4.2
+- Django CMS 3.11.3
+- Node 18
 - Webpack 5
-- TypeScript 4
+- TypeScript 5
 - Bootstrap 4
+- yarn 3

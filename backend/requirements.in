@@ -1,5 +1,5 @@
-django-cms>3.8,<4
-django>=3.1,<3.2  # 3.2 has dark admin theme which looks bad in custom django CMS admin views
+django-cms<4
+django<4.3
 boto3  # for (optional) s3 storage
 psycopg2  # postgresql support
 python-dotenv
@@ -36,14 +36,14 @@ djangocms-blog
 djangocms-history
 djangocms-snippet
 https://github.com/django-cms/djangocms-video/archive/refs/heads/master.zip#egg=djangocms-video  # wait for responsiveness fix to be on pypi
-djangocms-bootstrap4
+https://github.com/django-cms/djangocms-bootstrap4/archive/afb656c7ddcaa0efb7d40f7ade197f47daed6990.zip#egg=djangocms-bootstrap4 # Has django 4 support and some extra plugins
     python-slugify
 djangocms-googlemap
 djangocms-modules
-aldryn-forms
+https://github.com/what-digital/aldryn-forms/archive/0a4fd3305c68a2fb328ccd7e65596a6ddac3769d.zip#egg=aldryn-forms
     djangocms-aldryn-forms-bootstrap4-templates
-    aldryn-forms-recaptcha-plugin
-djangocms-light-gallery
+aldryn-forms-recaptcha-plugin
+https://github.com/kbytesys/django-recaptcha3/archive/cec505ebd362bc82f9bc61509e02a04547301dba.zip#egg=django-recaptcha3  # wait for django 4 support to be on pypi
 aldryn-apphooks-config
 djangocms-socialshare
 djangocms-algolia
@@ -58,8 +58,7 @@ djangocms-page-meta
 django-settings-export # settings export to templates
 django-enumfields
 
-# django-admin-sortable2==1.0.3 and higher requires Django>=3.2
-django-admin-sortable2<1.0.3 # drag and drop sorting for admin
+https://github.com/what-digital/django-admin-sortable2/archive/refs/heads/master.zip#egg=django-admin-sortable2 # Temp solution until PR is accepted
 
 django-sortedm2m # M2M drag and drop sorting for admin, don't use django-admin-sortable2 for M2M
 django-filter # generic view filter helpers for front and admin panel, as `?field__gte=5`

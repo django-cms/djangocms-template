@@ -9,6 +9,7 @@ import environ
 from django.urls import reverse_lazy
 from django_storage_url import dsn_configured_storage_class
 from link_all.dataclasses import LinkAllModel
+from enumfields import Enum as EnumFields
 
 
 ################################################################################
@@ -99,6 +100,7 @@ INSTALLED_APPS.extend([
     'whitenoise.runserver_nostatic',  # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'parler',
 
     # key django CMS modules
     'cms',
@@ -162,7 +164,6 @@ INSTALLED_APPS.extend([
         'aldryn_forms.contrib.email_notifications',
         'emailit',
     'djangocms_redirect',
-    'light_gallery',
     'link_all',
 
     # django-filer
@@ -431,7 +432,7 @@ DEFAULT_RENDERER_CLASSES = (
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES,
-    'DEFAULT_PERMISSION_CLASSES': 'rest_framework.permissions.IsAuthenticated'
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated', )
 }
 
 if not DEBUG:
@@ -546,6 +547,40 @@ DJANGOCMS_BOOTSTRAP4_GRID_COLUMN_CHOICES = [
     ('w-100', 'Break'),
     ('', 'Empty'),
 ]
+
+
+class GridContainerBackground(EnumFields):
+    NONE = 'background-none'
+
+    class Labels:
+        NONE = 'None'
+
+
+class GridContainerType(EnumFields):
+    DYNAMIC_WIDTH = 'container'
+    FULL_WIDTH = 'container-fluid'
+
+
+class GridContainerSpacing(EnumFields):
+    NONE = 'none'
+    SMALL = 'small'
+    MEDIUM = 'medium'
+    LARGE = 'large'
+
+
+class GridContainerVerticalSpacingInternal(EnumFields):
+    NONE = 'none'
+
+
+class GridVerticalContainerSpacing(EnumFields):
+    NONE = 'none'
+
+
+class GridContainerWidthInternal(EnumFields):
+    NONE = 'none'
+
+
+DJANGOCMS_BOOTSTRAP4_GRID_CONTAINER_BACKGROUND = GridContainerBackground
 
 DJANGOCMS_GOOGLEMAP_API_KEY = env.str('DJANGOCMS_GOOGLEMAP_API_KEY', '123')
 
@@ -678,7 +713,7 @@ if ALDRYN_SSO_ENABLE_LOCALDEV:
     ])
 
 ALDRYN_SSO_LOGIN_WHITE_LIST.extend([
-    reverse_lazy('simple-sso-login'),
+    # reverse_lazy('simple-sso-login'),
     reverse_lazy('aldryn_sso_login'),
     '/static/*',  # because we're using whitenoise, static files are delivered through django
     '/admin/*',  # for the logout route
@@ -695,3 +730,6 @@ ALDRYN_SSO_OVERIDE_ADMIN_LOGIN_VIEW = ALDRYN_SSO_ENABLE_SSO_LOGIN or \
 
 if ALDRYN_SSO_OVERIDE_ADMIN_LOGIN_VIEW:
     LOGIN_URL = 'aldryn_sso_login'
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

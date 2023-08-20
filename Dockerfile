@@ -1,4 +1,4 @@
-FROM node:16 AS frontend-build
+FROM node:18.17.1 AS frontend-build
 COPY frontend/package.json .
 COPY frontend/yarn.lock .
 RUN yarn install --pure-lockfile
@@ -6,7 +6,7 @@ COPY frontend/ .
 RUN yarn run build
 
 
-FROM python:3.9 as django-build
+FROM python:3.10.6 as django-build
 
 RUN apt-get update && apt-get install -y gettext
 

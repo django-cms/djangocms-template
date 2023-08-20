@@ -11,9 +11,11 @@ data/
 data.tar.gz
 backend/static_collected/
 backend/.local-env
+backend/addons-dev
 .venv
 
 # dev files
 .idea/
 .DS_Store
 .divio
+.local-env

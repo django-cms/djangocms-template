@@ -73,3 +73,8 @@ DOMAIN=djangocms-template.0.0.0.0.nip.io
 2. Run `docker-compose run frontend yarn build`
 3. Then run `./manage.py collectstatic --ignore node_modules`
 4. and then rerun `docker-compose up web -d`
+
+
+### Adding fontawesome icons
+
+Generate a personal kit of icons and place the script into base.html
