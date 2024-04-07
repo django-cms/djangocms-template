@@ -1,4 +1,4 @@
-django-cms<4
+django-cms>=4
 django<4.3
 boto3  # for (optional) s3 storage
 psycopg2  # postgresql support
@@ -22,6 +22,9 @@ django-filer
 django-mptt
 html5lib
 Pillow
+django-parler
+djangocms_versioning
+djangocms_alias
 
 
 # django-cms
@@ -32,7 +35,7 @@ djangocms-text-ckeditor
 djangocms-link
 djangocms-picture
 djangocms-file
-djangocms-blog
+#djangocms-blog
 djangocms-history
 djangocms-snippet
 https://github.com/django-cms/djangocms-video/archive/refs/heads/master.zip#egg=djangocms-video  # wait for responsiveness fix to be on pypi
@@ -45,18 +48,18 @@ https://github.com/what-digital/aldryn-forms/archive/0a4fd3305c68a2fb328ccd7e655
 aldryn-forms-recaptcha-plugin
 https://github.com/kbytesys/django-recaptcha3/archive/cec505ebd362bc82f9bc61509e02a04547301dba.zip#egg=django-recaptcha3  # wait for django 4 support to be on pypi
 aldryn-apphooks-config
-djangocms-socialshare
+#djangocms-socialshare
 djangocms-algolia
 djangocms-helpers  # https://gitlab.com/what-digital/djangocms-helpers - underlying bugs need to be fixed in the respective repos before this can be removed
-djangocms-link-all
+#djangocms-link-all
 djangocms-redirect
-djangocms-page-meta
+#djangocms-page-meta
 
 
 # django
 
 django-settings-export # settings export to templates
-django-enumfields
+django-enumfields2
 
 https://github.com/what-digital/django-admin-sortable2/archive/refs/heads/master.zip#egg=django-admin-sortable2 # Temp solution until PR is accepted
 

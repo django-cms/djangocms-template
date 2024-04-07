@@ -1,7 +1,7 @@
-{% load cms_tags sekizai_tags static i18n menu_tags page_meta_tags gtm_tags %}
+{% load cms_tags sekizai_tags static i18n menu_tags gtm_tags %}
 
 
-{% page_meta request.current_page as page_meta %}
+{# {% page_meta request.current_page as page_meta %} #}
 
 {% get_current_language as lang_code %}
 
@@ -19,7 +19,7 @@
     </title>
 
     {% block meta %}
-        {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
+{#         {% include 'djangocms_page_meta/meta.html' with meta=page_meta %} #}
     {% endblock meta %}
 
     <link rel="shortcut icon" href="{% static 'global/img/favicon.ico' %}" type="image/x-icon"/>

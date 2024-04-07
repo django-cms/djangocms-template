@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 12:13+0200\n"
+"POT-Creation-Date: 2024-04-07 15:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,45 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: backend/addons-dev/aldryn-forms-recaptcha-plugin/aldryn_forms_recaptcha_plugin/cms_plugins.py:9
+msgid "Invisible ReCaptcha Field"
+msgstr ""
+
+#: backend/addons-dev/aldryn-forms-recaptcha-plugin/aldryn_forms_recaptcha_plugin/cms_plugins.py:24
+msgid ""
+"There was a problem with ReCaptcha V3. Please contact support if this "
+"problem persists."
+msgstr ""
+
+#: backend/addons-dev/aldryn-forms/tests/test_utils.py:109
+msgid "Default"
+msgstr ""
+
+#: backend/addons-dev/aldryn-forms/tests/test_utils.py:110
+msgid "Email only"
+msgstr ""
+
+#: backend/addons-dev/aldryn-forms/tests/test_utils.py:111
+msgid "None"
+msgstr ""
+
+#: backend/addons-dev/djangocms-helpers/djangocms_helpers/fixes/aldryn_sso_admin.py:24
+msgid "User"
+msgstr ""
+
+#: backend/addons-dev/djangocms-link-all/link_all/cms_plugins.py:37
+#: backend/plugins/module_name.py:4
+msgid "Generic"
+msgstr ""
+
+#: backend/addons-dev/djangocms-link-all/link_all/cms_plugins.py:38
+msgid "Link"
+msgstr ""
+
+#: backend/addons-dev/djangocms-link-all/link_all/cms_plugins.py:79
+msgid "Link / Button"
+msgstr ""
 
 #: backend/blog/templates/djangocms_blog/plugins/latest_entries.html:9
 #: backend/blog/templates/djangocms_blog/post_list.html:48
@@ -47,19 +86,19 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: backend/blog/templates/djangocms_blog/post_list.html:59
+#: backend/blog/templates/djangocms_blog/post_list.html:60
 msgid "previous"
 msgstr ""
 
-#: backend/blog/templates/djangocms_blog/post_list.html:62
+#: backend/blog/templates/djangocms_blog/post_list.html:63
 msgid "Page"
 msgstr ""
 
-#: backend/blog/templates/djangocms_blog/post_list.html:62
+#: backend/blog/templates/djangocms_blog/post_list.html:63
 msgid "of"
 msgstr ""
 
-#: backend/blog/templates/djangocms_blog/post_list.html:65
+#: backend/blog/templates/djangocms_blog/post_list.html:66
 msgid "next"
 msgstr ""
 
@@ -75,18 +114,14 @@ msgstr ""
 msgid "Inline Alignment"
 msgstr ""
 
-#: backend/plugins/bs4_spacer/cms_plugins.py:12
+#: backend/plugins/bs4_spacer/cms_plugins.py:13
 msgid "Vertical Spacing"
 msgstr ""
 
-#: backend/plugins/bs4_spacer/cms_plugins.py:25
+#: backend/plugins/bs4_spacer/cms_plugins.py:23
 msgid "Advanced settings"
 msgstr ""
 
 #: backend/plugins/horizontal_line/cms_plugins.py:13
 msgid "field-name"
-msgstr ""
-
-#: backend/plugins/module_name.py:4
-msgid "Generic"
 msgstr ""

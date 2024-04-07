@@ -6,7 +6,7 @@ COPY frontend/ .
 RUN yarn run build
 
 
-FROM python:3.10.6 as django-build
+FROM python:3.11.8 as django-build
 
 RUN apt-get update && apt-get install -y gettext
 

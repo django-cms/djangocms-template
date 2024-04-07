@@ -8,7 +8,7 @@ import django_cache_url
 import environ
 from django.urls import reverse_lazy
 from django_storage_url import dsn_configured_storage_class
-from link_all.dataclasses import LinkAllModel
+# from link_all.dataclasses import LinkAllModel
 from enumfields import Enum as EnumFields
 
 
@@ -42,13 +42,14 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'backend.settings'
 
 BASE_DIR: str = locals()['BASE_DIR']
 
-# environ.Env.read_env(os.path.join(BASE_DIR, '.local-env'))  # Uncomment if you use local setup without docker
+environ.Env.read_env(os.path.join(BASE_DIR, '.local-env'))  # Uncomment if you use local setup without docker
 DOMAIN: str = locals().get('DOMAIN', 'localhost')
 SITE_NAME: str = locals().get('SITE_NAME', 'dev testing site')
 
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+CMS_CONFIRM_VERSION4 = True
 
 DATE_FORMAT = 'F j, Y'
 USE_TZ = True
@@ -72,9 +73,9 @@ installed_apps_overrides = [
     # for USERNAME_FIELD = 'email', before `cms` since it has a User model
     'backend.auth',
 
-    'backend.blog',
+    # 'backend.blog',
 
-    'djangocms_modules',
+    # 'djangocms_modules',
 ]
 INSTALLED_APPS = installed_apps_overrides + INSTALLED_APPS
 
@@ -113,14 +114,16 @@ INSTALLED_APPS.extend([
     'rest_framework',
     'import_export',
     'adminsortable2',
-    'admin_reorder',
+    # 'admin_reorder',
     'django_extensions',
     'widget_tweaks',
     'django_countries',
     'logentry_admin',
-    'djangocms_helpers',
-    'djangocms_helpers.divio',  # fixes a bug in divio aldryn commands
-    'djangocms_helpers.sentry_500_error_handler',
+    # 'djangocms_helpers',
+    # 'djangocms_helpers.divio',  # fixes a bug in divio aldryn commands
+    # 'djangocms_helpers.sentry_500_error_handler',
+    "djangocms_versioning",
+    "djangocms_alias",
 
     'robots',
 
@@ -141,30 +144,30 @@ INSTALLED_APPS.extend([
     'djangocms_picture',
     'djangocms_bootstrap4.contrib.bootstrap4_picture',
     'aldryn_apphooks_config',
-    'djangocms_blog',
-        'taggit',
-        'taggit_autosuggest',
-        'sortedm2m',
+    # 'djangocms_blog',
+    #     'taggit',
+    #     'taggit_autosuggest',
+    #     'sortedm2m',
     'djangocms_icon',
     'djangocms_text_ckeditor',
     'djangocms_googlemap',
     'djangocms_video',
-    'djangocms_history',
+    # 'djangocms_history',
     'djangocms_file',
     'djangocms_snippet',
-    'djangocms_socialshare',
+    # 'djangocms_socialshare',
     # 'djangocms_algolia',
-    'djangocms_page_meta',
-        'meta',
-    'aldryn_forms_bs4_templates',
-    'aldryn_forms',
-        'aldryn_forms_recaptcha_plugin',
-            'snowpenguin.django.recaptcha3',
-        'absolute',
-        'aldryn_forms.contrib.email_notifications',
-        'emailit',
+    # 'djangocms_page_meta',
+    #     'meta',
+    # 'aldryn_forms_bs4_templates',
+    # 'aldryn_forms',
+    #     'aldryn_forms_recaptcha_plugin',
+    #         'snowpenguin.django.recaptcha3',
+    #     'absolute',
+    #     'aldryn_forms.contrib.email_notifications',
+    #     'emailit',
     'djangocms_redirect',
-    'link_all',
+    # 'link_all',
 
     # django-filer
     'easy_thumbnails',
@@ -202,9 +205,10 @@ MIDDLEWARE = [
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.language.LanguageCookieMiddleware',
-    'admin_reorder.middleware.ModelAdminReorder',
+    # 'admin_reorder.middleware.ModelAdminReorder',
     'djangocms_redirect.middleware.RedirectMiddleware',
-    'link_all.middleware.RedirectExceptionMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
+    # 'link_all.middleware.RedirectExceptionMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
@@ -339,54 +343,54 @@ HIJACK_REGISTER_ADMIN = False
 HIJACK_ALLOW_GET_REQUESTS = True
 
 
-ADMIN_REORDER = [
-    {
-        'label': 'Users',
-        'app': 'auth',
-        'models': [
-            'backend_auth.User',
-            'aldryn_sso.AldrynCloudUser',
-            'auth.Group',
-        ],
-    },
-    {
-        'label': 'CMS',
-        'app': 'cms',
-        'models': [
-            'cms.Page',
-            {'model': 'filer.Folder', 'label': 'Media'},
-            'djangocms_redirect.Redirect',
-            {'model': 'aldryn_forms.FormSubmission', 'label': 'Dynamic forms submissions'},
-        ],
-    },
-    {
-        'label': 'Blog',
-        'app': 'djangocms_blog',
-    },
-    {
-        'label': 'System Administration',
-        'app': 'cms',
-        'models': [
-            {'model': 'sites.Site', 'label': 'Websites'},
-            {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
-            {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
-            'admin.LogEntry',
-
-            # removed because it doesn't work on cms 3.7.3
-            # 'cms.GlobalPagePermission',
-            # 'cms.PageUserGroup',
-            # 'cms.PageUser',
-        ],
-    },
-    {
-        'label': 'SEO',
-        'app': 'cms',
-        'models': [
-            {'model': 'robots.Rule', 'label': 'Access rules for robots.txt'},
-            {'model': 'robots.Url', 'label': 'Urls patterns for robots.txt'},
-        ],
-    },
-]
+# ADMIN_REORDER = [
+#     {
+#         'label': 'Users',
+#         'app': 'auth',
+#         'models': [
+#             'backend_auth.User',
+#             'aldryn_sso.AldrynCloudUser',
+#             'auth.Group',
+#         ],
+#     },
+#     {
+#         'label': 'CMS',
+#         'app': 'cms',
+#         'models': [
+#             'cms.Page',
+#             {'model': 'filer.Folder', 'label': 'Media'},
+#             'djangocms_redirect.Redirect',
+#             {'model': 'aldryn_forms.FormSubmission', 'label': 'Dynamic forms submissions'},
+#         ],
+#     },
+#     # {
+#     #     'label': 'Blog',
+#     #     'app': 'djangocms_blog',
+#     # },
+#     {
+#         'label': 'System Administration',
+#         'app': 'cms',
+#         'models': [
+#             {'model': 'sites.Site', 'label': 'Websites'},
+#             {'model': 'djangocms_modules.Category', 'label': 'Plugin modules categories'},
+#             {'model': 'djangocms_snippet.Snippet', 'label': 'HTML snippets'},
+#             'admin.LogEntry',
+#
+#             # removed because it doesn't work on cms 3.7.3
+#             # 'cms.GlobalPagePermission',
+#             # 'cms.PageUserGroup',
+#             # 'cms.PageUser',
+#         ],
+#     },
+#     {
+#         'label': 'SEO',
+#         'app': 'cms',
+#         'models': [
+#             {'model': 'robots.Rule', 'label': 'Access rules for robots.txt'},
+#             {'model': 'robots.Url', 'label': 'Urls patterns for robots.txt'},
+#         ],
+#     },
+# ]
 
 
 RECAPTCHA_PUBLIC_KEY = env.str('RECAPTCHA_PUBLIC_KEY', '6LcI2-YUAAAAALOlCkObFFtMkOYj1mhiArPyupgj')  # those are djangocms-template v3 keys that allow localhost testing
@@ -650,11 +654,11 @@ ALDRYN_SEARCH_EXCLUDED_PLUGINS = [
 ALGOLIA_SEARCH_INDEX_TEXT_LIMIT = 95_000
 
 
-LINK_ALL_MODELS_ADDITIONAL = [
-    LinkAllModel(app_label='djangocms_blog', model_name='Post'),
-    LinkAllModel(app_label='djangocms_blog', model_name='BlogCategory'),
-]
-LINK_ALL_ENABLE_BUTTON_PLUGIN = True
+# LINK_ALL_MODELS_ADDITIONAL = [
+#     LinkAllModel(app_label='djangocms_blog', model_name='Post'),
+#     LinkAllModel(app_label='djangocms_blog', model_name='BlogCategory'),
+# ]
+# LINK_ALL_ENABLE_BUTTON_PLUGIN = True
 
 
 # django-filer
