@@ -81,7 +81,7 @@ dj-database-url==2.1.0
     # via -r requirements.in
 dj-email-url==1.0.6
     # via -r requirements.in
-django==4.2.4
+django==4.2.29
     # via
     #   -r requirements.in
     #   aldryn-addons
@@ -298,7 +298,6 @@ django-treebeard==4.4
     #   djangocms-history
     #   djangocms-modules
     #   djangocms-snippet
-    #   djangocms-video
 django-username-email==2.5.4
     # via -r requirements.in
 django-widget-tweaks==1.4.12
